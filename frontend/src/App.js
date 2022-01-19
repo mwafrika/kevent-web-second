@@ -167,7 +167,7 @@ export default function App() {
               />
             </div>
             <div className="col-span-1 md:col-span-1 sm:col-span w-full flex lg:flex-row md:flex-row md:justify-between sm:justify-around lg:justify-between md:px-6 lg:px-4 md:gap-x-2 md:flex-nowrap lg:flex-nowrap sm:flex-wrap sm:gap-x-8 sm:gap-y-4 xs:flex-col xs:items-center xs:mb-6 xxs:flex-col xxs:items-center xxxs:flex-col xxxs:items-center">
-              <div className=" bg-slate-300 w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xxs:mb-6">
+              <div className=" bg-slate-300 w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6">
                 <a href="/">
                   <img
                     src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
