@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
       <section className="flex min-h-screen flex-col">
-        <div className="bg-slate-100 flex w-full h-20 md:h-28 items-center justify-between md:justify-around text-slate-600">
+        <div className=" bg-gray-100 flex w-full h-20 md:h-28 items-center justify-between md:justify-around text-slate-600">
           <div className="w-1/4 justify-center flex">
             <img src={logo} className="h-8" alt="logo" />
           </div>
@@ -110,23 +110,138 @@ export default function App() {
             </button>
           </div>
         </section>
-        <section className="grid  grid-cols-12 w-full h-full">
-          <div className="col-span-1 md:col-span-1 sm:col-span-1"></div>
-          <div className="mt-10 md:px-0 pt-0 h-80 w-full col-span-10 md:col-span-5 sm:col-span-8">
-            <h1 className="text-2xl md:text-4xl lg:text-4xl font-semibold mb-10 text-slate-700  font-sans">
-              The Finest Fishing Experience
-            </h1>
-            <p className="text-lg wrap-words font-semibold mb-10 text-slate-700  font-sans">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
-              rem? Soluta adipisci praesentium natus rerum sed illo sit enim
-              quibusdam odit vero? Labore non quisquam voluptatem totam id
-              quibusdam odit vero? Labore non quisquam voluptatem totam id
-            </p>
+        <section className="md:flex sm:flex md:w-full md:h-full md:justify-center bg-gray-100  py-16 gap-12 md:gap-6 md:flex-row sm:flex-col">
+          <div
+            className="col-span-1 md:col-span-1 sm:col-span-1  h-full flex flex-col pt-24 pb-16 md:px-2 lg:px-5 
+         shadow-lg rounded-lg bg-gray-50 md:my-0 md:mx-auto md:w-1/3 sm:w-9/12 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5 xxxs:px-6 xxxs:mx-4"
+          >
+            <h1 className="text-2xl md:text-2xl font-semibold mb-8">Search</h1>
+            <input
+              type="text"
+              name="search"
+              id="search"
+              className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal"
+              placeholder="Search"
+            />
+            <h1 className="text-2xl md:text-2xl font-semibold  py-7">Types</h1>
+            <div className="flex flex-row flex-wrap h-auto gap-6  py-2 px-2">
+              <input
+                type="button"
+                value="Tous"
+                className="bg-slate-600 text-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4  w-2/5 appearance-none leading-normal
+                hover:bg-slate-600 hover:text-white cursor-pointer
+                active:bg-slate-600 active:text-white
+                "
+              />
+              <input
+                type="button"
+                value="Fruits"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+              />
+              <input
+                type="button"
+                value="Arbres"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+              />
+              <input
+                type="button"
+                value="Legumes"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+              />
+              <input
+                type="button"
+                value="Cereals"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+              />
+            </div>
+          </div>
+          <div className="col-span-1 md:col-span-1 sm:col-span-1 h-full md:w-3/5 sm:w-full flex flex-col md:justify-around">
+            <div className="flex flex-row justify-between h-40 py-6 px-6 items-center">
+              <h1 className="text-2xl md:text-2xl font-semibold py-7 xxs:text-lg xxxs:text-sm">
+                Liste des plantes
+              </h1>
+              <input
+                type="button"
+                value="More packages"
+                className="bg-gray-300 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+              />
+            </div>
+            <div className="col-span-1 md:col-span-1 sm:col-span w-full flex lg:flex-row md:flex-row md:justify-between sm:justify-around lg:justify-between md:px-6 lg:px-4 md:gap-x-2 md:flex-nowrap lg:flex-nowrap sm:flex-wrap sm:gap-x-8 sm:gap-y-4 xs:flex-col xs:items-center xs:mb-6 xxs:flex-col xxs:items-center xxxs:flex-col xxxs:items-center">
+              <div className=" bg-slate-300 w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xxs:mb-6">
+                <a href="/">
+                  <img
+                    src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
+                    alt="plantes"
+                    className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-b-lg">
+                    <h2 className=" mt-5 ml-5 text-white text-lg font-semibold">
+                      Nyiragongo
+                    </h2>
+                    <h3 className="mt-5 ml-5 text-white text-sm font-semibold">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas, iste!
+                    </h3>
+                  </div>
+                  <div className="absolute right-0 bottom-0 rounded-lg">
+                    <p className=" text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-md">
+                      150$
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <div className=" bg-slate-300 w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xs:mb-6 xxs:mb-6 xxxs:mb-6">
+                <a href="/">
+                  <img
+                    src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
+                    alt="plantes"
+                    className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-b-lg">
+                    <h2 className=" mt-5 ml-5 text-white text-lg font-semibold">
+                      Nyiragongo
+                    </h2>
+                    <h3 className="mt-5 ml-5 text-white text-sm font-semibold">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas, iste!
+                    </h3>
+                  </div>
+                  <div className="absolute right-0 bottom-0 rounded-lg">
+                    <p className=" text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-md">
+                      150$
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <div className=" bg-slate-300 w-72 md:w-3/5 h-96 relative rounded-lg sm:w-64">
+                <a href="/">
+                  <img
+                    src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
+                    alt="plantes"
+                    className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
+                  />
+                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-b-lg">
+                    <h2 className=" mt-5 ml-5 text-white text-lg font-semibold">
+                      Nyiragongo
+                    </h2>
+                    <h3 className="mt-5 ml-5 text-white text-sm font-semibold">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas, iste!
+                    </h3>
+                  </div>
+                  <div className="absolute right-0 bottom-0 rounded-lg">
+                    <p className=" text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-md">
+                      150$
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
         <section
           className="flex flex-col w-full h-full px-6 items-center md:flex-row md:items-center md:w-full  md:px-4 md:flex-wrap md:justify-between
-         lg:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap md:pt-28
+         lg:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap md:pt-28 2xl:justify-around
         "
         >
           <div
@@ -217,7 +332,7 @@ export default function App() {
             </p>
           </div>
         </section>
-        <section className="flex flex-col sm:flex-col md:flex-row items-center bg-slate-100 justify-between w-full md:h-screen px-5 py-5 md:py-8">
+        <section className="flex flex-col sm:flex-col md:flex-row items-center bg-gray-100 justify-between w-full md:h-screen px-5 py-5 md:py-8">
           <div className="w-full lg:h-full md:px-4 bg-white flex flex-col p-9 space-y-11 md:h-full">
             <div className="flex items-center">
               <img src={logo} className="w-14 h-12 rounded-md" alt="" />
