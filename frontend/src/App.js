@@ -9,7 +9,7 @@ export default function App() {
   return (
     <>
       <section className="flex min-h-screen flex-col">
-        <div className=" bg-gray-100 flex w-full h-20 md:h-28 items-center justify-between md:justify-around text-slate-600">
+        <div className=" bg-gray-100 flex w-full h-20 md:h-28 items-center justify-between md:justify-around text-slate-600 fixed z-50">
           <div className="w-1/4 justify-center flex">
             <img src={logo} className="h-8" alt="logo" />
           </div>
@@ -112,8 +112,8 @@ export default function App() {
         </section>
         <section className="md:flex sm:flex md:w-full md:h-full md:justify-center bg-gray-100  py-16 gap-12 md:gap-6 md:flex-row sm:flex-col">
           <div
-            className="col-span-1 md:col-span-1 sm:col-span-1  h-full flex flex-col pt-24 pb-16 md:px-2 lg:px-5 
-         shadow-lg rounded-lg bg-gray-50 md:my-0 md:mx-auto md:w-1/3 sm:w-9/12 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5 xxxs:px-6 xxxs:mx-4"
+            className="col-span-1 md:col-span-1 sm:col-span-1  h-full flex flex-col md:pt-6 md:pb-7 sm:pt-6 sm:pb-7 lg:pt-6 lg:pb-7 xl:pt-8 xl:pb-9 md:px-2 lg:px-5 
+         shadow-lg rounded-lg bg-gray-50 md:my-0 md:mx-auto md:ml-4 2xl:w-3/12 md:w-15 xl:w-15 sm:w-9/12 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5 xxxs:px-6 xxxs:mx-4"
           >
             <h1 className="text-2xl md:text-2xl font-semibold mb-8">Search</h1>
             <input
@@ -123,12 +123,36 @@ export default function App() {
               className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal"
               placeholder="Search"
             />
+            <h1 className="text-2xl md:text-2xl font-semibold mb-4 mt-4">
+              Select town
+            </h1>
+            <div class="flex relative w-full">
+              <select
+                name="town"
+                id="town"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal"
+              >
+                <option value="">Select town</option>
+                <option value="">Town 1</option>
+                <option value="">Town 2</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  class="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+
             <h1 className="text-2xl md:text-2xl font-semibold  py-7">Types</h1>
-            <div className="flex flex-row flex-wrap h-auto gap-6  py-2 px-2">
+            <div className="flex flex-row flex-wrap h-auto md:gap-x-6 md:gap-y-6 xl:gap-x-4 lg:gap-x-4 xl:gap-y-4 lg:py-5 xl:py-5 sm:py-5 md:py-5 sm:gap-x-12 sm:gap-y-6 py-2 px-2">
               <input
                 type="button"
                 value="Tous"
-                className="bg-slate-600 text-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4  w-2/5 appearance-none leading-normal
+                className="bg-slate-600 text-white focus:outline-none focus:shadow-outline border border-gray-300 lg:py-1 xl:py-1 sm:py-1 rounded-full py-2 px-4 lg:w-5/12 xl:w-2/6 sm:w-2/6 md:w-5/12 appearance-none leading-normal
                 hover:bg-slate-600 hover:text-white cursor-pointer
                 active:bg-slate-600 active:text-white
                 "
@@ -136,27 +160,27 @@ export default function App() {
               <input
                 type="button"
                 value="Fruits"
-                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 lg:py-1 xl:py-1 sm:py-1 lg:w-5/12 xl:w-2/6 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
               />
               <input
                 type="button"
                 value="Arbres"
-                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 lg:py-1 xl:py-1 sm:py-1 px-4 block lg:w-5/12 xl:w-2/6 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
               />
               <input
                 type="button"
                 value="Legumes"
-                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 lg:py-1 px-4 block lg:w-5/12 xl:w-2/6 sm:w-2/6 md:w-5/12  xl:py-1 sm:py-1 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
               />
               <input
                 type="button"
                 value="Cereals"
-                className="bg-gray-200 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-2/5 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
+                className="bg-gray-200 focus:outline-none focus:shadow-outline border xl:py-1 sm:py-1 border-gray-300 rounded-full py-2 px-4 lg:py-1 block lg:w-5/12 xl:w-2/6 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
               />
             </div>
           </div>
-          <div className="col-span-1 md:col-span-1 sm:col-span-1 h-full md:w-3/5 sm:w-full flex flex-col md:justify-around">
-            <div className="flex flex-row justify-between h-40 py-6 px-6 items-center">
+          <div className="col-span-1 md:col-span-1 sm:col-span-1 h-full md:w-4/6 sm:w-full flex flex-col md:justify-around">
+            <div className="flex flex-row justify-between h-40  pt-0 pb-32 pr-6 pl-2 items-center">
               <h1 className="text-2xl md:text-2xl font-semibold py-7 xxs:text-lg xxxs:text-sm">
                 Liste des plantes
               </h1>
@@ -166,7 +190,7 @@ export default function App() {
                 className="bg-gray-300 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
               />
             </div>
-            <div className="col-span-1 md:col-span-1 sm:col-span w-full flex lg:flex-row md:flex-row md:justify-between sm:justify-around lg:justify-between md:px-6 lg:px-4 md:gap-x-2 md:flex-nowrap lg:flex-nowrap sm:flex-wrap sm:gap-x-8 sm:gap-y-4 xs:flex-col xs:items-center xs:mb-6 xxs:flex-col xxs:items-center xxxs:flex-col xxxs:items-center">
+            <div className="col-span-1 md:col-span-1 sm:col-span w-full flex lg:flex-row md:flex-row md:justify-between sm:justify-around lg:justify-between md:px-6 lg:px-4 md:gap-x-8 md:flex-nowrap lg:flex-nowrap sm:flex-wrap sm:gap-x-8 sm:gap-y-4 xs:flex-col xs:items-center xs:mb-6 xxs:flex-col xxs:items-center xxxs:flex-col xxxs:items-center">
               <div className=" bg-slate-300 w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6">
                 <a href="/">
                   <img
