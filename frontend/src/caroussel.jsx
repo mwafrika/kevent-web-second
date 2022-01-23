@@ -30,8 +30,8 @@ const responsive = {
 const DemoCarousel = () => {
   return (
     <Carousel
-      className="flex flex-col w-full h-full px-6 items-center md:flex-row md:items-center md:w-full  md:px-4 md:flex-wrap md:justify-between
-    lg:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap md:pt-28 md:pb-28 lg:pb-28 xl:pb-28"
+      className=" w-full h-full px-6 items-center md:flex-row md:items-center md:w-full  md:px-4 md:flex-wrap md:justify-between
+      lg:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap md:pt-28 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28 xxxs:pb-28"
       responsive={responsive}
       autoPlay={true}
       infinite={true}

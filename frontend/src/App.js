@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import Carousel from "./caroussel";
-
+import Carousel2 from "./caroussel2";
 export default function App() {
   const [menu, setMenu] = useState(false);
   const onClickMenu = () => {
@@ -192,106 +192,14 @@ export default function App() {
                 className="bg-gray-300 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer"
               />
             </div>
-            <div className="col-span-1 md:col-span-1 sm:col-span w-full flex lg:flex-row md:flex-row md:justify-between sm:justify-around lg:justify-between md:px-6 lg:px-4 md:gap-x-8 md:flex-nowrap lg:flex-nowrap sm:flex-wrap sm:gap-x-8 sm:gap-y-4 xs:flex-col xs:items-center xs:mb-6 xxs:flex-col xxs:items-center xxxs:flex-col xxxs:items-center">
-              <div className=" bg-slate-300 w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6">
-                <a href="/">
-                  <img
-                    src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
-                    alt="plantes"
-                    className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
-                  />
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-b-lg">
-                    <h2 className=" mt-5 ml-5 text-white text-lg font-semibold">
-                      Nyiragongo
-                    </h2>
-                    <h3 className="mt-5 ml-5 text-white text-sm font-semibold">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quas, iste!
-                    </h3>
-                  </div>
-                  <div className="absolute right-0 bottom-0 rounded-lg">
-                    <p className=" text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-md">
-                      150$
-                    </p>
-                  </div>
-                </a>
-              </div>
-              <div className=" bg-slate-300 w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xs:mb-6 xxs:mb-6 xxxs:mb-6">
-                <a href="/">
-                  <img
-                    src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
-                    alt="plantes"
-                    className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
-                  />
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-b-lg">
-                    <h2 className=" mt-5 ml-5 text-white text-lg font-semibold">
-                      Nyiragongo
-                    </h2>
-                    <h3 className="mt-5 ml-5 text-white text-sm font-semibold">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quas, iste!
-                    </h3>
-                  </div>
-                  <div className="absolute right-0 bottom-0 rounded-lg">
-                    <p className=" text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-md">
-                      150$
-                    </p>
-                  </div>
-                </a>
-              </div>
-              <div className=" bg-slate-300 w-72 md:w-3/5 h-96 relative rounded-lg sm:w-64">
-                <a href="/">
-                  <img
-                    src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
-                    alt="plantes"
-                    className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
-                  />
-                  <div className="absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-b-lg">
-                    <h2 className=" mt-5 ml-5 text-white text-lg font-semibold">
-                      Nyiragongo
-                    </h2>
-                    <h3 className="mt-5 ml-5 text-white text-sm font-semibold">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quas, iste!
-                    </h3>
-                  </div>
-                  <div className="absolute right-0 bottom-0 rounded-lg">
-                    <p className=" text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-md">
-                      150$
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
+            <Carousel2 />
           </div>
         </section>
         <Carousel />
         <section className="flex items-center justify-center">
           <div className="w-2/3 h-px bg-slate-300"></div>
         </section>
-        {/* <section className="flex flex-col items-center justify-center w-full h-full relative">
-          <img
-            src="https://images.pexels.com/photos/1596056/pexels-photo-1596056.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
-            alt="testimony"
-            className="md:w-full md:h-1/2 w-full h-1/2
-            object-cover object-center
-             opacity-80
-            "
-          />
-          <div className="absolute h-56 w-full text-center text-white font-extrabold py-3">
-            <h5 className="text-4xl font-bold text-center">Loved by</h5>
-            <h5 className=" text-2xl md:text-4xl font-bold text-center mb-5">
-              Friends & Families
-            </h5>
 
-            <p className="text-lg font-semibold text-center">
-              I'm a testimonial. Click to edit me and add text that says
-            </p>
-            <p className="text-lg font-semibold text-center">
-              I'm a testimonial. Click to edit me and add text that says
-            </p>
-          </div>
-        </section> */}
         <section className="flex flex-col sm:flex-col md:flex-row items-center bg-gray-100 justify-between w-full md:h-screen px-5 py-5 md:py-8">
           <div className="w-full lg:h-full md:px-4 bg-white flex flex-col p-9 space-y-11 md:h-full">
             <div className="flex items-center">
