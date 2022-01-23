@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
+import Carousel from "./caroussel";
+
 export default function App() {
   const [menu, setMenu] = useState(false);
   const onClickMenu = () => {
@@ -263,77 +265,11 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section
-          className="flex flex-col w-full h-full px-6 items-center md:flex-row md:items-center md:w-full  md:px-4 md:flex-wrap md:justify-between
-         lg:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap md:pt-28 2xl:justify-around
-        "
-        >
-          <div
-            className="h-full md:w-5/12 lg:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-          cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full
-          "
-          >
-            <img
-              src="https://images.pexels.com/photos/6324285/pexels-photo-6324285.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
-              alt=""
-            />
-            <div>
-              <h1 className="text-2xl font-semibold mb-10 text-center text-slate-700  py-6">
-                Fishing Destinations
-              </h1>
-            </div>
-          </div>
-          <div
-            className="h-full md:w-5/12 lg:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-          cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full"
-          >
-            <img
-              src="https://images.pexels.com/photos/6411959/pexels-photo-6411959.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
-              alt=""
-            />
-            <div>
-              <h1 className="text-2xl font-semibold mb-10 text-center text-slate-700  py-6">
-                Fishing Destinations
-              </h1>
-            </div>
-          </div>
-          <div
-            className="h-full md:w-5/12 lg:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-          cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full"
-          >
-            <img
-              src="https://images.pexels.com/photos/2872877/pexels-photo-2872877.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
-              alt=""
-              className="w-full "
-            />
-            <div>
-              <h1 className="text-2xl font-semibold mb-10 text-center text-slate-700   py-6">
-                Fishing Destinations
-              </h1>
-            </div>
-          </div>
-          <div
-            className="h-full md:w-5/12 lg:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-            cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full
-          "
-          >
-            <img
-              src="https://images.pexels.com/photos/6231575/pexels-photo-6231575.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
-              alt=""
-              className="w-full"
-            />
-            <div>
-              <h1 className="text-2xl font-semibold mb-10 text-center text-slate-700 py-6">
-                Fishing Destinations
-              </h1>
-            </div>
-          </div>
-        </section>
+        <Carousel />
         <section className="flex items-center justify-center">
           <div className="w-2/3 h-px bg-slate-300"></div>
         </section>
-
-        <section className="flex flex-col items-center justify-center w-full h-full relative">
+        {/* <section className="flex flex-col items-center justify-center w-full h-full relative">
           <img
             src="https://images.pexels.com/photos/1596056/pexels-photo-1596056.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
             alt="testimony"
@@ -355,7 +291,7 @@ export default function App() {
               I'm a testimonial. Click to edit me and add text that says
             </p>
           </div>
-        </section>
+        </section> */}
         <section className="flex flex-col sm:flex-col md:flex-row items-center bg-gray-100 justify-between w-full md:h-screen px-5 py-5 md:py-8">
           <div className="w-full lg:h-full md:px-4 bg-white flex flex-col p-9 space-y-11 md:h-full">
             <div className="flex items-center">
