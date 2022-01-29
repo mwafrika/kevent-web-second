@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import moment from "moment";
+import React, { Component } from 'react';
+import moment from 'moment';
 
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
 // multi carousel
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
   superLargeDesktop: {
@@ -15,11 +15,11 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    items: 4,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    items: 3,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -30,8 +30,8 @@ const responsive = {
 const DemoCarousel = () => {
   return (
     <Carousel
-      className=" w-full h-full px-6 items-center md:flex-row md:items-center md:w-full  md:px-4 md:flex-wrap md:justify-between
-      lg:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap md:pt-28 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28 xxxs:pb-28"
+      className="w-full h-full px-6 items-center md:flex-row md:items-center md:w-full  md:px-4 md:flex-wrap md:justify-between
+      xl:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap lg:justify-between lg:gap-x-10 md:pt-28 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28 xxxs:pb-28"
       responsive={responsive}
       autoPlay={true}
       infinite={true}
@@ -75,8 +75,8 @@ const DemoCarousel = () => {
           </div>
           <span className="text-md text-slate-700  py-0 my-0">
             {moment(
-              "2020-05-01T00:00:00.000Z",
-              "YYYY-MM-DDTHH:mm:ss.SSSZ"
+              '2020-05-01T00:00:00.000Z',
+              'YYYY-MM-DDTHH:mm:ss.SSSZ'
             ).fromNow()}
           </span>
         </div>
@@ -102,8 +102,8 @@ const DemoCarousel = () => {
           </div>
           <span className="text-md text-slate-700  py-0 my-0">
             {moment(
-              "2020-05-01T00:00:00.000Z",
-              "YYYY-MM-DDTHH:mm:ss.SSSZ"
+              '2020-05-01T00:00:00.000Z',
+              'YYYY-MM-DDTHH:mm:ss.SSSZ'
             ).fromNow()}
           </span>
         </div>
@@ -129,8 +129,8 @@ const DemoCarousel = () => {
           </div>
           <span className="text-md text-slate-700  py-0 my-0">
             {moment(
-              "2020-05-01T00:00:00.000Z",
-              "YYYY-MM-DDTHH:mm:ss.SSSZ"
+              '2020-05-01T00:00:00.000Z',
+              'YYYY-MM-DDTHH:mm:ss.SSSZ'
             ).fromNow()}
           </span>
         </div>
@@ -156,8 +156,8 @@ const DemoCarousel = () => {
           </div>
           <span className="text-md text-slate-700  py-0 my-0">
             {moment(
-              "2020-05-01T00:00:00.000Z",
-              "YYYY-MM-DDTHH:mm:ss.SSSZ"
+              '2020-05-01T00:00:00.000Z',
+              'YYYY-MM-DDTHH:mm:ss.SSSZ'
             ).fromNow()}
           </span>
         </div>
