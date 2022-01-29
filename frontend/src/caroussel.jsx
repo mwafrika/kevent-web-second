@@ -15,11 +15,11 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4,
+    items: 3,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 3,
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -30,8 +30,8 @@ const responsive = {
 const DemoCarousel = () => {
   return (
     <Carousel
-      className="w-full h-full px-6 items-center md:flex-row md:items-center md:w-full  md:px-4 md:flex-wrap md:justify-between
-      xl:justify-between lg:flex-row lg:items-center lg:w-full lg:px-8 lg:flex-wrap lg:justify-between lg:gap-x-10 md:pt-28 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28 xxxs:pb-28"
+      className="w-4/5 h-full px-6 items-center md:w-4/5 md:flex-row md:items-center md:px-4 md:flex-wrap md:justify-between
+      xl:justify-between lg:flex-row lg:mx-auto lg:my-0 lg:items-center lg:w-4/5 lg:px-8 lg:flex-wrap lg:justify-between lg:gap-x-10 md:pt-28 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28 xxxs:pb-28"
       responsive={responsive}
       autoPlay={true}
       infinite={true}
