@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
-import Carousel from "./caroussel";
-import Carousel2 from "./caroussel2";
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import Carousel from './caroussel';
+import Carousel2 from './caroussel2';
 export default function App() {
   const [menu, setMenu] = useState(false);
   const onClickMenu = () => {
     setMenu(!menu);
-    console.log(menu, "mwafrika");
+    console.log(menu, 'mwafrika');
   };
   return (
     <>
@@ -18,7 +18,7 @@ export default function App() {
 
           <nav
             className={`${
-              menu ? "hidden" : "block"
+              menu ? 'hidden' : 'block'
             } md:w-2/6 md:block lg:block mt-60 md:mt-0 md:bg-inherit md:shadow-none z-50 md:z-0 hidden bg-slate-100 shadow-lg mx-auto`}
           >
             <ul className="md:flex md:items-center block md:justify-around gap-2">
@@ -200,90 +200,67 @@ export default function App() {
           <div className="w-2/3 h-px bg-slate-300"></div>
         </section>
 
-        <section className="flex flex-col sm:flex-col md:flex-row items-center bg-gray-100 justify-between w-full md:h-screen px-5 py-5 md:py-8">
-          <div className="w-full lg:h-full md:px-4 bg-white flex flex-col p-9 space-y-11 md:h-full">
-            <div className="flex items-center">
-              <img src={logo} className="w-14 h-12 rounded-md" alt="" />
-              <h1>Title</h1>
-            </div>
-            <div>
-              <p>Fishing Charter</p>
-            </div>
-            <ul className="flex">
-              <li>
-                <img
-                  src={logo}
-                  alt="facebook"
-                  className="w-14 h-12 rounded-md"
-                />
-              </li>
-              <li>
-                <img
-                  src={logo}
-                  alt="Twitter"
-                  className="w-14 h-12 rounded-md"
-                />
-              </li>
-              <li>
-                <img
-                  src={logo}
-                  alt="Instagram"
-                  className="w-14 h-12 rounded-md"
-                />
-              </li>
-            </ul>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque,
-                sit. Quo eveniet enim laborum sunt ab,
-              </p>
-            </div>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quibusdam consequatur est at exercitationem. Veritatis maiores
-              </p>
-            </div>
+        <section className="flex flex-col sm:flex-col md:flex-row md:justify-between items-center bg-gray-100 justify-between w-full md:h-full px-5 py-5 md:py-8">
+          <div className="w-full lg:h-full md:px-4  bg-slate-600 flex flex-col p-9 space-y-11 md:h-full md:w-full">
+            <p>
+              Delectus nihil veritatis quae! Tempore laborum enim in pariatur
+              hic officia modi neque qui. Quasi eligendi amet ullam ea
+              repellendus, error maxime nesciunt? Delectus, amet est repudiandae
+              ex dignissimos molestiae deserunt vel, iure, debitis veniam vitae
+              natus quod? Nemo eos necessitatibus magnam quis sit qui obcaecati
+              ducimus, quas assumenda, magni voluptatum aperiam recusandae
+              tempora reiciendis architecto doloribus vero quo velit vel ut
+              esse, culpa iusto quos in? Debitis sed quas iure. Accusantium
+              nostrum porro possimus ducimus repellat fugit nam maiores ratione
+              repudiandae sed iusto nemo tempore quo quis libero impedit
+              doloribus facere omnis non id, voluptatibus sit, cumque ipsa
+              aliquid. Nesciunt distinctio doloremque dolorum possimus accusamus
+              repellat impedit non rem nostrum dignissimos. Aperiam ad neque rem
+              veniam voluptate quis rerum nesciunt iure assumenda natus totam
+              sapiente, maxime non rem nostrum dignissimos. Aperiam ad neque rem
+              veniam voluptate quis rerum nesciunt iure assumenda natus totam
+              quis rerum nesciunt iure assumenda natus ttotamotam sapiente,
+              maxime non rem nostrum dignissimos. Aperiam ad neque rem veniam
+              voluptate quis rerum nesciunt iure assumenda natus quis rerum
+              nesciunt iure assumenda natus totam quis rerum nesciunt iure
+              assumenda natus ttotamotam sapiente, maxime non rem nostrum
+              dignissimos. Aperiam ad neque rem veniam voluptate quis rerum
+              nesciunt iure assumenda natus quis rerum nesciunt iure assumenda
+              natus totam quis rerum nesciunt iure assumenda natus ttotamotam
+              sapiente, maxime non rem nostrum dignissimos. Aperiam ad neque rem
+              veniam voluptate quis rerum nesciunt iure assumenda natus quis
+              rerum nesciunt iure assumenda natus totam quis rerum nesciunt iure
+              assumenda natus ttotamotam sapiente, maxime non rem nostrum
+              dignissimos. Aperiam ad neque rem veniam voluptate quis rerum
+              nesciunt iure assumenda natus sapiente, maxime non rem nostrum
+              dignissimos. Aperiam ad neque rem veniam voluptate quis rerum
+              nesciunt iure assumenda natus quis rerum nesciunt iure assumenda
+              natus totam quis rerum nesciunt iure assumenda natus ttotamotam
+              sapiente, maxime non rem nostrum dignissimos. Aperiam ad neque rem
+              veniam voluptate quis rerum nesciunt iure assumenda natus quis
+              rerum nesciunt iure assumenda natus totam quis rerum nesciunt iure
+              assumenda natus ttotamotam sapiente, maxime non rem nostrum
+              dignissimos. Aperiam ad neque rem
+            </p>
           </div>
-          <div className="bg-white p-10 w-full md:h-full md:px-4">
-            <form action="" className="flex flex-col space-y-10">
+          <div className="bg-white p-10 w-full md:h-full md:px-4 md:flex md:justify-center">
+            <form action="" className="flex flex-col space-y-10 md:w-96">
               <p className=" text-xl font-medium">Ask the Captain</p>
-              <div className="flex justify-between space-x-5">
-                <div>
-                  <label htmlFor="">First Name</label>
-                  <input
-                    type="text"
-                    value=""
-                    className="h-10 w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="">First Name</label>
-                  <input
-                    type="text"
-                    value=""
-                    className="h-10 w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
-                  />
-                </div>
+              <div>
+                <label htmlFor="">First Name</label>
+                <input
+                  type="text"
+                  value=""
+                  className="h-8 w-full border px-3 py-2 md:h-8 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
+                />
               </div>
-
-              <div className="flex justify-between space-x-5">
-                <div>
-                  <label htmlFor="">First Name</label>
-                  <input
-                    type="text"
-                    value=""
-                    className="h-10 w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="">First Name</label>
-                  <input
-                    type="text"
-                    value=""
-                    className="h-10 w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
-                  />
-                </div>
+              <div>
+                <label htmlFor="">First Name</label>
+                <input
+                  type="text"
+                  value=""
+                  className="h-10 w-full md:h-8 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
+                />
               </div>
 
               <div>
@@ -291,28 +268,30 @@ export default function App() {
                 <input
                   type="text"
                   value=""
-                  className="h-10 w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
+                  className="h-10 w-full md:h-8 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
+                />
+              </div>
+              <div>
+                <label htmlFor="">First Name</label>
+                <input
+                  type="text"
+                  value=""
+                  className="h-10 w-full md:h-8 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="">First Name</label>
+                <input
+                  type="text"
+                  value=""
+                  className="h-10 w-full md:h-8 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
                 />
               </div>
               <button className="rounded-none w-full  px-10 py-2 text-lg font-bold text-white bg-indigo-500">
                 Button
               </button>
             </form>
-          </div>
-          <div className="bg-white md:h-full w-full md:w-full lg:w-full p-10  lg:h-full pt-10 md:px-4">
-            <ul className="ml-10 space-y-11 pb-14">
-              <li className="mt-4 space-x-10 text-2xl font-semibold">Home</li>
-              <li className="mt-4 space-x-10 text-2xl font-semibold">About</li>
-              <li className="mt-4 space-x-10 text-2xl font-semibold">
-                Charters
-              </li>
-              <li className="mt-4 space-x-10 text-2xl font-semibold">
-                Fishing Reports
-              </li>
-              <li className="mt-4 space-x-10 text-2xl font-semibold">
-                Gallery
-              </li>
-            </ul>
           </div>
 
           <h3 className="text-center pt-10 bg-slate-100 md:hidden block">

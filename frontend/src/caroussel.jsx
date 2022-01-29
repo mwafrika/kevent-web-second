@@ -55,7 +55,7 @@ const DemoCarousel = () => {
       transitionMode="fade"
     >
       <div
-        className="h-full md:w-5/12 lg:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
+        className="h-full md:w-5/12 lg:w-72 xxxs:w-full w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
           cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
           "
       >
