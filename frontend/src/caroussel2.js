@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "react-multi-carousel/lib/styles.css";
-import Carousel from "react-multi-carousel";
+import React, { Component } from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'react-multi-carousel/lib/styles.css';
+import Carousel from 'react-multi-carousel';
 
 const responsive = {
   superLargeDesktop: {
@@ -38,8 +38,8 @@ const caroussel2 = () => {
           onClick={onClickHandler}
           style={
             hasPrev && {
-              left: "calc(-2% + 2px)",
-              right: "calc(4% + 1px)",
+              left: 'calc(-2% + 2px)',
+              right: 'calc(4% + 1px)',
             }
           }
         >
@@ -51,8 +51,9 @@ const caroussel2 = () => {
           <i className="fa fa-angle-right" aria-hidden="true"></i>
         </button>
       )}
+      className="md:mt-10  md:gap-x-4"
     >
-      <div className=" bg-slate-300  lg:w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6">
+      <div className=" bg-slate-300 2xl:w-11/12  lg:w-11/12 h-96 relative md:w-full md:h-full rounded-lg sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6">
         <a href="/">
           <img
             src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
@@ -75,7 +76,7 @@ const caroussel2 = () => {
           </div>
         </a>
       </div>
-      <div className=" bg-slate-300 lg:w-72 h-96 relative md:w-3/5 rounded-lg sm:w-64 xs:mb-6 xxs:mb-6 xxxs:mb-6">
+      <div className=" bg-slate-300  2xl:w-11/12 lg:w-72 h-96 relative md:w-full rounded-lg sm:w-64 xs:mb-6 xxs:mb-6 xxxs:mb-6">
         <a href="/">
           <img
             src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
@@ -98,7 +99,7 @@ const caroussel2 = () => {
           </div>
         </a>
       </div>
-      <div className=" bg-slate-300 lg:w-72 md:w-3/5 h-96 relative rounded-lg sm:w-64">
+      <div className=" bg-slate-300 2xl:w-11/12 lg:w-72 md:w-full h-96 relative rounded-lg sm:w-64">
         <a href="/">
           <img
             src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
