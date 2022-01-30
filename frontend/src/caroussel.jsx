@@ -60,7 +60,7 @@ const DemoCarousel = () => {
           "
       >
         <img
-          src="https://images.pexels.com/photos/6324285/pexels-photo-6324285.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
+          src="https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-2_qfo9sk.svg"
           alt=""
           className="object-cover rounded-t-lg"
         />
@@ -87,7 +87,7 @@ const DemoCarousel = () => {
        "
       >
         <img
-          src="https://images.pexels.com/photos/6411959/pexels-photo-6411959.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
+          src="https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg"
           alt=""
           className="object-cover rounded-t-lg"
         />
@@ -114,7 +114,7 @@ const DemoCarousel = () => {
        "
       >
         <img
-          src="https://images.pexels.com/photos/2872877/pexels-photo-2872877.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000"
+          src="https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg"
           alt=""
           className="object-cover rounded-t-lg"
         />

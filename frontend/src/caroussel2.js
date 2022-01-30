@@ -56,7 +56,7 @@ const caroussel2 = () => {
       <div className=" bg-slate-300 2xl:w-11/12  lg:w-11/12 h-96 relative md:w-full md:h-full rounded-lg sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6">
         <a href="/">
           <img
-            src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
+            src="https://res.cloudinary.com/ujuzi/image/upload/v1643570905/Kevent/Rectangle5_balel4.svg"
             alt="plantes"
             className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
           />
@@ -79,7 +79,7 @@ const caroussel2 = () => {
       <div className=" bg-slate-300  2xl:w-11/12 lg:w-72 h-96 relative md:w-full rounded-lg sm:w-64 xs:mb-6 xxs:mb-6 xxxs:mb-6">
         <a href="/">
           <img
-            src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
+            src="https://res.cloudinary.com/ujuzi/image/upload/v1643570906/Kevent/Rectangle_5_uursza.svg"
             alt="plantes"
             className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
           />
@@ -102,7 +102,7 @@ const caroussel2 = () => {
       <div className=" bg-slate-300 2xl:w-11/12 lg:w-72 md:w-full h-96 relative rounded-lg sm:w-64">
         <a href="/">
           <img
-            src="https://images.unsplash.com/photo-1437448317784-3a480be9571e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZG93bmxvYWR8ZW58MHx8MHx8&auto=format&fit=crop&w=5000&q=60"
+            src="https://res.cloudinary.com/ujuzi/image/upload/v1643570905/Kevent/Rectangle_5-1_aqglve.svg"
             alt="plantes"
             className="absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-lg"
           />

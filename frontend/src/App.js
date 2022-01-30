@@ -89,16 +89,16 @@ export default function App() {
         <section className="flex flex-col items-center justify-center w-full h-screen">
           <div
             style={{
-              backgroundImage: `url(https://images.pexels.com/photos/2102621/pexels-photo-2102621.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=5000)`,
+              backgroundImage: `url(https://res.cloudinary.com/ujuzi/image/upload/v1643572787/Kevent/photo-1565118531796-763e5082d113_o7o5fi.jpg)`,
             }}
-            className="w-full h-full bg-cover bg-center bg-blend-overlay relative"
+            className="w-full h-full bg-cover bg-center bg-no-repeat bg-blend-overlay relative"
           ></div>
-          <div className=" absolute top-1/3 left-4 md:left-32">
-            <h1 className="text-4xl md:text-7xl font-semibold mb-10 text-slate-700  font-sans">
+          <div className=" absolute top-1/3 left-4 md:left-32 z-40">
+            <h1 className="text-4xl md:text-7xl font-semibold mb-10 text-white  font-sans">
               Welcome Aboard!
             </h1>
             <p
-              className="text-lg font-semibold   text-slate-600
+              className="text-lg font-semibold   text-white
             font-sans
             "
             >
@@ -106,12 +106,13 @@ export default function App() {
               adventure.
             </p>
             <button
-              className="bg-slate-600 text-white font-semibold py-2 px-4 my-8
-            hover:bg-slate-700"
+              className="text-slate-600 bg-white font-semibold py-2 px-4 my-8
+            hover:bg-slate-700 hover:text-white font-sans"
             >
               Book now
             </button>
           </div>
+          <div className="absolute bg-gray-900 bg-opacity-30  inset-0 h-full w-full z-10"></div>
         </section>
         <section className="md:flex sm:flex md:w-full md:h-full md:justify-center bg-gray-100  py-16 gap-12 md:gap-6 md:flex-row sm:flex-col">
           <div
@@ -239,52 +240,16 @@ export default function App() {
           <div className="w-2/3 h-px bg-slate-300"></div>
         </section>
 
-        <section className="flex flex-col sm:flex-col md:flex-row md:justify-between items-center bg-gray-100 justify-between w-full md:h-full px-5 py-5 md:py-8">
-          <div className="w-full lg:h-full md:px-4  bg-slate-600 flex flex-col p-9 space-y-11 md:h-full md:w-full">
-            <p>
-              Delectus nihil veritatis quae! Tempore laborum enim in pariatur
-              hic officia modi neque qui. Quasi eligendi amet ullam ea
-              repellendus, error maxime nesciunt? Delectus, amet est repudiandae
-              ex dignissimos molestiae deserunt vel, iure, debitis veniam vitae
-              natus quod? Nemo eos necessitatibus magnam quis sit qui obcaecati
-              ducimus, quas assumenda, magni voluptatum aperiam recusandae
-              tempora reiciendis architecto doloribus vero quo velit vel ut
-              esse, culpa iusto quos in? Debitis sed quas iure. Accusantium
-              nostrum porro possimus ducimus repellat fugit nam maiores ratione
-              repudiandae sed iusto nemo tempore quo quis libero impedit
-              doloribus facere omnis non id, voluptatibus sit, cumque ipsa
-              aliquid. Nesciunt distinctio doloremque dolorum possimus accusamus
-              repellat impedit non rem nostrum dignissimos. Aperiam ad neque rem
-              veniam voluptate quis rerum nesciunt iure assumenda natus totam
-              sapiente, maxime non rem nostrum dignissimos. Aperiam ad neque rem
-              veniam voluptate quis rerum nesciunt iure assumenda natus totam
-              quis rerum nesciunt iure assumenda natus ttotamotam sapiente,
-              maxime non rem nostrum dignissimos. Aperiam ad neque rem veniam
-              voluptate quis rerum nesciunt iure assumenda natus quis rerum
-              nesciunt iure assumenda natus totam quis rerum nesciunt iure
-              assumenda natus ttotamotam sapiente, maxime non rem nostrum
-              dignissimos. Aperiam ad neque rem veniam voluptate quis rerum
-              nesciunt iure assumenda natus quis rerum nesciunt iure assumenda
-              natus totam quis rerum nesciunt iure assumenda natus ttotamotam
-              sapiente, maxime non rem nostrum dignissimos. Aperiam ad neque rem
-              veniam voluptate quis rerum nesciunt iure assumenda natus quis
-              rerum nesciunt iure assumenda natus totam quis rerum nesciunt iure
-              assumenda natus ttotamotam sapiente, maxime non rem nostrum
-              dignissimos. Aperiam ad neque rem veniam voluptate quis rerum
-              nesciunt iure assumenda natus sapiente, maxime non rem nostrum
-              dignissimos. Aperiam ad neque rem veniam voluptate quis rerum
-              nesciunt iure assumenda natus quis rerum nesciunt iure assumenda
-              natus totam quis rerum nesciunt iure assumenda natus ttotamotam
-              sapiente, maxime non rem nostrum dignissimos. Aperiam ad neque rem
-              veniam voluptate quis rerum nesciunt iure assumenda natus quis
-              rerum nesciunt iure assumenda natus totam quis rerum nesciunt iure
-              assumenda natus ttotamotam sapiente, maxime non rem nostrum
-              dignissimos. Aperiam ad neque rem
-            </p>
-          </div>
+        <section className="flex flex-col sm:flex-col md:flex-row md:justify-between items-center bg-gray-100 justify-between w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8">
+          <img
+            src="https://res.cloudinary.com/ujuzi/image/upload/v1643575329/Kevent/kevent_ovu077.svg"
+            alt="image-footer"
+            className="w-full h-full"
+          />
+
           <div className="bg-white p-10 w-full md:h-full md:px-4 md:flex md:justify-center">
-            <form action="" className="flex flex-col space-y-10 md:w-96">
-              <p className=" text-xl font-medium">Ask the Captain</p>
+            <form action="" className="flex flex-col space-y-10 md:w-96 py-4">
+              <p className=" text-xl text-slate-600 font-bold">CONTACT US</p>
               <div>
                 <label htmlFor="">First Name</label>
                 <input
@@ -310,14 +275,6 @@ export default function App() {
                   className="h-10 w-full md:h-8 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
                 />
               </div>
-              <div>
-                <label htmlFor="">First Name</label>
-                <input
-                  type="text"
-                  value=""
-                  className="h-10 w-full md:h-8 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
-                />
-              </div>
 
               <div>
                 <label htmlFor="">First Name</label>
@@ -327,7 +284,7 @@ export default function App() {
                   className="h-10 w-full md:h-8 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500"
                 />
               </div>
-              <button className="rounded-none w-full  px-10 py-2 text-lg font-bold text-white bg-indigo-500">
+              <button className="rounded-none w-full py-2  px-10 text-lg font-bold text-white bg-slate-700">
                 Button
               </button>
             </form>
