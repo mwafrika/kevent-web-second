@@ -89,7 +89,7 @@ const DemoCarousel = () => {
         <img
           src="https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg"
           alt=""
-          className="object-cover rounded-t-lg"
+          className="object-cover rounded-t-lg w-full"
         />
         <div className="flex flex-col px-5  pb-10">
           <div className="flex flex-row justify-between items-center ">
