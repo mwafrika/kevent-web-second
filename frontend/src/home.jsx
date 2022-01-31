@@ -254,7 +254,7 @@ export default function App() {
               alt="image-footer"
               className="w-full h-full object-cover"
             />
-            <h3 className="absolute text-white text-2xl font-bold  left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2">
+            <h3 className="absolute text-white text-5xl font-bold  left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2">
               Kevent
             </h3>
           </div>
@@ -266,7 +266,7 @@ export default function App() {
             >
               <p className=" text-xl text-slate-600 font-bold">CONTACT US</p>
               <div>
-                <label htmlFor="">First Name</label>
+                <label htmlFor="">Nom </label>
                 <input
                   type="text"
                   value=""
@@ -274,7 +274,7 @@ export default function App() {
                 />
               </div>
               <div>
-                <label htmlFor="">First Name</label>
+                <label htmlFor="">Post-Nom</label>
                 <input
                   type="text"
                   value=""
@@ -283,7 +283,7 @@ export default function App() {
               </div>
 
               <div>
-                <label htmlFor="">First Name</label>
+                <label htmlFor="">Email</label>
                 <input
                   type="text"
                   value=""
@@ -292,7 +292,7 @@ export default function App() {
               </div>
 
               <div>
-                <label htmlFor="">First Name</label>
+                <label htmlFor="">Numero de telephone</label>
                 <input
                   type="text"
                   value=""
