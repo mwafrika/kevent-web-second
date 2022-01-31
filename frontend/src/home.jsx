@@ -192,13 +192,15 @@ export default function App() {
           <div className="col-span-1 md:col-span-1 sm:col-span-1 h-full md:w-4/6 sm:w-full flex flex-col md:justify-around">
             <div className="flex flex-row justify-between pt-0 xs:pt-14 xxs:pt-14 xxxs:pt-14 pr-6 pl-2 xxxs:pb-6 xxs:pb-6 xs:pb-6">
               <h1 className="text-2xl md:text-lg xxs:text-lg xxxs:text-lg xs:text-lg text-slate-600 font-bold">
-                Liste des plantes
+                Top packages
               </h1>
-              <input
-                type="button"
-                value="More packages"
-                className="focus:outline-none font-bold focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 bg-slate-600 hover:text-white text-white cursor-pointer"
-              />
+              <Link to="/packages">
+                <input
+                  type="button"
+                  value="Voir plus"
+                  className="focus:outline-none font-bold focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 bg-slate-600 hover:text-white text-white cursor-pointer"
+                />
+              </Link>
             </div>
             <Carousel2 />
           </div>
@@ -230,10 +232,10 @@ export default function App() {
             </div>
           </div>
           <div className="md:mr-20">
-            <Link to="/list">
+            <Link to="/expeditions">
               <input
                 type="button"
-                value="More packages"
+                value="Voir plus"
                 className="bg-slate-600 font-bold focus:outline-none focus:shadow-outline border text-white border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 hover:text-white cursor-pointer"
               />
             </Link>
@@ -248,11 +250,11 @@ export default function App() {
           className="flex flex-col sm:flex-col lg:flex lg:flex-row md:flex-row md:justify-between bg-gray-100 justify-between w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8"
           id={'contact'}
         >
-          <div className="lg:w-1/2 lg:h-full relative">
+          <div className="lg:w-1/2 lg:h-full relative xl:h-full xl:flex xl:justify-center xl:items-center xl:flex-row xl:overflow-hidden">
             <img
               src="https://res.cloudinary.com/ujuzi/image/upload/v1643575329/Kevent/kevent_ovu077.svg"
               alt="image-footer"
-              className="w-full h-full object-cover"
+              className="w-full h-auto  "
             />
             <h3 className="absolute text-white text-5xl font-bold  left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2">
               Kevent

@@ -5,7 +5,12 @@ import Pagination from './pagination';
 const list = () => {
   return (
     <>
-      <div className="flex flex-col w-full md:w-11/12 md:py-4 md:flex-row md:flex-wrap md:gap-x-5 md:gap-y-7 md:mx-auto 2xl:flex 2xl:flex-row 2xl:flex-wrap 2xl:gap-10 2xl:mx-auto 2xl:ml-36">
+      <div className="xl:mr-40 xl:float-right xl:pt-10 md:py-5 md:mr-10 md:float-right xxxs:mx-auto xxxs:float-none xxxs:py-10 xxs:py-10 xs:py-10">
+        <h1 className="text-slate-600 font-bold text-3xl md:text-2xl xxxs:text-center xxs:text-center xs:text-center ">
+          Expeditions
+        </h1>
+      </div>
+      <div className="flex flex-col w-full md:w-11/12 md:py-4 md:flex-row md:flex-wrap md:gap-x-5 md:gap-y-7 md:mx-auto 2xl:flex 2xl:flex-row 2xl:flex-wrap 2xl:gap-10 2xl:mx-auto 2xl:ml-36 2xl:py-10">
         <div
           className="col-span-1 2xl:w-1/5 2xl:h-full md:w-15 sm:col-span-1  h-full flex flex-col md:pb-1 sm:pt-5 sm:pb-5 lg:pt-5 lg:pb-1 xl:pt-5 xl:pb-5 xl:mr-12 2xl:mr-0 md:px-2 lg:px-5 
          shadow-lg rounded-lg border-gray-50 md:my-0 md:mx-auto xl:w-1/4 sm:w-9/12 2xl:mx-0 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5  xxxs:px-8 xxxs:mx-5"
