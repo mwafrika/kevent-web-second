@@ -5,6 +5,13 @@ import Carousel from './caroussel';
 import Carousel2 from './caroussel2';
 import moment from 'moment';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import {
+  FaBeer,
+  FaTwitter,
+  FaFacebook,
+  FaFacebookF,
+  FaInstagram,
+} from 'react-icons/fa';
 
 export default function App() {
   const [menu, setMenu] = useState(false);
@@ -15,7 +22,7 @@ export default function App() {
   return (
     <>
       <section className='flex min-h-screen flex-col'>
-        <div className=' bg-gray-100 flex w-full h-20 md:h-28 items-center justify-between md:justify-around text-slate-600 fixed z-50'>
+        <div className=' bg-gray-100 flex w-full h-16 md:h-16 items-center justify-between md:justify-around text-slate-600 fixed z-50'>
           <div className='w-1/4 justify-center flex'>
             <img src={logo} className='h-8' alt='logo' />
           </div>
@@ -318,8 +325,66 @@ export default function App() {
           </h3>
         </section>
 
-        <section className='w-full h-24 bg-slate-600'>
-          {/* <div className="bg-white"></div> */}
+        <section className='w-full h-80 bg-slate-600'>
+          <div className='w-4/5 mx-auto py-auto flex flex-row py-10'>
+            <div className='w-80 h-30'>
+              <h2 className=' text-white font-bold text-lg mb-3'>Services</h2>
+              <ul className='flex flex-col list-none'>
+                <li>
+                  <a href='#' className='text-slate-300 font-medium'>
+                    Web design
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='text-slate-300 font-medium'>
+                    Web development
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='text-slate-300 font-medium'>
+                    Hosting
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className='w-80 h-30'>
+              <h2 className=' text-white font-bold text-lg mb-3'>A propos</h2>
+              <ul>
+                <li>
+                  <a href='#' className='text-slate-300 font-medium'>
+                    Entreprise
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='text-slate-300 font-medium'>
+                    Web development
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='text-slate-300 font-medium'>
+                    Hosting
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className='w-96 h-30'>
+              <h2 className=' text-white font-bold text-lg mb-3'>Kevent</h2>
+              <p className='text-slate-300 font-medium'>
+                lPraesent sed lobortis mi. Suspendisse vel placerat ligula.
+                Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
+                tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
+                in justo.
+              </p>
+            </div>
+          </div>
+          <div className='flex flex-row mx-auto my-0 w-full justify-center gap-8 pb-5'>
+            <FaTwitter className='text-white hover:text-indigo-500 text-3xl cursor-pointer' />
+            <FaFacebookF className='text-white hover:text-indigo-500 text-3xl cursor-pointer' />
+            <FaInstagram className='text-white hover:text-indigo-500 text-3xl cursor-pointer' />
+          </div>
+          <h3 className='text-slate-400 text-center font-medium'>
+            kevent@2022
+          </h3>
         </section>
       </section>
     </>
