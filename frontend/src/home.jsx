@@ -319,10 +319,6 @@ export default function App() {
               </button>
             </form>
           </div>
-
-          <h3 className='text-center pt-10 bg-slate-100 md:hidden block'>
-            © 2023 By Tide Fishing Charters. Proudly created with Wix.com
-          </h3>
         </section>
 
         <section className='flex w-full h-80 md:h-auto  lg:h-auto xl:h-auto bg-slate-600 xxxs:h-auto xxs:h-auto xs:h-auto overflow-x-hidden p-5 xxxs:flex-col xs:flex-col  xxxs:justify-center xs:justify-center xxxs:items-center xxs:flex-col xxs:justify-center xxs:items-center md:flex-col'>
