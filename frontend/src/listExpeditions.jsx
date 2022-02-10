@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import Pagination from './pagination';
 import Header from './header';
+import Footer from './footer';
 const list = () => {
   return (
     <>
@@ -303,6 +304,7 @@ const list = () => {
           </div>
         </div>
         <Pagination />
+        <Footer />
       </section>
     </>
   );
