@@ -88,7 +88,7 @@ const list = () => {
             </div>
           </div>
           <div
-            className=' h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-72 lg:w-48 w-80 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
+            className=' h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-72 lg:w-72 w-80 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
        cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
        '
           >
@@ -115,7 +115,7 @@ const list = () => {
             </div>
           </div>
           <div
-            className='2xl:w-98 xl:w-72 h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto lg:w-48 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
+            className='2xl:w-98 xl:w-72 h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto lg:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
        cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
        '
           >
@@ -142,7 +142,7 @@ const list = () => {
             </div>
           </div>
           <div
-            className='2xl:w-98 h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto lg:w-48 xl:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
+            className='2xl:w-98 h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto lg:w-72 xl:w-72 w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
        cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
        '
           >
