@@ -33,8 +33,8 @@ module.exports = {
       width: {
         15: '30%',
         97: '48rem',
+        98: '23%',
       },
-      
     },
   },
   plugins: [],
