@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Carousel from './caroussel';
-import Carousel2 from './caroussel2';
-import moment from 'moment';
+import Expeditions from './caroussel-expedition';
+import Packages from './caroussel-package';
+import data from './data';
 import Footer from './footer';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
+const { expeditions, packages } = data;
 
 export default function App() {
   const [menu, setMenu] = useState(false);
@@ -14,6 +15,21 @@ export default function App() {
     setMenu(!menu);
     console.log(menu, 'mwafrika');
   };
+
+  const [contact, setContact] = useState({
+    name: '',
+    email: '',
+    message: '',
+    telephone: '',
+  });
+
+  const onChange = (e) => {
+    setContact({
+      ...contact,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
       <section className='flex min-h-screen flex-col'>
@@ -87,7 +103,7 @@ export default function App() {
             </svg>
           </div>
           <div className='md:block hidden md:space-x-4 w-28'>
-            <img src={logo} className='h-8' alt='' srcset='' />
+            <img src={logo} className='h-8' alt='' srcSet='' />
           </div>
         </div>
         <section className='flex flex-col items-center justify-center w-full h-screen'>
@@ -136,19 +152,17 @@ export default function App() {
             <h1 className='xxxs:text-lg md:text-lg font-bold text-slate-600 mb-4 mt-4'>
               Select town
             </h1>
-            <div class='flex relative w-full'>
+            <div className='flex relative w-full'>
               <select
                 name='town'
                 id='town'
                 className='bg-slate-400 text-slate-700 font-bold focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal'
               >
-                <option value=''>Select town</option>
-                <option value=''>Town 1</option>
-                <option value=''>Town 2</option>
+                <option value='congo'>Select town</option>
               </select>
-              <div class='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700'>
+              <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700'>
                 <svg
-                  class='fill-slate-700 h-8 w-6 font-extrabold'
+                  className='fill-slate-700 h-8 w-6 font-extrabold'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 20 20'
                 >
@@ -204,7 +218,7 @@ export default function App() {
                 />
               </Link>
             </div>
-            <Carousel2 />
+            <Packages packages={packages} />
           </div>
         </section>
         <section className='md:flex md:w-11/12 md:h-10 md:flex-row xl:w-3/4 md:items-center md:justify-between md:my-0 md:mx-auto md:mt-12 xxxs:flex xs:flex xs:flex-col xxs:flex xxxs:flex-col xxs:flex-col xxxs:gap-y-6 xxs:gap-y-6 xs:gap-y-6 xxs:pt-5 xxxs:pt-5 xxs:px-8 xs:px-8 xxxs:px-8'>
@@ -212,19 +226,17 @@ export default function App() {
             <p className='md:w-1/2 xxxs:mb-5 xxs:mb-5 xs:mb-5 text-lg text-slate-600 font-bold'>
               Expeditions a venir{' '}
             </p>
-            <div class='md:flex xxs:flex xs:flex xxs:relative xs:relative xxxs:flex xxxs:relative md:relative md:w-1/2 md:flex-wrap md:justify-between md:gap-x-6'>
+            <div className='md:flex xxs:flex xs:flex xxs:relative xs:relative xxxs:flex xxxs:relative md:relative md:w-1/2 md:flex-wrap md:justify-between md:gap-x-6'>
               <select
                 name='town'
                 id='town'
                 className=' bg-slate-600 font-bold text-white focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal'
               >
-                <option value=''>Toutes les villes</option>
-                <option value=''>Town 1</option>
-                <option value=''>Town 2</option>
+                <option value='Goma'>Toutes les villes</option>
               </select>
-              <div class='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
+              <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
                 <svg
-                  class='fill-white h-4 w-4'
+                  className='fill-white h-4 w-4'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 20 20'
                 >
@@ -243,7 +255,7 @@ export default function App() {
             </Link>
           </div>
         </section>
-        <Carousel />
+        <Expeditions expeditions={expeditions} />
         <section className='flex items-center justify-center'>
           <div className='w-2/3 h-px bg-slate-300'></div>
         </section>
@@ -276,19 +288,12 @@ export default function App() {
             >
               <p className=' text-xl text-slate-600 font-bold'>CONTACT US</p>
               <div>
-                <label htmlFor=''>Nom </label>
+                <label htmlFor=''>Noms</label>
                 <input
                   type='text'
-                  value=''
+                  value='name'
                   className='h-8 lg:h-10 w-full border px-3 py-2 md:h-8 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
-                />
-              </div>
-              <div>
-                <label htmlFor=''>Post-Nom</label>
-                <input
-                  type='text'
-                  value=''
-                  className='h-8 w-full md:h-10 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  onChange={onChange}
                 />
               </div>
 
@@ -296,8 +301,9 @@ export default function App() {
                 <label htmlFor=''>Email</label>
                 <input
                   type='text'
-                  value=''
+                  value='email'
                   className='h-8 w-full md:h-10 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  onChange={onChange}
                 />
               </div>
 
@@ -305,8 +311,17 @@ export default function App() {
                 <label htmlFor=''>Numero de telephone</label>
                 <input
                   type='text'
-                  value=''
+                  value='telephone'
                   className='h-8 w-full md:h-10 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  onChange={onChange}
+                />
+              </div>
+              <div>
+                <label htmlFor=''>Message</label>
+                <textarea
+                  className='resize h-14 block w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  rows='5'
+                  onChange={onChange}
                 />
               </div>
               <button className='rounded-none w-full py-1  px-10 text-lg font-bold text-white bg-slate-700'>
