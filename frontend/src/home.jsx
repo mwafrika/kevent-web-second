@@ -231,8 +231,8 @@ export default function App() {
             <Packages packages={packages} />
           </div>
         </section>
-        <section className='md:flex md:w-11/12 md:h-10 md:flex-row xl:w-3/4 md:items-center md:justify-between md:my-0 md:mx-auto md:mt-12 xxxs:flex xs:flex xs:flex-col xxs:flex xxxs:flex-col xxs:flex-col xxxs:gap-y-6 xxs:gap-y-6 xs:gap-y-6 xxs:pt-5 xxxs:pt-5 xxs:px-8 xs:px-8 xxxs:px-8'>
-          <div className='md:flex md:flex-row md:justify-between xl:w-2/5 md:items-center md:gap-x-8 xs:pt-5 lg:w-8/12 md:w-2/5'>
+        <section className='md:flex md:full 2xl:w-11/12 2xl:justify-between 2xl:ml-20 xl:pr-4 xl:w-11/2 md:mr-6 md:ml-4 md:h-10 md:flex-row xl:pl-4 md:items-center md:justify-between md:my-0 md:mx-auto md:mt-12 xxxs:flex xs:flex xs:flex-col xxs:flex xxxs:flex-col xxs:flex-col xxxs:gap-y-6 xxs:gap-y-6 xs:gap-y-6 xxs:pt-5 xxxs:pt-5 xxs:px-8 xs:px-8 xxxs:px-8'>
+          <div className='md:flex 2xl:w-1/5 2xl:ml-7 xl:w-15 md:flex-row lg:w-2/5 md:justify-between md:items-center md:gap-x-5 md:mr-4 xs:pt-5 md:w-1/2'>
             <p className='md:w-1/2 xxxs:mb-5 xxs:mb-5 xs:mb-5 text-lg text-slate-600 font-bold'>
               Expeditions a venir{' '}
             </p>
@@ -255,7 +255,7 @@ export default function App() {
               </div>
             </div>
           </div>
-          <div className='md:mr-20'>
+          <div className='md:mr-0'>
             <Link to='/expeditions'>
               <input
                 type='button'
@@ -294,7 +294,7 @@ export default function App() {
           >
             <form
               onSubmit={handleSubmit}
-              className='flex flex-col lg:gap-y-9 lg:w-4/5 md:w-4/5 xl:w-4/5 md:gap-y-9 xl:gap-y-9 lg:space-y-2'
+              className='flex flex-col gap-y-7 lg:gap-y-9 lg:w-4/5 md:w-4/5 xl:w-4/5 md:gap-y-9 xl:gap-y-9 lg:space-y-2'
             >
               <p className=' text-xl text-slate-600 font-bold'>CONTACT US</p>
               <div>
