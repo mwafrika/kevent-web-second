@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import moment from 'moment';
-
+import { Link } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -25,6 +25,7 @@ const responsive = {
 };
 
 const DemoCarousel = ({ expeditions }) => {
+  let [expedition, setExpedition] = useState({});
   return (
     <Carousel
       className='xxxs:h-full xxxs:w-full xxs:w-full xxs:h-full items-center md:w-4/5 md:my-0 md:mx-auto md:flex-row md:items-center md:px-4 md:flex-wrap md:justify-between
@@ -53,25 +54,37 @@ const DemoCarousel = ({ expeditions }) => {
     >
       {expeditions.map(({ image, date, prix, lieu, key }, index) => (
         <div
-          key={key}
           className='h-full md:gap-x-4 md:w-full 2xl:w-full lg:w-72 
                       xxxs:w-full w-80 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
                     cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg'
+          key={key}
         >
-          {console.log('My data', image, date, prix, lieu, key)}
-
-          <img src={image} alt='' className='object-cover rounded-t-lg' />
-          <div className='flex flex-col px-5 pb-10'>
-            <div className='flex flex-row justify-between items-center '>
-              <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                {lieu}
-              </p>
-              <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                {prix}
-              </p>
-            </div>
-            <span className='text-md text-slate-700  py-0 my-0'>{date}</span>
-          </div>
+          <Link
+            to={{
+              pathname: `/expeditions/${key}`.trim(),
+              state: {
+                ...image,
+              },
+            }}
+            
+          >
+            <>
+              <img src={image} alt='' className='object-cover rounded-t-lg' />
+              <div className='flex flex-col px-5 pb-10'>
+                <div className='flex flex-row justify-between items-center '>
+                  <p className='text-md font-semibold text-center text-slate-700  py-4'>
+                    {lieu}
+                  </p>
+                  <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
+                    {prix}
+                  </p>
+                </div>
+                <span className='text-md text-slate-700  py-0 my-0'>
+                  {date}
+                </span>
+              </div>
+            </>
+          </Link>
         </div>
       ))}
     </Carousel>

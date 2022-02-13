@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'react-multi-carousel/lib/styles.css';
+import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 
 const responsive = {
@@ -55,10 +56,10 @@ const caroussel2 = ({ packages }) => {
     >
       {packages.map(({ image, date, prix, lieu, key, description }, index) => (
         <div
-          key={index}
           className='2xl:w-11/12  lg:w-11/12 h-96 relative md:w-full md:h-96 lg:h-96 xl:h-96 rounded-lg sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6'
+          key={key}
         >
-          <a href='/'>
+          <Link to={`/packages/${key}`}>
             <img
               src={image}
               alt='plantes'
@@ -77,7 +78,7 @@ const caroussel2 = ({ packages }) => {
                 {prix}
               </p>
             </div>
-          </a>
+          </Link>
         </div>
       ))}
     </Carousel>

@@ -81,7 +81,7 @@ const Header = () => {
         </svg>
       </div>
       <div className='md:block hidden md:space-x-4 w-28'>
-        <img src={logo} className='h-8' alt='' srcset='' />
+        <img src={logo} className='h-8' alt='' srcSet='' />
       </div>
     </div>
   );
