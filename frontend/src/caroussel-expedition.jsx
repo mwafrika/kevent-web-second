@@ -31,7 +31,7 @@ const DemoCarousel = ({ expeditions }) => {
       className='xxxs:h-full xxxs:w-full xxs:w-full xxs:h-full items-center md:w-4/5 md:my-0 md:mx-auto md:flex-row md:items-center md:px-4 md:flex-wrap md:justify-between
       xl:justify-between xl:w-3/4 lg:item-carousel lg:w-4/5 lg:flex-row lg:mx-auto lg:gap-x-5 lg:my-0 lg:items-center lg:px-8 lg:flex-wrap lg:justify-between md:pt-12 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28  xxxs:pb-28'
       responsive={responsive}
-      autoPlay={true}
+      // autoPlay={true}
       infinite={true}
       showDots={true}
       showStatus={true}
@@ -66,10 +66,13 @@ const DemoCarousel = ({ expeditions }) => {
                 ...image,
               },
             }}
-            
           >
             <>
-              <img src={image} alt='' className='object-cover rounded-t-lg' />
+              <img
+                src={image}
+                alt=''
+                className='object-cover float-left h-72 w-full rounded-t-lg'
+              />
               <div className='flex flex-col px-5 pb-10'>
                 <div className='flex flex-row justify-between items-center '>
                   <p className='text-md font-semibold text-center text-slate-700  py-4'>

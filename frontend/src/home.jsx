@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Expeditions from './caroussel-expedition';
@@ -23,13 +23,23 @@ export default function App() {
     telephone: '',
   });
 
-  const onChange = (e) => {
-    setContact({
-      ...contact,
+  useEffect(() => {
+    console.log(contact, 'mwafrika');
+  }, [contact]);
+
+  const handleChange = (e) => {
+    setContact((prevState) => ({
+      ...prevState,
       [e.target.name]: e.target.value,
-    });
+    }));
+    console.log(contact, 'mwafrika');
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(contact, 'mwafrika');
+  };
   return (
     <>
       <section className='flex min-h-screen flex-col'>
@@ -265,7 +275,7 @@ export default function App() {
           id={'contact'}
         >
           <div
-            className='lg:w-1/2 lg:h-auto relative xl:h-full xl:flex xl:justify-center xl:items-center xl:flex-row xl:overflow-hidden'
+            className='lg:w-1/2 lg:h-auto md:w-4/5 relative xl:h-full xl:flex xl:justify-center xl:items-center xl:flex-row xl:overflow-hidden'
             style={{ maxHeight: '620px' }}
           >
             <img
@@ -283,17 +293,19 @@ export default function App() {
             style={{ maxHeight: '620px' }}
           >
             <form
-              action=''
-              className='flex flex-col md:w-96 lg:gap-9 lg:w-1/2 md:gap-0 lg:space-y-2'
+              onSubmit={handleSubmit}
+              className='flex flex-col lg:gap-y-9 lg:w-4/5 md:w-4/5 xl:w-4/5 md:gap-y-9 xl:gap-y-9 lg:space-y-2'
             >
               <p className=' text-xl text-slate-600 font-bold'>CONTACT US</p>
               <div>
-                <label htmlFor=''>Noms</label>
+                <label htmlFor='name'>Noms</label>
                 <input
                   type='text'
-                  value='name'
+                  name='name'
+                  id='name'
+                  value={contact.name}
                   className='h-8 lg:h-10 w-full border px-3 py-2 md:h-8 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
-                  onChange={onChange}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -301,9 +313,10 @@ export default function App() {
                 <label htmlFor=''>Email</label>
                 <input
                   type='text'
-                  value='email'
+                  name='email'
+                  value={contact.email}
                   className='h-8 w-full md:h-10 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
-                  onChange={onChange}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -311,9 +324,10 @@ export default function App() {
                 <label htmlFor=''>Numero de telephone</label>
                 <input
                   type='text'
-                  value='telephone'
+                  name='telephone'
+                  value={contact.telephone}
                   className='h-8 w-full md:h-10 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
-                  onChange={onChange}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -321,10 +335,12 @@ export default function App() {
                 <textarea
                   className='resize h-14 block w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
                   rows='5'
-                  onChange={onChange}
+                  onChange={handleChange}
+                  value={contact.message}
+                  name='message'
                 />
               </div>
-              <button className='rounded-none w-full py-1  px-10 text-lg font-bold text-white bg-slate-700'>
+              <button className='rounded-none w-full py-1  my-5  px-10 text-lg font-bold text-white bg-slate-700'>
                 Button
               </button>
             </form>
