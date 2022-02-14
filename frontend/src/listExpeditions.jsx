@@ -9,15 +9,17 @@ const list = () => {
     <>
       <section className='flex min-h-screen flex-col'>
         <Header />
-        <div className='xl:mr-96 lg:mr-44 md:mr-20 xl:float-right xl:pt-10 md:py-5 md:float-right xxxs:mx-auto xxxs:float-none xxxs:py-10 xxs:py-10 xs:py-10 mt-20'>
+        <div className='xl:mr-80 md:mr-28 lg:mr-48 xl:mr-68 xl:float-right xl:pt-10 md:py-5 md:float-right xxxs:mx-auto xxxs:float-none xxxs:py-10 xxs:py-10 xs:py-10 mt-20'>
           <h1 className='text-slate-600 font-bold text-3xl xl:pr-60 md:text-2xl xxxs:text-center xxs:text-center xs:text-center md:text-center lg:text-center xl:text-center'>
             Expeditions
           </h1>
         </div>
-        <div className='flex flex-col w-full xl:mx-auto mx-auto md:w-11/12 lg:w-11/12 xl:w-11/12  md:py-4 xl:py-4 lg:py-4 md:flex-row xl:flex-row lg:flex-row md:flex-wrap xl:flex-wrap lg:flex-wrap md:gap-x-5 lg:gap-x-5 md:gap-y-7 lg:gap-y-7 md:mx-auto lg:mx-auto xl:flex 2xl:flex 2xl:flex-row 2xl:flex-wrap xl:gap-x-8 xl:gap-y-10 2xl:mx-auto'>
+        <div className='flex flex-col w-full xl:mx-auto mx-auto md:w-11/12 lg:w-11/12 xl:w-11/12  md:py-4 xl:py-4 lg:gap-7 lg:py-4 md:flex-row xl:flex-row lg:flex-row md:flex-wrap xl:flex-wrap lg:flex-wrap md:gap-x-8 lg:gap-x-5 md:gap-y-7 lg:gap-y-7 md:mx-auto lg:mx-auto xl:flex 2xl:flex 2xl:flex-row 2xl:flex-wrap xl:gap-x-8 xl:gap-y-10 2xl:mx-auto'>
           <div
-            className='2xl:mr-0 xl:mr-0 xl:w-72 lg:mr-0 col-span-1 2xl:w-80 2xl:h-full md:w-15 sm:col-span-1  h-full flex flex-col md:pb-1 sm:pt-5 sm:pb-5 lg:pt-5 lg:pb-1 xl:pt-5 xl:pb-5 md:px-2 lg:px-5 
-         shadow-lg rounded-lg border-gray-50 md:my-0 md:mx-auto sm:w-9/12 2xl:mx-0 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5  xxxs:px-8 xxxs:mx-5'
+            //     className='2xl:mr-0 xl:mr-0 xl:w-72 lg:mr-0 col-span-1 2xl:w-80 2xl:h-full md:w-15 sm:col-span-1  h-full flex flex-col md:pb-1 sm:pt-5 sm:pb-5 lg:pt-5 lg:pb-1 xl:pt-5 xl:pb-5 md:px-2 lg:px-5
+            //  shadow-lg rounded-lg border-gray-50 md:my-0 md:mx-auto sm:w-9/12 2xl:mx-0 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5  xxxs:px-8 xxxs:mx-5'
+            className='h-full md:w-15 xxxs:w-4/5 2xl:h-auto md:py-4 md:h-auto xl:h-auto lg:h-auto lg:py-7 xl:py-5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto md:pb-1 xs:mx-auto xxs:px-4 xl:w-72 lg:w-72 w-80 2xl:w-98 mt-10 xs:px-4 xs:py-8 transition md:px-2  xxxs:px-4 xxxs:py-4
+          cursor-pointer md:mt-0 lg:mt-0 shadow-lg rounded-lg'
           >
             <h1 className='xxxs:text-lg  font-bold text-slate-600 md:text-lg mb-8 md:mb-1 lg:mb-4'>
               Search
@@ -88,7 +90,7 @@ const list = () => {
             </div>
           </div>
           <div
-            className=' h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-72 lg:w-72 w-80 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
+            className='h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-72 lg:w-72 w-80 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
        cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
        '
           >
