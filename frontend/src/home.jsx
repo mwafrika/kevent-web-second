@@ -231,12 +231,13 @@ export default function App() {
             <Packages packages={packages} />
           </div>
         </section>
-        <section className='md:flex md:full 2xl:w-11/12 2xl:justify-between 2xl:ml-20 xl:pr-4 xl:w-11/2 md:mr-6 md:ml-4 md:h-10 md:flex-row xl:pl-4 md:items-center md:justify-between md:my-0 md:mx-auto md:mt-12 xxxs:flex xs:flex xs:flex-col xxs:flex xxxs:flex-col xxs:flex-col xxxs:gap-y-6 xxs:gap-y-6 xs:gap-y-6 xxs:pt-5 xxxs:pt-5 xxs:px-8 xs:px-8 xxxs:px-8'>
-          <div className='md:flex 2xl:w-1/5 2xl:ml-7 xl:w-15 md:flex-row lg:w-2/5 md:justify-between md:items-center md:gap-x-5 md:mr-4 xs:pt-5 md:w-1/2'>
-            <p className='md:w-1/2 xxxs:mb-5 xxs:mb-5 xs:mb-5 text-lg text-slate-600 font-bold'>
-              Expeditions a venir{' '}
+
+        <section className='md:flex md:full xl:w-11/12 2xl:w-11/12 2xl:justify-between xl:ml-14 xl:pr-0 md:mr-6 md:ml-4 md:h-10 md:flex-row md:items-center md:justify-between md:my-0 md:mx-auto md:mt-12 xxxs:flex xs:flex xs:flex-col xxs:flex xxxs:flex-col xxs:flex-col xxxs:gap-y-6 xxs:gap-y-6 xs:gap-y-6 xxs:pt-5 xxxs:pt-5 xxs:px-8 xs:px-8 xxxs:px-8'>
+          <div className=' xl:w-96 xl:h-full md:flex md:flex-row lg:w-2/5 md:justify-between md:items-center md:gap-x-5 md:mr-4 xs:pt-5 md:w-1/2'>
+            <p className='md:w-3/4 xxxs:mb-5 xl:w-56 xxs:mb-5 xs:mb-5 text-lg text-slate-600 font-bold'>
+              Expeditions a venir
             </p>
-            <div className='md:flex xxs:flex xs:flex xxs:relative xs:relative xxxs:flex xxxs:relative md:relative md:w-1/2 md:flex-wrap md:justify-between md:gap-x-6'>
+            <div className='md:flex xxs:flex xs:flex xl:w-48 xxs:relative xs:relative xxxs:flex xxxs:relative md:relative md:w-1/2 md:flex-wrap md:justify-between md:gap-x-6'>
               <select
                 name='town'
                 id='town'
@@ -260,7 +261,7 @@ export default function App() {
               <input
                 type='button'
                 value='Voir plus'
-                className='bg-slate-600 font-bold focus:outline-none focus:shadow-outline border text-white border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 hover:text-white cursor-pointer'
+                className='bg-slate-600 xl:-mr-5 font-bold focus:outline-none focus:shadow-outline border text-white border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 hover:text-white cursor-pointer'
               />
             </Link>
           </div>
