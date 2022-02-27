@@ -3,10 +3,41 @@
 }
 
 .react-multi-carousel-track {
-  column-gap: 60px !important;
+  column-gap: 1% !important;
 }
 
 .item-carousel {
-  column-gap: 40px !important;
+  /* column-gap: 40px !important; */
   width: 80% !important;
+}
+
+.inputs {
+  background-color: rgba(71, 85, 105, 0.42);
+}
+
+.filter {
+  background-color: rgba(71, 85, 105, 0.08);
+}
+
+.btn-filter {
+  background-color: rgba(71, 85, 105, 0.38);
+}
+.btn-filter:focus {
+  background-color: #475569;
+  color: white;
+}
+
+.select-city {
+  background-color: #475569;
+  color: white;
+}
+
+.header.active {
+  background-color: #475569;
+}
+
+.filter-button {
+  row-gap: 7px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }

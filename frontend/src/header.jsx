@@ -5,23 +5,38 @@ import './App.css';
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
+  const [header, setHeader] = useState(false);
   const onClickMenu = () => {
     setMenu(!menu);
     console.log(menu, 'mwafrika');
   };
 
+  const handleChangeBackgroundOnScroll = () => {
+    if (window.scrollY >= 64) {
+      setHeader(true);
+    } else {
+      setHeader(false);
+    }
+  };
+  window.addEventListener('scroll', handleChangeBackgroundOnScroll);
+
   return (
-    <div className=' bg-gray-100 flex w-full h-16 md:h-16 items-center justify-between md:justify-around text-slate-600 fixed z-50'>
-      <div className='w-1/4 justify-center flex'>
+    //bg-gray-100
+    <div
+      className={`${
+        header ? 'header active' : 'header'
+      } flex w-full h-16 md:h-16 px-p-1 items-center justify-between text-slate-600 fixed z-50`}
+    >
+      <div className='w-1/4 flex'>
         <img src={logo} className='h-8' alt='logo' />
       </div>
 
       <nav
         className={`${
           menu ? 'hidden' : 'block'
-        } md:w-2/6 md:block lg:block mt-60 md:mt-0 md:bg-inherit md:shadow-none z-50 md:z-0 hidden bg-slate-100 shadow-lg mx-auto`}
+        } md:w-2/6 md:flex lg:block mt-60 md:mt-0 md:bg-inherit md:shadow-none text-white z-50 md:z-0 hidden bg-slate-100 shadow-lg`}
       >
-        <ul className='md:flex md:items-center block md:justify-around gap-2'>
+        <ul className='flex justify-between gap-2'>
           <li className='mt-3 md:mt-0'>
             <Link
               to='/'
@@ -62,7 +77,7 @@ const Header = () => {
       </nav>
 
       <div
-        className='w-1/4 items-center justify-around flex cursor-pointer md:hidden'
+        className='items-center justify-around flex cursor-pointer md:hidden'
         onClick={onClickMenu}
       >
         <svg
@@ -79,9 +94,6 @@ const Header = () => {
             d='M4 6h16M4 12h16M4 18h16'
           />
         </svg>
-      </div>
-      <div className='md:block hidden md:space-x-4 w-28'>
-        <img src={logo} className='h-8' alt='' srcSet='' />
       </div>
     </div>
   );

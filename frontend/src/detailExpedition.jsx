@@ -17,9 +17,9 @@ const DetailExpedition = (props) => {
     <>
       <Header />
       <section className='flex h-full md:pt-24 md:pb-10'>
-        <section className='h-full w-11/12 py-8 md:flex md:flex-row  md:w-11/12 mx-auto md:gap-x-6'>
-          <div className='h-full flex flex-col gap-y-4 pt-16 md:pt-0 w-full pb-4'>
-            <div className='w-full h-3/4 mx-auto md:h-full'>
+        <section className='h-1/2 w-11/12 py-8 md:flex md:flex-row  md:w-11/12 mx-auto md:gap-x-6'>
+          <div className='h-full flex flex-col gap-y-4 md:pt-0 w-1/2'>
+            <div className='w-full h-1/2 mx-auto'>
               <img
                 src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                 alt=''

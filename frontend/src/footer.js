@@ -5,9 +5,10 @@ import {
   FaFacebookF,
   FaInstagram,
 } from 'react-icons/fa';
+
 const footer = () => {
   return (
-    <section className='flex w-full h-80 md:h-auto  lg:h-auto xl:h-auto bg-slate-600 xxxs:h-auto xxs:h-auto xs:h-auto overflow-x-hidden p-5 xxxs:flex-col xs:flex-col  xxxs:justify-center xs:justify-center xxxs:items-center xxs:flex-col xxs:justify-center xxs:items-center md:flex-col'>
+    <section className='flex w-full h-80 md:h-auto  lg:h-auto xl:h-auto select-city xxxs:h-auto xxs:h-auto xs:h-auto overflow-x-hidden p-5 xxxs:flex-col xs:flex-col  xxxs:justify-center xs:justify-center xxxs:items-center xxs:flex-col xxs:justify-center xxs:items-center md:flex-col'>
       <div className='w-4/5 mx-auto py-auto flex flex-row py-10 xxxs:flex-col xs:flex-col xxxs:justify-center xxxs:gap-y-5 xxs:flex-col xxs:justify-center xxs:gap-y-5 xs:gap-y-5'>
         <div className='w-80 h-30'>
           <h2 className=' text-white font-bold text-lg mb-3'>Services</h2>

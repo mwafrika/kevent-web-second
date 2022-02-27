@@ -5,6 +5,7 @@ import Expeditions from './caroussel-expedition';
 import Packages from './caroussel-package';
 import data from './data';
 import Footer from './footer';
+import Header from './header';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 const { expeditions, packages } = data;
@@ -43,79 +44,7 @@ export default function App() {
   return (
     <>
       <section className='flex min-h-screen flex-col'>
-        <div className=' bg-gray-100 flex w-full h-16 md:h-16 items-center justify-between md:justify-around text-slate-600 fixed z-50'>
-          <div className='w-1/4 justify-center flex'>
-            <img src={logo} className='h-8' alt='logo' />
-          </div>
-
-          <nav
-            className={`${
-              menu ? 'hidden' : 'block'
-            } md:w-2/6 md:block lg:block mt-60 md:mt-0 md:bg-inherit md:shadow-none z-50 md:z-0 hidden bg-slate-100 shadow-lg mx-auto`}
-          >
-            <ul className='md:flex md:items-center block md:justify-around gap-2'>
-              <li className='mt-3 md:mt-0'>
-                <Link
-                  to='/'
-                  className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
-                  text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
-                >
-                  Home
-                </Link>
-              </li>
-              <li className='mt-3 md:mt-0'>
-                <Link
-                  to='/about'
-                  className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
-                  text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
-                >
-                  About
-                </Link>
-              </li>
-              <li className='mt-3 md:mt-0'>
-                <a
-                  href='#'
-                  className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
-                  text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
-                >
-                  Services
-                </a>
-              </li>
-              <li className='mt-3 md:mt-0'>
-                <Link
-                  to='/#contact'
-                  className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
-                  text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          <div
-            className='w-1/4 items-center justify-around flex cursor-pointer md:hidden'
-            onClick={onClickMenu}
-          >
-            <svg
-              className='w-6 h-6'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M4 6h16M4 12h16M4 18h16'
-              />
-            </svg>
-          </div>
-          <div className='md:block hidden md:space-x-4 w-28'>
-            <img src={logo} className='h-8' alt='' srcSet='' />
-          </div>
-        </div>
+        <Header />
         <section className='flex flex-col items-center justify-center w-full h-screen'>
           <div
             style={{
@@ -144,10 +73,10 @@ export default function App() {
           </div>
           <div className='absolute bg-gray-900 bg-opacity-30  inset-0 h-full w-full z-10'></div>
         </section>
-        <section className='md:flex sm:flex md:w-full md:h-full md:justify-center bg-gray-100  py-16 gap-12 md:gap-6 md:flex-row sm:flex-col'>
+        <section className='flex md:w-full md:h-full md:justify-center  py-16 md:flex-row sm:flex-col'>
           <div
-            className='col-span-1 2xl:w-1/5 md:col-span-1 sm:col-span-1  h-full flex flex-col md:pt-5 md:pb-1 sm:pt-5 sm:pb-5 lg:pt-5 lg:pb-1 xl:pt-5 xl:pb-5 xl:mr-12 md:px-2 lg:px-5 
-         shadow-lg rounded-lg border-gray-50 md:my-0 md:mx-auto md:ml-4 md:w-15 xl:w-1/4 sm:w-9/12 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5  xxxs:px-8 xxxs:mx-5'
+            className='filter-button col-span-1 2xl:w-1/5 md:col-span-1 sm:col-span-1 filter h-full flex flex-col xl:mr-12 md:px-2 lg:px-5  gap-x-5
+        rounded-2xl md:my-0 md:mx-auto md:ml-4 md:w-15 xl:w-1/4 sm:w-9/12 sm:mx-auto sm:my-0  sm:px-6 xs:px-8 xs:mx-5 xxs:px-8 xxs:mx-5  xxxs:px-8 xxxs:mx-5'
           >
             <h1 className='xxxs:text-lg  font-bold text-slate-600 md:text-lg mb-8'>
               Search
@@ -156,17 +85,17 @@ export default function App() {
               type='text'
               name='search'
               id='search'
-              className='font-bold bg-slate-400 placeholder:text-slate-700 focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal'
+              className='font-bold inputs placeholder:text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-4 px-4 block w-full appearance-none leading-normal'
               placeholder='Search'
             />
-            <h1 className='xxxs:text-lg md:text-lg font-bold text-slate-600 mb-4 mt-4'>
+            <h1 className='xxxs:text-lg md:text-lg font-bold text-slate-600'>
               Select town
             </h1>
             <div className='flex relative w-full'>
               <select
                 name='town'
                 id='town'
-                className='bg-slate-400 text-slate-700 font-bold focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal'
+                className='inputs text-slate-700 font-bold focus:outline-none focus:shadow-outline border rounded-2xl py-4 px-4 block w-full appearance-none leading-normal'
               >
                 <option value='congo'>Select town</option>
               </select>
@@ -181,14 +110,14 @@ export default function App() {
               </div>
             </div>
 
-            <h1 className='text-slate-600 xxxs:text-lg md:text-lg pt-5 font-bold'>
+            <h1 className='text-slate-600 xxxs:text-lg md:text-lg font-bold'>
               Types
             </h1>
-            <div className='flex flex-row flex-wrap h-auto md:gap-x-6 xl:gap-x-12 lg:gap-x-4 xl:gap-y-4 lg:py-5 xl:py-5 sm:py-5 md:py-5 xs:py-5 xs:gap-x-12 xs:gap-y-6  xxs:py-5 xxs:gap-x-12 xxs:gap-y-6  xxxs:py-5 xxxs:gap-x-1 xxxs:gap-y-3 sm:gap-x-12 sm:gap-y-6 py-2 px-2'>
+            <div className='flex flex-row flex-wrap h-auto md:gap-x-6 xl:gap-x-12 lg:gap-x-4 xl:gap-y-4 lg:py-5 xl:py-5 sm:py-5 md:py-5 xs:py-5 xs:gap-x-12 xs:gap-y-6  xxs:py-5 xxs:gap-x-12 xxs:gap-y-6  xxxs:py-5 xxxs:gap-x-1 xxxs:gap-y-3 sm:gap-x-12 sm:gap-y-6 px-2'>
               <input
                 type='button'
                 value='Tous'
-                className='bg-slate-600 text-white focus:outline-none focus:shadow-outline border border-gray-300 lg:py-1 xl:py-1 sm:py-1 rounded-full py-2 px-4 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal
+                className='btn-filter focus:outline-none focus:shadow-outline border lg:py-1 xl:py-1 sm:py-1 rounded-2xl px-4 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal
                 hover:bg-slate-600 hover:text-white cursor-pointer
                 active:bg-slate-600 active:text-white
                 '
@@ -196,22 +125,22 @@ export default function App() {
               <input
                 type='button'
                 value='Fruits'
-                className='bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 lg:py-1 xl:py-1 sm:py-1 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-2 px-4 lg:py-1 xl:py-1 sm:py-1 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
               <input
                 type='button'
                 value='Arbres'
-                className='bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 lg:py-1 xl:py-1 sm:py-1 px-4 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-2 lg:py-1 xl:py-1 sm:py-1 px-4 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
               <input
                 type='button'
                 value='Legumes'
-                className='bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 lg:py-1 px-4 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12  xl:py-1 sm:py-1 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-2 lg:py-1 px-4 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12  xl:py-1 sm:py-1 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
               <input
                 type='button'
                 value='Cereals'
-                className='bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border xl:py-1 sm:py-1 border-gray-300 rounded-full py-2 px-4 lg:py-1 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border xl:py-1 sm:py-1 rounded-2xl py-2 px-4 lg:py-1 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
             </div>
           </div>
@@ -224,7 +153,7 @@ export default function App() {
                 <input
                   type='button'
                   value='Voir plus'
-                  className='focus:outline-none font-bold focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 bg-slate-600 hover:text-white text-white cursor-pointer'
+                  className='focus:outline-none font-bold focus:shadow-outline border rounded-2xl py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 bg-slate-600 hover:text-white text-white cursor-pointer'
                 />
               </Link>
             </div>
@@ -232,7 +161,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className='md:flex md:full xl:w-11/12 2xl:w-11/12 2xl:justify-between xl:ml-14 xl:pr-0 md:mr-6 md:ml-4 md:h-10 md:flex-row md:items-center md:justify-between md:my-0 md:mx-auto md:mt-12 xxxs:flex xs:flex xs:flex-col xxs:flex xxxs:flex-col xxs:flex-col xxxs:gap-y-6 xxs:gap-y-6 xs:gap-y-6 xxs:pt-5 xxxs:pt-5 xxs:px-8 xs:px-8 xxxs:px-8'>
+        <section className='md:flex md:full xl:w-11/12 2xl:w-11/12 2xl:justify-between xl:ml-14 xl:pr-0 md:mr-6 md:ml-4 md:h-10 md:flex-row md:items-center md:justify-between md:my-0 md:mx-auto xxxs:flex xs:flex xs:flex-col xxs:flex xxxs:flex-col xxs:flex-col xxxs:gap-y-6 xxs:gap-y-6 xs:gap-y-6 xxs:pt-5 xxxs:pt-5'>
           <div className=' xl:w-96 xl:h-full md:flex md:flex-row lg:w-2/5 md:justify-between md:items-center md:gap-x-5 md:mr-4 xs:pt-5 md:w-1/2'>
             <p className='md:w-3/4 xxxs:mb-5 xl:w-56 xxs:mb-5 xs:mb-5 text-lg text-slate-600 font-bold'>
               Expeditions a venir
@@ -241,7 +170,7 @@ export default function App() {
               <select
                 name='town'
                 id='town'
-                className=' bg-slate-600 font-bold text-white focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal'
+                className='select-city font-bold text-white focus:outline-none focus:shadow-outline border rounded-2xl py-2 px-4 block w-full appearance-none leading-normal'
               >
                 <option value='Goma'>Toutes les villes</option>
               </select>
@@ -261,7 +190,7 @@ export default function App() {
               <input
                 type='button'
                 value='Voir plus'
-                className='bg-slate-600 xl:-mr-5 font-bold focus:outline-none focus:shadow-outline border text-white border-gray-300 rounded-full py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 hover:text-white cursor-pointer'
+                className='bg-slate-600 xl:-mr-5 font-bold focus:outline-none focus:shadow-outline border text-white border-gray-300 rounded-2xl py-2 px-4 block w-auto appearance-none leading-normal hover:bg-slate-700 hover:text-white cursor-pointer'
               />
             </Link>
           </div>
@@ -272,32 +201,20 @@ export default function App() {
         </section>
 
         <section
-          className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-between bg-gray-100 justify-between w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'
+          className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center bg-gray-100 justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'
           id={'contact'}
         >
           <div
-            className='lg:w-1/2 lg:h-auto md:w-4/5 relative xl:h-full xl:flex xl:justify-center xl:items-center xl:flex-row xl:overflow-hidden'
-            style={{ maxHeight: '620px' }}
-          >
-            <img
-              src='https://images.unsplash.com/photo-1536152470836-b943b246224c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzh8fG5hdHVyZXxlbnwwfDF8MHx8&auto=format&fit=crop&w=5000&q=60'
-              alt='image-footer'
-              className='w-full h-full object-cover'
-            />
-            <h3 className='absolute text-white text-5xl font-bold  left-1/2 top-1/2  -translate-x-1/2 -translate-y-1/2'>
-              Kevent
-            </h3>
-          </div>
-
-          <div
-            className='bg-white p-10 w-full lg:h-auto lg:w-1/2 md:h-full md:px-4 md:flex md:justify-center'
+            className='bg-white p-10 w-full lg:h-auto lg:w-2/5 md:h-full md:px-4 md:flex md:justify-center'
             style={{ maxHeight: '620px' }}
           >
             <form
               onSubmit={handleSubmit}
               className='flex flex-col gap-y-7 lg:gap-y-9 lg:w-4/5 md:w-4/5 xl:w-4/5 md:gap-y-9 xl:gap-y-9 lg:space-y-2'
             >
-              <p className=' text-xl text-slate-600 font-bold'>CONTACT US</p>
+              <p className='text-xl text-slate-600 font-bold text-center'>
+                CONTACTEZ-NOUS
+              </p>
               <div>
                 <label htmlFor='name'>Noms</label>
                 <input
@@ -342,7 +259,7 @@ export default function App() {
                 />
               </div>
               <button className='rounded-none w-full py-1  my-5  px-10 text-lg font-bold text-white bg-slate-700'>
-                Button
+                Envoyer
               </button>
             </form>
           </div>
