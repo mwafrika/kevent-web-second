@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import logo from './logo.svg';
+import logo from './images/logo.png';
 import './App.css';
 
 const Header = () => {
@@ -27,14 +27,14 @@ const Header = () => {
         header ? 'header active' : 'header'
       } flex w-full h-16 md:h-16 px-p-1 items-center justify-between text-slate-600 fixed z-50`}
     >
-      <div className='w-1/4 flex'>
+      <div className='flex'>
         <img src={logo} className='h-8' alt='logo' />
       </div>
 
       <nav
         className={`${
           menu ? 'hidden' : 'block'
-        } md:w-2/6 md:flex lg:block mt-60 md:mt-0 md:bg-inherit md:shadow-none text-white z-50 md:z-0 hidden bg-slate-100 shadow-lg`}
+        }  md:flex lg:block mt-60 md:mt-0 md:bg-inherit md:shadow-none text-white z-50 md:z-0 hidden bg-slate-100 shadow-lg`}
       >
         <ul className='flex justify-between gap-2'>
           <li className='mt-3 md:mt-0'>
@@ -82,8 +82,8 @@ const Header = () => {
       >
         <svg
           className='w-6 h-6'
-          fill='none'
-          stroke='currentColor'
+          fill='white'
+          stroke='white'
           viewBox='0 0 24 24'
           xmlns='http://www.w3.org/2000/svg'
         >

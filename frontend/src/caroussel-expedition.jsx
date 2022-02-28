@@ -29,7 +29,7 @@ const DemoCarousel = ({ expeditions }) => {
   return (
     <Carousel
       className='xxxs:h-full w-full justify-between xxxs:w-full xxs:w-full xxs:h-full items-center md:w-full md:my-0 md:mx-auto md:flex-row md:items-center md:px-4 md:flex-wrap md:justify-between
-      xl:justify-between xl:w-full lg:item-carousel lg:w-full lg:flex-row lg:mx-auto lg:gap-x-5 lg:my-0 lg:items-center lg:px-8 lg:flex-wrap lg:justify-between md:pt-12 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28  xxxs:pb-28'
+      xl:justify-between xl:w-full lg:item-carousel lg:w-full lg:flex-row lg:mx-auto lg:gap-x-5 lg:my-0 lg:items-center lg:flex-wrap lg:justify-between md:pt-12 md:pb-28 lg:pb-28 xl:pb-28 sm:pb-28 xs:pb-28 xxs:pb-28  xxxs:pb-28'
       responsive={responsive}
       // autoPlay={true}
       infinite={true}
@@ -56,7 +56,7 @@ const DemoCarousel = ({ expeditions }) => {
         <div
           className='h-full md:gap-x-4 md:w-full 2xl:w-full lg:w-72 
                       xxxs:w-full w-full transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-                    cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg'
+                    cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-2xl'
           key={key}
         >
           <Link
@@ -71,7 +71,7 @@ const DemoCarousel = ({ expeditions }) => {
               <img
                 src={image}
                 alt=''
-                className='object-cover float-left h-72 w-full rounded-t-lg'
+                className='object-cover float-left h-72 w-full rounded-t-2xl'
               />
               <div className='flex flex-col px-5 pb-10'>
                 <div className='flex flex-row justify-between items-center '>
