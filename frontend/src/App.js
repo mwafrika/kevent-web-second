@@ -5,7 +5,7 @@ import About from './about';
 import ListExpeditions from './listExpeditions';
 import TopPackage from './listTopPackage';
 import DetailExpedition from './detailExpedition';
-import DetailPackage from './detailExpedition';
+import DetailPackage from './detailPackage';
 import NoPage from './noPage';
 
 export default function App() {

@@ -28,12 +28,16 @@ body {
 
 .btn-filter {
   background-color: rgba(71, 85, 105, 0.38);
+  color: #475569;
 }
 .btn-filter:focus {
   background-color: #475569;
   color: white;
 }
 
+.title-description {
+  color: #475569;
+}
 .select-city {
   background-color: #475569;
   color: white;

@@ -200,61 +200,61 @@ export default function App() {
         </section>
 
         <section
-          className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center bg-gray-100 justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'
+          className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center filter justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'
           id={'contact'}
         >
           <div className='flex bg-white p-10 w-full md:w-2/5 md:h-full md:px-4 md:justify-center'>
             <form
               onSubmit={handleSubmit}
-              className='flex flex-col gap-y-7 lg:gap-y-9 lg:w-4/5 md:w-4/5 xl:w-4/5 md:gap-y-9 xl:gap-y-9 lg:space-y-2'
+              className='flex flex-col gap-y-7 lg:gap-y-9 lg:w-4/5 md:w-4/5 xl:w-4/5 md:gap-y-9 xl:gap-y-9 lg:space-y-2 filter-button'
             >
-              <p className='text-xl text-slate-600 font-bold text-center'>
+              <p className='text-xl title-description font-bold text-center'>
                 CONTACTEZ-NOUS
               </p>
-              <div>
+              <div className='title-description'>
                 <label htmlFor='name'>Noms</label>
                 <input
                   type='text'
                   name='name'
                   id='name'
                   value={contact.name}
-                  className='h-8 lg:h-10 w-full border px-3 py-2 md:h-8 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  className='h-8 lg:h-10 w-full border px-3 py-2 md:h-8 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
                   onChange={handleChange}
                 />
               </div>
 
-              <div>
+              <div className='title-description'>
                 <label htmlFor=''>Email</label>
                 <input
                   type='text'
                   name='email'
                   value={contact.email}
-                  className='h-8 w-full md:h-10 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  className='h-8 w-full md:h-10 border title-description px-3 py-2 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
                   onChange={handleChange}
                 />
               </div>
 
-              <div>
+              <div className='title-description'>
                 <label htmlFor=''>Numero de telephone</label>
                 <input
                   type='text'
                   name='telephone'
                   value={contact.telephone}
-                  className='h-8 w-full md:h-10 border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  className='h-8 w-full md:h-10 border px-3 py-2 title-description border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
                   onChange={handleChange}
                 />
               </div>
-              <div>
+              <div className='title-description'>
                 <label htmlFor=''>Message</label>
                 <textarea
-                  className='resize h-14 block w-full border px-3 py-2 border-b-zinc-500 border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
+                  className='resize h-14 block w-full border px-3 py-2 title-description border-x-0 border-t-0 focus:outline-none focus:border-b-indigo-500'
                   rows='5'
                   onChange={handleChange}
                   value={contact.message}
                   name='message'
                 />
               </div>
-              <button className='w-full my-5 rounded-2xl py-4 px-10 text-lg font-bold text-white bg-slate-700'>
+              <button className='w-full my-5 rounded-2xl py-4 px-10 text-lg font-bold text-white select-city'>
                 Envoyer
               </button>
             </form>
