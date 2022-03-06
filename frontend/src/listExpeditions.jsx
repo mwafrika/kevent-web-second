@@ -4,6 +4,9 @@ import './App.css';
 import Pagination from './pagination';
 import Header from './header';
 import Footer from './footer';
+import data from './data';
+const expeditions = data.expeditions;
+
 const list = () => {
   return (
     <>
@@ -19,26 +22,28 @@ const list = () => {
             className='h-full md:w-15 w-4/5 px-p-5 py-p-10 2xl:h-auto md:py-4 md:h-auto xl:h-auto lg:h-auto lg:py-7 xl:py-5 xxxs:h-full mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto md:pb-1 xs:mx-auto xxs:px-4 xl:w-1/3.3 lg:w-15 2xl:w-98 mt-10 xs:px-4 xs:py-8 transition md:px-2  xxxs:px-4 xxxs:py-4
           cursor-pointer md:mt-0 lg:mt-0 shadow-lg rounded-lg'
           >
-            <h1 className='xxxs:text-lg  font-bold text-slate-600 md:text-lg'>
+            <h1 className='xxxs:text-lg  font-bold text-slate-600 md:text-lg mb-8 md:mb-1 lg:mb-4'>
               Search
             </h1>
             <input
               type='text'
               name='search'
               id='search'
-              className='font-bold inputs placeholder:text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-p-5 px-4 block w-full appearance-none leading-normal'
+              className='font-bold bg-slate-400 md:h-8 lg:h-10 placeholder:text-slate-700 focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal'
               placeholder='Search'
             />
-            <h1 className='xxxs:text-lg md:text-lg font-bold text-slate-600'>
+            <h1 className='xxxs:text-lg md:text-lg font-bold text-slate-600 mb-4 md:mb-1 lg:mb-4 md:mt-2 lg:mt-4 mt-4'>
               Select town
             </h1>
             <div className='flex relative w-full'>
               <select
                 name='town'
                 id='town'
-                className='inputs text-slate-700 font-bold focus:outline-none focus:shadow-outline border rounded-2xl py-p-5 px-4 block w-full appearance-none leading-normal'
+                className='bg-slate-400 md:h-8 md:py-0 lg:h-10 text-slate-700 font-bold focus:outline-none focus:shadow-outline border border-gray-200 rounded-full py-2 px-4 block w-full appearance-none leading-normal'
               >
-                <option value='congo'>Select town</option>
+                <option value=''>Select town</option>
+                <option value=''>Town 1</option>
+                <option value=''>Town 2</option>
               </select>
               <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-700'>
                 <svg
@@ -51,229 +56,67 @@ const list = () => {
               </div>
             </div>
 
-            <h1 className='text-slate-600 xxxs:text-lg md:text-lg font-bold'>
+            <h1 className='text-slate-600 xxxs:text-lg md:text-lg pt-5 md:pt-3 lg:pt-5 font-bold'>
               Types
             </h1>
-            <div className='h-full md:h-0 md:gap-y-2 gap-y-4 gap-x-2 xs:gap-x-5  flex flex-row flex-wrap md:gap-x-6 xl:gap-x-12 lg:gap-x-4 lg:py-5 xl:py-5 sm:py-5 md:py-5 xs:py-5 xs:px-6  xxs:py-5  xxxs:py-5 xxxs:gap-x-1 sm:gap-x-12 sm:gap-y-6 px-2'>
+            <div className='flex flex-row flex-wrap h-auto md:gap-x-6 md:gap-y-2 xl:gap-x-12 lg:gap-x-4 xl:gap-y-4 lg:py-5 xl:py-5 sm:py-5 md:py-5 xs:py-5 xs:gap-x-12 xs:gap-y-6  xxs:py-5 xxs:gap-x-12 xxs:gap-y-6  xxxs:py-5 xxxs:gap-x-1 xxxs:gap-y-3 sm:gap-x-12 sm:gap-y-6 py-2 px-2'>
               <input
                 type='button'
                 value='Tous'
-                className='btn-filter focus:outline-none focus:shadow-outline border lg:py-1 xl:py-1 sm:py-1 rounded-2xl px-p-2 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal
-                hover:bg-slate-600 hover:text-white cursor-pointer 
+                className=' bg-slate-600 text-white focus:outline-none focus:shadow-outline border border-gray-300 lg:py-1 xl:py-1 sm:py-1 rounded-full py-2 px-4 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal
+                hover:bg-slate-600 hover:text-white cursor-pointer
                 active:bg-slate-600 active:text-white
                 '
               />
               <input
                 type='button'
                 value='Fruits'
-                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-2 px-p-2 lg:py-1 xl:py-1 sm:py-1 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className=' bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 px-4 lg:py-1 xl:py-1 sm:py-1 lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
               <input
                 type='button'
                 value='Arbres'
-                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-2 lg:py-1 xl:py-1 sm:py-1 px-p-2 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className='bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 lg:py-1 xl:py-1 sm:py-1 px-4 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
               <input
                 type='button'
                 value='Legumes'
-                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border rounded-2xl py-2 lg:py-1 px-p-2 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12  xl:py-1 sm:py-1 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className=' bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded-full py-2 lg:py-1 px-4 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12  xl:py-1 sm:py-1 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
               <input
                 type='button'
                 value='Cereals'
-                className='btn-filter text-slate-700 focus:outline-none focus:shadow-outline border xl:py-1 sm:py-1 rounded-2xl py-2 px-p-2 lg:py-1 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
+                className=' bg-slate-300 text-slate-700 focus:outline-none focus:shadow-outline border xl:py-1 sm:py-1 border-gray-300 rounded-full py-2 px-4 lg:py-1 block lg:w-5/12 xl:w-15 sm:w-2/6 md:w-5/12 appearance-none leading-normal hover:bg-slate-600 hover:text-white cursor-pointer'
               />
             </div>
           </div>
-          <div
-            className='h-full md:w-15 px-p-5 md:p-0 py-p-10 w-4/5 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-1/3.3 lg:w-15 mx-auto 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-       cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
-       '
-          >
-            <img
-              src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg'
-              alt=''
-              className='object-cover rounded-t-lg w-full'
-            />
-            <div className='flex flex-col px-5  pb-10'>
-              <div className='flex flex-row justify-between items-center '>
-                <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                  Nyiragongo
-                </p>
-                <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                  50$
-                </p>
+
+          {expeditions.map(({ key, image, date, prix, lieu, description }) => (
+            <div
+              className='h-full md:w-15 px-p-5 md:p-0 py-p-10 w-4/5 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-1/3.3 lg:w-15 mx-auto 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
+cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
+'
+            >
+              <img
+                src={image}
+                alt=''
+                className='object-cover rounded-t-lg w-full'
+              />
+              <div className='flex flex-col px-5  pb-10'>
+                <div className='flex flex-row justify-between items-center '>
+                  <p className='text-md font-semibold text-center text-slate-700  py-4'>
+                    {lieu}
+                  </p>
+                  <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
+                    {prix}
+                  </p>
+                </div>
+                <span className='text-md text-slate-700  py-0 my-0'>
+                  {date}
+                </span>
               </div>
-              <span className='text-md text-slate-700  py-0 my-0'>
-                {moment(
-                  '2020-05-01T00:00:00.000Z',
-                  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                ).fromNow()}
-              </span>
             </div>
-          </div>
-          <div
-            className='2xl:w-98 lg:w-15 h-full md:p-0 md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto mx-auto xl:w-1/3.3 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-       cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
-       '
-          >
-            <img
-              src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg'
-              alt=''
-              className='object-cover rounded-t-lg w-full'
-            />
-            <div className='flex flex-col px-5  pb-10'>
-              <div className='flex flex-row justify-between items-center '>
-                <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                  Nyiragongo
-                </p>
-                <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                  50$
-                </p>
-              </div>
-              <span className='text-md text-slate-700  py-0 my-0'>
-                {moment(
-                  '2020-05-01T00:00:00.000Z',
-                  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                ).fromNow()}
-              </span>
-            </div>
-          </div>
-          <div
-            className='2xl:w-98 lg:w-15 md:p-0 px-p-5 py-p-10 w-4/5 h-full md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full mx-auto xxs:mx-auto xs:mx-auto xl:w-1/3.3 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-       cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
-       '
-          >
-            <img
-              src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg'
-              alt=''
-              className='object-cover rounded-t-lg w-full'
-            />
-            <div className='flex flex-col px-5  pb-10'>
-              <div className='flex flex-row justify-between items-center '>
-                <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                  Nyiragongo
-                </p>
-                <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                  50$
-                </p>
-              </div>
-              <span className='text-md text-slate-700  py-0 my-0'>
-                {moment(
-                  '2020-05-01T00:00:00.000Z',
-                  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                ).fromNow()}
-              </span>
-            </div>
-          </div>
-          <div
-            className='h-full lg:w-15 md:p-0 px-p-5 py-p-10 w-4/5 xl:w-1/3.3 2xl:w-98 md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 mx-auto xxs:h-full xxs:mx-auto xs:mx-auto mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-       cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
-       '
-          >
-            <img
-              src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg'
-              alt=''
-              className='object-cover rounded-t-lg w-full'
-            />
-            <div className='flex flex-col px-5  pb-10'>
-              <div className='flex flex-row justify-between items-center '>
-                <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                  Nyiragongo
-                </p>
-                <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                  50$
-                </p>
-              </div>
-              <span className='text-md text-slate-700  py-0 my-0'>
-                {moment(
-                  '2020-05-01T00:00:00.000Z',
-                  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                ).fromNow()}
-              </span>
-            </div>
-          </div>
-          <div
-            className='h-full lg:w-15 md:p-0 2xl:w-98 xl:w-1/3.3 md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto px-p-5 mx-auto py-p-10 w-4/5 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-       cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
-       '
-          >
-            <img
-              src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg'
-              alt=''
-              className='object-cover rounded-t-lg w-full'
-            />
-            <div className='flex flex-col px-5  pb-10'>
-              <div className='flex flex-row justify-between items-center '>
-                <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                  Nyiragongo
-                </p>
-                <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                  50$
-                </p>
-              </div>
-              <span className='text-md text-slate-700  py-0 my-0'>
-                {moment(
-                  '2020-05-01T00:00:00.000Z',
-                  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                ).fromNow()}
-              </span>
-            </div>
-          </div>
-          <div
-            className='h-full lg:w-15 md:p-0 2xl:w-98 xl:w-1/3.3 md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto px-p-5 mx-auto py-p-10 w-4/5 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-       cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
-       '
-          >
-            <img
-              src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg'
-              alt=''
-              className='object-cover rounded-t-lg w-full'
-            />
-            <div className='flex flex-col px-5  pb-10'>
-              <div className='flex flex-row justify-between items-center '>
-                <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                  Nyiragongo
-                </p>
-                <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                  50$
-                </p>
-              </div>
-              <span className='text-md text-slate-700  py-0 my-0'>
-                {moment(
-                  '2020-05-01T00:00:00.000Z',
-                  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                ).fromNow()}
-              </span>
-            </div>
-          </div>
-          <div
-            className='h-full lg:w-15 md:p-0 xl:w-1/3.3 2xl:w-98 md:w-15 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto mx-auto px-p-5 py-p-10 w-4/5 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
-       cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
-       '
-          >
-            <img
-              src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-3_odyxty.svg'
-              alt=''
-              className='object-cover rounded-t-lg w-full'
-            />
-            <div className='flex flex-col px-5  pb-10'>
-              <div className='flex flex-row justify-between items-center '>
-                <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                  Nyiragongo
-                </p>
-                <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                  50$
-                </p>
-              </div>
-              <span className='text-md text-slate-700  py-0 my-0'>
-                {moment(
-                  '2020-05-01T00:00:00.000Z',
-                  'YYYY-MM-DDTHH:mm:ss.SSSZ'
-                ).fromNow()}
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
         <Pagination />
         <Footer />
