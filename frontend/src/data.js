@@ -77,7 +77,7 @@ export default {
       prix: `${40}$`,
       lieu: 'KAHUZI BIEGA',
       description:
-        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
+        'Note the space after "pull-right". You dont want to accidentally provide the class pull-rightshow instead of pull-right show Also the parentheses needs to be there',
     },
     {
       key: 3,
@@ -90,7 +90,7 @@ export default {
       prix: `${30}$`,
       lieu: 'SALONGA',
       description:
-        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
+        'Thanks! I had to modify it slightly because for some reason it wasnt outputting btn-group pull-right at all. Just show or hidden.',
     },
 
     {
@@ -104,7 +104,7 @@ export default {
       prix: `${50}$`,
       lieu: 'VIRUNGA',
       description:
-        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
+        'As others have commented, classnames utility is the currently recommended approach to handle conditional CSS class names in ReactJs.',
     },
     {
       key: 5,
@@ -117,7 +117,7 @@ export default {
       prix: `${50}$`,
       lieu: 'VIRUNGA',
       description:
-        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
+        'Be careful with the second approach, especially in large codebases, as it makes the class strings less greppable. For example, if someone searches for s-is-shown or s-is-hidden in the codebase, they',
     },
     {
       key: 6,
@@ -143,7 +143,7 @@ export default {
       prix: `${50}$`,
       lieu: 'VIRUNGA',
       description:
-        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
+        'How do I turn off dom link on my react routerWe can disable a link by setting the pointer-events attribute in our CSS. We have the disabled-link class name applied to the link.',
     },
   ],
 };

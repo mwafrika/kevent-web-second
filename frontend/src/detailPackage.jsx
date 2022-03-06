@@ -1,5 +1,6 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+
 import Header from './header';
 import Footer from './footer';
 import data from './data';
@@ -32,11 +33,13 @@ const DetailPackage = (props) => {
             <div className='overflow-auto whitespace-nowrap no-scrollbar'>
               <div className='flex flex-row  h-24  w-full justify-center gap-4 md:gap-3 lg:gap-x-6 xl:gap-x-8'>
                 {related.map((item) => (
-                  <img
-                    src={item.image}
-                    alt=''
-                    className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
-                  />
+                  <Link to={`/packages/${item.key}`}>
+                    <img
+                      src={item.image}
+                      alt=''
+                      className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
+                    />
+                  </Link>
                 ))}
               </div>
             </div>
