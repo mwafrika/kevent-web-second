@@ -5,6 +5,7 @@ import Pagination from './pagination';
 import Header from './header';
 import Footer from './footer';
 import Banner from './bannerExped';
+import { Link } from 'react-router-dom';
 import data from './data';
 const expeditions = data.expeditions;
 
@@ -94,24 +95,33 @@ const list = () => {
 cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
 '
             >
-              <img
-                src={image}
-                alt=''
-                className='object-cover rounded-t-lg w-full  h-80'
-              />
-              <div className='flex flex-col px-5  pb-10'>
-                <div className='flex flex-row justify-between items-center '>
-                  <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                    {lieu}
-                  </p>
-                  <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                    {prix}
-                  </p>
+              <Link
+                to={{
+                  pathname: `/expeditions/${key}`.trim(),
+                  state: {
+                    ...image,
+                  },
+                }}
+              >
+                <img
+                  src={image}
+                  alt=''
+                  className='object-cover rounded-t-lg w-full  h-80'
+                />
+                <div className='flex flex-col px-5  pb-10'>
+                  <div className='flex flex-row justify-between items-center '>
+                    <p className='text-md font-semibold text-center text-slate-700  py-4'>
+                      {lieu}
+                    </p>
+                    <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
+                      {prix}
+                    </p>
+                  </div>
+                  <span className='text-md text-slate-700  py-0 my-0'>
+                    {date}
+                  </span>
                 </div>
-                <span className='text-md text-slate-700  py-0 my-0'>
-                  {date}
-                </span>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
