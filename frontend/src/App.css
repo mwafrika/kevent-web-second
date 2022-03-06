@@ -47,6 +47,9 @@ body {
   background-color: #475569;
 }
 
+.no-scroll {
+  background-color: #475569;
+}
 .filter-button {
   row-gap: 7px;
   padding-top: 12px;

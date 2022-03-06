@@ -12,10 +12,8 @@ const list = () => {
     <>
       <section className='flex min-h-screen flex-col'>
         <Header />
-        <div className='xl:mr-80 md:mr-28 lg:mr-48 xl:mr-68 xl:float-right xl:pt-10 md:py-5 md:float-right xxxs:mx-auto xxxs:float-none xxxs:py-10 xxs:py-10 xs:py-10 mt-20'>
-          <h1 className='text-slate-600 text-center font-bold text-3xl xl:pr-60 md:text-2xl xxxs:text-center xxs:text-center xs:text-center md:text-center lg:text-center xl:text-center'>
-            Packages
-          </h1>
+        <div className=' w-full'>
+          <h1 className='text-slate-600 text-center font-bold'>Packages</h1>
         </div>
         <div className='flex flex-col w-full xl:mx-auto mx-auto md:w-11/12 lg:w-11/12 xl:w-11/12  md:py-4 xl:py-4 lg:gap-x-0.39 lg:py-4 md:flex-row xl:flex-row lg:flex-row md:flex-wrap xl:flex-wrap lg:flex-wrap md:gap-x-0.39 md:gap-y-7 lg:gap-y-7 md:mx-auto lg:mx-auto xl:flex 2xl:flex 2xl:flex-row 2xl:flex-wrap xl:gap-x-0.25 xl:gap-y-10 2xl:mx-auto'>
           <div
