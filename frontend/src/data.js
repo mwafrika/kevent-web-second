@@ -22,6 +22,8 @@ export default {
       ).fromNow(),
       prix: `${40}$`,
       lieu: 'KAHUZI BIEGA',
+      description:
+        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
     },
     {
       key: 3,
@@ -33,6 +35,8 @@ export default {
       ).fromNow(),
       prix: `${30}$`,
       lieu: 'SALONGA',
+      description:
+        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
     },
     {
       key: 4,
@@ -44,6 +48,8 @@ export default {
       ).fromNow(),
       prix: `${800}$`,
       lieu: 'MAIKO',
+      description:
+        'The href attribute requires a valid value to be accessible The href attribute requires a valid value to be accessible',
     },
   ],
   packages: [

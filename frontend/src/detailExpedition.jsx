@@ -6,13 +6,18 @@ import data from './data';
 import './customize.css';
 const { expeditions, packages } = data;
 
-const DetailExpedition = (props) => {
+const DetailPackage = (props) => {
   const { key } = useParams();
 
-  expeditions.find((expedition) => {
-    return expedition.key === key;
-  });
-  console.log(props, 'mwafrika');
+  const items = expeditions.find(
+    (expedition) => expedition.key === parseInt(key)
+  );
+  const related = expeditions.filter(
+    (expedition) => expedition.key !== parseInt(key)
+  );
+  const { date, description, image, lieu, prix } = items;
+
+  console.log(related, 'mwafrika');
   return (
     <>
       <Header />
@@ -21,73 +26,27 @@ const DetailExpedition = (props) => {
           <div className='h-1/2 flex flex-col gap-y-6 md:pt-0 w-full'>
             <div className='w-full mx-auto h-96'>
               <img
-                src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
+                src={image}
                 alt=''
                 className='object-cover w-full h-full rounded-2xl'
               />
             </div>
             <div className='overflow-auto whitespace-nowrap no-scrollbar'>
               <div className='flex flex-row  h-24  w-full justify-center gap-4 md:gap-3 lg:gap-x-6 xl:gap-x-8'>
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4  2xl:w-32 rounded-lg'
-                />
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
-                />
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
-                />
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
-                />
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover rounded-lg w-1/3 xl:w-1/6 xxs:w-1/3.9 lg:w-1/4 xs:w-1/3.9 2xl:w-32'
-                />
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover rounded-lg w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32'
-                />
-
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover rounded-lg w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32'
-                />
-
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
-                />
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
-                />
+                {related.map((item) => (
+                  <img
+                    src={item.image}
+                    alt=''
+                    className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
+                  />
+                ))}
               </div>
             </div>
           </div>
           <section className='h-auto w-full pt-8 md:pt-8 bg-slate-200 rounded-2xl'>
             <div className='px-8 w-full title-description'>
-              <h1 className='text-2xl font-bold pb-4'>Details Expeditions</h1>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Deserunt illum unde aut distinctio repudiandae modi praesentium
-                odio error sit ex mollitia saepe itaque ea repellat, perferendis
-                iste eius explicabo soluta! Lorem, ipsum dolor sit amet
-                consectetur adipisicing elit.
-              </p>
+              <h1 className='text-2xl font-bold pb-4'>Details Packages</h1>
+              <p>{description}</p>
             </div>
             <div className='w-full flex justify-center md:justify-start md:pl-9 gap-4'>
               <p className='btn-filter px-3 py-1 my-8 rounded-lg font-bold'>
@@ -105,4 +64,4 @@ const DetailExpedition = (props) => {
   );
 };
 
-export default DetailExpedition;
+export default DetailPackage;
