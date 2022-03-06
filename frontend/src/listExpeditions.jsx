@@ -100,7 +100,7 @@ cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
               <img
                 src={image}
                 alt=''
-                className='object-cover rounded-t-lg w-full'
+                className='object-cover rounded-t-lg w-full  h-80'
               />
               <div className='flex flex-col px-5  pb-10'>
                 <div className='flex flex-row justify-between items-center '>
