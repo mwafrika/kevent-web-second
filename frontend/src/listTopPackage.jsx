@@ -5,6 +5,7 @@ import Pagination from './pagination';
 import Header from './header';
 import Footer from './footer';
 import data from './data';
+import Banner from './bannerPack';
 const packages = data.packages;
 
 const list = () => {
@@ -12,9 +13,7 @@ const list = () => {
     <>
       <section className='flex min-h-screen flex-col'>
         <Header />
-        <div className=' w-full'>
-          <h1 className='text-slate-600 text-center font-bold'>Packages</h1>
-        </div>
+        <Banner />
         <div className='flex flex-col w-full xl:mx-auto mx-auto md:w-11/12 lg:w-11/12 xl:w-11/12  md:py-4 xl:py-4 lg:gap-x-0.39 lg:py-4 md:flex-row xl:flex-row lg:flex-row md:flex-wrap xl:flex-wrap lg:flex-wrap md:gap-x-0.39 md:gap-y-7 lg:gap-y-7 md:mx-auto lg:mx-auto xl:flex 2xl:flex 2xl:flex-row 2xl:flex-wrap xl:gap-x-0.25 xl:gap-y-10 2xl:mx-auto'>
           <div
             className='h-full md:w-15 w-4/5 px-p-5 py-p-10 2xl:h-auto md:py-4 md:h-auto xl:h-auto lg:h-auto lg:py-7 xl:py-5 xxxs:h-full mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto md:pb-1 xs:mx-auto xxs:px-4 xl:w-1/3.3 lg:w-15 2xl:w-98 mt-10 xs:px-4 xs:py-8 transition md:px-2  xxxs:px-4 xxxs:py-4
