@@ -26,7 +26,9 @@ const Header = () => {
     }
   };
   window.addEventListener('scroll', handleChangeBackgroundOnScroll);
-  window.addEventListener('scroll', handleChangeBackgroundOnPath);
+  useEffect(() => {
+    handleChangeBackgroundOnPath();
+  }, [checkPath]);
 
   return (
     console.log(checkPath, 'checkPath'),
