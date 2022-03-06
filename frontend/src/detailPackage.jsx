@@ -51,18 +51,20 @@ const DetailPackage = (props) => {
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover rounded-lg w-1/6'
                 />
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover rounded-lg w-1/6'
                 />
+
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover rounded-lg w-1/6'
                 />
+
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''

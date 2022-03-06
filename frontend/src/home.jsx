@@ -199,10 +199,7 @@ export default function App() {
           <div className='w-2/3 h-px bg-slate-300'></div>
         </section>
 
-        <section
-          className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center filter justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'
-          id={'contact'}
-        >
+        <section className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center filter justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'>
           <div className='flex bg-white p-10 w-full md:w-2/5 md:h-full md:px-4 md:justify-center'>
             <form
               onSubmit={handleSubmit}
