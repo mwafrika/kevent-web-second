@@ -31,49 +31,49 @@ const DetailPackage = (props) => {
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4  2xl:w-32 rounded-lg'
                 />
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
                 />
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
                 />
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
                 />
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover rounded-lg w-1/6'
+                  className='object-cover rounded-lg w-1/3 xl:w-1/6 xxs:w-1/3.9 lg:w-1/4 xs:w-1/3.9 2xl:w-32'
                 />
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover rounded-lg w-1/6'
-                />
-
-                <img
-                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
-                  alt=''
-                  className='object-cover rounded-lg w-1/6'
+                  className='object-cover rounded-lg w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32'
                 />
 
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover rounded-lg w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32'
+                />
+
+                <img
+                  src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
+                  alt=''
+                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
                 />
                 <img
                   src='https://res.cloudinary.com/ujuzi/image/upload/v1643570903/Kevent/Rectangle_5-4_dteojs.svg'
                   alt=''
-                  className='object-cover w-1/6 rounded-lg'
+                  className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
                 />
               </div>
             </div>
