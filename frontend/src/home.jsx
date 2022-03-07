@@ -200,7 +200,7 @@ export default function App() {
         </section>
 
         <section className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center filter justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'>
-          <div className='flex bg-white p-10 w-full md:w-2/5 md:h-full md:px-4 md:justify-center'>
+          <div className='flex bg-white p-10 w-full md:w-2/5 md:h-full md:px-4 md:justify-center rounded-2xl'>
             <form
               onSubmit={handleSubmit}
               className='flex flex-col gap-y-7 lg:gap-y-9 lg:w-4/5 md:w-4/5 xl:w-4/5 md:gap-y-9 xl:gap-y-9 lg:space-y-2 filter-button'
@@ -251,7 +251,7 @@ export default function App() {
                   name='message'
                 />
               </div>
-              <button className='w-full my-5 rounded-2xl py-4 px-10 text-lg font-bold text-white select-city'>
+              <button className='w-full my-5 rounded-xl py-4 px-10 text-lg font-bold text-white select-city'>
                 Envoyer
               </button>
             </form>
