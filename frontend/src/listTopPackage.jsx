@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
 import './App.css';
 import Pagination from './pagination';
@@ -9,7 +9,10 @@ import Banner from './bannerPack';
 import { Link } from 'react-router-dom';
 const packages = data.packages;
 
-const list = () => {
+const List = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className='flex min-h-screen flex-col'>
@@ -132,4 +135,4 @@ cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
   );
 };
 
-export default list;
+export default List;

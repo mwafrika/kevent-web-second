@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 import Header from './header';
@@ -9,6 +9,10 @@ const { expeditions, packages } = data;
 
 const DetailPackage = (props) => {
   const { key } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const items = packages.find((expedition) => expedition.key === parseInt(key));
   const related = packages.filter(

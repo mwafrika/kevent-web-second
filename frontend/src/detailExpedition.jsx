@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
@@ -8,6 +8,10 @@ const { expeditions, packages } = data;
 
 const DetailPackage = (props) => {
   const { key } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const items = expeditions.find(
     (expedition) => expedition.key === parseInt(key)
