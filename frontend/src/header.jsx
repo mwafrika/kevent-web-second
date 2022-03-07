@@ -36,7 +36,7 @@ const Header = () => {
       <div
         className={`${
           header ? 'header active' : 'header'
-        } flex w-full h-16 md:h-16 px-p-1 items-center justify-between text-slate-600 fixed z-50
+        } flex w-full h-16 md:h-16 px-p-1 items-center justify-between fixed z-50
         ${checkPath && 'no-scroll'}
         `}
       >
@@ -53,7 +53,7 @@ const Header = () => {
             <li className='mt-3 md:mt-0'>
               <Link
                 to='/'
-                className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
+                className='block md:inline-block mt-4 md:mt-0 md:mr-6 
                 text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
               >
                 Home
@@ -62,7 +62,7 @@ const Header = () => {
             <li className='mt-3 md:mt-0'>
               <Link
                 to='/about'
-                className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
+                className='block md:inline-block mt-4 md:mt-0 md:mr-6 
                 text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
               >
                 About
@@ -71,7 +71,7 @@ const Header = () => {
             <li className='mt-3 md:mt-0'>
               <a
                 href='#'
-                className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
+                className='block md:inline-block mt-4 md:mt-0 md:mr-6 
                 text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
               >
                 Services
@@ -80,7 +80,7 @@ const Header = () => {
             <li className='mt-3 md:mt-0'>
               <Link
                 to='/#contact'
-                className='block md:inline-block mt-4 md:mt-0 md:mr-6 hover:text-slate-800
+                className='block md:inline-block mt-4 md:mt-0 md:mr-6 
                 text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
               >
                 Contact
