@@ -31,15 +31,15 @@ const DetailPackage = (props) => {
               />
             </div>
             <div className='overflow-auto whitespace-nowrap no-scrollbar'>
-              <div className='flex flex-row  h-24  w-full justify-center gap-4 md:gap-3 lg:gap-x-6 xl:gap-x-8'>
+              <div className='flex flex-row  h-24  w-full gap-4 md:gap-3 lg:gap-x-5 xl:gap-x-6'>
                 {related.map((item) => (
-                  <Link to={`/packages/${item.key}`}>
-                    <img
-                      src={item.image}
-                      alt=''
-                      className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
-                    />
-                  </Link>
+                  // <Link to={`/packages/${item.key}`}>
+                  <img
+                    src={item.image}
+                    alt=''
+                    className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
+                  />
+                  // </Link>
                 ))}
               </div>
             </div>

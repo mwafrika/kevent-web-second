@@ -32,7 +32,7 @@ const DetailPackage = (props) => {
               />
             </div>
             <div className='overflow-auto whitespace-nowrap no-scrollbar'>
-              <div className='flex flex-row  h-24  w-full justify-center gap-4 md:gap-3 lg:gap-x-6 xl:gap-x-8'>
+              <div className='flex flex-row  h-24  w-full gap-4 md:gap-3 lg:gap-x-5 xl:gap-x-6'>
                 {related.map((item) => (
                   <img
                     src={item.image}
