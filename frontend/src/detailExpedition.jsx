@@ -23,7 +23,7 @@ const DetailPackage = (props) => {
       <Header />
       <section className='flex h-full md:pt-24 md:pb-10'>
         <section className='h-full w-11/12 py-8 md:flex md:flex-row  md:w-11/12 mx-auto md:gap-x-6 gap-y-6 flex flex-col'>
-          <div className='h-1/2 flex flex-col gap-y-6 md:pt-0 w-full'>
+          <div className='h-1/2 flex flex-col gap-y-6 md:pt-0 w-full xxxs:mt-16 xxs:mt-16 xs:mt-16'>
             <div className='w-full mx-auto h-96'>
               <img
                 src={image}
