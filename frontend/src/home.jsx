@@ -14,7 +14,6 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const onClickMenu = () => {
     setMenu(!menu);
-    console.log(menu, 'mwafrika');
   };
 
   const [contact, setContact] = useState({
@@ -24,22 +23,17 @@ export default function App() {
     telephone: '',
   });
 
-  useEffect(() => {
-    console.log(contact, 'mwafrika');
-  }, [contact]);
+  useEffect(() => {}, [contact]);
 
   const handleChange = (e) => {
     setContact((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-    console.log(contact, 'mwafrika');
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(contact, 'mwafrika');
   };
   return (
     <>

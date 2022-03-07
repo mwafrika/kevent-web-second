@@ -20,7 +20,6 @@ const DetailPackage = (props) => {
   );
   const { date, description, image, lieu, prix } = items;
 
-  console.log(related, 'mwafrika');
   return (
     <>
       <Header />
