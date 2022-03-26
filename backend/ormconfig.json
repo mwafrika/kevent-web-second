@@ -1,6 +1,6 @@
 {
    "type": "postgres",
-   "host": "https://dashboard.heroku.com/",
+   "host": "https://kevent-rdc.herokuapp.com",
    "port": 5432,
    "username": "kevent",
    "password": "kevent",
