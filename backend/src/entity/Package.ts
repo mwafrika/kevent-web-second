@@ -1,5 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+import{BookingPackage} from "./BookingPackage";
 @Entity()
 export class Package {
     @PrimaryGeneratedColumn()
@@ -25,4 +25,9 @@ export class Package {
 
     @Column("simple-array")
     tags: string[];
+
+    @OneToMany(type => BookingPackage, bookingPackage => bookingPackage.package,{
+        cascade: true
+     })
+    bookingPackage: BookingPackage[];
 }

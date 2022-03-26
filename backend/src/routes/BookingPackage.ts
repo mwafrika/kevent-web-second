@@ -1,12 +1,15 @@
 import {BookingPackageController} from "../controller/Booking_package";
 import { param } from 'express-validator';
-export const Expeditions = [
+import {checkJwt} from "../middleware/auth";
+export const Packages = [
     {
         method: "post",
-        route: "/api/v1/bookPackage",
+        route: "/api/v1/:packageId/bookPackage",
         controller: BookingPackageController,
         action: "save",
-        validation:[]
+        validation:[
+            checkJwt,
+        ]
     },
 
     {

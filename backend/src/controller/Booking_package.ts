@@ -1,11 +1,13 @@
-import {getRepository,In} from "typeorm";
+import {getRepository,In,getConnection} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import {BookingPackage} from "../entity/BookingPackage";
 
+import {Package} from "../entity/Package";
+import { Authentication } from '../entity/Authentication';
 export class BookingPackageController {
 
     private userRepository = getRepository(BookingPackage);
-
+    private packageRepository = getRepository(Package);
     async all(request: Request, response: Response, next: NextFunction) {
         return this.userRepository.find();
     }
@@ -15,7 +17,41 @@ export class BookingPackageController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.save(request.body);
+        const auth = response.locals.jwtPayload.userId
+        console.log('Auth user',auth);
+        const packId = request.params.packageId;
+        const packages = await this.packageRepository.findOne({ // continue here
+            where: {
+                id: Number(packId)
+            }
+        });
+        if(!packages){
+            throw Error('Package does not exist')
+        }
+        console.log(packages,"Verify token")
+       
+        let {
+       
+        Visitor_details,
+        bookedStartDate,
+        bookedEndDate,
+        ticketNumber,
+        additionnalInformation,
+        Status,
+        id,
+    } = request.body;
+    
+   return await this.userRepository.save({
+        Visitor_details,
+        bookedStartDate,
+        bookedEndDate,
+        ticketNumber,
+        additionnalInformation,
+        Status,
+        id,
+        userId: auth,
+        packageId:packages.id,
+    });
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
@@ -35,8 +71,10 @@ export class BookingPackageController {
 
     async update(request: Request, response: Response, next: NextFunction) {
         let userToUpdate = await this.userRepository.findOne(request.params.id);
-        const { packageId,
-            userId,
+        const userId = await this.userRepository.findOne(request.params.id);
+        const { 
+            // packageId,
+            // userId,
             Visitor_details,
             bookedStartDate,
            bookedEndDate,
@@ -45,8 +83,6 @@ export class BookingPackageController {
             Status} = request.body;
         if(!userToUpdate) throw Error('The user you are trying to update does not exist')
        const result = await this.userRepository.createQueryBuilder().update(BookingPackage).set({
-        packageId,
-         userId,
          Visitor_details,
          bookedStartDate,
         bookedEndDate,

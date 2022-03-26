@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Unique, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Unique, Column, OneToMany} from "typeorm";
 import { Length, IsNotEmpty } from "class-validator";
+import { BookingPackage } from "./BookingPackage";
 import * as bcrypt from "bcryptjs";
 @Entity()
 @Unique(["email"])
@@ -36,6 +37,19 @@ export class Authentication {
 
     @Column()
     profile_img: string;
+
+    @OneToMany(() => BookingPackage, bookingPackage => bookingPackage.user,{
+      cascade: true,
+   })
+    bookingPackage: BookingPackage[]
+    
+    // addBooking(bookingPackage: BookingPackage) {
+    //   if(this.bookingPackage == null) {
+    //     this.bookingPackage = new Array<BookingPackage>();
+    //   }
+    //   this.bookingPackage.push(bookingPackage);
+    // }
+
 
     hashPassword() {
         this.password = bcrypt.hashSync(this.password, 8);

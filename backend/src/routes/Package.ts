@@ -1,12 +1,15 @@
 import {PackageController} from "../controller/PackageController";
 import { param } from 'express-validator';
+import {checkJwt} from "../middleware/auth";
 export const Package = [
     {
         method: "post",
         route: "/api/v1/package",
         controller: PackageController,
         action: "save",
-        validation:[]
+        validation:[
+            checkJwt,
+        ]
     },
 
     {
