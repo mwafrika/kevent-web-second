@@ -25,6 +25,10 @@ createConnection()
             message: err.message
         });
     }
+
+    const homePage = (req: Request, res: Response) => {
+        res.send({message:"Welcome to Kevent API"});
+    }
     // register express routes from defined application routes
     routes.forEach(route => {
         (app as any)[route.method](route.route, 
@@ -46,7 +50,7 @@ createConnection()
     });
 
     app.use(handleError)
- 
+    app.use('/', homePage);
     app.listen(PORT)
 
     console.log(`Express server has started on port ${PORT}`);
