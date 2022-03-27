@@ -1,7 +1,7 @@
 const Connection = [
   {
     type: 'postgres',
-    url: 'postgres://yxocnxjmhyijxg:526c5ebabafb1a2f290c6957b7c2258d4e8b9fe1ef318bd56ecec420f13b7832@ec2-44-194-92-192.compute-1.amazonaws.com:5432/df7ueuvmk7b93d',
+    url: 'postgres://dzycvvqjalazzy:bc1d8ed96b2ad693e3703e4c57caed89e6012c0f1e428c24c5b182b8d3ad9578@ec2-52-73-155-171.compute-1.amazonaws.com:5432/dduser79lor18h',
     ssl: true,
     extra: {
       ssl: {
