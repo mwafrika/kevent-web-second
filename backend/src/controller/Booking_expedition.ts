@@ -1,13 +1,12 @@
 import {getRepository,In,getConnection} from "typeorm";
 import {NextFunction, Request, Response} from "express";
-import {BookingPackage} from "../entity/BookingPackage";
+import {BookingExpedition} from "../entity/Booking_expedition";
+import {Expeditions} from "../entity/Expeditions";
 
-import {Package} from "../entity/Package";
-import { Authentication } from '../entity/Authentication';
-export class BookingPackageController {
+export class BookingExpeditionController {
 
-    private userRepository = getRepository(BookingPackage);
-    private packageRepository = getRepository(Package);
+    private userRepository = getRepository(BookingExpedition);
+    private expeditionRepository = getRepository(Expeditions);
     async all(request: Request, response: Response, next: NextFunction) {
         return this.userRepository.find();
     }
@@ -21,22 +20,20 @@ export class BookingPackageController {
     async save(request: Request, response: Response, next: NextFunction) {
         const auth = response.locals.jwtPayload.userId
         console.log('Auth user',auth);
-        const packId = request.params.packageId;
-        const packages = await this.packageRepository.findOne({ // continue here
+        const expeditionId = request.params.expeditionId;
+        const expeditions = await this.expeditionRepository.findOne({ // continue here
             where: {
-                id: Number(packId)
+                id: Number(expeditionId)
             }
         });
-        if(!packages){
+        if(!expeditions){
             throw Error('Package you want to book does not exist')
         }
-        console.log(packages,"Verify token")
+        console.log(expeditions,"Verify token")
        
         let {
        
         Visitor_details,
-        bookedStartDate,
-        bookedEndDate,
         ticketNumber,
         additionnalInformation,
         Status,
@@ -45,21 +42,19 @@ export class BookingPackageController {
     
    return await this.userRepository.save({
         Visitor_details,
-        bookedStartDate,
-        bookedEndDate,
         ticketNumber,
         additionnalInformation,
         Status,
         id,
         userId: auth,
-        packageId:packages.id,
+        expeditionId:expeditions.id,
     });
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
         let userToRemove = await this.userRepository.findOne(request.params.id);
         if(!userToRemove) throw Error('The item you are trying to delete does not exist')
-        const result =  await this.userRepository.createQueryBuilder().delete().from(BookingPackage).where("id = :id", {id: request.params.id}).execute();
+        const result =  await this.userRepository.createQueryBuilder().delete().from(BookingExpedition).where("id = :id", {id: request.params.id}).execute();
         if(result.affected === 1){
             // throw Error('The item you are trying to delete does not exist')
         response.status(204).json({
@@ -76,19 +71,13 @@ export class BookingPackageController {
         let userToUpdate = await this.userRepository.findOne(request.params.id);
         const userId = await this.userRepository.findOne(request.params.id);
         const { 
-            // packageId,
-            // userId,
             Visitor_details,
-            bookedStartDate,
-           bookedEndDate,
             ticketNumber,
             additionnalInformation,
             Status} = request.body;
         if(!userToUpdate) throw Error('The user you are trying to update does not exist')
-       const result = await this.userRepository.createQueryBuilder().update(BookingPackage).set({
+       const result = await this.userRepository.createQueryBuilder().update(BookingExpedition).set({
          Visitor_details,
-         bookedStartDate,
-        bookedEndDate,
          ticketNumber,
          additionnalInformation,
          Status

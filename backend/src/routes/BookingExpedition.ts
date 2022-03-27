@@ -1,11 +1,11 @@
-import {BookingPackageController} from "../controller/Booking_package";
+import {BookingExpeditionController} from "../controller/Booking_expedition";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
-export const BookingPackages = [
+export const Booking_expeditions = [
     {
         method: "post",
-        route: "/api/v1/:packageId/bookPackage",
-        controller: BookingPackageController,
+        route: "/api/v1/:expeditionId/bookExpedition",
+        controller: BookingExpeditionController,
         action: "save",
         validation:[
             checkJwt,
@@ -14,8 +14,8 @@ export const BookingPackages = [
 
     {
         method: "get",
-        route: "/api/v1/bookPackages",
-        controller: BookingPackageController,
+        route: "/api/v1/bookExpeditions",
+        controller: BookingExpeditionController,
         action: "all",
         validation:[
             checkJwt,
@@ -23,8 +23,8 @@ export const BookingPackages = [
     },
     {
         method: "get",
-        route: "/api/v1/bookPackages/:id",
-        controller: BookingPackageController,
+        route: "/api/v1/bookExpeditions/:id",
+        controller: BookingExpeditionController,
         action: "one",
         validation:[
             checkJwt,
@@ -32,8 +32,8 @@ export const BookingPackages = [
     },
     {
         method: "delete",
-        route: "/api/v1/bookPackages/:id",
-        controller: BookingPackageController,
+        route: "/api/v1/bookExpeditions/:id",
+        controller: BookingExpeditionController,
         action: "remove",
         validation:[
             checkJwt,
@@ -41,8 +41,8 @@ export const BookingPackages = [
     },
     {
         method: "put",
-        route: "/api/v1/bookPackages/:id",
-        controller: BookingPackageController,
+        route: "/api/v1/bookExpeditions/:id",
+        controller: BookingExpeditionController,
         action: "update",
         validation:[
             checkJwt,

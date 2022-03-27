@@ -15,7 +15,7 @@ export class PackageController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        console.log('Auth user',response.locals.jwtPayload.userId);
+        console.log('VERIFY UPLOADS');
         return this.userRepository.save(request.body);
     }
 

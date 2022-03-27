@@ -1,6 +1,8 @@
 import {PackageController} from "../controller/PackageController";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
+import upload from '../middleware/multer';
+
 export const Package = [
     {
         method: "post",
@@ -8,8 +10,8 @@ export const Package = [
         controller: PackageController,
         action: "save",
         validation:[
-            checkJwt,
-        ]
+            upload.single('imageUrls'),
+            checkJwt],
     },
 
     {
@@ -17,28 +19,36 @@ export const Package = [
         route: "/api/v1/packages",
         controller: PackageController,
         action: "all",
-        validation:[]
+        validation:[
+            checkJwt,
+        ]
     },
     {
         method: "get",
         route: "/api/v1/packages/:id",
         controller: PackageController,
         action: "one",
-        validation:[]
+        validation:[
+            checkJwt
+        ]
     },
     {
         method: "delete",
         route: "/api/v1/packages/:id",
         controller: PackageController,
         action: "remove",
-        validation:[]
+        validation:[
+            checkJwt
+        ]
     },
     {
         method: "put",
         route: "/api/v1/packages/:id",
         controller: PackageController,
         action: "update",
-        validation:[]
+        validation:[
+            checkJwt
+        ]
     }
    
 ];

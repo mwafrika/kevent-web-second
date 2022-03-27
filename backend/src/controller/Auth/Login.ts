@@ -9,7 +9,9 @@ async save(request: Request, response: Response, next: NextFunction) {
 
     let { email, password } = request.body;
     if (!(email && password)) {
-      response.status(400).send();
+      response.status(400).send({
+        message: "email and password are required"
+      });
     }
 
     //Get user from database
@@ -18,12 +20,14 @@ async save(request: Request, response: Response, next: NextFunction) {
     try {
       user = await userRepository.findOneOrFail({ where: { email } });
     } catch (error) {
-      response.status(401).send();
+      response.status(401).send({
+        message: "email or password incorrect"
+      });
     }
 
     //Check if encrypted password match
     if (!user.checkIfUnencryptedPasswordIsValid(password)) {
-      response.status(401).send();
+      response.status(401).send({message: "email or password incorrect"});
       return;
     }
 

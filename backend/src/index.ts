@@ -4,7 +4,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
 import routes from "./routes";
-import * as helmet from "helmet";
+import * as fileUpload from 'express-fileupload';
 import * as cors from "cors";
 import {PORT} from './config'
 import * as morgan from 'morgan';
@@ -18,9 +18,11 @@ createConnection()
     app.use(morgan("tiny"));
     app.use(cors());
     
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
+    app.use('/uploads',express.static('uploads'));
 
-    const handleError = (err, req, res, next) =>{
+    const handleError = (err, req: Request, res: Response, next) =>{
         res.status(err.statusCode || 500).send({
             message: err.message
         });
@@ -29,6 +31,7 @@ createConnection()
     const homePage = (req: Request, res: Response) => {
         res.send({message:"Welcome to Kevent API"});
     }
+
     // register express routes from defined application routes
     routes.forEach(route => {
         (app as any)[route.method](route.route, 

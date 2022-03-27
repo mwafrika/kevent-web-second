@@ -1,5 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+import{BookingExpedition} from "./Booking_expedition";
 @Entity()
 export class Expeditions {
     @PrimaryGeneratedColumn()
@@ -26,9 +26,8 @@ export class Expeditions {
     @Column("simple-array")
     tags: string[];
 
-    @Column()
-    start_date: Date;
-
-    @Column()
-    end_date: Date;
+    @OneToMany(type => BookingExpedition, bookingExpedition => bookingExpedition.expedition,{
+        cascade: true
+     })
+     bookingExpedition: BookingExpedition[];
 }

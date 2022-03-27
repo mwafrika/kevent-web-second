@@ -11,6 +11,8 @@ export class ExpeditionController {
     }
 
     async one(request: Request, response: Response, next: NextFunction) {
+        let userToRemove = await this.userRepository.findOne(request.params.id);
+        if(!userToRemove) throw Error('The item you are trying to delete does not exist')
         return this.userRepository.findOne(request.params.id);
     }
 
@@ -39,7 +41,7 @@ export class ExpeditionController {
         if(!userToUpdate) throw Error('The user you are trying to update does not exist')
        const result = await this.userRepository.createQueryBuilder().update(Expeditions).set({
         price, description, itineraire, metadata,places, tags
-        }).where("id = :id", {id: request.params.id}).returning(["*"]).execute();
+        }).where("id = :id", {id: request.params.id}).returning(["price", "description", "itineraire", "metadata","places", "tags"]).execute();
 
         return result.raw[0]
     
