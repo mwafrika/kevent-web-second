@@ -50,7 +50,9 @@ export const Package = [
         controller: PackageController,
         action: "update",
         validation:[
-            checkJwt
+            checkJwt,
+            upload.array('imageUrls'),
+            cloudinary,
         ]
     }
    

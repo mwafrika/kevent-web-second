@@ -2,6 +2,7 @@ import {PlaceController} from "../controller/Places";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
 import upload from '../middleware/multer';
+import cloudinary from '../middleware/cloudinary';
 
 export const Places = [
     {
@@ -10,8 +11,11 @@ export const Places = [
         controller: PlaceController,
         action: "save",
         validation:[
-            upload.single('imageUrls'),
-            checkJwt],
+            checkJwt,
+            upload.array('imageUrls'),
+            cloudinary,
+        ],
+            
     },
 
     {
@@ -33,14 +37,20 @@ export const Places = [
         route: "/api/v1/places/:id",
         controller: PlaceController,
         action: "remove",
-        validation:[]
+        validation:[
+            checkJwt,
+        ]
     },
     {
         method: "put",
         route: "/api/v1/places/:id",
         controller: PlaceController,
         action: "update",
-        validation:[]
+        validation:[
+            checkJwt,
+            upload.array('imageUrls'),
+            cloudinary,
+        ]
     }
    
 ];
