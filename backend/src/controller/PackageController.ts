@@ -27,10 +27,10 @@ export class PackageController {
 
     async update(request: Request, response: Response, next: NextFunction) {
         let userToUpdate = await this.userRepository.findOne(request.params.id);
-        const {price, description, itineraire, metadata,places, tags} = request.body;
+        const {price, description,imageUrls, itineraire, metadata,places, tags} = request.body;
         if(!userToUpdate) throw Error('The user you are trying to update does not exist')
        const result = await this.userRepository.createQueryBuilder().update(Package).set({
-        price, description, itineraire, metadata,places, tags
+        price, description, itineraire, metadata,places, tags, imageUrls
         }).where("id = :id", {id: request.params.id}).returning(["id","description","price","imageUrls","itineraire","metadata","places","tags"]).execute();
 
         return result.raw[0]

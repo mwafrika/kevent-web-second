@@ -8,9 +8,9 @@ private userRepository = getRepository(Authentication);
 async save(request: Request, response: Response, next: NextFunction) {
 
 //Get parameters from the body
-let { firstName, password,lastName,surname,email,phone, address,sexe,profession,imageUrls, id } = request.body;
+let { firstName, password,lastName,surname,email,phone, address,sexe,profession,imageUrls } = request.body;
 let user = new Authentication();
-user.id = id;
+// user.id = id;
 user.firstName = firstName;
 user.lastName = lastName;
 user.surname = surname;
