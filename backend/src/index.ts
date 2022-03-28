@@ -20,7 +20,8 @@ createConnection()
     
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
-    app.use('/uploads',express.static('uploads'));
+    // app.use(express.static(__dirname));
+   
 
     const handleError = (err, req: Request, res: Response, next) =>{
         res.status(err.statusCode || 500).send({
@@ -54,6 +55,7 @@ createConnection()
 
     app.use(handleError)
     app.use('/', homePage);
+    app.use('/uploads',express.static('uploads'));
     app.listen(PORT)
 
     console.log(`Express server has started on port ${PORT}`);

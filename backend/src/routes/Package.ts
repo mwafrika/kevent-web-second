@@ -2,6 +2,7 @@ import {PackageController} from "../controller/PackageController";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
 import upload from '../middleware/multer';
+import cloudinary from '../middleware/cloudinary';
 
 export const Package = [
     {
@@ -10,8 +11,10 @@ export const Package = [
         controller: PackageController,
         action: "save",
         validation:[
-            upload.single('imageUrls'),
-            checkJwt],
+            checkJwt,
+            upload.array('imageUrls'),
+            cloudinary,
+        ],
     },
 
     {

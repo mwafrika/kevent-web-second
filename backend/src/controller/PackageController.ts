@@ -15,7 +15,7 @@ export class PackageController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        console.log('VERIFY UPLOADS');
+        console.log('VERIFY UPLOADS',request.body);
         return this.userRepository.save(request.body);
     }
 

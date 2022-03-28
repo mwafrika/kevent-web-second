@@ -1,6 +1,9 @@
 import {AuthenticationController} from "../controller/Auth/Authentication";
 import {Login} from "../controller/Auth/Login";
 import { param } from 'express-validator';
+import upload from '../middleware/multer';
+import cloudinary from '../middleware/cloudinary';
+
 export const Users = [
     
 {
@@ -8,8 +11,10 @@ export const Users = [
     route: "/api/v1/signup",
     controller: AuthenticationController,
     action: "save",
-    validation:[]
-
+    validation:[
+        upload.array('imageUrls'),
+        cloudinary,
+    ]
 },
 {
     method: "post",

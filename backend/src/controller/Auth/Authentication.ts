@@ -8,7 +8,7 @@ private userRepository = getRepository(Authentication);
 async save(request: Request, response: Response, next: NextFunction) {
 
 //Get parameters from the body
-let { firstName, password,lastName,surname,email,phone, address,sexe,profession,profile_img, id } = request.body;
+let { firstName, password,lastName,surname,email,phone, address,sexe,profession,imageUrls, id } = request.body;
 let user = new Authentication();
 user.id = id;
 user.firstName = firstName;
@@ -20,7 +20,7 @@ user.phone = phone;
 user.address = address;
 user.sexe = sexe;
 user.profession = profession;
-user.profile_img = profile_img;
+user.imageUrls = imageUrls;
 
 const errors = await validate(user);
 if (errors.length > 0) {
