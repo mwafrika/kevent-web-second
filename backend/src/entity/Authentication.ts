@@ -37,7 +37,7 @@ export class Authentication {
     @Column()
     profession: string;
 
-    @Column("simple-array")
+    @Column('simple-array')
     imageUrls: string[];
 
     @OneToMany(() => BookingPackage, bookingPackage => bookingPackage.user,{

@@ -32,6 +32,7 @@ user.hashPassword();
 const userRepository = getRepository(Authentication);
 try {
  
+  console.log(user);
   await userRepository.save(user);
   const token = jwt.sign({ userId: user.id, email: user.email },process.env.jwtSecret,{ expiresIn: "1h" })
   const authUser = jwt.decode(token);
