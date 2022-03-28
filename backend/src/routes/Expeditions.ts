@@ -1,6 +1,9 @@
 import {ExpeditionController} from "../controller/ExpeditionController";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
+import upload from '../middleware/multer';
+import cloudinary from '../middleware/cloudinary';
+
 export const Expeditions = [
     {
         method: "post",
@@ -8,7 +11,9 @@ export const Expeditions = [
         controller: ExpeditionController,
         action: "save",
         validation:[
-            checkJwt
+            checkJwt,
+            upload.array('imageUrls'),
+            cloudinary,
         ]
     },
 
@@ -45,7 +50,9 @@ export const Expeditions = [
         controller: ExpeditionController,
         action: "update",
         validation:[
-            checkJwt
+            checkJwt,
+            upload.array('imageUrls'),
+            cloudinary,
         ]
     }
    
