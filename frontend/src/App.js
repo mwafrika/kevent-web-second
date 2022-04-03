@@ -1,0 +1,25 @@
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
+import Home from './home';
+import About from './about';
+import ListExpeditions from './listExpeditions';
+import TopPackage from './listTopPackage';
+import DetailExpedition from './detailExpedition';
+import DetailPackage from './detailPackage';
+import NoPage from './noPage';
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/expeditions' element={<ListExpeditions />} />
+        <Route path='/packages' element={<TopPackage />} />
+        <Route path='/packages/:key' element={<DetailPackage />} />
+        <Route path='/expeditions/:key' element={<DetailExpedition />} />
+        <Route path='*' element={<NoPage />} />
+      </Routes>
+    </Router>
+  );
+}
