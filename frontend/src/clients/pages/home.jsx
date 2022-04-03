@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../assets/images/logo.svg';
+import '../assets/App.css';
 import Expeditions from './caroussel-expedition';
 import Packages from './caroussel-package';
-import data from './data';
-import Footer from './footer';
-import Header from './header';
+import data from '../api/data';
+import Footer from '../component/footer';
+import Header from '../component/header';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 const { expeditions, packages } = data;

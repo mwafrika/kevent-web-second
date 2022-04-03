@@ -1,5 +1,5 @@
 import moment from 'moment';
-export default {
+const data = {
   expeditions: [
     {
       key: 1,
@@ -147,3 +147,5 @@ export default {
     },
   ],
 };
+
+export default data;

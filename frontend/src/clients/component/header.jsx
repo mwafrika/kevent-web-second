@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import logo from './images/logo.png';
-import './App.css';
+import logo from '../assets/images/logo.png';
+import '../assets/App.css';
 
 const Header = () => {
   const [menu, setMenu] = useState(false);

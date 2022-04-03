@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Header from './header';
-import Footer from './footer';
-import data from './data';
-import './customize.css';
+import { useParams, Link } from 'react-router-dom';
+
+import Header from '../component/header';
+import Footer from '../component/footer';
+import data from '../api/data';
+import '../assets/customize.css';
 const { expeditions, packages } = data;
 
 const DetailPackage = (props) => {
@@ -13,10 +14,8 @@ const DetailPackage = (props) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const items = expeditions.find(
-    (expedition) => expedition.key === parseInt(key)
-  );
-  const related = expeditions.filter(
+  const items = packages.find((expedition) => expedition.key === parseInt(key));
+  const related = packages.filter(
     (expedition) => expedition.key !== parseInt(key)
   );
   const { date, description, image, lieu, prix } = items;
@@ -37,11 +36,13 @@ const DetailPackage = (props) => {
             <div className='overflow-auto whitespace-nowrap no-scrollbar'>
               <div className='flex flex-row  h-24  w-full gap-4 md:gap-3 lg:gap-x-5 xl:gap-x-6'>
                 {related.map((item) => (
+                  // <Link to={`/packages/${item.key}`}>
                   <img
                     src={item.image}
                     alt=''
                     className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
                   />
+                  // </Link>
                 ))}
               </div>
             </div>

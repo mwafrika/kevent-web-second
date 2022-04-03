@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import moment from 'moment';
-import './App.css';
-import Pagination from './pagination';
-import Header from './header';
-import Footer from './footer';
-import Banner from './bannerExped';
+import '../assets/App.css';
+import Pagination from '../component/pagination';
+import Header from '../component/header';
+import Footer from '../component/footer';
+import data from '../api/data';
+import Banner from '../component/bannerPack';
 import { Link } from 'react-router-dom';
-import data from './data';
-const expeditions = data.expeditions;
+const packages = data.packages;
 
 const List = () => {
   useEffect(() => {
@@ -92,7 +92,7 @@ const List = () => {
             </div>
           </div>
 
-          {expeditions.map(({ key, image, date, prix, lieu, description }) => (
+          {packages.map(({ key, image, date, prix, lieu, description }) => (
             <div
               className='h-full md:w-15 px-p-5 md:p-0 py-p-10 w-4/5 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-1/3.3 lg:w-15 mx-auto 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
 cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
@@ -100,7 +100,7 @@ cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
             >
               <Link
                 to={{
-                  pathname: `/expeditions/${key}`.trim(),
+                  pathname: `/packages/${key}`.trim(),
                   state: {
                     ...image,
                   },
@@ -109,7 +109,7 @@ cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
                 <img
                   src={image}
                   alt=''
-                  className='object-cover rounded-t-lg w-full  h-80'
+                  className='object-cover rounded-t-lg w-full h-80'
                 />
                 <div className='flex flex-col px-5  pb-10'>
                   <div className='flex flex-row justify-between items-center '>
