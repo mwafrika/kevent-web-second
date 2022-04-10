@@ -7,12 +7,15 @@ import TopPackage from '../pages/listTopPackage';
 import DetailExpedition from '../pages/detailExpedition';
 import DetailPackage from '../pages/detailPackage';
 import NoPage from '../pages/noPage';
+// Testing Admin homepage
+import AdminHome from '../../dashboard/pages/createPackage';
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        <Route index element={<Home />} />
+        {/* <Route index element={<Home />} />  */}
+        <Route index element={<AdminHome />} />
         <Route path='/about' element={<About />} />
         <Route path='/expeditions' element={<ListExpeditions />} />
         <Route path='/packages' element={<TopPackage />} />
