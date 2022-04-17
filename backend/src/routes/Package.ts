@@ -3,6 +3,7 @@ import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
 import upload from '../middleware/multer';
 import cloudinary from '../middleware/cloudinary';
+import {checkRole} from "../middleware/checkRole";
 
 export const Package = [
     {
@@ -12,6 +13,7 @@ export const Package = [
         action: "save",
         validation:[
             checkJwt,
+            checkRole(["ADMIN"]),
             upload.array('imageUrls'),
             cloudinary,
         ],
@@ -22,18 +24,14 @@ export const Package = [
         route: "/api/v1/packages",
         controller: PackageController,
         action: "all",
-        validation:[
-            checkJwt,
-        ]
+        validation:[]
     },
     {
         method: "get",
         route: "/api/v1/packages/:id",
         controller: PackageController,
         action: "one",
-        validation:[
-            checkJwt
-        ]
+        validation:[]
     },
     {
         method: "delete",
@@ -41,7 +39,8 @@ export const Package = [
         controller: PackageController,
         action: "remove",
         validation:[
-            checkJwt
+            checkJwt,
+            checkRole(["ADMIN"]),
         ]
     },
     {
@@ -51,6 +50,7 @@ export const Package = [
         action: "update",
         validation:[
             checkJwt,
+            checkRole(["ADMIN"]),
             upload.array('imageUrls'),
             cloudinary,
         ]

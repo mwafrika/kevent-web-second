@@ -1,6 +1,7 @@
 import {BookingExpeditionController} from "../controller/Booking_expedition";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
+
 export const Booking_expeditions = [
     {
         method: "post",

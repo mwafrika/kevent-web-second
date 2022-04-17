@@ -1,6 +1,8 @@
 import {BookingPackageController} from "../controller/Booking_package";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
+import {checkRole} from "../middleware/checkRole";
+
 export const BookingPackages = [
     {
         method: "post",
@@ -46,6 +48,7 @@ export const BookingPackages = [
         action: "update",
         validation:[
             checkJwt,
+            checkRole(["ADMIN"]),
         ]
     }
    

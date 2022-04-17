@@ -8,7 +8,7 @@ private userRepository = getRepository(Authentication);
 async save(request: Request, response: Response, next: NextFunction) {
 
 //Get parameters from the body
-let { firstName, password,lastName,surname,email,phone, address,sexe,profession,imageUrls } = request.body;
+let { firstName, password,lastName,surname,email,phone, address,sexe,profession,imageUrls, role } = request.body;
 let user = new Authentication();
 // user.id = id;
 user.firstName = firstName;
@@ -21,6 +21,7 @@ user.address = address;
 user.sexe = sexe;
 user.profession = profession;
 user.imageUrls = imageUrls;
+user.role = role;
 
 const errors = await validate(user);
 if (errors.length > 0) {
@@ -34,7 +35,7 @@ try {
  
   console.log(user);
   await userRepository.save(user);
-  const token = jwt.sign({ userId: user.id, email: user.email },process.env.jwtSecret,{ expiresIn: "1h" })
+  const token = jwt.sign({ userId: user.id, email: user.email, role: user.role },process.env.jwtSecret,{ expiresIn: "1h" })
   const authUser = jwt.decode(token);
  response.status(201).send({message:"User created",token, authUser});
 } catch (e) {

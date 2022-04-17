@@ -2,6 +2,7 @@ import {ExpeditionController} from "../controller/ExpeditionController";
 import { param } from 'express-validator';
 import {checkJwt} from "../middleware/auth";
 import upload from '../middleware/multer';
+import {checkRole} from "../middleware/checkRole";
 import cloudinary from '../middleware/cloudinary';
 
 export const Expeditions = [
@@ -12,6 +13,7 @@ export const Expeditions = [
         action: "save",
         validation:[
             checkJwt,
+            checkRole(["ADMIN"]),
             upload.array('imageUrls'),
             cloudinary,
         ]
@@ -22,18 +24,14 @@ export const Expeditions = [
         route: "/api/v1/expeditions",
         controller: ExpeditionController,
         action: "all",
-        validation:[
-            checkJwt
-        ]
+        validation:[]
     },
     {
         method: "get",
         route: "/api/v1/expeditions/:id",
         controller: ExpeditionController,
         action: "one",
-        validation:[
-            checkJwt
-        ]
+        validation:[]
     },
     {
         method: "delete",
@@ -41,7 +39,8 @@ export const Expeditions = [
         controller: ExpeditionController,
         action: "remove",
         validation:[
-            checkJwt
+            checkJwt,
+            checkRole(["ADMIN"]),
         ]
     },
     {
@@ -51,6 +50,7 @@ export const Expeditions = [
         action: "update",
         validation:[
             checkJwt,
+            checkRole(["ADMIN"]),
             upload.array('imageUrls'),
             cloudinary,
         ]

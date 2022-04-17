@@ -37,6 +37,10 @@ export class Authentication {
     @Column()
     profession: string;
 
+    @Column()
+    @IsNotEmpty()
+    role: string;
+
     @Column('simple-array')
     imageUrls: string[];
 
