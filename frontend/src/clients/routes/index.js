@@ -8,14 +8,16 @@ import DetailExpedition from '../pages/detailExpedition';
 import DetailPackage from '../pages/detailPackage';
 import NoPage from '../pages/noPage';
 // Testing Admin homepage
-import AdminHome from '../../dashboard/pages/createPackage';
+import Signup from '../pages/signup';
+import Login from '../pages/login';
 
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route index element={<Home />} />
-        {/* <Route index element={<AdminHome />} /> */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/about' element={<About />} />
         <Route path='/expeditions' element={<ListExpeditions />} />
         <Route path='/packages' element={<TopPackage />} />

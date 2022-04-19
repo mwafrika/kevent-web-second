@@ -32,12 +32,13 @@ if (errors.length > 0) {
 user.hashPassword();
 const userRepository = getRepository(Authentication);
 try {
- 
-  console.log(user);
   await userRepository.save(user);
-  const token = jwt.sign({ userId: user.id, email: user.email, role: user.role },process.env.jwtSecret,{ expiresIn: "1h" })
-  const authUser = jwt.decode(token);
- response.status(201).send({message:"User created",token, authUser});
+  const token = jwt.sign({ userId: user.id, email: user.email, role: user.role }, process.env.jwtSecret, { expiresIn: "1h" })
+  const authUser =  jwt.decode(token);
+
+  console.log(authUser,'authUser');
+
+ return response.status(201).send({message:"User created",token, authUser});
 } catch (e) {
   response.status(409).send("email already in use");
   return;
