@@ -34,7 +34,7 @@ const Login = () => {
       address: '',
       sexe: '',
       profession: '',
-      role: '',
+      role: 'USER',
     });
     resetFile();
     console.log(error, 'Find error');
@@ -174,6 +174,14 @@ const Login = () => {
                   required
                 />
               </div>
+              <input
+                className=''
+                type='hidden'
+                name='role'
+                value={create.role}
+                onChange={handleOnChange}
+                required
+              />
               <div className='w-[45%] flex flex-col my-2'>
                 <input
                   className='w-full border border-gray-400 p-1  rounded-lg bg-white block text-sm text-slate-500
@@ -184,17 +192,6 @@ const Login = () => {
                   ref={ref}
                   name='imageUrls'
                   onChange={handleOnChangeImage}
-                  required
-                />
-              </div>
-
-              <div className='w-[45%] flex flex-col my-2'>
-                <input
-                  className='w-full border border-gray-400 p-2 outline-none focus:border-blue-500 rounded-lg bg-white '
-                  type='hidden'
-                  name='role'
-                  value={create.role}
-                  onChange={handleOnChange}
                   required
                 />
               </div>

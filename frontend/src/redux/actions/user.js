@@ -18,6 +18,8 @@ export const signup = (userData) => (dispatch) => {
           type: REGISTER_SUCCESS,
           payload: response.data,
         });
+        // set token to local storage
+        localStorage.setItem('token', response.data.token);
       } else {
         dispatch({
           type: REGISTER_FAILURE,
