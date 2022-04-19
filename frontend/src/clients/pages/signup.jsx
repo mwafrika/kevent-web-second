@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../../redux/actions/user';
 
 const Login = () => {
@@ -16,12 +16,31 @@ const Login = () => {
     imageUrls: '',
     role: 'USER',
   });
+
   const dispatch = useDispatch();
+  const error = useSelector((state) => state.user);
+  const ref = useRef();
 
   const handleSignup = (event) => {
     event.preventDefault();
     dispatch(signup(create));
-    setCreate(create);
+    setCreate({
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      surname: '',
+      phone: '',
+      address: '',
+      sexe: '',
+      profession: '',
+      role: '',
+    });
+    resetFile();
+    console.log(error, 'Find error');
+  };
+  const resetFile = () => {
+    ref.current.value = '';
   };
 
   const handleOnChange = (event) => {
@@ -162,6 +181,7 @@ const Login = () => {
                     file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 focus:file:bg-violet-100 cursor-pointer 
                       '
                   type='file'
+                  ref={ref}
                   name='imageUrls'
                   onChange={handleOnChangeImage}
                   required

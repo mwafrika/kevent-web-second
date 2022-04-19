@@ -32,16 +32,27 @@ if (errors.length > 0) {
 user.hashPassword();
 const userRepository = getRepository(Authentication);
 try {
+ 
+  console.log(user);
+ 
+//are fiels defined ?
+if (user.firstName && user.lastName && user.surname && user.password && user.email && user.phone && user.address && user.sexe && user.profession && user.imageUrls && user.role) {
+  const emailExist = await userRepository.findOne({email:user.email});
+  if(emailExist){
+    response.status(400).send({message:"Email already exist"});
+    return;
+  }
+
   await userRepository.save(user);
-  const token = jwt.sign({ userId: user.id, email: user.email, role: user.role }, process.env.jwtSecret, { expiresIn: "1h" })
-  const authUser =  jwt.decode(token);
-
-  console.log(authUser,'authUser');
-
- return response.status(201).send({message:"User created",token, authUser});
+  const token = jwt.sign({ userId: user.id, email: user.email, role: user.role },process.env.jwtSecret,{ expiresIn: "1h" })
+  const authUser = jwt.decode(token);
+  response.status(201).send({message:"User created",token, authUser});
+}
+else{  
+  response.status(400).send({message:"Missing fields"});
+}
 } catch (e) {
-  response.status(409).send("email already in use");
-  return;
+  throw new Error(e);
 }
   return this.userRepository.save(request.body);
     }

@@ -12,33 +12,42 @@ export class Authentication {
 
     @Column()
     firstName: string;
+    // @IsNotEmpty()
 
     @Column()
     lastName: string;
+    // @IsNotEmpty()
 
     @Column()
     surname: string;
+    // @IsNotEmpty()
 
     @Column()
     password: string;
+    // @IsNotEmpty()
 
     @Column()
     email: string;
+    // @IsNotEmpty()
 
     @Column()
     phone: string;
+    // @IsNotEmpty()
 
     @Column()
     address: string;
+    // @IsNotEmpty()
 
     @Column()
     sexe: string;
+    // @IsNotEmpty()
 
     @Column()
     profession: string;
+    // @IsNotEmpty()
 
     @Column()
-    @IsNotEmpty()
+    // @IsNotEmpty()
     role: string;
 
     @Column('simple-array')

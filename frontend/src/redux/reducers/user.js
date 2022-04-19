@@ -22,48 +22,61 @@ const initialState = {
     imageUrls: '',
     role: 'USER',
   },
+  hasError: false,
+  message: '',
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
-        ...state.user,
+        ...state,
         user: action.payload,
         isAuthenticated: true,
+        hasError: false,
+        message: '',
       };
-
     case LOGIN_FAILURE:
-      return {
-        ...state.user,
-        user: {},
-        isAuthenticated: false,
-      };
-    case LOGOUT_SUCCES:
       console.log(action.payload, 'my action payload reducer success');
       return {
         ...state,
+        hasError: true,
         user: {},
         isAuthenticated: false,
+        message: action.payload,
       };
     case LOGOUT_FAILURE:
-      console.log(action.payload, 'my action payload reducer failure');
+      console.log(action.payload, 'my action payload reducer success');
       return {
         ...state,
-        isAuthenticated: false,
+        hasError: true,
         user: {},
+        isAuthenticated: false,
+        message: action.payload,
+      };
+    case LOGOUT_SUCCES:
+      return {
+        ...state,
+        hasError: false,
+        user: {},
+        isAuthenticated: false,
+        message: '',
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
         user: action.payload,
+        hasError: false,
         isAuthenticated: false,
+        message: '',
       };
     case REGISTER_FAILURE:
       return {
         ...state,
-        user: state.payload,
+        user: action.payload,
+        hasError: true,
         isAuthenticated: false,
+        message: action.payload,
       };
     default:
       console.log(action.payload, 'my action payload reducer default');

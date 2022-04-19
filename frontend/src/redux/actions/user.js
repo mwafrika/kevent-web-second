@@ -8,23 +8,28 @@ import {
 } from '../actionTypes/users';
 import * as userApi from '../Api/user';
 
-import axios from 'axios';
-const loginUrl = 'http://localhost:5000/api/v1/signin';
-const signupUrl = 'http://localhost:5000/api/v1/signup';
-
-export const signup = (userData) => async (dispatch) => {
-  const { data } = userApi.signup(userData);
-  try {
-    console.log(data, 'Response actions');
-
-    dispatch({
-      type: REGISTER_SUCCESS,
-      payload: data,
+export const signup = (userData) => (dispatch) => {
+  // const response = await userApi.signup(userData);
+  userApi
+    .signup(userData)
+    .then((response) => {
+      if (response.status === 201) {
+        dispatch({
+          type: REGISTER_SUCCESS,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: REGISTER_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to signup');
+      dispatch({
+        type: REGISTER_FAILURE,
+        payload: error.response.data.message,
+      });
     });
-  } catch (error) {
-    dispatch({
-      type: REGISTER_FAILURE,
-      payload: error.message,
-    });
-  }
 };
