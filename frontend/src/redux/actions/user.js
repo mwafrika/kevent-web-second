@@ -35,3 +35,32 @@ export const signup = (userData) => (dispatch) => {
       });
     });
 };
+
+export const login = (userData) => (dispatch) => {
+  // const response = await userApi.login(userData);
+  userApi
+    .login(userData)
+    .then((response) => {
+      if (response.status === 200) {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: response.data,
+        });
+        // set token to local storage
+        console.log(response.data, 'response login data');
+        localStorage.setItem('token', response.data.token);
+      } else {
+        dispatch({
+          type: LOGIN_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to login');
+      dispatch({
+        type: LOGIN_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};

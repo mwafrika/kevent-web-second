@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signup } from '../../redux/actions/user';
+import { Link } from 'react-router-dom';
+import { login } from '../../redux/actions/user';
 
 const Login = () => {
-  const [login, setLogin] = useState({
+  const [userLogin, setLogin] = useState({
     email: '',
     password: '',
   });
@@ -11,8 +12,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(signup(login));
-    setLogin(login);
+    dispatch(login(userLogin));
+    setLogin({
+      email: '',
+      password: '',
+    });
   };
 
   const handleOnChange = (event) => {
@@ -44,6 +48,9 @@ const Login = () => {
                   className='w-full border border-gray-400 p-2 outline-none focus:border-blue-500 rounded-lg bg-white invalid:border-red-500'
                   type='email'
                   placeholder='Email'
+                  name='email'
+                  value={userLogin.email}
+                  onChange={handleOnChange}
                 />
               </div>
               <div className='flex flex-col my-2 w-full'>
@@ -51,10 +58,16 @@ const Login = () => {
                   className='w-full border border-gray-400 p-2 outline-none focus:border-blue-500 rounded-lg bg-white invalid:border-red-500'
                   type='password'
                   placeholder='password'
+                  name='password'
+                  value={userLogin.password}
+                  onChange={handleOnChange}
                 />
               </div>
 
-              <button className='w-full bg-slate-500 text-white p-2 rounded-lg hover:bg-slate-600'>
+              <button
+                type='submit'
+                className='w-full bg-slate-500 text-white p-2 rounded-lg hover:bg-slate-600'
+              >
                 Sign In
               </button>
             </form>
@@ -64,14 +77,14 @@ const Login = () => {
                 <p className='text-gray-500'> Forgot your password?</p>
                 <span className='text-slate-800'>
                   &nbsp;
-                  <a href='#'>Reset here</a>
+                  <Link to='/reset'>Reset here</Link>
                 </span>
               </div>
               <div className='text-sm flex justify-start'>
                 <p className='text-gray-500'>Don't have an account?</p>
                 <span className='text-slate-800'>
                   &nbsp;
-                  <a href='/signup'>Sign Up</a>
+                  <Link to='/signup'>Sign Up</Link>
                 </span>
               </div>
             </div>

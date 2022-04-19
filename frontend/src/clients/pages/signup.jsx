@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { signup } from '../../redux/actions/user';
 
 const Login = () => {
@@ -208,7 +209,7 @@ const Login = () => {
               Do you have an account?
               <span className='text-slate-700'>
                 &nbsp;
-                <a href='/login'>Login here</a>
+                <Link to='/login'>Login here</Link>
               </span>
             </div>
           </div>
