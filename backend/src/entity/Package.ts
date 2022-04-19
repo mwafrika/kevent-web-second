@@ -9,6 +9,9 @@ export class Package {
     description: string;
 
     @Column()
+    title: string;
+
+    @Column()
     price: number;
 
     @Column("simple-array")
