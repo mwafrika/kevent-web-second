@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.react-multi-carousel-dot-list {
+  bottom: 40px !important;
+}
+
+.react-multi-carousel-track {
+  column-gap: 1% !important;
+}
+
+.item-carousel {
+  width: 80% !important;
+}
+
+.inputs {
+  background-color: rgba(71, 85, 105, 0.42);
+}
+
+.filter {
+  background-color: rgba(71, 85, 105, 0.08);
+}
+
+.btn-filter {
+  background-color: rgba(71, 85, 105, 0.38);
+  color: #475569;
+}
+.btn-filter:focus {
+  background-color: #475569;
+  color: white;
+}
+
+.title-description {
+  color: #475569;
+}
+.select-city {
+  background-color: #475569;
+  color: white;
+}
+
+.header.active {
+  background-color: #475569;
+}
+
+.no-scroll {
+  background-color: #475569;
+}
+.filter-button {
+  row-gap: 7px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
