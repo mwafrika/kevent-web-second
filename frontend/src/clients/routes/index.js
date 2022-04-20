@@ -10,6 +10,11 @@ import NoPage from '../pages/noPage';
 // Testing Admin homepage
 import Signup from '../pages/signup';
 import Login from '../pages/login';
+import PackageForm from '../../dashboard/pages/createPackage';
+import Packages from '../../dashboard/pages/packages';
+import Package from '../../dashboard/pages/package';
+import EditPackage from '../../dashboard/pages/editPackage';
+import Dashboard from '../../dashboard/pages/home';
 
 export default function App() {
   return (
@@ -19,6 +24,11 @@ export default function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/about' element={<About />} />
+        <Route path='/admin/home' element={<Dashboard />} />
+        <Route path='/admin/create/package' element={<PackageForm />} />
+        <Route path='/admin/packages' element={<Packages />} />
+        <Route path='/admin/packages/:key' element={<Package />} />
+        <Route path='/admin/edit/packages/:key' element={<EditPackage />} />
         <Route path='/expeditions' element={<ListExpeditions />} />
         <Route path='/packages' element={<TopPackage />} />
         <Route path='/packages/:key' element={<DetailPackage />} />

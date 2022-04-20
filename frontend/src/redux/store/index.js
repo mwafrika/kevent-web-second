@@ -2,11 +2,11 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import userReducer from '../reducers/user';
-import userErrorReducer from '../reducers/userError';
+import packageReducer from '../reducers/package';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  // userError: userErrorReducer,
+  packages: packageReducer,
 });
 
 const store = createStore(

@@ -32,11 +32,11 @@ async save(request: Request, response: Response, next: NextFunction) {
     }
 
     //Sing JWT, valid for 1 hour
-    const token = jwt.sign({ userId: user.id, email: user.email },process.env.jwtSecret,{ expiresIn: "1h" }
-    );
+    const token = jwt.sign({ userId: user.id, email: user.email },process.env.jwtSecret,{ expiresIn: "1h" });
    const authUser = jwt.decode(token);
     //Send the jwt in the response
     response.send({token, authUser});
+
 }
 }
 

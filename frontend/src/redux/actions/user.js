@@ -8,7 +8,7 @@ import {
 } from '../actionTypes/users';
 import * as userApi from '../Api/user';
 
-export const signup = (userData) => (dispatch) => {
+export const signup = (userData, navigate) => (dispatch) => {
   // const response = await userApi.signup(userData);
   userApi
     .signup(userData)
@@ -19,7 +19,8 @@ export const signup = (userData) => (dispatch) => {
           payload: response.data,
         });
         // set token to local storage
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data));
+        navigate('/login');
       } else {
         dispatch({
           type: REGISTER_FAILURE,
@@ -36,8 +37,7 @@ export const signup = (userData) => (dispatch) => {
     });
 };
 
-export const login = (userData) => (dispatch) => {
-  // const response = await userApi.login(userData);
+export const login = (userData, navigate) => (dispatch) => {
   userApi
     .login(userData)
     .then((response) => {
@@ -46,9 +46,10 @@ export const login = (userData) => (dispatch) => {
           type: LOGIN_SUCCESS,
           payload: response.data,
         });
-        // set token to local storage
+
         console.log(response.data, 'response login data');
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data));
+        navigate('/admin/home');
       } else {
         dispatch({
           type: LOGIN_FAILURE,

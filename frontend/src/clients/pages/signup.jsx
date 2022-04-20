@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signup } from '../../redux/actions/user';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [create, setCreate] = useState({
@@ -19,12 +20,13 @@ const Login = () => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const error = useSelector((state) => state.user);
   const ref = useRef();
 
   const handleSignup = (event) => {
     event.preventDefault();
-    dispatch(signup(create));
+    dispatch(signup(create, navigate));
     setCreate({
       email: '',
       password: '',
@@ -59,7 +61,7 @@ const Login = () => {
   };
 
   return (
-    <div className='grid grid-cols-12 grid-rows-[100px_minmax(700px,1fr)_100px] h-screen bg-gray-100'>
+    <div className='grid grid-cols-12 grid-rows-[78px_minmax(300px,632px)_78px] bg-gray-200'>
       <div className='col-start-2 col-end-12 row-start-2 row-end-3 bg-white flex shadow-lg'>
         <div className='w-[45%]'>
           <img

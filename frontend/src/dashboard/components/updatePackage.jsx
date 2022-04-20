@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPackages } from '../../redux/actions/package';
+import { useParams } from 'react-router-dom';
+import { updatePackage, getSingle } from '../../redux/actions/package';
 import Header from './header';
 
-const CreatePackage = () => {
-  const [state, setState] = useState({
+const UpdatePackage = () => {
+  const dispatch = useDispatch();
+  const [packages, setPackages] = useState({
     title: '',
     description: '',
     price: '',
@@ -15,34 +17,44 @@ const CreatePackage = () => {
     tags: '',
   });
 
-  const ref = useRef();
-  const dispatch = useDispatch();
-  const packages = useSelector((state) => state.packages);
-
   const handleChange = (e) => {
-    setState({
-      ...state,
+    setPackages({
+      ...packages,
       [e.target.name]: e.target.value,
     });
   };
 
+  const { singlePackage } = useSelector((state) => state.packages);
+  const { key } = useParams();
+
+  //   useEffect(() => {
+  //     dispatch(getSingle(key));
+  //   }, []);
+
+  //   useEffect(() => {
+  //     if (singlePackage) {
+  //       setPackages({
+  //         ...singlePackage,
+  //       });
+  //     }
+  //   }, [singlePackage]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPackages(state));
-    resetFile();
-    console.log(packages, 'created packages');
-  };
-
-  const resetFile = () => {
-    ref.current.value = '';
+    dispatch(updatePackage(key, packages));
   };
 
   const handleOnChangeImage = (event) => {
-    setState((prevState) => ({
+    setPackages((prevState) => ({
       ...prevState,
       imageUrls: event.target.files[0],
     }));
   };
+
+  const ref = useRef();
+
+  const { title, description, price, itineraire, metadata, places, tags } =
+    packages;
 
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-7/12'>
@@ -65,7 +77,7 @@ const CreatePackage = () => {
                       name='title'
                       id='title'
                       onChange={(e) => handleChange(e)}
-                      value={state.title}
+                      value={title || ''}
                       autoComplete='given-name'
                       placeholder='Title'
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
@@ -81,7 +93,7 @@ const CreatePackage = () => {
                     </label>
                     <input
                       type='number'
-                      value={state.price}
+                      value={price || ''}
                       id='price'
                       name='price'
                       placeholder='Price'
@@ -101,7 +113,7 @@ const CreatePackage = () => {
                     <select
                       id='places'
                       name='places'
-                      value={state.places}
+                      value={places || ''}
                       onChange={(e) => handleChange(e)}
                       autoComplete='places'
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
@@ -124,7 +136,7 @@ const CreatePackage = () => {
                       name='tags'
                       id='tags'
                       placeholder='Tags'
-                      value={state.tags}
+                      value={tags || ''}
                       onChange={(e) => handleChange(e)}
                       autoComplete='tags'
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
@@ -143,7 +155,7 @@ const CreatePackage = () => {
                       name='itineraire'
                       id='itineraire'
                       placeholder='Itineraire'
-                      value={state.itineraire}
+                      value={itineraire || ''}
                       onChange={(e) => handleChange(e)}
                       autoComplete='address-level2'
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
@@ -159,8 +171,8 @@ const CreatePackage = () => {
                     </label>
                     <input
                       className='w-full border border-gray-300 p-1  rounded-lg bg-white block text-sm text-slate-500
-                      file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
-                    file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 focus:file:bg-violet-100 cursor-pointer '
+                    file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
+                  file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 focus:file:bg-violet-100 cursor-pointer '
                       type='file'
                       id='formFile'
                       name='imageUrls'
@@ -169,7 +181,12 @@ const CreatePackage = () => {
                       ref={ref}
                     />
                   </div>
-                  <input type='hidden' id='formFile' name='metadata' />
+                  <input
+                    type='hidden'
+                    id='formFile'
+                    name='metadata'
+                    value={metadata}
+                  />
                   <div className='col-span-6 sm:col-span-3 lg:col-span-full'>
                     <label
                       htmlFor='description'
@@ -182,7 +199,7 @@ const CreatePackage = () => {
                       name='description'
                       id='description'
                       placeholder='Description'
-                      value={state.description}
+                      value={description || ''}
                       onChange={(e) => handleChange(e)}
                       autoComplete='description'
                       rows='5'
@@ -208,4 +225,4 @@ const CreatePackage = () => {
   );
 };
 
-export default CreatePackage;
+export default UpdatePackage;

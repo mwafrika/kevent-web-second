@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../redux/actions/user';
 
 const Login = () => {
@@ -9,10 +9,11 @@ const Login = () => {
     password: '',
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(login(userLogin));
+    dispatch(login(userLogin, navigate));
     setLogin({
       email: '',
       password: '',
@@ -27,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <div className='grid grid-cols-12 grid-rows-[100px_minmax(700px,1fr)_100px] h-screen bg-gray-100'>
+    <div className='grid grid-cols-12 grid-rows-[78px_minmax(300px,632px)_78px] bg-gray-200'>
       <div className='col-start-3 col-end-11 row-start-2 row-end-3 bg-white flex shadow-lg'>
         <div className='w-1/2'>
           <img
