@@ -90,7 +90,7 @@ export const getSingle = (id) => (dispatch) => {
     });
 };
 
-export const updatePackage = (id, packageData) => (dispatch) => {
+export const updatePackage = (id, packageData, navigate) => (dispatch) => {
   packageApi
     .updatePackage(id, packageData)
     .then((response) => {
@@ -100,6 +100,7 @@ export const updatePackage = (id, packageData) => (dispatch) => {
           type: UPDATE_PACKAGE_SUCCESS,
           payload: response.data,
         });
+        navigate('/admin/packages');
       } else {
         dispatch({
           type: UPDATE_PACKAGE_FAILURE,
@@ -111,6 +112,33 @@ export const updatePackage = (id, packageData) => (dispatch) => {
       console.log(error.response.data.message, 'unable to update package');
       dispatch({
         type: UPDATE_PACKAGE_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
+
+export const deletePackage = (id, navigate) => (dispatch) => {
+  packageApi
+    .deletePackage(id)
+    .then((response) => {
+      console.log('See delete package action', response);
+      if (response.status === 200) {
+        dispatch({
+          type: DELETE_PACKAGE_SUCCESS,
+          payload: response.data,
+        });
+        navigate('/admin/packages');
+      } else {
+        dispatch({
+          type: DELETE_PACKAGE_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to delete package');
+      dispatch({
+        type: DELETE_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
     });

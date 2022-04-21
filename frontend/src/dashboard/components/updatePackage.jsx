@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { updatePackage, getSingle } from '../../redux/actions/package';
 import Header from './header';
 
 const UpdatePackage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { key } = useParams();
+
   const [packages, setPackages] = useState({
     title: '',
     description: '',
@@ -25,7 +28,6 @@ const UpdatePackage = () => {
   };
 
   const { singlePackage } = useSelector((state) => state.packages);
-  const { key } = useParams();
 
   useEffect(() => {
     dispatch(getSingle(key));
@@ -41,7 +43,7 @@ const UpdatePackage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updatePackage(key, packages));
+    dispatch(updatePackage(key, packages, navigate));
   };
 
   const handleOnChangeImage = (event) => {

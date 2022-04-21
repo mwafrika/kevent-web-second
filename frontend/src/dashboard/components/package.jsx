@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingle } from '../../redux/actions/package';
+import { getSingle, deletePackage } from '../../redux/actions/package';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Header from './header';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +27,10 @@ const CreatePackage = () => {
     tags,
   } = singlePackage;
 
+  const handleDelete = () => {
+    dispatch(deletePackage(key, navigate));
+  };
+
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-[95%]'>
       <Header title='Packets' />
@@ -42,11 +46,12 @@ const CreatePackage = () => {
                 <FontAwesomeIcon icon={faPenToSquare} />
               </span>
             </Link>
-            <Link to={`/admin/package/delete/${key}`}>
-              <span className=' text-red-500 cursor-pointer'>
-                <FontAwesomeIcon icon={faTrashCan} />
-              </span>
-            </Link>
+            <span
+              className=' text-red-500 cursor-pointer'
+              onClick={handleDelete}
+            >
+              <FontAwesomeIcon icon={faTrashCan} />
+            </span>
           </div>
         </div>
         <div className='md:mt-0 md:col-span-2 h-[60vh]  flex flex-row justify-between'>

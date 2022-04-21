@@ -5,6 +5,7 @@ const createPackageUrl = 'http://localhost:5000/api/v1/package';
 const getAll = 'http://localhost:5000/api/v1/packages';
 const getOne = 'http://localhost:5000/api/v1/packages/';
 const updatePackageUrl = 'http://localhost:5000/api/v1/packages/';
+const deletePackageUrl = 'http://localhost:5000/api/v1/packages/';
 
 export const login = (data) => {
   return axios.post(loginUrl, data);
@@ -101,6 +102,22 @@ export const updatePackage = (id, data) => {
     data: bodyFormData,
     headers: {
       'Content-Type': 'multipart/form-data',
+      auth: user.token,
+    },
+  });
+  return response;
+};
+
+export const deletePackage = (id) => {
+  let user;
+
+  user = JSON.parse(localStorage.getItem('user'));
+  console.log(user, 'token in create package not empty');
+
+  const response = axios({
+    method: 'delete',
+    url: `${deletePackageUrl}${id}`,
+    headers: {
       auth: user.token,
     },
   });

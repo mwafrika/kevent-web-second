@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPackages } from '../../redux/actions/package';
 import Header from './header';
@@ -17,6 +18,7 @@ const CreatePackage = () => {
 
   const ref = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const packages = useSelector((state) => state.packages);
 
   const handleChange = (e) => {
@@ -28,7 +30,17 @@ const CreatePackage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPackages(state));
+    dispatch(createPackages(state, navigate));
+    setState({
+      title: '',
+      description: '',
+      price: '',
+      imageUrls: '',
+      itineraire: '',
+      metadata: '',
+      places: '',
+      tags: '',
+    });
     resetFile();
     console.log(packages, 'created packages');
   };
