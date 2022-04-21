@@ -38,10 +38,9 @@ export const createPackage = async (data) => {
   let bodyFormData = new FormData();
   let user;
 
-  if (user != null) {
-    user = JSON.parse(localStorage.getItem('user'));
-    console.log(user, 'token in create package not empty');
-  }
+  user = JSON.parse(localStorage.getItem('user'));
+  console.log(user, 'token in create package not empty');
+
   bodyFormData.append('title', data.title);
   bodyFormData.append('description', data.description);
   bodyFormData.append('price', data.price);
@@ -50,17 +49,17 @@ export const createPackage = async (data) => {
   bodyFormData.append('metadata', data.metadata);
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
-
+  console.log(user.token, 'user Joooooohn');
   const response = await axios({
     method: 'post',
     url: createPackageUrl,
     data: bodyFormData,
     headers: {
       'Content-Type': 'multipart/form-data',
-      auth: user,
+      auth: user.token,
     },
   });
-  console.log(user, 'my new token');
+  console.log(user.token, 'my new token');
   return response;
 };
 
