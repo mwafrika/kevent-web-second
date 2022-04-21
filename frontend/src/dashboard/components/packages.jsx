@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const Table = () => {
   const dispatch = useDispatch();
   const { packages } = useSelector((state) => state.packages);
-
+  packages.sort((a, b) => b.id - a.id);
   useEffect(() => {
     dispatch(packackages());
   }, [dispatch]);

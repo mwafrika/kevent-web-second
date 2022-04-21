@@ -12,7 +12,7 @@ import {
 } from '../actionTypes/package';
 import * as packageApi from '../Api/user';
 
-export const createPackages = (packageData) => (dispatch) => {
+export const createPackages = (packageData, clearForm) => (dispatch) => {
   packageApi
     .createPackage(packageData)
     .then((response) => {
@@ -22,6 +22,7 @@ export const createPackages = (packageData) => (dispatch) => {
           type: CREATE_PACKAGE_SUCCESS,
           payload: response.data,
         });
+        clearForm();
       } else {
         dispatch({
           type: CREATE_PACKAGE_FAILURE,

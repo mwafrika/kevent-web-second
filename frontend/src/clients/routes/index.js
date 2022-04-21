@@ -15,6 +15,11 @@ import Packages from '../../dashboard/pages/packages';
 import Package from '../../dashboard/pages/package';
 import EditPackage from '../../dashboard/pages/editPackage';
 import Dashboard from '../../dashboard/pages/home';
+import AdminExpeditions from '../../dashboard/pages/expeditions';
+import AdminBookExpedition from '../../dashboard/pages/bookExpeditions';
+import AdminBookPackage from '../../dashboard/pages/bookPackage';
+import Places from '../../dashboard/pages/places';
+import Users from '../../dashboard/pages/users';
 
 export default function App() {
   return (
@@ -27,6 +32,15 @@ export default function App() {
         <Route path='/admin/home' element={<Dashboard />} />
         <Route path='/admin/create/package' element={<PackageForm />} />
         <Route path='/admin/packages' element={<Packages />} />
+        <Route path='/admin/expeditions' element={<AdminExpeditions />} />
+        <Route
+          path='/admin/book/expeditions'
+          element={<AdminBookExpedition />}
+        />
+        <Route path='/admin/book/packages' element={<AdminBookPackage />} />
+        <Route path='/admin/places' element={<Places />} />
+        <Route path='/admin/users' element={<Users />} />
+
         <Route path='/admin/packages/:key' element={<Package />} />
         <Route path='/admin/edit/packages/:key' element={<EditPackage />} />
         <Route path='/expeditions' element={<ListExpeditions />} />

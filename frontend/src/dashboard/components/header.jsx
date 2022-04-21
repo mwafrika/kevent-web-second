@@ -1,12 +1,26 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-const header = ({ title }) => {
+const Header = ({ title }) => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <>
       <div className='flex justify-between items-center mt-14 mb-8'>
-        <h1 className='text-3xl'>{title}</h1>
+        <div className='flex text-slate-600 justify-between items-center gap-x-3'>
+          <span
+            className='text-xl bg-slate-100 w-8 text-center cursor-pointer rounded-md'
+            onClick={goBack}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </span>
+          <h1 className='text-3xl'>{title}</h1>
+        </div>
         <label className='relative block'>
           <span className='sr-only'>Search</span>
           <span className='absolute inset-y-0 left-0 flex items-center pl-2 text-gray-700'>
@@ -25,4 +39,4 @@ const header = ({ title }) => {
   );
 };
 
-export default header;
+export default Header;

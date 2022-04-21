@@ -65,3 +65,30 @@ export const login = (userData, navigate) => (dispatch) => {
       });
     });
 };
+
+// export const logout = (navigate) => (dispatch) => {
+//   userApi
+//     .logout()
+//     .then((response) => {
+//       if (response.status === 200) {
+//         dispatch({
+//           type: LOGOUT_SUCCES,
+//           payload: response.data,
+//         });
+//         localStorage.removeItem('user');
+//         navigate('/');
+//       } else {
+//         dispatch({
+//           type: LOGOUT_FAILURE,
+//           payload: response.data,
+//         });
+//       }
+//     })
+//     .catch((error) => {
+//       console.log(error.response.data.message, 'unable to logout');
+//       dispatch({
+//         type: LOGOUT_FAILURE,
+//         payload: error.response.data.message,
+//       });
+//     });
+// };

@@ -7,11 +7,20 @@ const getOne = 'http://localhost:5000/api/v1/packages/';
 const updatePackageUrl = 'http://localhost:5000/api/v1/packages/';
 const deletePackageUrl = 'http://localhost:5000/api/v1/packages/';
 
-export const login = (data) => {
-  return axios.post(loginUrl, data);
+export const login = async (data) => {
+  return await axios.post(loginUrl, data);
 };
 
-export const signup = (data) => {
+const authHeader = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user && user.token) {
+    return user.token;
+  } else {
+    return {};
+  }
+};
+
+export const signup = async (data) => {
   let bodyFormData = new FormData();
   bodyFormData.append('email', data.email);
   bodyFormData.append('password', data.password);
@@ -25,7 +34,7 @@ export const signup = (data) => {
   bodyFormData.append('imageUrls', data.imageUrls);
   bodyFormData.append('role', data.role);
 
-  const response = axios({
+  const response = await axios({
     method: 'post',
     url: signupUrl,
     data: bodyFormData,
@@ -35,12 +44,13 @@ export const signup = (data) => {
   return response;
 };
 
-export const createPackage = (data) => {
+export const createPackage = async (data) => {
   let bodyFormData = new FormData();
   let user;
 
   user = JSON.parse(localStorage.getItem('user'));
   console.log(user, 'token in create package not empty');
+  console.log(authHeader(), 'check header function');
 
   bodyFormData.append('title', data.title);
   bodyFormData.append('description', data.description);
@@ -50,42 +60,38 @@ export const createPackage = (data) => {
   bodyFormData.append('metadata', data.metadata);
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
-  console.log(user.token, 'user Joooooohn');
-  const response = axios({
+
+  const response = await axios({
     method: 'post',
     url: createPackageUrl,
     data: bodyFormData,
     headers: {
       'Content-Type': 'multipart/form-data',
-      auth: user.token,
+      auth: authHeader(),
     },
   });
   console.log(user.token, 'my new token');
   return response;
 };
 
-export const getPackages = () => {
-  const response = axios({
+export const getPackages = async () => {
+  const response = await axios({
     method: 'get',
     url: getAll,
   });
   return response;
 };
 
-export const getPackage = (id) => {
-  const response = axios({
+export const getPackage = async (id) => {
+  const response = await axios({
     method: 'get',
     url: `${getOne}${id}`,
   });
   return response;
 };
 
-export const updatePackage = (id, data) => {
+export const updatePackage = async (id, data) => {
   let bodyFormData = new FormData();
-  let user;
-
-  user = JSON.parse(localStorage.getItem('user'));
-  console.log(user, 'token in create package not empty');
 
   bodyFormData.append('title', data.title);
   bodyFormData.append('description', data.description);
@@ -96,29 +102,24 @@ export const updatePackage = (id, data) => {
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
 
-  const response = axios({
+  const response = await axios({
     method: 'put',
     url: `${updatePackageUrl}${id}`,
     data: bodyFormData,
     headers: {
       'Content-Type': 'multipart/form-data',
-      auth: user.token,
+      auth: authHeader(),
     },
   });
   return response;
 };
 
-export const deletePackage = (id) => {
-  let user;
-
-  user = JSON.parse(localStorage.getItem('user'));
-  console.log(user, 'token in create package not empty');
-
-  const response = axios({
+export const deletePackage = async (id) => {
+  const response = await axios({
     method: 'delete',
     url: `${deletePackageUrl}${id}`,
     headers: {
-      auth: user.token,
+      auth: authHeader(),
     },
   });
   return response;

@@ -1,8 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Unique, Column,OneToOne, OneToMany} from "typeorm";
-import { Length, IsNotEmpty } from "class-validator";
 import { BookingPackage } from "./BookingPackage";
 import { BookingExpedition } from "./Booking_expedition";
-import{Token} from './Token'
 import * as bcrypt from "bcryptjs";
 @Entity()
 @Unique(["email"])

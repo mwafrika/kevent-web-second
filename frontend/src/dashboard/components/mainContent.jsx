@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector, useDispatch } from 'react-redux';
+import { packackages } from '../../redux/actions/package';
 import {
   faPaperPlane,
   faCircleUser,
+  faUserFriends,
+  faLocationDot,
   faBoxOpen,
+  faCalendarCheck,
   faBagShopping,
 } from '@fortawesome/free-solid-svg-icons';
 
-const mainContent = () => {
+const MainContent = () => {
+  const { packages } = useSelector((state) => state.packages);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(packackages());
+  }, []);
+
   return (
     <div className='row-span-full bg-gray-100'>
       <div className='flex flex-col w-11/12 mx-auto py-8'>
@@ -15,17 +27,7 @@ const mainContent = () => {
         <div className='w-full gap-y-8 gap-x-4 mb-12 grid sm:grid-cols-[repeat(auto-fill_,_minmax(19rem_,_1fr))] xxxs:grid-cols-[repeat(auto-fill_,_minmax(11rem_,_1fr))]'>
           <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
             <span className='text-4xl text-slate-600'>
-              <FontAwesomeIcon icon={faCircleUser} />
-            </span>
-
-            <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold text-slate-600'>29</p>
-              <p className='text-slate-500'>Utilisateur(s)</p>
-            </div>
-          </div>
-          <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
-            <span className='text-4xl text-slate-600'>
-              <FontAwesomeIcon icon={faBoxOpen} />
+              <FontAwesomeIcon icon={faBagShopping} />
             </span>
 
             <div className='flex flex-col gap-y-2'>
@@ -39,38 +41,50 @@ const mainContent = () => {
             </span>
 
             <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold text-slate-600'>12</p>
+              <p className='text-3xl font-bold text-slate-600'>
+                {packages.length}
+              </p>
               <p className='text-slate-500'>Expedition(s)</p>
             </div>
           </div>
           <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
             <span className='text-4xl text-slate-600'>
-              <FontAwesomeIcon icon={faBagShopping} />
+              <FontAwesomeIcon icon={faCalendarCheck} />
             </span>
 
             <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold text-slate-600'>29</p>
-              <p className='text-slate-500'>Booking package</p>
+              <p className='text-3xl font-bold text-slate-600'>12</p>
+              <p className='text-slate-500'>Booked Expedition(s)</p>
             </div>
           </div>
           <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
             <span className='text-4xl text-slate-600'>
-              <FontAwesomeIcon icon={faBagShopping} />
+              <FontAwesomeIcon icon={faBoxOpen} />
             </span>
 
             <div className='flex flex-col gap-y-2'>
               <p className='text-3xl font-bold text-slate-600'>29</p>
-              <p className='text-slate-500'>Booking package(s)</p>
+              <p className='text-slate-500'>Booked package(s)</p>
             </div>
           </div>
           <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
             <span className='text-4xl text-slate-600'>
-              <FontAwesomeIcon icon={faCircleUser} />
+              <FontAwesomeIcon icon={faLocationDot} />
             </span>
 
             <div className='flex flex-col gap-y-2'>
               <p className='text-3xl font-bold text-slate-600'>29</p>
-              <p className='text-slate-500'>Other</p>
+              <p className='text-slate-500'>Place(s)</p>
+            </div>
+          </div>
+          <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
+            <span className='text-4xl text-slate-600'>
+              <FontAwesomeIcon icon={faUserFriends} />
+            </span>
+
+            <div className='flex flex-col gap-y-2'>
+              <p className='text-3xl font-bold text-slate-600'>29</p>
+              <p className='text-slate-500'>Users</p>
             </div>
           </div>
         </div>
@@ -93,4 +107,4 @@ const mainContent = () => {
   );
 };
 
-export default mainContent;
+export default MainContent;

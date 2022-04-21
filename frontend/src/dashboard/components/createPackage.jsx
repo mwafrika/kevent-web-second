@@ -21,6 +21,12 @@ const CreatePackage = () => {
   const navigate = useNavigate();
   const packages = useSelector((state) => state.packages);
 
+  const handleOnChangeImage = (event) => {
+    setState((prevState) => ({
+      ...prevState,
+    }));
+  };
+
   const handleChange = (e) => {
     setState({
       ...state,
@@ -28,9 +34,7 @@ const CreatePackage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(createPackages(state, navigate));
+  const clearForm = () => {
     setState({
       title: '',
       description: '',
@@ -42,20 +46,16 @@ const CreatePackage = () => {
       tags: '',
     });
     resetFile();
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createPackages(state, clearForm));
     console.log(packages, 'created packages');
   };
 
   const resetFile = () => {
     ref.current.value = '';
   };
-
-  const handleOnChangeImage = (event) => {
-    setState((prevState) => ({
-      ...prevState,
-      imageUrls: event.target.files[0],
-    }));
-  };
-
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-7/12'>
       <Header title='Packets' />

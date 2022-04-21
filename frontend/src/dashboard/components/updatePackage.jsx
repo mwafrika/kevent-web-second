@@ -20,6 +20,13 @@ const UpdatePackage = () => {
     tags: '',
   });
 
+  const handleOnChangeImage = (event) => {
+    setPackages((prevState) => ({
+      ...prevState,
+      imageUrls: event.target.files[0],
+    }));
+  };
+
   const handleChange = (e) => {
     setPackages({
       ...packages,
@@ -46,15 +53,8 @@ const UpdatePackage = () => {
     dispatch(updatePackage(key, packages, navigate));
   };
 
-  const handleOnChangeImage = (event) => {
-    setPackages((prevState) => ({
-      ...prevState,
-      imageUrls: event.target.files[0],
-    }));
-  };
-
   const ref = useRef();
-
+  //  console.log(ref.current.value, 'Reference packages');
   const { title, description, price, itineraire, metadata, places, tags } =
     packages;
 

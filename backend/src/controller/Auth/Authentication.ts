@@ -56,5 +56,38 @@ else{
 }
   return this.userRepository.save(request.body);
     }
+
+// check the problem
+
+async all(request: Request, response: Response, next: NextFunction) {
+  try {
+      console.log('VERIFY UPLOADS',request.body);
+      return this.userRepository.find();
+  } catch (error) {
+      console.log(error.message);
+  }
+ 
+}
+
+async one(request: Request, response: Response, next: NextFunction) {
+  let getUser = await this.userRepository.findOne(request.params.id);
+  if(!getUser) throw Error('The user you are trying to find does not exist')
+  return getUser;
+}
+
+async remove(request: Request, response: Response, next: NextFunction) {
+  let userToRemove = await this.userRepository.findOne(request.params.id);
+  if(!userToRemove) throw Error('The user you are trying to delete does not exist')
+  await this.userRepository.remove(userToRemove);
+}
+
+async update(request: Request, response: Response, next: NextFunction) {
+  let packageToUpdate = await this.userRepository.findOne(request.params.id);
+  const {firstName, password,lastName,surname,email,phone, address,sexe,profession,imageUrls, role} = request.body;
+  if(!packageToUpdate) throw Error('The user you are trying to update does not exist')
+ const result = await this.userRepository.createQueryBuilder().update(Authentication).set({role}).where("id = :id", {id: request.params.id}).returning(["role"]).execute();
+  console.log(result,'check the update issue');
+  return result.raw[0]
+}
 }
 
