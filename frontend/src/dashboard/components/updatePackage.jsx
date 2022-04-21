@@ -27,17 +27,17 @@ const UpdatePackage = () => {
   const { singlePackage } = useSelector((state) => state.packages);
   const { key } = useParams();
 
-  //   useEffect(() => {
-  //     dispatch(getSingle(key));
-  //   }, []);
+  useEffect(() => {
+    dispatch(getSingle(key));
+  }, []);
 
-  //   useEffect(() => {
-  //     if (singlePackage) {
-  //       setPackages({
-  //         ...singlePackage,
-  //       });
-  //     }
-  //   }, [singlePackage]);
+  useEffect(() => {
+    if (singlePackage) {
+      setPackages({
+        ...singlePackage,
+      });
+    }
+  }, [singlePackage]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

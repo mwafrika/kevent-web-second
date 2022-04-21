@@ -34,7 +34,7 @@ export const signup = (data) => {
   return response;
 };
 
-export const createPackage = async (data) => {
+export const createPackage = (data) => {
   let bodyFormData = new FormData();
   let user;
 
@@ -50,7 +50,7 @@ export const createPackage = async (data) => {
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
   console.log(user.token, 'user Joooooohn');
-  const response = await axios({
+  const response = axios({
     method: 'post',
     url: createPackageUrl,
     data: bodyFormData,
@@ -81,6 +81,10 @@ export const getPackage = (id) => {
 
 export const updatePackage = (id, data) => {
   let bodyFormData = new FormData();
+  let user;
+
+  user = JSON.parse(localStorage.getItem('user'));
+  console.log(user, 'token in create package not empty');
 
   bodyFormData.append('title', data.title);
   bodyFormData.append('description', data.description);
@@ -91,16 +95,13 @@ export const updatePackage = (id, data) => {
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
 
-  const token = JSON.parse(localStorage.getItem('user').token);
-  console.log(token, 'check toke error');
-
   const response = axios({
     method: 'put',
     url: `${updatePackageUrl}${id}`,
     data: bodyFormData,
     headers: {
       'Content-Type': 'multipart/form-data',
-      auth: token,
+      auth: user.token,
     },
   });
   return response;
