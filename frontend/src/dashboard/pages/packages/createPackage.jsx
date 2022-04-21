@@ -1,8 +1,8 @@
 import React from 'react';
 
-import LeftNav from '../components/leftSidebar';
-import Table from '../components/place';
-import RightNav from '../components/rightSideBar';
+import LeftNav from '../../components/leftSidebar';
+import Table from '../../components/packages/createPackage';
+import RightNav from '../../components/rightSideBar';
 
 const home = () => {
   return (

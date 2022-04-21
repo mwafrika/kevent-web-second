@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { updatePackage, getSingle } from '../../redux/actions/package';
-import Header from './header';
+import { updatePackage, getSingle } from '../../../redux/actions/package';
+import Header from '../header';
 
 const UpdatePackage = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingle, deletePackage } from '../../redux/actions/package';
+import { getSingle, deletePackage } from '../../../redux/actions/package';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import Header from './header';
+import Header from '../header';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import Header from './header';
+import Header from '../header';
 import { Link } from 'react-router-dom';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { packackages } from '../../redux/actions/package';
+import { packackages } from '../../../redux/actions/package';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Table = () => {

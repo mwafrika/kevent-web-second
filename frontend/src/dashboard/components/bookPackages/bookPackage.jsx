@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './header';
+import Header from '../header';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

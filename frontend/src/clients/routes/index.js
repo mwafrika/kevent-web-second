@@ -10,16 +10,16 @@ import NoPage from '../pages/noPage';
 // Testing Admin homepage
 import Signup from '../pages/signup';
 import Login from '../pages/login';
-import PackageForm from '../../dashboard/pages/createPackage';
-import Packages from '../../dashboard/pages/packages';
-import Package from '../../dashboard/pages/package';
-import EditPackage from '../../dashboard/pages/editPackage';
+import PackageForm from '../../dashboard/pages/packages/createPackage';
+import Packages from '../../dashboard/pages/packages/packages';
+import Package from '../../dashboard/pages/packages/package';
+import EditPackage from '../../dashboard/pages/packages/editPackage';
 import Dashboard from '../../dashboard/pages/home';
-import AdminExpeditions from '../../dashboard/pages/expeditions';
-import AdminBookExpedition from '../../dashboard/pages/bookExpeditions';
-import AdminBookPackage from '../../dashboard/pages/bookPackage';
-import Places from '../../dashboard/pages/places';
-import Users from '../../dashboard/pages/users';
+import AdminExpeditions from '../../dashboard/pages/expeditions/expeditions';
+import AdminBookExpedition from '../../dashboard/pages/bookExpedition/bookExpeditions';
+import AdminBookPackage from '../../dashboard/pages/bookPackage/bookPackage';
+import Places from '../../dashboard/pages/places/places';
+import Users from '../../dashboard/pages/users/users';
 
 export default function App() {
   return (

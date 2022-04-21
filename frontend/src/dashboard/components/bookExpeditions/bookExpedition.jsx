@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './header';
+import Header from '../header';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -13,7 +13,7 @@ const table = () => {
           className=' bg-slate-100 text-slate-600 shadow-xl pl-4 py-2 my-4 rounded-lg w-full h-full'
           type='button'
         >
-          Creer utilisateur
+          Book Expedition
           <FontAwesomeIcon
             icon={faPencil}
             className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
