@@ -52,6 +52,7 @@ const Login = () => {
                   name='email'
                   value={userLogin.email}
                   onChange={handleOnChange}
+                  required
                 />
               </div>
               <div className='flex flex-col my-2 w-full'>
@@ -62,6 +63,7 @@ const Login = () => {
                   name='password'
                   value={userLogin.password}
                   onChange={handleOnChange}
+                  required
                 />
               </div>
 

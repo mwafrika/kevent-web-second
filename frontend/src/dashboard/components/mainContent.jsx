@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
 import { packackages } from '../../redux/actions/package';
+import { Redirect } from 'react-router-dom';
 import {
   faPaperPlane,
   faCircleUser,
@@ -19,6 +20,8 @@ const MainContent = () => {
   useEffect(() => {
     dispatch(packackages());
   }, []);
+
+  // redirect to login if not logged in
 
   return (
     <div className='row-span-full bg-gray-100'>

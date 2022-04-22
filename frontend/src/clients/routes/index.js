@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Link, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Routes,
+  Link,
+  Route,
+} from 'react-router-dom';
 import Home from '../pages/home';
 import About from '../pages/about';
 import ListExpeditions from '../pages/listExpeditions';
@@ -8,6 +14,7 @@ import DetailExpedition from '../pages/detailExpedition';
 import DetailPackage from '../pages/detailPackage';
 import NoPage from '../pages/noPage';
 // Testing Admin homepage
+import { useSelector } from 'react-redux';
 import Signup from '../pages/signup';
 import Login from '../pages/login';
 import PackageForm from '../../dashboard/pages/packages/createPackage';
@@ -22,6 +29,7 @@ import Places from '../../dashboard/pages/places/places';
 import Users from '../../dashboard/pages/users/users';
 
 export default function App() {
+  const { isLoggedIn } = useSelector((state) => state.user);
   return (
     <Router>
       <Routes>

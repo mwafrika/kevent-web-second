@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate, Link } from 'react-router-dom';
+import { logout } from '../../redux/actions/user';
+import { useDispatch } from 'react-redux';
 import {
   faCircleUser,
   faUserFriends,
@@ -16,6 +18,8 @@ import {
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const logout = () => {
     if (localStorage.getItem('user')) {
       localStorage.removeItem('user');
