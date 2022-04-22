@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector, useDispatch } from 'react-redux';
 import { packackages } from '../../redux/actions/package';
+import { Expeditions } from '../../redux/actions/expedition';
 import { Redirect } from 'react-router-dom';
 import {
   faPaperPlane,
@@ -15,10 +16,12 @@ import {
 
 const MainContent = () => {
   const { packages } = useSelector((state) => state.packages);
+  const { expeditions } = useSelector((state) => state.expeditions);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(packackages());
+    dispatch(Expeditions());
   }, []);
 
   // redirect to login if not logged in
@@ -34,7 +37,9 @@ const MainContent = () => {
             </span>
 
             <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold text-slate-600'>29</p>
+              <p className='text-3xl font-bold text-slate-600'>
+                {packages.length}
+              </p>
               <p className='text-slate-500'>Package(s)</p>
             </div>
           </div>
@@ -45,7 +50,7 @@ const MainContent = () => {
 
             <div className='flex flex-col gap-y-2'>
               <p className='text-3xl font-bold text-slate-600'>
-                {packages.length}
+                {expeditions.length}
               </p>
               <p className='text-slate-500'>Expedition(s)</p>
             </div>

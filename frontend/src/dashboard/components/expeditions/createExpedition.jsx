@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPackages } from '../../../redux/actions/package';
+import { createExpeditions } from '../../../redux/actions/expedition';
 import Header from '../header';
 
 const CreatePackage = () => {
@@ -14,6 +14,8 @@ const CreatePackage = () => {
     metadata: 'my metadata',
     places: '',
     tags: '',
+    start_date: '',
+    end_date: '',
   });
 
   const ref = useRef();
@@ -45,12 +47,14 @@ const CreatePackage = () => {
       metadata: '',
       places: '',
       tags: '',
+      start_date: '',
+      end_date: '',
     });
     resetFile();
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPackages(state, clearForm));
+    dispatch(createExpeditions(state, clearForm));
     console.log(packages, 'created packages');
   };
 
@@ -59,7 +63,7 @@ const CreatePackage = () => {
   };
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-7/12'>
-      <Header title='Packets' />
+      <Header title='Expeditions' />
       <div className='md:grid md:grid-cols-2 md:gap-6 mt-5'>
         <div className='mt-5 md:mt-0 md:col-span-2'>
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -140,6 +144,41 @@ const CreatePackage = () => {
                       value={state.tags}
                       onChange={(e) => handleChange(e)}
                       autoComplete='tags'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div>
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='start_date'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Start Date
+                    </label>
+                    <input
+                      type='date'
+                      name='start_date'
+                      id='start_date'
+                      placeholder='Start Date'
+                      value={state.start_date}
+                      onChange={(e) => handleChange(e)}
+                      autoComplete='address-level2'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div>
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='end_date'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      End date
+                    </label>
+                    <input
+                      type='date'
+                      name='end_date'
+                      id='end_date'
+                      placeholder='End Date'
+                      value={state.end_date}
+                      onChange={(e) => handleChange(e)}
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
                     />
                   </div>

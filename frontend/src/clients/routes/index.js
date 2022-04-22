@@ -18,6 +18,9 @@ import { useSelector } from 'react-redux';
 import Signup from '../pages/signup';
 import Login from '../pages/login';
 import PackageForm from '../../dashboard/pages/packages/createPackage';
+import ExpeditionForm from '../../dashboard/pages/expeditions/createExpedition';
+import DetailExpeditionAdmin from '../../dashboard/pages/expeditions/expedition';
+import EditExpeditionAdmin from '../../dashboard/pages/expeditions/updateExpedition';
 import Packages from '../../dashboard/pages/packages/packages';
 import Package from '../../dashboard/pages/packages/package';
 import EditPackage from '../../dashboard/pages/packages/editPackage';
@@ -55,6 +58,18 @@ export default function App() {
         <Route path='/packages' element={<TopPackage />} />
         <Route path='/packages/:key' element={<DetailPackage />} />
         <Route path='/expeditions/:key' element={<DetailExpedition />} />
+
+        {/* expeditions */}
+        <Route
+          path='/admin/expeditions/:key'
+          element={<DetailExpeditionAdmin />}
+        />
+        <Route path='/admin/create/expedition' element={<ExpeditionForm />} />
+        <Route
+          path='/admin/edit/expeditions/:key'
+          element={<EditExpeditionAdmin />}
+        />
+
         <Route path='*' element={<NoPage />} />
       </Routes>
     </Router>

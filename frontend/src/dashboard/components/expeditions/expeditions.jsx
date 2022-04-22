@@ -1,113 +1,112 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../header';
+import { Link } from 'react-router-dom';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Expeditions } from '../../../redux/actions/expedition';
+import { useDispatch, useSelector } from 'react-redux';
 
-const table = () => {
+const Table = () => {
+  const dispatch = useDispatch();
+  const { expeditions } = useSelector((state) => state.expeditions);
+  expeditions.sort((a, b) => b.id - a.id);
+  useEffect(() => {
+    dispatch(Expeditions());
+  }, [dispatch]);
+
+  const headerTitle = [
+    'Title',
+    'Description',
+    'Price',
+    'Image',
+    'itineraire',
+    'Metadata',
+    'Places',
+    'Tags',
+    'Start Date',
+    'End Date',
+  ];
+
+  console.log(expeditions, 'expedition components');
   return (
     <div className='row-span-full mx-auto'>
       <Header title='Packets' />
 
       <div className='relative w-[_12rem]'>
-        <button
-          className=' bg-slate-100 text-slate-600 shadow-xl pl-4 py-2 my-4 rounded-lg w-full h-full'
-          type='button'
-        >
-          Creer expedition
-          <FontAwesomeIcon
-            icon={faPencil}
-            className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
-          />
-        </button>
-        <span class='flex h-3 w-3 absolute top-3 right-0'>
-          <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75'></span>
-          <span class='relative inline-flex rounded-full h-3 w-3 bg-slate-500'></span>
+        <Link to='/admin/create/expedition'>
+          <button
+            className=' bg-slate-100 text-slate-600 shadow-xl pl-4 py-2 my-4 rounded-lg w-full h-full'
+            type='button'
+          >
+            new expedition
+            <FontAwesomeIcon
+              icon={faPencil}
+              className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
+            />
+          </button>
+        </Link>
+
+        <span className='flex h-3 w-3 absolute top-3 right-0'>
+          <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75'></span>
+          <span className='relative inline-flex rounded-full h-3 w-3 bg-slate-500'></span>
         </span>
       </div>
 
       <table className='table table-auto shadow-lg bg-white border-collapse'>
         <thead>
           <tr>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Song
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Artist
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Year
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Song
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Artist
-            </th>
+            {headerTitle.map((title) => (
+              <th
+                key={title}
+                className='bg-slate-600 text-white border text-left px-8 py-4'
+              >
+                {title}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className='border px-8 py-4'>
-              The Sliding Mr. Bones (Next Stop, Pottersville)
-            </td>
-            <td className='border px-8 py-4'>Malcolm Lockyer</td>
-            <td className='border px-8 py-4'>1961</td>
-            <td className='border px-8 py-4'>Malcolm Lockyer</td>
-            <td className='border px-8 py-4'>1961</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Witchy Woman</td>
-            <td className='border px-8 py-4'>The Eagles</td>
-            <td className='border px-8 py-4'>1972</td>
-            <td className='border px-8 py-4'>The Eagles</td>
-            <td className='border px-8 py-4'>1972</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
+          {expeditions.map((pack) => (
+            <tr key={pack.id}>
+              <td className='border px-8 py-4 underline text-slate-600 hover:text-slate-500'>
+                <Link to={`/admin/expeditions/${pack.id}`}>{pack.title}</Link>
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.description}
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.price}
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                <a
+                  href={`${pack.imageUrls}`}
+                  className='underline text-slate-600 hover:text-slate-500'
+                >{`Image-${pack.id}`}</a>
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.itineraire}
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.metadata}
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.places}
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.tags}
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.start_date}
+              </td>
+              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+                {pack.end_date}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
 
-export default table;
+export default Table;
