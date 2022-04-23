@@ -10,11 +10,11 @@ import {
   DELETE_BOOK_PACKAGE_SUCCESS,
   DELETE_BOOK_PACKAGE_FAILURE,
 } from '../actionTypes/booking';
-import * as ExpeditionApi from '../Api/booking';
+import * as BookPackageAPI from '../Api/booking';
 
 export const createBookPackage =
   (bookPackageData, packageId, clearForm) => (dispatch) => {
-    ExpeditionApi.createBookPackage(bookPackageData, packageId)
+    BookPackageAPI.createBookPackage(bookPackageData, packageId)
       .then((response) => {
         if (response.status === 200) {
           console.log('See data created', response);
@@ -39,59 +39,62 @@ export const createBookPackage =
       });
   };
 
-//   export const Expeditions = () => (dispatch) => {
-//     ExpeditionApi.getExpeditions()
-//       .then((response) => {
-//         if (response.status === 200) {
-//           console.log('See all the data', response);
-//           dispatch({
-//             type: GET_EXPEDITIONS_SUCCESS,
-//             payload: response.data,
-//           });
-//         } else {
-//           dispatch({
-//             type: GET_EXPEDITIONS_FAILURE,
-//             payload: response.data,
-//           });
-//         }
-//       })
-//       .catch((error) => {
-//         console.log(error.response.data.message, 'unable to get Expeditions');
-//         dispatch({
-//           type: GET_EXPEDITIONS_FAILURE,
-//           payload: error.response.data.message,
-//         });
-//       });
-//   };
+export const getBookings = () => (dispatch) => {
+  BookPackageAPI.getAllBooking()
+    .then((response) => {
+      if (response.status === 200) {
+        console.log('See all the data', response);
+        dispatch({
+          type: GET_BOOK_PACKAGES_SUCCESS,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: GET_BOOK_PACKAGES_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to get Expeditions');
+      dispatch({
+        type: GET_BOOK_PACKAGES_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
 
-//   export const getSingle = (id) => (dispatch) => {
-//     ExpeditionApi.getExpedition(id)
-//       .then((response) => {
-//         if (response.status === 200) {
-//           console.log('See single package', response.data);
-//           dispatch({
-//             type: GET_EXPEDITION_SUCCESS,
-//             payload: response.data,
-//           });
-//         } else {
-//           dispatch({
-//             type: GET_EXPEDITION_FAILURE,
-//             payload: response.data,
-//           });
-//         }
-//       })
-//       .catch((error) => {
-//         console.log(error.response.data.message, 'unable to get single package');
-//         dispatch({
-//           type: GET_EXPEDITION_FAILURE,
-//           payload: error.response.data.message,
-//         });
-//       });
-//   };
+export const getSingle = (id) => (dispatch) => {
+  BookPackageAPI.getOneBooking(id)
+    .then((response) => {
+      if (response.status === 200) {
+        console.log('See single package', response.data);
+        dispatch({
+          type: GET_BOOK_PACKAGE_SUCCESS,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: GET_BOOK_PACKAGE_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(
+        error.response.data.message,
+        'unable to get single book package'
+      );
+      dispatch({
+        type: GET_BOOK_PACKAGE_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
 
 //   export const updateExpedition =
 //     (id, expeditionData, navigate) => (dispatch) => {
-//       ExpeditionApi.updateExpedition(id, expeditionData)
+//       BookPackageAPI.updateExpedition(id, expeditionData)
 //         .then((response) => {
 //           console.log('See update package action', response);
 //           if (response.status === 200) {
@@ -117,7 +120,7 @@ export const createBookPackage =
 //     };
 
 //   export const deleteExpedition = (id, navigate) => (dispatch) => {
-//     ExpeditionApi.deleteExpedition(id)
+//     BookPackageAPI.deleteExpedition(id)
 //       .then((response) => {
 //         console.log('See delete package action', response);
 //         if (response.status === 204) {

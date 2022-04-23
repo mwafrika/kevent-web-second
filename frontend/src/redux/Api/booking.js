@@ -35,3 +35,15 @@ export const getAllBooking = async () => {
   });
   return response;
 };
+
+export const getOneBooking = async (id) => {
+    const response = await axios({
+        method: 'get',
+        url: `${createBookPack}bookPackages/${id}`,
+        headers: {
+        'Content-Type': 'application/json',
+        auth: authHeader(),
+        },
+    });
+    return response;
+}

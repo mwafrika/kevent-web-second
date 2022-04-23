@@ -46,7 +46,7 @@ const CreatePackage = () => {
 
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-7/12'>
-      <Header title='Expeditions' />
+      <Header title='Book Package' />
       <div className='md:grid md:grid-cols-2 md:gap-6 mt-5'>
         <div className='mt-5 md:mt-0 md:col-span-2'>
           <form onSubmit={(e) => handleSubmit(e)}>

@@ -29,9 +29,10 @@ import AdminExpeditions from '../../dashboard/pages/expeditions/expeditions';
 import AdminBookExpedition from '../../dashboard/pages/bookExpedition/bookExpeditions';
 import Places from '../../dashboard/pages/places/places';
 import Users from '../../dashboard/pages/users/users';
+import BookPackageSingle from '../../dashboard/pages/bookPackage/bookPackage';
 
 // book packages
-import AdminBookPackage from '../../dashboard/pages/bookPackage/bookPackage';
+import AdminBookPackage from '../../dashboard/pages/bookPackage/bookPackages';
 import BookPackage from '../../dashboard/pages/bookPackage/createBookPackage';
 
 export default function App() {
@@ -74,6 +75,10 @@ export default function App() {
         />
         {/*  book packages */}
         <Route path='/admin/packages/:key/book' element={<BookPackage />} />
+        <Route
+          path='/admin/packages/book/:key'
+          element={<BookPackageSingle />}
+        />
         <Route path='*' element={<NoPage />} />
       </Routes>
     </Router>

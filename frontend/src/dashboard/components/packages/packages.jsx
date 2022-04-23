@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../header';
 import { Link } from 'react-router-dom';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { packackages } from '../../../redux/actions/package';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,7 +30,6 @@ const Table = () => {
   return (
     <div className='row-span-full mx-auto'>
       <Header title='Packets' />
-
       <div className='relative w-[_12rem]'>
         <Link to='/admin/create/package'>
           <button
@@ -67,43 +66,43 @@ const Table = () => {
         <tbody>
           {packages.map((pack) => (
             <tr key={pack.id}>
-              <td className='border px-8 py-4 underline text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 underline text-slate-600 hover:text-slate-500'>
                 <Link to={`/admin/packages/${pack.id}`}>{pack.title}</Link>
               </td>
-              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.description}
               </td>
-              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.price}
               </td>
-              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 <a
                   href={`${pack.imageUrls}`}
                   className='underline text-slate-600 hover:text-slate-500'
                 >{`Image-${pack.id}`}</a>
               </td>
-              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.itineraire}
               </td>
-              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.metadata}
               </td>
-              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.places}
               </td>
-              <td className='border px-8 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.tags}
               </td>
-              <td className='border px-1 py-4 text-slate-600 hover:text-slate-500'>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 <Link to={`/admin/packages/${pack.id}/book`}>
                   <button
-                    className=' bg-slate-100 text-slate-600 shadow-xl pl-4 py-2 my-4 rounded-lg w-full h-full'
+                    className='bg-slate-600 text-white shadow-xl py-2 my-4 rounded-lg w-full h-full flex text-md justify-around gap-x-1 items-center'
                     type='button'
                   >
-                    Book Now
+                    <p className=''> Book Now</p>
                     <FontAwesomeIcon
-                      icon={faPencil}
-                      className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
+                      icon={faBagShopping}
+                      className='text-slate-300'
                     />
                   </button>
                 </Link>

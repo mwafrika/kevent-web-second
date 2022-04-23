@@ -23,7 +23,7 @@ const expeditionReducer = (state = initialState, action) => {
     case CREATE_BOOK_PACKAGE_SUCCESS:
       return {
         ...state,
-        expeditions: [...state.expeditions, action.payload],
+        bookPackages: [...state.expeditions, action.payload],
         loading: false,
         error: null,
       };
@@ -36,7 +36,7 @@ const expeditionReducer = (state = initialState, action) => {
     case GET_BOOK_PACKAGES_SUCCESS:
       return {
         ...state,
-        expeditions: action.payload,
+        bookPackages: action.payload,
         loading: false,
         error: null,
       };
@@ -49,7 +49,7 @@ const expeditionReducer = (state = initialState, action) => {
     case GET_BOOK_PACKAGE_SUCCESS:
       return {
         ...state,
-        singleExpedition: action.payload,
+        bookSinglePackage: action.payload,
         loading: false,
         error: null,
       };
@@ -63,7 +63,7 @@ const expeditionReducer = (state = initialState, action) => {
       console.log('See data updated reducer', action.payload);
       return {
         ...state,
-        expeditions: state.expeditions.map((pack) =>
+        bookPackages: state.bookPackages.map((pack) =>
           pack.id === action.payload.id ? action.payload : pack
         ),
         loading: false,
@@ -79,7 +79,7 @@ const expeditionReducer = (state = initialState, action) => {
     case DELETE_BOOK_PACKAGE_SUCCESS:
       return {
         ...state,
-        expeditions: state.expeditions.filter(
+        bookPackages: state.bookPackages.filter(
           (pack) => pack.id !== action.payload.id
         ),
         loading: false,

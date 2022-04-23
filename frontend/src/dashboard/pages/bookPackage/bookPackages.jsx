@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LeftNav from '../../components/leftSidebar';
-import Table from '../../components/bookPackages/bookPackage';
+import Table from '../../components/bookPackages/bookPackages';
 import RightNav from '../../components/rightSideBar';
 
 const home = () => {
