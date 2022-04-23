@@ -47,7 +47,7 @@ const CreatePackage = () => {
             <h1 className='text-2xl font-bold text-gray-700'>Details</h1>
           </div>
           <div className='flex text-2xl w-16 justify-between'>
-            <Link to={`/admin/edit/packages/${key}`}>
+            <Link to={`/admin/packages/edit/book/${key}`}>
               <span className=' text-blue-500 cursor-pointer'>
                 <FontAwesomeIcon icon={faPenToSquare} />
               </span>

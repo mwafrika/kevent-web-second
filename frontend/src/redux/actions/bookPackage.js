@@ -92,32 +92,31 @@ export const getSingle = (id) => (dispatch) => {
     });
 };
 
-//   export const updateExpedition =
-//     (id, expeditionData, navigate) => (dispatch) => {
-//       BookPackageAPI.updateExpedition(id, expeditionData)
-//         .then((response) => {
-//           console.log('See update package action', response);
-//           if (response.status === 200) {
-//             dispatch({
-//               type: UPDATE_EXPEDITION_SUCCESS,
-//               payload: response.data,
-//             });
-//             navigate('/admin/expeditions');
-//           } else {
-//             dispatch({
-//               type: UPDATE_EXPEDITION_FAILURE,
-//               payload: response.data,
-//             });
-//           }
-//         })
-//         .catch((error) => {
-//           console.log(error.response.data.message, 'unable to update package');
-//           dispatch({
-//             type: UPDATE_EXPEDITION_FAILURE,
-//             payload: error.response.data.message,
-//           });
-//         });
-//     };
+export const updateBookPackage = (dataBook, id, navigate) => (dispatch) => {
+  BookPackageAPI.updateBooking(dataBook, id)
+    .then((response) => {
+      console.log('See update package action', response);
+      if (response.status === 200) {
+        dispatch({
+          type: UPDATE_BOOK_PACKAGE_SUCCESS,
+          payload: response.data,
+        });
+        navigate('/admin/book/packages');
+      } else {
+        dispatch({
+          type: UPDATE_BOOK_PACKAGE_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to update package');
+      dispatch({
+        type: UPDATE_BOOK_PACKAGE_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
 
 //   export const deleteExpedition = (id, navigate) => (dispatch) => {
 //     BookPackageAPI.deleteExpedition(id)

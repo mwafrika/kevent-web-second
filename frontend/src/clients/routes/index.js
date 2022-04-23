@@ -30,6 +30,7 @@ import AdminBookExpedition from '../../dashboard/pages/bookExpedition/bookExpedi
 import Places from '../../dashboard/pages/places/places';
 import Users from '../../dashboard/pages/users/users';
 import BookPackageSingle from '../../dashboard/pages/bookPackage/bookPackage';
+import BookPackageUpdate from '../../dashboard/pages/bookPackage/updatePackage';
 
 // book packages
 import AdminBookPackage from '../../dashboard/pages/bookPackage/bookPackages';
@@ -78,6 +79,10 @@ export default function App() {
         <Route
           path='/admin/packages/book/:key'
           element={<BookPackageSingle />}
+        />
+        <Route
+          path='/admin/packages/edit/book/:key'
+          element={<BookPackageUpdate />}
         />
         <Route path='*' element={<NoPage />} />
       </Routes>

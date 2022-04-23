@@ -37,13 +37,26 @@ export const getAllBooking = async () => {
 };
 
 export const getOneBooking = async (id) => {
-    const response = await axios({
-        method: 'get',
-        url: `${createBookPack}bookPackages/${id}`,
-        headers: {
-        'Content-Type': 'application/json',
-        auth: authHeader(),
-        },
-    });
-    return response;
-}
+  const response = await axios({
+    method: 'get',
+    url: `${createBookPack}bookPackages/${id}`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
+
+export const updateBooking = async (data, id) => {
+  const response = await axios({
+    method: 'put',
+    url: `${createBookPack}bookPackages/${id}`,
+    data: data,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
