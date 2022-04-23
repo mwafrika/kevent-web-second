@@ -78,8 +78,6 @@ export class BookingPackageController {
         let userToUpdate = await this.userRepository.findOne(request.params.id);
         const userId = await this.userRepository.findOne(request.params.id);
         const { 
-            // packageId,
-            // userId,
             Visitor_details,
             bookedStartDate,
            bookedEndDate,
