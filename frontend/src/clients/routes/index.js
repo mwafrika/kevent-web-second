@@ -26,15 +26,18 @@ import Package from '../../dashboard/pages/packages/package';
 import EditPackage from '../../dashboard/pages/packages/editPackage';
 import Dashboard from '../../dashboard/pages/home';
 import AdminExpeditions from '../../dashboard/pages/expeditions/expeditions';
-import AdminBookExpedition from '../../dashboard/pages/bookExpedition/bookExpeditions';
 import Places from '../../dashboard/pages/places/places';
 import Users from '../../dashboard/pages/users/users';
+// book packages
 import BookPackageSingle from '../../dashboard/pages/bookPackage/bookPackage';
 import BookPackageUpdate from '../../dashboard/pages/bookPackage/updatePackage';
-
-// book packages
 import AdminBookPackage from '../../dashboard/pages/bookPackage/bookPackages';
 import BookPackage from '../../dashboard/pages/bookPackage/createBookPackage';
+// book expeditions
+import BookExpeditionSingle from '../../dashboard/pages/bookExpedition/bookExpedition';
+import BookExpeditionUpdate from '../../dashboard/pages/bookExpedition/updateExpedition';
+import AdminBookExpedition from '../../dashboard/pages/bookExpedition/bookExpeditions';
+import BookExpedition from '../../dashboard/pages/bookExpedition/createBookExpedition';
 
 export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
@@ -49,10 +52,6 @@ export default function App() {
         <Route path='/admin/create/package' element={<PackageForm />} />
         <Route path='/admin/packages' element={<Packages />} />
         <Route path='/admin/expeditions' element={<AdminExpeditions />} />
-        <Route
-          path='/admin/book/expeditions'
-          element={<AdminBookExpedition />}
-        />
         <Route path='/admin/book/packages' element={<AdminBookPackage />} />
         <Route path='/admin/places' element={<Places />} />
         <Route path='/admin/users' element={<Users />} />
@@ -84,6 +83,25 @@ export default function App() {
           path='/admin/packages/edit/book/:key'
           element={<BookPackageUpdate />}
         />
+
+        {/*  book expeditions */}
+        <Route
+          path='/admin/expeditions/:key/book'
+          element={<BookExpedition />}
+        />
+        <Route
+          path='/admin/expeditions/book/:key'
+          element={<BookExpeditionSingle />}
+        />
+        <Route
+          path='/admin/expeditions/edit/book/:key'
+          element={<BookExpeditionUpdate />}
+        />
+        <Route
+          path='/admin/book/expeditions'
+          element={<AdminBookExpedition />}
+        />
+
         <Route path='*' element={<NoPage />} />
       </Routes>
     </Router>

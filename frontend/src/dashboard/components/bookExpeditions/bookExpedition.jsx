@@ -1,113 +1,107 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSingle } from '../../../redux/actions/bookPackage';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Header from '../header';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { deleteBookinExpedition } from '../../../redux/actions/bookExpedition';
 
-const table = () => {
+const CreateExpedition = () => {
+  const dispatch = useDispatch();
+  const { bookSingleExpedition } = useSelector(
+    (state) => state.bookExpeditions
+  );
+  const { key } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getSingle(key));
+  }, [dispatch, key]);
+
+  const {
+    Visitor_details,
+    ticketNumber,
+    additionnalInformation,
+    Status,
+    ExpeditionId,
+  } = bookSingleExpedition;
+
+  const handleDelete = () => {
+    dispatch(deleteBookinExpedition(key, navigate));
+  };
+
+  console.log(ticketNumber, additionnalInformation, Status, 'check values');
+
   return (
-    <div className='row-span-full mx-auto'>
-      <Header title='Packets' />
+    <div className='mt-10 sm:mt-0 row-span-full mx-auto w-[95%]'>
+      <Header title='Package Booking Details' />
+      <div className='mt-5 flex flex-col shadow-2xl'>
+        <div className='md:mt-0 md:col-span-2 h-20 pt-8 mb-5 flex justify-between items-center px-20'>
+          <div className=' flex gap-y-5 flex-col'>
+            <h1 className='text-2xl font-bold text-gray-700'>Details</h1>
+          </div>
+          <div className='flex text-2xl w-16 justify-between'>
+            <Link to={`/admin/expedition/edit/book/${key}`}>
+              <span className=' text-blue-500 cursor-pointer'>
+                <FontAwesomeIcon icon={faPenToSquare} />
+              </span>
+            </Link>
+            <span
+              className='text-red-500 cursor-pointer'
+              onClick={handleDelete}
+            >
+              <FontAwesomeIcon icon={faTrashCan} />
+            </span>
+          </div>
+        </div>
 
-      <div className='relative w-[_12rem]'>
-        <button
-          className=' bg-slate-100 text-slate-600 shadow-xl pl-4 py-2 my-4 rounded-lg w-full h-full'
-          type='button'
-        >
-          Book Expedition
-          <FontAwesomeIcon
-            icon={faPencil}
-            className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
-          />
-        </button>
-        <span className='flex h-3 w-3 absolute top-3 right-0'>
-          <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75'></span>
-          <span className='relative inline-flex rounded-full h-3 w-3 bg-slate-500'></span>
-        </span>
+        <div className='md:mt-0 md:col-span-2 h-[60vh]  flex flex-row justify-between'>
+          <div className='w-full py-5 px-5 mx-auto '>
+            <ul className='flex flex-wrap flex-row gap-y-4 justify-around'>
+              <li className='w-[40%]'>
+                <p className='text-xl font-bold text-slate-700'>
+                  Visitor Details
+                </p>
+                <p className='text-lg  font-medium text-slate-500'>
+                  {Visitor_details}
+                </p>
+              </li>
+
+              <li className='w-[40%] flex-col flex gap-2'>
+                <p className='text-xl font-bold text-slate-700'>
+                  Ticket Number
+                </p>
+                <p className='text-xl  font-medium text-slate-500'>
+                  {' '}
+                  {ticketNumber}
+                </p>
+              </li>
+              <li className='w-[40%] flex-col flex gap-2'>
+                <p className='text-xl font-bold text-slate-700'>Status</p>
+                <p className='text-xl  font-medium text-slate-500'>{Status}</p>
+              </li>
+              <li className='w-[40%] flex-col flex gap-2'>
+                <p className='text-xl font-bold text-slate-700'>Package ID</p>
+                <p className='text-xl  font-medium text-slate-500'>
+                  {ExpeditionId}
+                </p>
+              </li>
+              {/* packageId */}
+              <li className='w-[40%] flex-col flex gap-2'>
+                <p className='text-xl font-bold text-slate-700'>
+                  Additional Information
+                </p>
+                <p className='text-xl  font-medium text-slate-500'>
+                  {additionnalInformation}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-
-      <table className='table table-auto shadow-lg bg-white border-collapse'>
-        <thead>
-          <tr>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Song
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Artist
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Year
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Song
-            </th>
-            <th className='bg-slate-600 text-white border text-left px-8 py-4'>
-              Artist
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className='border px-8 py-4'>
-              The Sliding Mr. Bones (Next Stop, Pottersville)
-            </td>
-            <td className='border px-8 py-4'>Malcolm Lockyer</td>
-            <td className='border px-8 py-4'>1961</td>
-            <td className='border px-8 py-4'>Malcolm Lockyer</td>
-            <td className='border px-8 py-4'>1961</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Witchy Woman</td>
-            <td className='border px-8 py-4'>The Eagles</td>
-            <td className='border px-8 py-4'>1972</td>
-            <td className='border px-8 py-4'>The Eagles</td>
-            <td className='border px-8 py-4'>1972</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-          <tr>
-            <td className='border px-8 py-4'>Shining Star</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-            <td className='border px-8 py-4'>Earth, Wind, and Fire</td>
-            <td className='border px-8 py-4'>1975</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   );
 };
 
-export default table;
+export default CreateExpedition;

@@ -1,6 +1,6 @@
 // booking APIs
 import axios from 'axios';
-const createBookPack = 'http://localhost:5000/api/v1/';
+const baseUrl = 'http://localhost:5000/api/v1/';
 
 const authHeader = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -11,10 +11,10 @@ const authHeader = () => {
   }
 };
 
-export const createBookPackage = async (data, packageId) => {
+export const bookPackages = async (data, packageId) => {
   const response = await axios({
     method: 'post',
-    url: `${createBookPack}${packageId}/bookPackage`,
+    url: `${baseUrl}${packageId}/bookPackage`,
     data: data,
     headers: {
       'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export const createBookPackage = async (data, packageId) => {
 export const getAllBooking = async () => {
   const response = await axios({
     method: 'get',
-    url: `${createBookPack}bookPackages`,
+    url: `${baseUrl}bookPackages`,
     headers: {
       'Content-Type': 'application/json',
       auth: authHeader(),
@@ -39,7 +39,7 @@ export const getAllBooking = async () => {
 export const getOneBooking = async (id) => {
   const response = await axios({
     method: 'get',
-    url: `${createBookPack}bookPackages/${id}`,
+    url: `${baseUrl}bookPackages/${id}`,
     headers: {
       'Content-Type': 'application/json',
       auth: authHeader(),
@@ -51,7 +51,7 @@ export const getOneBooking = async (id) => {
 export const updateBooking = async (data, id) => {
   const response = await axios({
     method: 'put',
-    url: `${createBookPack}bookPackages/${id}`,
+    url: `${baseUrl}bookPackages/${id}`,
     data: data,
     headers: {
       'Content-Type': 'application/json',
@@ -64,7 +64,70 @@ export const updateBooking = async (data, id) => {
 export const deleteBooking = async (id) => {
   const response = await axios({
     method: 'delete',
-    url: `${createBookPack}bookPackages/${id}`,
+    url: `${baseUrl}bookPackages/${id}`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
+
+// bookExpeditions
+export const bookExpeditions = async (data, expeditionId) => {
+  const response = await axios({
+    method: 'post',
+    url: `${baseUrl}${expeditionId}/bookExpedition`,
+    data: data,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
+
+export const getAllExpeditions = async () => {
+  const response = await axios({
+    method: 'get',
+    url: `${baseUrl}bookExpeditions`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
+
+export const getOneExpedition = async (id) => {
+  const response = await axios({
+    method: 'get',
+    url: `${baseUrl}bookExpeditions/${id}`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
+
+export const updateExpedition = async (data, id) => {
+  const response = await axios({
+    method: 'put',
+    url: `${baseUrl}bookExpeditions/${id}`,
+    data: data,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
+
+export const deleteExpedition = async (id) => {
+  const response = await axios({
+    method: 'delete',
+    url: `${baseUrl}bookExpeditions/${id}`,
     headers: {
       'Content-Type': 'application/json',
       auth: authHeader(),

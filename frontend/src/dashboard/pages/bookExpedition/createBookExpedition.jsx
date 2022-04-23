@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LeftNav from '../../components/leftSidebar';
-import Table from '../../components/bookExpeditions/bookExpeditions';
+import Table from '../../components/bookExpeditions/createBookExpedition';
 import RightNav from '../../components/rightSideBar';
 
 const home = () => {
