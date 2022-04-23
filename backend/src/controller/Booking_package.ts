@@ -43,7 +43,7 @@ export class BookingPackageController {
         id,
     } = request.body;
     if(bookedStartDate > bookedEndDate){
-        throw Error('Start date cannot be greater than end date')
+        response.status(400).send({message:'Start date cannot be greater than end date'})
     }
    return await this.userRepository.save({
         Visitor_details,
@@ -88,7 +88,7 @@ export class BookingPackageController {
             Status} = request.body;
         if(!userToUpdate) throw Error('The user you are trying to update does not exist')
         if(bookedStartDate > bookedEndDate){
-            throw Error('Start date cannot be greater than end date')
+           response.status(400).send({message:'Start date cannot be greater than end date'})
         }
        const result = await this.userRepository.createQueryBuilder().update(BookingPackage).set({
          Visitor_details,
@@ -99,8 +99,13 @@ export class BookingPackageController {
          Status
         }).where("id = :id", {id: request.params.id}).returning(["Visitor_details","bookedStartDate","bookedEndDate","ticketNumber","additionnalInformation","Status"]).execute();
 
-        return result.raw[0]
-    
+
+        response.status(200).json({
+            status: "success",
+            message: "Expedition updated successfully",
+            data: result.raw[0]
+        })
+        return response
     }
 
 }

@@ -60,3 +60,15 @@ export const updateBooking = async (data, id) => {
   });
   return response;
 };
+
+export const deleteBooking = async (id) => {
+  const response = await axios({
+    method: 'delete',
+    url: `${createBookPack}bookPackages/${id}`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};

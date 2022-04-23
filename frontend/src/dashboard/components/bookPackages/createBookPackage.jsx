@@ -18,9 +18,9 @@ const CreatePackage = () => {
   const dispatch = useDispatch();
   const { key } = useParams();
 
-  useEffect(() => {
-    dispatch(getSingle(key));
-  }, [dispatch, key]);
+  //   useEffect(() => {
+  //     dispatch(getSingle(key));
+  //   }, [dispatch, key]);
 
   const handleChange = (e) => {
     setState({

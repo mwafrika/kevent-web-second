@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Header from '../header';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { deleteBookingPackage } from '../../../redux/actions/bookPackage';
 
 const CreatePackage = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,12 @@ const CreatePackage = () => {
     ticketNumber,
     additionnalInformation,
     Status,
+    packageId,
   } = bookSinglePackage;
 
-  //   const handleDelete = () => {
-  //     dispatch(deletePackage(key, navigate));
-  //   };
+  const handleDelete = () => {
+    dispatch(deleteBookingPackage(key, navigate));
+  };
 
   console.log(
     bookedStartDate,
@@ -52,7 +54,10 @@ const CreatePackage = () => {
                 <FontAwesomeIcon icon={faPenToSquare} />
               </span>
             </Link>
-            <span className='text-red-500 cursor-pointer'>
+            <span
+              className='text-red-500 cursor-pointer'
+              onClick={handleDelete}
+            >
               <FontAwesomeIcon icon={faTrashCan} />
             </span>
           </div>
@@ -95,6 +100,13 @@ const CreatePackage = () => {
                 <p className='text-xl font-bold text-slate-700'>Status</p>
                 <p className='text-xl  font-medium text-slate-500'>{Status}</p>
               </li>
+              <li className='w-[40%] flex-col flex gap-2'>
+                <p className='text-xl font-bold text-slate-700'>Package ID</p>
+                <p className='text-xl  font-medium text-slate-500'>
+                  {packageId}
+                </p>
+              </li>
+              {/* packageId */}
               <li className='w-[40%] flex-col flex gap-2'>
                 <p className='text-xl font-bold text-slate-700'>
                   Additional Information

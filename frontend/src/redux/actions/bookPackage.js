@@ -16,6 +16,7 @@ export const createBookPackage =
   (bookPackageData, packageId, clearForm) => (dispatch) => {
     BookPackageAPI.createBookPackage(bookPackageData, packageId)
       .then((response) => {
+        console.log('See data created', response.status);
         if (response.status === 200) {
           console.log('See data created', response);
           dispatch({
@@ -31,10 +32,10 @@ export const createBookPackage =
         }
       })
       .catch((error) => {
-        console.log(error.response.data.message, 'unable to create package');
+        console.log(error, 'unable to create package');
         dispatch({
           type: CREATE_BOOK_PACKAGE_FAILURE,
-          payload: error.response.data.message,
+          payload: error?.response?.data?.message,
         });
       });
   };
@@ -118,28 +119,28 @@ export const updateBookPackage = (dataBook, id, navigate) => (dispatch) => {
     });
 };
 
-//   export const deleteExpedition = (id, navigate) => (dispatch) => {
-//     BookPackageAPI.deleteExpedition(id)
-//       .then((response) => {
-//         console.log('See delete package action', response);
-//         if (response.status === 204) {
-//           dispatch({
-//             type: DELETE_EXPEDITION_SUCCESS,
-//             payload: response.data,
-//           });
-//           navigate('/admin/expeditions');
-//         } else {
-//           dispatch({
-//             type: DELETE_EXPEDITION_FAILURE,
-//             payload: response.data,
-//           });
-//         }
-//       })
-//       .catch((error) => {
-//         console.log(error.response.data.message, 'unable to delete package');
-//         dispatch({
-//           type: DELETE_EXPEDITION_FAILURE,
-//           payload: error.response.data.message,
-//         });
-//       });
-//   };
+export const deleteBookingPackage = (id, navigate) => (dispatch) => {
+  BookPackageAPI.deleteBooking(id)
+    .then((response) => {
+      console.log('See delete package action', response);
+      if (response.status === 204) {
+        dispatch({
+          type: DELETE_BOOK_PACKAGE_SUCCESS,
+          payload: response.data,
+        });
+        navigate('/admin/book/packages');
+      } else {
+        dispatch({
+          type: DELETE_BOOK_PACKAGE_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to delete package');
+      dispatch({
+        type: DELETE_BOOK_PACKAGE_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};

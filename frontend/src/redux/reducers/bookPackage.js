@@ -23,7 +23,7 @@ const expeditionReducer = (state = initialState, action) => {
     case CREATE_BOOK_PACKAGE_SUCCESS:
       return {
         ...state,
-        bookPackages: [...state.expeditions, action.payload],
+        bookPackages: [...state.bookPackages, action.payload],
         loading: false,
         error: null,
       };
