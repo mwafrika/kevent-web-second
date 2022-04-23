@@ -37,11 +37,11 @@ export class ExpeditionController {
 
     async update(request: Request, response: Response, next: NextFunction) {
         let userToUpdate = await this.userRepository.findOne(request.params.id);
-        const {price, description,imageUrls, itineraire, metadata,places, tags} = request.body;
+        const {price, description,imageUrls, itineraire, metadata,places, tags, title} = request.body;
         if(!userToUpdate) throw Error('The user you are trying to update does not exist')
        const result = await this.userRepository.createQueryBuilder().update(Expeditions).set({
-        price, description, itineraire, metadata,places, tags,imageUrls
-        }).where("id = :id", {id: request.params.id}).returning(["price", "description","imageUrls", "itineraire", "metadata","places", "tags"]).execute();
+        price, description, itineraire, metadata,places, tags,imageUrls, title
+        }).where("id = :id", {id: request.params.id}).returning(["title","price", "description","imageUrls", "itineraire", "metadata","places", "tags"]).execute();
 
         return result.raw[0]
     

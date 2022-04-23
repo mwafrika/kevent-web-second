@@ -47,7 +47,7 @@ const CreatePackage = () => {
               </span>
             </Link>
             <span
-              className=' text-red-500 cursor-pointer'
+              className='text-red-500 cursor-pointer'
               onClick={handleDelete}
             >
               <FontAwesomeIcon icon={faTrashCan} />

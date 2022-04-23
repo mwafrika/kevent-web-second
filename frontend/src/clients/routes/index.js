@@ -27,9 +27,12 @@ import EditPackage from '../../dashboard/pages/packages/editPackage';
 import Dashboard from '../../dashboard/pages/home';
 import AdminExpeditions from '../../dashboard/pages/expeditions/expeditions';
 import AdminBookExpedition from '../../dashboard/pages/bookExpedition/bookExpeditions';
-import AdminBookPackage from '../../dashboard/pages/bookPackage/bookPackage';
 import Places from '../../dashboard/pages/places/places';
 import Users from '../../dashboard/pages/users/users';
+
+// book packages
+import AdminBookPackage from '../../dashboard/pages/bookPackage/bookPackage';
+import BookPackage from '../../dashboard/pages/bookPackage/createBookPackage';
 
 export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
@@ -69,7 +72,8 @@ export default function App() {
           path='/admin/edit/expeditions/:key'
           element={<EditExpeditionAdmin />}
         />
-
+        {/*  book packages */}
+        <Route path='/admin/packages/:key/book' element={<BookPackage />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
     </Router>

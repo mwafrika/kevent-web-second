@@ -1,6 +1,10 @@
 import axios from 'axios';
+
+// User Authentication
 const loginUrl = 'http://localhost:5000/api/v1/signin';
 const signupUrl = 'http://localhost:5000/api/v1/signup';
+
+// packages
 const createPackageUrl = 'http://localhost:5000/api/v1/package';
 const getAll = 'http://localhost:5000/api/v1/packages';
 const getOne = 'http://localhost:5000/api/v1/packages/';
@@ -211,3 +215,5 @@ export const deleteExpedition = async (id) => {
   });
   return response;
 };
+
+// Booking APIs for user

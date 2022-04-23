@@ -19,9 +19,9 @@ const table = () => {
             className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
           />
         </button>
-        <span class='flex h-3 w-3 absolute top-3 right-0'>
-          <span class='animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75'></span>
-          <span class='relative inline-flex rounded-full h-3 w-3 bg-slate-500'></span>
+        <span className='flex h-3 w-3 absolute top-3 right-0'>
+          <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75'></span>
+          <span className='relative inline-flex rounded-full h-3 w-3 bg-slate-500'></span>
         </span>
       </div>
 

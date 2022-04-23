@@ -123,7 +123,7 @@ export const deletePackage = (id, navigate) => (dispatch) => {
     .deletePackage(id)
     .then((response) => {
       console.log('See delete package action', response);
-      if (response.status === 200) {
+      if (response.status === 204) {
         dispatch({
           type: DELETE_PACKAGE_SUCCESS,
           payload: response.data,

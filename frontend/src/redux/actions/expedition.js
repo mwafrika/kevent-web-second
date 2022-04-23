@@ -10,11 +10,10 @@ import {
   DELETE_EXPEDITION_SUCCESS,
   DELETE_EXPEDITION_FAILURE,
 } from '../actionTypes/expeditions';
-import * as packageApi from '../Api/user';
+import * as ExpeditionApi from '../Api/user';
 
 export const createExpeditions = (expeditionData, clearForm) => (dispatch) => {
-  packageApi
-    .createExpedition(expeditionData)
+  ExpeditionApi.createExpedition(expeditionData)
     .then((response) => {
       if (response.status === 200) {
         console.log('See data created', response);
@@ -40,8 +39,7 @@ export const createExpeditions = (expeditionData, clearForm) => (dispatch) => {
 };
 
 export const Expeditions = () => (dispatch) => {
-  packageApi
-    .getExpeditions()
+  ExpeditionApi.getExpeditions()
     .then((response) => {
       if (response.status === 200) {
         console.log('See all the data', response);
@@ -66,8 +64,7 @@ export const Expeditions = () => (dispatch) => {
 };
 
 export const getSingle = (id) => (dispatch) => {
-  packageApi
-    .getPackage(id)
+  ExpeditionApi.getExpedition(id)
     .then((response) => {
       if (response.status === 200) {
         console.log('See single package', response.data);
@@ -91,39 +88,38 @@ export const getSingle = (id) => (dispatch) => {
     });
 };
 
-export const updateExpedition = (id, packageData, navigate) => (dispatch) => {
-  packageApi
-    .updatePackage(id, packageData)
-    .then((response) => {
-      console.log('See update package action', response);
-      if (response.status === 200) {
-        dispatch({
-          type: UPDATE_EXPEDITION_SUCCESS,
-          payload: response.data,
-        });
-        navigate('/admin/expeditions');
-      } else {
+export const updateExpedition =
+  (id, expeditionData, navigate) => (dispatch) => {
+    ExpeditionApi.updateExpedition(id, expeditionData)
+      .then((response) => {
+        console.log('See update package action', response);
+        if (response.status === 200) {
+          dispatch({
+            type: UPDATE_EXPEDITION_SUCCESS,
+            payload: response.data,
+          });
+          navigate('/admin/expeditions');
+        } else {
+          dispatch({
+            type: UPDATE_EXPEDITION_FAILURE,
+            payload: response.data,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data.message, 'unable to update package');
         dispatch({
           type: UPDATE_EXPEDITION_FAILURE,
-          payload: response.data,
+          payload: error.response.data.message,
         });
-      }
-    })
-    .catch((error) => {
-      console.log(error.response.data.message, 'unable to update package');
-      dispatch({
-        type: UPDATE_EXPEDITION_FAILURE,
-        payload: error.response.data.message,
       });
-    });
-};
+  };
 
 export const deleteExpedition = (id, navigate) => (dispatch) => {
-  packageApi
-    .deletePackage(id)
+  ExpeditionApi.deleteExpedition(id)
     .then((response) => {
       console.log('See delete package action', response);
-      if (response.status === 200) {
+      if (response.status === 204) {
         dispatch({
           type: DELETE_EXPEDITION_SUCCESS,
           payload: response.data,
