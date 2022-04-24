@@ -10,7 +10,7 @@ import {
   DELETE_PACKAGE_SUCCESS,
   DELETE_PACKAGE_FAILURE,
 } from '../actionTypes/package';
-import * as packageApi from '../Api/user';
+import * as packageApi from '../Api/package';
 
 export const createPackages = (packageData, clearForm) => (dispatch) => {
   packageApi

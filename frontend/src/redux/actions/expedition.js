@@ -10,7 +10,7 @@ import {
   DELETE_EXPEDITION_SUCCESS,
   DELETE_EXPEDITION_FAILURE,
 } from '../actionTypes/expeditions';
-import * as ExpeditionApi from '../Api/user';
+import * as ExpeditionApi from '../Api/expedition';
 
 export const createExpeditions = (expeditionData, clearForm) => (dispatch) => {
   ExpeditionApi.createExpedition(expeditionData)
