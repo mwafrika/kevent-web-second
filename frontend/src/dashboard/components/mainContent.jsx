@@ -6,6 +6,7 @@ import { Expeditions } from '../../redux/actions/expedition';
 import { getBookings } from '../../redux/actions/bookPackage';
 import { getExpeditionBookings } from '../../redux/actions/bookExpedition';
 import { Places } from '../../redux/actions/place';
+import { getusers } from '../../redux/actions/user';
 import { Redirect } from 'react-router-dom';
 import {
   faPaperPlane,
@@ -23,6 +24,7 @@ const MainContent = () => {
   const { bookPackages } = useSelector((state) => state.bookPackages);
   const { bookExpeditions } = useSelector((state) => state.bookExpeditions);
   const { places } = useSelector((state) => state.places);
+  const { users } = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
 
@@ -32,6 +34,7 @@ const MainContent = () => {
     dispatch(getBookings());
     dispatch(getExpeditionBookings());
     dispatch(Places());
+    dispatch(getusers());
   }, []);
 
   // redirect to login if not logged in
@@ -107,7 +110,9 @@ const MainContent = () => {
             </span>
 
             <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold text-slate-600'>29</p>
+              <p className='text-3xl font-bold text-slate-600'>
+                {users.length}
+              </p>
               <p className='text-slate-500'>Users</p>
             </div>
           </div>

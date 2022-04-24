@@ -7,6 +7,7 @@ import expeditionReducer from '../reducers/expedition';
 import bookPackageReducer from '../reducers/bookPackage';
 import bookExpeditionReducer from '../reducers/bookExpedition';
 import placeReducer from '../reducers/place';
+import usersReducer from '../reducers/users';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   bookPackages: bookPackageReducer,
   bookExpeditions: bookExpeditionReducer,
   places: placeReducer,
+  users: usersReducer,
 });
 
 const store = createStore(

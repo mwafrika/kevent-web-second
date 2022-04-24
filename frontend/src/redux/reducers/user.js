@@ -2,29 +2,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
 } from '../actionTypes/users';
-
-// const initialState = {
-//   isAuthenticated: false,
-//   user: {
-//     email: '',
-//     password: '',
-//     firstName: '',
-//     lastName: '',
-//     surname: '',
-//     phone: '',
-//     address: '',
-//     sexe: '',
-//     profession: '',
-//     imageUrls: '',
-//     role: 'USER',
-//   },
-//   hasError: false,
-//   message: '',
-// };
 
 const user = JSON.parse(localStorage.getItem('user'));
 const initialState = user

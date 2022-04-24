@@ -3,8 +3,6 @@ import {
   REGISTER_FAILURE,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT_SUCCESS,
-  LOGOUT_FAILURE,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILURE,
   GET_USER_SUCCESS,
@@ -72,17 +70,18 @@ export const login = (userData, navigate) => (dispatch) => {
     });
 };
 
-const updateUser = (userData, navigate) => (dispatch) => {
+export const updateUser = (userData, id, navigate) => (dispatch) => {
   userApi
-    .updateUser(userData)
+    .updateUser(userData, id)
     .then((response) => {
       if (response.status === 200) {
         dispatch({
           type: UPDATE_USER_SUCCESS,
           payload: response.data,
         });
-        localStorage.setItem('user', JSON.stringify(response.data));
-        navigate('/admin/home');
+        console.log(response, 'response update user data');
+        // localStorage.setItem('user', JSON.stringify(response.data));
+        navigate('/admin/users');
       } else {
         dispatch({
           type: UPDATE_USER_FAILURE,
@@ -94,6 +93,83 @@ const updateUser = (userData, navigate) => (dispatch) => {
       console.log(error.response.data.message, 'unable to update user');
       dispatch({
         type: UPDATE_USER_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
+
+export const getuser = (id) => (dispatch) => {
+  userApi
+    .getUser(id)
+    .then((response) => {
+      if (response.status === 200) {
+        dispatch({
+          type: GET_USER_SUCCESS,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: GET_USER_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to get user');
+      dispatch({
+        type: GET_USER_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
+
+export const getusers = () => (dispatch) => {
+  userApi
+    .getUsers()
+    .then((response) => {
+      if (response.status === 200) {
+        console.log(response.data, 'response get users');
+        dispatch({
+          type: GET_USERS_SUCCESS,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: GET_USERS_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to get users');
+      dispatch({
+        type: GET_USERS_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
+
+export const deleteUser = (id, navigate) => (dispatch) => {
+  userApi
+    .deleteUser(id)
+    .then((response) => {
+      if (response.status === 200) {
+        dispatch({
+          type: DELETE_USER_SUCCESS,
+          payload: response.data,
+        });
+        navigate('/admin/users');
+      } else {
+        dispatch({
+          type: DELETE_USER_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data.message, 'unable to delete user');
+      dispatch({
+        type: DELETE_USER_FAILURE,
         payload: error.response.data.message,
       });
     });

@@ -1,60 +1,75 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { updatePlaces, getSingle } from '../../../redux/actions/user';
+import { updateUser, getuser } from '../../../redux/actions/user';
 import Header from '../header';
 
 const UpdatePackage = () => {
+  const [create, setCreate] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    surname: '',
+    phone: '',
+    address: '',
+    sexe: '',
+    profession: '',
+    imageUrls: '',
+    role: 'USER',
+  });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { key } = useParams();
+  const ref = useRef();
 
-  const [places, setPlaces] = useState({
-    name: '',
-    addresse: '',
-    description: '',
-    tags: '',
-    latLng: '',
-    imageUrls: '',
-  });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(updateUser(create, key, navigate));
+  };
+
+  const handleOnChange = (event) => {
+    setCreate((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
   const handleOnChangeImage = (event) => {
-    setPlaces((prevState) => ({
+    setCreate((prevState) => ({
       ...prevState,
       imageUrls: event.target.files[0],
     }));
   };
 
-  const handleChange = (e) => {
-    setPlaces({
-      ...places,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const { singlePlace } = useSelector((state) => state.places);
+  const { singleUser } = useSelector((state) => state.users);
 
   useEffect(() => {
-    dispatch(getSingle(key));
+    dispatch(getuser(key));
   }, []);
 
   useEffect(() => {
-    if (singlePlace) {
-      setPlaces({
-        ...singlePlace,
+    if (singleUser) {
+      setCreate({
+        ...singleUser,
       });
     }
-  }, [singlePlace]);
+  }, [singleUser]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(updatePlaces(key, places, navigate));
-  };
-
-  const ref = useRef();
-  //  console.log(ref.current.value, 'Reference packages');
-  const { description, addresse, latLng, name, tags } = places;
-
+  const {
+    email,
+    password,
+    firstName,
+    lastName,
+    surname,
+    phone,
+    address,
+    sexe,
+    profession,
+    role,
+  } = create;
+  console.log(role, 'Verify singleUser in updateUser');
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-7/12'>
       <Header title='Place' />
@@ -64,85 +79,200 @@ const UpdatePackage = () => {
             <div className='shadow-xl overflow-hidden sm:rounded-md'>
               <div className='px-4 py-5 sm:p-6'>
                 <div className='grid grid-cols-6 gap-6'>
-                  <div className='col-span-6 sm:col-span-3'>
+                  {/* <div className='col-span-6 sm:col-span-3'>
                     <label
-                      htmlFor='name'
+                      htmlFor='firstName'
                       className='block text-sm font-medium text-gray-700'
                     >
-                      Name
+                      First Name
                     </label>
                     <input
                       type='text'
-                      name='name'
-                      id='name'
-                      onChange={(e) => handleChange(e)}
-                      value={name}
-                      autoComplete='name'
-                      placeholder='Name'
+                      name='firstName'
+                      id='firstName'
+                      onChange={(e) => handleOnChange(e)}
+                      value={firstName}
+                      disabled
+                      autoComplete='firstName'
+                      placeholder='First Name'
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
                     />
                   </div>
-
                   <div className='col-span-6 sm:col-span-3'>
                     <label
-                      htmlFor='addresse'
+                      htmlFor='lastName'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Last Name
+                    </label>
+                    <input
+                      type='text'
+                      name='lastName'
+                      id='lastName'
+                      placeholder='First Name'
+                      value={lastName}
+                      disabled
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='lastName'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div> */}
+                  {/* <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='surname'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Surname
+                    </label>
+                    <input
+                      type='text'
+                      name='surname'
+                      id='surname'
+                      disabled
+                      placeholder='Surname'
+                      value={surname}
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='surname'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div>
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='firstName'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Phone
+                    </label>
+                    <input
+                      type='text'
+                      name='phone'
+                      id='phone'
+                      placeholder='Phone'
+                      disabled
+                      value={phone}
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='phone'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div>
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='sexe'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Sexe
+                    </label>
+                    <input
+                      type='text'
+                      name='sexe'
+                      id='sexe'
+                      placeholder='Sexe'
+                      disabled
+                      value={sexe}
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='sexe'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div>
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='profession'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Profession
+                    </label>
+                    <input
+                      type='text'
+                      name='profession'
+                      id='profession'
+                      placeholder='Profession'
+                      disabled
+                      value={profession}
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='profession'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div>
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='address'
                       className='block text-sm font-medium text-gray-700'
                     >
                       Addresse
                     </label>
                     <input
-                      type='addresse'
-                      value={addresse}
-                      id='addresse'
-                      name='addresse'
+                      type='text'
+                      name='address'
+                      id='address'
                       placeholder='Addresse'
-                      onChange={(e) => handleChange(e)}
-                      autoComplete='addresse'
+                      value={address}
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='address'
+                      disabled
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
                     />
-                  </div>
-
+                  </div> */}
                   <div className='col-span-6 sm:col-span-3'>
                     <label
-                      htmlFor='tags'
+                      htmlFor='role'
                       className='block text-sm font-medium text-gray-700'
                     >
-                      Tags
+                      Role
                     </label>
                     <input
                       type='text'
-                      name='tags'
-                      id='tags'
-                      placeholder='Tags'
-                      value={tags}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete='tags'
+                      name='role'
+                      id='role'
+                      placeholder='Role'
+                      value={role}
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='role'
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
                     />
                   </div>
-
-                  <div className='col-span-6 sm:col-span-3'>
+                  {/* <div className='col-span-6 sm:col-span-3'>
                     <label
-                      htmlFor='itineraire'
+                      htmlFor='email'
                       className='block text-sm font-medium text-gray-700'
                     >
-                      LatLng
+                      Email
                     </label>
                     <input
-                      type='text'
-                      name='latLng'
-                      id='latLng'
-                      placeholder='LatLng'
-                      value={latLng}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete='LatLng'
+                      type='email'
+                      value={email}
+                      id='email'
+                      name='email'
+                      placeholder='Email'
+                      onChange={(e) => handleOnChange(e)}
+                      disabled
+                      autoComplete='email'
                       className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
                     />
                   </div>
 
                   <div className='col-span-6 sm:col-span-3'>
                     <label
-                      htmlFor='formFile'
+                      htmlFor='password'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Password
+                    </label>
+                    <input
+                      type='password'
+                      name='password'
+                      id='password'
+                      disabled
+                      placeholder='Password'
+                      value={password}
+                      onChange={(e) => handleOnChange(e)}
+                      autoComplete='password'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    />
+                  </div>
+
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='surname'
                       className='form-label text-sm  inline-block mb-2 text-gray-700'
                     >
                       Image
@@ -158,28 +288,7 @@ const UpdatePackage = () => {
                       autoComplete='imageUrls'
                       ref={ref}
                     />
-                  </div>
-                  <input type='hidden' id='formFile' name='metadata' />
-                  <div className='col-span-6 sm:col-span-3 lg:col-span-full'>
-                    <label
-                      htmlFor='description'
-                      className='block text-sm font-medium text-gray-700'
-                    >
-                      Description
-                    </label>
-                    <textarea
-                      type='text'
-                      name='description'
-                      id='description'
-                      placeholder='Description'
-                      value={description}
-                      onChange={(e) => handleChange(e)}
-                      autoComplete='description'
-                      rows='5'
-                      cols='5'
-                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm resize-x'
-                    />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className='px-4 py-3 bg-gray-50 text-right sm:px-6'>
