@@ -26,7 +26,6 @@ import Package from '../../dashboard/pages/packages/package';
 import EditPackage from '../../dashboard/pages/packages/editPackage';
 import Dashboard from '../../dashboard/pages/home';
 import AdminExpeditions from '../../dashboard/pages/expeditions/expeditions';
-import Places from '../../dashboard/pages/places/places';
 import Users from '../../dashboard/pages/users/users';
 // book packages
 import BookPackageSingle from '../../dashboard/pages/bookPackage/bookPackage';
@@ -38,6 +37,12 @@ import BookExpeditionSingle from '../../dashboard/pages/bookExpedition/bookExped
 import BookExpeditionUpdate from '../../dashboard/pages/bookExpedition/updateExpedition';
 import AdminBookExpedition from '../../dashboard/pages/bookExpedition/bookExpeditions';
 import BookExpedition from '../../dashboard/pages/bookExpedition/createBookExpedition';
+
+// places
+import PlaceForm from '../../dashboard/pages/places/createPlace';
+import Place from '../../dashboard/pages/places/place';
+import EditPlace from '../../dashboard/pages/places/editPlace';
+import Places from '../../dashboard/pages/places/places';
 
 export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
@@ -53,7 +58,6 @@ export default function App() {
         <Route path='/admin/packages' element={<Packages />} />
         <Route path='/admin/expeditions' element={<AdminExpeditions />} />
         <Route path='/admin/book/packages' element={<AdminBookPackage />} />
-        <Route path='/admin/places' element={<Places />} />
         <Route path='/admin/users' element={<Users />} />
 
         <Route path='/admin/packages/:key' element={<Package />} />
@@ -102,6 +106,11 @@ export default function App() {
           element={<AdminBookExpedition />}
         />
 
+        {/* admin places /admin/edit/places/6 */}
+        <Route path='/admin/places' element={<Places />} />
+        <Route path='/admin/places/:key' element={<Place />} />
+        <Route path='/admin/edit/places/:key' element={<EditPlace />} />
+        <Route path='/admin/create/place' element={<PlaceForm />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
     </Router>

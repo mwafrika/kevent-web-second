@@ -5,6 +5,7 @@ import { packackages } from '../../redux/actions/package';
 import { Expeditions } from '../../redux/actions/expedition';
 import { getBookings } from '../../redux/actions/bookPackage';
 import { getExpeditionBookings } from '../../redux/actions/bookExpedition';
+import { Places } from '../../redux/actions/place';
 import { Redirect } from 'react-router-dom';
 import {
   faPaperPlane,
@@ -21,6 +22,7 @@ const MainContent = () => {
   const { expeditions } = useSelector((state) => state.expeditions);
   const { bookPackages } = useSelector((state) => state.bookPackages);
   const { bookExpeditions } = useSelector((state) => state.bookExpeditions);
+  const { places } = useSelector((state) => state.places);
 
   const dispatch = useDispatch();
 
@@ -29,6 +31,7 @@ const MainContent = () => {
     dispatch(Expeditions());
     dispatch(getBookings());
     dispatch(getExpeditionBookings());
+    dispatch(Places());
   }, []);
 
   // redirect to login if not logged in
@@ -68,7 +71,9 @@ const MainContent = () => {
             </span>
 
             <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold text-slate-600'>{bookExpeditions.length}</p>
+              <p className='text-3xl font-bold text-slate-600'>
+                {bookExpeditions.length}
+              </p>
               <p className='text-slate-500'>Booked Expedition(s)</p>
             </div>
           </div>
@@ -90,7 +95,9 @@ const MainContent = () => {
             </span>
 
             <div className='flex flex-col gap-y-2'>
-              <p className='text-3xl font-bold text-slate-600'>29</p>
+              <p className='text-3xl font-bold text-slate-600'>
+                {places.length}
+              </p>
               <p className='text-slate-500'>Place(s)</p>
             </div>
           </div>
