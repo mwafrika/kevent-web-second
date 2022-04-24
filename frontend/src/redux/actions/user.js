@@ -102,6 +102,7 @@ export const getuser = (id) => (dispatch) => {
   userApi
     .getUser(id)
     .then((response) => {
+      console.log(response, 'response get user data select');
       if (response.status === 200) {
         dispatch({
           type: GET_USER_SUCCESS,
