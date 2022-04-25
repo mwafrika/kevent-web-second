@@ -93,7 +93,23 @@ export const resetPassword = async (data) => {
   const response = await axios({
     method: 'post',
     url: `${baseUrl}password-reset`,
-    data: {email:data},
+    data: { email: data },
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  console.log(response, 'response');
+
+  return response;
+};
+// /api/v1/password-reset/:userId/:token
+export const resetPasswordConfirm = async (data, userId, token) => {
+  console.log(data, 'data');
+  const response = await axios({
+    method: 'post',
+    url: `${baseUrl}password-reset/${userId}/${token}`,
+    data: { password: data },
     headers: {
       'Content-Type': 'application/json',
     },

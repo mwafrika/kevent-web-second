@@ -13,7 +13,7 @@ const RightSideBar = () => {
 
   console.log(isLoggedIn, 'Auth user', email);
   return (
-    <div className='col-span-1 row-span-full flex mx-auto text-center py-12 flex-col gap-y-4 sm:flex xs:hidden xxs:hidden xxxs:hidden'>
+    <div className='col-span-1 px-4 row-span-full flex mx-auto text-center py-12 flex-col gap-y-4 sm:flex xs:hidden xxs:hidden xxxs:hidden'>
       <span className='text-7xl text-slate-600'>
         <FontAwesomeIcon icon={faCircleUser} />
       </span>

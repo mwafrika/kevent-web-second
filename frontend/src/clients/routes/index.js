@@ -49,8 +49,10 @@ import Users from '../../dashboard/pages/users/users';
 import User from '../../dashboard/pages/users/user';
 import UpdateUser from '../../dashboard/pages/users/update';
 
-import ResetPassword from '../../dashboard/components/users/resetPassword';
+import ResetPassword from '../../dashboard/components/users/requestReset';
 import ResetMessage from '../../dashboard/components/users/reset-message';
+import ConfirmReset from '../../dashboard/components/users/resetPassword';
+import ConfirmSuccess from '../../dashboard/components/users/confirmSuccess';
 
 export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
@@ -124,7 +126,12 @@ export default function App() {
         <Route path='/admin/users/:key' element={<User />} />
         <Route path='/admin/edit/users/:key' element={<UpdateUser />} />
         <Route path='/reset-password' element={<ResetPassword />} />
-        <Route path='/reset-message' element={<ResetMessage />} />
+        <Route path='/reset-success' element={<ResetMessage />} />
+        <Route
+          path='/password-reset/:userId/:token'
+          element={<ConfirmReset />}
+        />
+        <Route path='/password-reset/success' element={<ConfirmSuccess />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
     </Router>

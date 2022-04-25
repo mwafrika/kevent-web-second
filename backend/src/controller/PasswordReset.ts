@@ -2,8 +2,6 @@ import {getRepository,In} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import {Token} from '../entity/Token';
 import {Authentication} from '../entity/Authentication';
-import * as crypto from 'crypto'
-import sendEmail from '../utils/sendEmail';
 import * as bcrypt from "bcryptjs";
 
 export class PasswordResetController {
@@ -32,11 +30,5 @@ export class PasswordResetController {
             console.log(error);
         }
     }
-    // function hashPassword() {
-    //     this.password = bcrypt.hashSync(this.password, 8);
-    //   }
-    
-    //  function checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
-    //     return bcrypt.compareSync(unencryptedPassword, this.password);
-    //   }
+  
 }

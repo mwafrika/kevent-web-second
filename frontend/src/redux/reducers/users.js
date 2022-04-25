@@ -9,6 +9,8 @@ import {
   DELETE_USER_FAILURE,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE,
+  RESET_PASSWORD_CONFIRMATION_SUCCESS,
+  RESET_PASSWORD_CONFIRMATION_FAILURE,
 } from '../actionTypes/users';
 
 const initialState = {
@@ -79,6 +81,19 @@ const userReducer = (state = initialState, action) => {
         hasError: null,
       };
     case RESET_PASSWORD_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        hasError: action.payload,
+      };
+
+    case RESET_PASSWORD_CONFIRMATION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        hasError: null,
+      };
+    case RESET_PASSWORD_CONFIRMATION_FAILURE:
       return {
         ...state,
         loading: false,

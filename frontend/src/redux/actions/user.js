@@ -13,6 +13,8 @@ import {
   DELETE_USER_FAILURE,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILURE,
+  RESET_PASSWORD_CONFIRMATION_SUCCESS,
+  RESET_PASSWORD_CONFIRMATION_FAILURE,
 } from '../actionTypes/users';
 import * as userApi from '../Api/user';
 
@@ -188,7 +190,7 @@ export const resetpassword = (userData, navigate) => (dispatch) => {
           type: RESET_PASSWORD_SUCCESS,
           payload: response.data,
         });
-        // navigate('/result-reset');
+        navigate('/reset-success');
       } else {
         // navigate('/admin/failure');
         dispatch({
@@ -206,3 +208,33 @@ export const resetpassword = (userData, navigate) => (dispatch) => {
       });
     });
 };
+
+export const confirmpassword =
+  (userData, userId, token, navigate) => (dispatch) => {
+    userApi
+      .resetPasswordConfirm(userData, userId, token)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response, 'response confirm password');
+          dispatch({
+            type: RESET_PASSWORD_CONFIRMATION_SUCCESS,
+            payload: response.data,
+          });
+          navigate('/password-reset/success');
+        } else {
+          // navigate('/admin/failure');
+          dispatch({
+            type: RESET_PASSWORD_CONFIRMATION_FAILURE,
+            payload: response.data,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.message, 'unable to confirm password');
+        console.log(error.response);
+        dispatch({
+          type: RESET_PASSWORD_CONFIRMATION_FAILURE,
+          payload: error.response.data.message,
+        });
+      });
+  };
