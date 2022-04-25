@@ -55,6 +55,7 @@ const userReducer = (state = initialState, action) => {
         isAuthenticated: false,
         message: action.payload,
       };
+
     default:
       console.log(action.payload, 'my action payload reducer default');
       return state;

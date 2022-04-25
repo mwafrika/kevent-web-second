@@ -80,7 +80,7 @@ const Login = () => {
                 <p className='text-gray-500'> Forgot your password?</p>
                 <span className='text-slate-800'>
                   &nbsp;
-                  <Link to='/reset'>Reset here</Link>
+                  <Link to='/reset-password'>Reset here</Link>
                 </span>
               </div>
               <div className='text-sm flex justify-start'>

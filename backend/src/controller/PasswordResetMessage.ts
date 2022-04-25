@@ -10,13 +10,13 @@ export class ResetMessageController {
 
     private userRepository = getRepository(Authentication);
     private TokenRepository = getRepository(Token)
-
-    async save(request: Request, response: Response, next: NextFunction) {
+    
+    async save(request: Request, response: Response, next: NextFunction){
         try {    
             const user = await this.userRepository.findOne({where:{email: request.body.email }});
-          
+            
             if (!user) return response.status(400).send("user with given email doesn't exist");
-    
+            console.log(user,'user');
             let token = await this.TokenRepository.findOne({where:{userId: user.id} });
             if (!token) {
                 token = new Token();
@@ -25,7 +25,7 @@ export class ResetMessageController {
                 token.createdAt = new Date(Date.now() + 3600);
                 await this.TokenRepository.save(token);
             }
-    
+            console.log(token.token,'token', user.id,'user id', user.email);
             const link = `http://localhost:${PORT}/api/v1/password-reset/${user.id}/${token.token}`;
             await sendEmail(user.email, "Password reset", link);
     

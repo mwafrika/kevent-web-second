@@ -87,3 +87,19 @@ export const deleteUser = async (id) => {
   });
   return response;
 };
+
+export const resetPassword = async (data) => {
+  console.log(data, 'data');
+  const response = await axios({
+    method: 'post',
+    url: `${baseUrl}password-reset`,
+    data: {email:data},
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  console.log(response, 'response');
+
+  return response;
+};

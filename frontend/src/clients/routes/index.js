@@ -49,6 +49,9 @@ import Users from '../../dashboard/pages/users/users';
 import User from '../../dashboard/pages/users/user';
 import UpdateUser from '../../dashboard/pages/users/update';
 
+import ResetPassword from '../../dashboard/components/users/resetPassword';
+import ResetMessage from '../../dashboard/components/users/reset-message';
+
 export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
   return (
@@ -120,6 +123,8 @@ export default function App() {
         <Route path='/admin/users' element={<Users />} />
         <Route path='/admin/users/:key' element={<User />} />
         <Route path='/admin/edit/users/:key' element={<UpdateUser />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
+        <Route path='/reset-message' element={<ResetMessage />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
     </Router>

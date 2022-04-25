@@ -7,6 +7,8 @@ import {
   GET_USERS_FAILURE,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
 } from '../actionTypes/users';
 
 const initialState = {
@@ -65,6 +67,18 @@ const userReducer = (state = initialState, action) => {
         hasError: null,
       };
     case DELETE_USER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        hasError: action.payload,
+      };
+    case RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        hasError: null,
+      };
+    case RESET_PASSWORD_FAILURE:
       return {
         ...state,
         loading: false,

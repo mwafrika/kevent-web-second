@@ -11,6 +11,8 @@ import {
   GET_USERS_FAILURE,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
 } from '../actionTypes/users';
 import * as userApi from '../Api/user';
 
@@ -171,6 +173,35 @@ export const deleteUser = (id, navigate) => (dispatch) => {
       console.log(error.response.data.message, 'unable to delete user');
       dispatch({
         type: DELETE_USER_FAILURE,
+        payload: error.response.data.message,
+      });
+    });
+};
+
+export const resetpassword = (userData, navigate) => (dispatch) => {
+  userApi
+    .resetPassword(userData)
+    .then((response) => {
+      if (response.status === 200) {
+        console.log(response, 'response reset password');
+        dispatch({
+          type: RESET_PASSWORD_SUCCESS,
+          payload: response.data,
+        });
+        // navigate('/result-reset');
+      } else {
+        // navigate('/admin/failure');
+        dispatch({
+          type: RESET_PASSWORD_FAILURE,
+          payload: response.data,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.message, 'unable to reset password');
+      console.log(error.response);
+      dispatch({
+        type: RESET_PASSWORD_FAILURE,
         payload: error.response.data.message,
       });
     });
