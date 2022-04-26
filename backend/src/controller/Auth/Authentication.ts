@@ -3,6 +3,7 @@ import {NextFunction, Request, Response} from "express";
 import {Authentication} from "../../entity/Authentication";
 import { validate } from "class-validator";
 import * as jwt from "jsonwebtoken";
+import {jwtSecret} from '../../config'
 export class AuthenticationController {
 private userRepository = getRepository(Authentication);
 async save(request: Request, response: Response, next: NextFunction) {
@@ -35,7 +36,7 @@ try {
     user.hashPassword();
   
     await this.userRepository.save(user);
-    const token = jwt.sign({ userId: user.id, email: user.email, role: user.role },process.env.jwtSecret,{ expiresIn: "1h" })
+    const token = jwt.sign({ userId: user.id, email: user.email, role: user.role },jwtSecret,{ expiresIn: "1h" })
     const authUser = jwt.decode(token);
     response.status(201).send({message:"Utilisateur creé avec succes",token, authUser});
 
