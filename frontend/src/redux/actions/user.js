@@ -17,6 +17,7 @@ import {
   RESET_PASSWORD_CONFIRMATION_FAILURE,
 } from '../actionTypes/users';
 import * as userApi from '../Api/user';
+import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
 
 export const signup = (userData, navigate) => (dispatch) => {
   userApi
@@ -27,17 +28,13 @@ export const signup = (userData, navigate) => (dispatch) => {
           type: REGISTER_SUCCESS,
           payload: response.data,
         });
-        localStorage.setItem('user', JSON.stringify(response.data));
+        // localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/login');
-      } else {
-        dispatch({
-          type: REGISTER_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Creation de compte réussie');
       }
     })
     .catch((error) => {
-      console.log(error.response.data.message, 'unable to signup');
+      rejectPromise(error, 'Erreur lors de la création de compte');
       dispatch({
         type: REGISTER_FAILURE,
         payload: error.response.data.message,
@@ -54,23 +51,17 @@ export const login = (userData, navigate) => (dispatch) => {
           type: LOGIN_SUCCESS,
           payload: response.data,
         });
-
-        console.log(response.data, 'response login data');
         localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/admin/home');
-      } else {
-        dispatch({
-          type: LOGIN_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Connection en cours...');
       }
     })
     .catch((error) => {
-      console.log(error.response.data.message, 'unable to login');
       dispatch({
         type: LOGIN_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Connection en cours...');
     });
 };
 
@@ -83,14 +74,8 @@ export const updateUser = (userData, id, navigate) => (dispatch) => {
           type: UPDATE_USER_SUCCESS,
           payload: response.data,
         });
-        console.log(response, 'response update user data');
-        // localStorage.setItem('user', JSON.stringify(response.data));
         navigate('/admin/users');
-      } else {
-        dispatch({
-          type: UPDATE_USER_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Mis a jour en cours...');
       }
     })
     .catch((error) => {
@@ -99,6 +84,7 @@ export const updateUser = (userData, id, navigate) => (dispatch) => {
         type: UPDATE_USER_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la mise a jour');
     });
 };
 
@@ -112,11 +98,7 @@ export const getuser = (id) => (dispatch) => {
           type: GET_USER_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_USER_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, "Récupération des données de l'utilisateur");
       }
     })
     .catch((error) => {
@@ -125,6 +107,7 @@ export const getuser = (id) => (dispatch) => {
         type: GET_USER_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la récupération des données');
     });
 };
 
@@ -138,11 +121,7 @@ export const getusers = () => (dispatch) => {
           type: GET_USERS_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_USERS_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Récupération des données des utilisateurs');
       }
     })
     .catch((error) => {
@@ -151,6 +130,7 @@ export const getusers = () => (dispatch) => {
         type: GET_USERS_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la récupération des données');
     });
 };
 
@@ -164,11 +144,7 @@ export const deleteUser = (id, navigate) => (dispatch) => {
           payload: response.data,
         });
         navigate('/admin/users');
-      } else {
-        dispatch({
-          type: DELETE_USER_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, "Suppression de l'utilisateur");
       }
     })
     .catch((error) => {
@@ -177,6 +153,7 @@ export const deleteUser = (id, navigate) => (dispatch) => {
         type: DELETE_USER_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, "Erreur lors de la suppression de l'utilisateur");
     });
 };
 
@@ -191,12 +168,7 @@ export const resetpassword = (userData, navigate) => (dispatch) => {
           payload: response.data,
         });
         navigate('/reset-success');
-      } else {
-        // navigate('/admin/failure');
-        dispatch({
-          type: RESET_PASSWORD_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Réinitialisation du mot de passe');
       }
     })
     .catch((error) => {
@@ -206,6 +178,10 @@ export const resetpassword = (userData, navigate) => (dispatch) => {
         type: RESET_PASSWORD_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(
+        error,
+        'Erreur lors de la réinitialisation du mot de passe'
+      );
     });
 };
 
@@ -221,12 +197,7 @@ export const confirmpassword =
             payload: response.data,
           });
           navigate('/password-reset/success');
-        } else {
-          // navigate('/admin/failure');
-          dispatch({
-            type: RESET_PASSWORD_CONFIRMATION_FAILURE,
-            payload: response.data,
-          });
+          resolvePromise(response, 'Confirmation du mot de passe');
         }
       })
       .catch((error) => {
@@ -236,5 +207,6 @@ export const confirmpassword =
           type: RESET_PASSWORD_CONFIRMATION_FAILURE,
           payload: error.response.data.message,
         });
+        rejectPromise(error, 'Erreur lors de la confirmation du mot de passe');
       });
   };

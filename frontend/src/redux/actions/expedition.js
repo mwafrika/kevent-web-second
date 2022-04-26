@@ -11,6 +11,7 @@ import {
   DELETE_EXPEDITION_FAILURE,
 } from '../actionTypes/expeditions';
 import * as ExpeditionApi from '../Api/expedition';
+import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
 
 export const createExpeditions = (expeditionData, clearForm) => (dispatch) => {
   ExpeditionApi.createExpedition(expeditionData)
@@ -22,11 +23,7 @@ export const createExpeditions = (expeditionData, clearForm) => (dispatch) => {
           payload: response.data,
         });
         clearForm();
-      } else {
-        dispatch({
-          type: CREATE_EXPEDITION_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Expedition creer avec succes');
       }
     })
     .catch((error) => {
@@ -35,6 +32,7 @@ export const createExpeditions = (expeditionData, clearForm) => (dispatch) => {
         type: CREATE_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, "Impossible de creer l'expedition");
     });
 };
 
@@ -47,11 +45,7 @@ export const Expeditions = () => (dispatch) => {
           type: GET_EXPEDITIONS_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_EXPEDITIONS_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Expeditions recuperer avec succes');
       }
     })
     .catch((error) => {
@@ -60,6 +54,7 @@ export const Expeditions = () => (dispatch) => {
         type: GET_EXPEDITIONS_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Impossible de recuperer les expeditions');
     });
 };
 
@@ -72,11 +67,7 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_EXPEDITION_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_EXPEDITION_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Expedition recuperer avec succes');
       }
     })
     .catch((error) => {
@@ -85,6 +76,7 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, "Impossible de recuperer l'expedition");
     });
 };
 
@@ -99,11 +91,7 @@ export const updateExpedition =
             payload: response.data,
           });
           navigate('/admin/expeditions');
-        } else {
-          dispatch({
-            type: UPDATE_EXPEDITION_FAILURE,
-            payload: response.data,
-          });
+          resolvePromise(response, 'Expedition modifier avec succes');
         }
       })
       .catch((error) => {
@@ -112,6 +100,7 @@ export const updateExpedition =
           type: UPDATE_EXPEDITION_FAILURE,
           payload: error.response.data.message,
         });
+        rejectPromise(error, "Impossible de modifier l'expedition");
       });
   };
 
@@ -125,11 +114,7 @@ export const deleteExpedition = (id, navigate) => (dispatch) => {
           payload: response.data,
         });
         navigate('/admin/expeditions');
-      } else {
-        dispatch({
-          type: DELETE_EXPEDITION_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Expedition supprimer avec succes');
       }
     })
     .catch((error) => {
@@ -138,5 +123,6 @@ export const deleteExpedition = (id, navigate) => (dispatch) => {
         type: DELETE_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, "Impossible de supprimer l'expedition");
     });
 };

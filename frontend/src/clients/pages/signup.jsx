@@ -21,29 +21,11 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector((state) => state.user);
   const ref = useRef();
 
   const handleSignup = (event) => {
     event.preventDefault();
     dispatch(signup(create, navigate));
-    setCreate({
-      email: '',
-      password: '',
-      firstName: '',
-      lastName: '',
-      surname: '',
-      phone: '',
-      address: '',
-      sexe: '',
-      profession: '',
-      role: 'USER',
-    });
-    resetFile();
-    console.log(error, 'Find error');
-  };
-  const resetFile = () => {
-    ref.current.value = '';
   };
 
   const handleOnChange = (event) => {

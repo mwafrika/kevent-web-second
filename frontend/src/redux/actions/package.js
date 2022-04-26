@@ -11,6 +11,7 @@ import {
   DELETE_PACKAGE_FAILURE,
 } from '../actionTypes/package';
 import * as packageApi from '../Api/package';
+import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
 
 export const createPackages = (packageData, clearForm) => (dispatch) => {
   packageApi
@@ -22,12 +23,9 @@ export const createPackages = (packageData, clearForm) => (dispatch) => {
           type: CREATE_PACKAGE_SUCCESS,
           payload: response.data,
         });
+        console.log('See packages', response);
+        resolvePromise(response, "Création de l'offre réussie");
         clearForm();
-      } else {
-        dispatch({
-          type: CREATE_PACKAGE_FAILURE,
-          payload: response.data,
-        });
       }
     })
     .catch((error) => {
@@ -36,6 +34,7 @@ export const createPackages = (packageData, clearForm) => (dispatch) => {
         type: CREATE_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, "Erreur lors de la création de l'offre");
     });
 };
 
@@ -49,11 +48,7 @@ export const packackages = () => (dispatch) => {
           type: GET_PACKAGES_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_PACKAGES_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Création de packet réussie');
       }
     })
     .catch((error) => {
@@ -62,6 +57,7 @@ export const packackages = () => (dispatch) => {
         type: GET_PACKAGES_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la création de packet');
     });
 };
 
@@ -75,11 +71,7 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_PACKAGE_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_PACKAGE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Création de packet réussie');
       }
     })
     .catch((error) => {
@@ -88,6 +80,7 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la création de packet');
     });
 };
 
@@ -102,11 +95,7 @@ export const updatePackage = (id, packageData, navigate) => (dispatch) => {
           payload: response.data,
         });
         navigate('/admin/packages');
-      } else {
-        dispatch({
-          type: UPDATE_PACKAGE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Modification de packet réussie');
       }
     })
     .catch((error) => {
@@ -115,6 +104,7 @@ export const updatePackage = (id, packageData, navigate) => (dispatch) => {
         type: UPDATE_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la modification de packet');
     });
 };
 
@@ -122,18 +112,13 @@ export const deletePackage = (id, navigate) => (dispatch) => {
   packageApi
     .deletePackage(id)
     .then((response) => {
-      console.log('See delete package action', response);
       if (response.status === 204) {
         dispatch({
           type: DELETE_PACKAGE_SUCCESS,
           payload: response.data,
         });
         navigate('/admin/packages');
-      } else {
-        dispatch({
-          type: DELETE_PACKAGE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Suppression de packet réussie');
       }
     })
     .catch((error) => {
@@ -142,5 +127,6 @@ export const deletePackage = (id, navigate) => (dispatch) => {
         type: DELETE_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la suppression de packet');
     });
 };

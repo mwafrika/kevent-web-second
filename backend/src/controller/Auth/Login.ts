@@ -20,7 +20,7 @@ async save(request: Request, response: Response, next: NextFunction) {
     try {
       user = await userRepository.findOneOrFail({ where: { email } });
     } catch (error) {
-      response.status(401).send({
+      response.status(400).send({
         message: "email or password incorrect"
       });
     }
@@ -35,7 +35,7 @@ async save(request: Request, response: Response, next: NextFunction) {
     const token = jwt.sign({ userId: user.id, email: user.email },process.env.jwtSecret,{ expiresIn: "1h" });
    const authUser = jwt.decode(token);
     //Send the jwt in the response
-    response.send({token, authUser});
+    response.send({token, authUser, message: "Connecté avec succès"});
 
 }
 }

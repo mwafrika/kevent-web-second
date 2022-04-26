@@ -12,6 +12,7 @@ import {
 } from '../actionTypes/booking';
 
 import * as BookPackageAPI from '../Api/booking';
+import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
 
 export const createBookExpedition =
   (bookPackageData, expeditionId, clearForm) => (dispatch) => {
@@ -75,6 +76,7 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_BOOK_EXPEDITION_SUCCESS,
           payload: response.data,
         });
+        resolvePromise(response, 'Success');
       } else {
         dispatch({
           type: GET_BOOK_EXPEDITION_FAILURE,
@@ -91,6 +93,7 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_BOOK_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la récupération de l\'offre');
     });
 };
 

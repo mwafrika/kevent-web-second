@@ -16,7 +16,27 @@ export class PackageController {
 
     async save(request: Request, response: Response, next: NextFunction) {
         console.log('VERIFY UPLOADS',request.body);
-        return this.packageRepository.save(request.body);
+       
+       try {
+        const {price, description,imageUrls, itineraire, metadata,places, tags, title} = request.body;
+        if(price && description && imageUrls && itineraire && metadata && places && tags && title){
+            const newPackage = new Package();
+            newPackage.price = price;
+            newPackage.description = description;
+            newPackage.imageUrls = imageUrls;
+            newPackage.itineraire = itineraire;
+            newPackage.metadata = metadata;
+            newPackage.places = places;
+            newPackage.tags = tags;
+            newPackage.title = title;
+           
+            return await this.packageRepository.save(newPackage)
+        }
+       } catch (error) {
+       return response.status(400).send({error: "Package is not valid"})
+       }
+    
+        // return this.packageRepository.save(request.body);
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {

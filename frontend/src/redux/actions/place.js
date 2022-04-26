@@ -11,6 +11,7 @@ import {
   DELETE_PLACE_FAILURE,
 } from '../actionTypes/place';
 import * as packageApi from '../Api/place';
+import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
 
 export const createPlaces = (packageData, clearForm) => (dispatch) => {
   packageApi
@@ -23,19 +24,16 @@ export const createPlaces = (packageData, clearForm) => (dispatch) => {
           payload: response.data,
         });
         clearForm();
-      } else {
-        dispatch({
-          type: CREATE_PLACE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Place creer avec succes');
       }
     })
     .catch((error) => {
-      console.log(error.response.data.message, 'unable to create package');
+      console.log(error.response.data.message, 'unable to create place');
       dispatch({
         type: CREATE_PLACE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la creation du place');
     });
 };
 
@@ -49,11 +47,7 @@ export const Places = () => (dispatch) => {
           type: GET_PLACES_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_PLACES_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Liste des places');
       }
     })
     .catch((error) => {
@@ -62,6 +56,7 @@ export const Places = () => (dispatch) => {
         type: GET_PLACES_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la recuperation des places');
     });
 };
 
@@ -75,11 +70,7 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_PLACE_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_PLACE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Place recuperer avec succes');
       }
     })
     .catch((error) => {
@@ -88,6 +79,7 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_PLACE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la recuperation du place');
     });
 };
 
@@ -102,11 +94,7 @@ export const updatePlaces = (id, packageData, navigate) => (dispatch) => {
           payload: response.data,
         });
         navigate('/admin/places');
-      } else {
-        dispatch({
-          type: UPDATE_PLACE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Place modifier avec succes');
       }
     })
     .catch((error) => {
@@ -115,6 +103,7 @@ export const updatePlaces = (id, packageData, navigate) => (dispatch) => {
         type: UPDATE_PLACE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la modification du place');
     });
 };
 
@@ -129,11 +118,7 @@ export const deletePlaces = (id, navigate) => (dispatch) => {
           payload: response.data,
         });
         navigate('/admin/places');
-      } else {
-        dispatch({
-          type: DELETE_PLACE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Place supprimer avec succes');
       }
     })
     .catch((error) => {
@@ -142,5 +127,6 @@ export const deletePlaces = (id, navigate) => (dispatch) => {
         type: DELETE_PLACE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la suppression du place');
     });
 };

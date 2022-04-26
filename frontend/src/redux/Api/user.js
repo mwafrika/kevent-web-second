@@ -10,11 +10,11 @@ const authHeader = () => {
   }
 };
 
-export const login = async (data) => {
-  return await axios.post(`${baseUrl}signin`, data);
+export const login = (data) => {
+  return axios.post(`${baseUrl}signin`, data);
 };
 
-export const signup = async (data) => {
+export const signup = (data) => {
   let bodyFormData = new FormData();
   bodyFormData.append('email', data.email);
   bodyFormData.append('password', data.password);
@@ -28,7 +28,7 @@ export const signup = async (data) => {
   bodyFormData.append('imageUrls', data.imageUrls);
   bodyFormData.append('role', data.role);
 
-  const response = await axios({
+  const response = axios({
     method: 'post',
     url: `${baseUrl}signup`,
     data: bodyFormData,

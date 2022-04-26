@@ -6,6 +6,7 @@ import {
   Link,
   Route,
 } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import Home from '../pages/home';
 import About from '../pages/about';
 import ListExpeditions from '../pages/listExpeditions';
@@ -58,6 +59,7 @@ export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
   return (
     <Router>
+      <ToastContainer  />
       <Routes>
         <Route index element={<Home />} />
         <Route path='/login' element={<Login />} />

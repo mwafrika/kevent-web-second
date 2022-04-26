@@ -11,6 +11,7 @@ import {
   DELETE_BOOK_PACKAGE_FAILURE,
 } from '../actionTypes/booking';
 import * as BookPackageAPI from '../Api/booking';
+import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
 
 export const createBookPackage =
   (bookPackageData, packageId, clearForm) => (dispatch) => {
@@ -23,12 +24,8 @@ export const createBookPackage =
             type: CREATE_BOOK_PACKAGE_SUCCESS,
             payload: response.data,
           });
+          resolvePromise(response, "Création de l'offre réussie");
           clearForm();
-        } else {
-          dispatch({
-            type: CREATE_BOOK_PACKAGE_FAILURE,
-            payload: response.data,
-          });
         }
       })
       .catch((error) => {
@@ -37,6 +34,7 @@ export const createBookPackage =
           type: CREATE_BOOK_PACKAGE_FAILURE,
           payload: error?.response?.data?.message,
         });
+        rejectPromise(error, "Erreur lors de la création de l'offre");
       });
   };
 
@@ -49,11 +47,7 @@ export const getBookings = () => (dispatch) => {
           type: GET_BOOK_PACKAGES_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_BOOK_PACKAGES_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Création de packet réussie');
       }
     })
     .catch((error) => {
@@ -62,6 +56,7 @@ export const getBookings = () => (dispatch) => {
         type: GET_BOOK_PACKAGES_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la création de packet');
     });
 };
 
@@ -74,11 +69,7 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_BOOK_PACKAGE_SUCCESS,
           payload: response.data,
         });
-      } else {
-        dispatch({
-          type: GET_BOOK_PACKAGE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Création de packet réussie');
       }
     })
     .catch((error) => {
@@ -90,24 +81,20 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_BOOK_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la création de packet');
     });
 };
 
 export const updateBookPackage = (dataBook, id, navigate) => (dispatch) => {
   BookPackageAPI.updateBooking(dataBook, id)
     .then((response) => {
-      console.log('See update package action', response);
       if (response.status === 200) {
         dispatch({
           type: UPDATE_BOOK_PACKAGE_SUCCESS,
           payload: response.data,
         });
         navigate('/admin/book/packages');
-      } else {
-        dispatch({
-          type: UPDATE_BOOK_PACKAGE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Modification de packet réussie');
       }
     })
     .catch((error) => {
@@ -116,6 +103,7 @@ export const updateBookPackage = (dataBook, id, navigate) => (dispatch) => {
         type: UPDATE_BOOK_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la modification de packet');
     });
 };
 
@@ -129,11 +117,7 @@ export const deleteBookingPackage = (id, navigate) => (dispatch) => {
           payload: response.data,
         });
         navigate('/admin/book/packages');
-      } else {
-        dispatch({
-          type: DELETE_BOOK_PACKAGE_FAILURE,
-          payload: response.data,
-        });
+        resolvePromise(response, 'Suppression de packet réussie');
       }
     })
     .catch((error) => {
@@ -142,5 +126,6 @@ export const deleteBookingPackage = (id, navigate) => (dispatch) => {
         type: DELETE_BOOK_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la suppression de packet');
     });
 };
