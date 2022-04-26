@@ -27,7 +27,8 @@ export class ResetMessageController {
             }
             console.log(token.token,'token', user.id,'user id', user.email);
             // const link = `http://localhost:${PORT}/api/v1/password-reset/${user.id}/${token.token}`;
-            const link = `http://localhost:${3000}/password-reset/${user.id}/${token.token}`;
+            
+            const link = `https://www.kevent-rdc.com/password-reset/${user.id}/${token.token}`;
             await sendEmail(user.email, "Password reset", link);
     
             response.status(200).send({message:"password reset link sent to your email account"});

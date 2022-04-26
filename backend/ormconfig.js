@@ -10,7 +10,7 @@ const Connection = [
         rejectUnauthorized: false,
       },
     },
-    synchronize: true,
+    synchronize: false,
     logging: false,
     entities: ['src/entity/**/*.ts'],
     migrations: ['src/migration/**/*.ts'],
