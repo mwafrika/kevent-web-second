@@ -1,9 +1,11 @@
 import {MigrationInterface, QueryRunner, getRepository} from "typeorm";
 import {Authentication} from '../entity/Authentication';
-export class userAdmin1650174606388 implements MigrationInterface {
+
+export class admin1650965011141 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         let user = new Authentication();
+
         user.email = "admin@gmail.com";
         user.firstName = "mwafrika";
         user.lastName = "mufungizi";
