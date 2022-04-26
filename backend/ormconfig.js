@@ -1,7 +1,15 @@
+var DATABASE_URL = require('./src/config').DATABASE_URL;
+console.log(DATABASE_URL, 'DATABASE_URL');
 const Connection = [
   {
     type: 'postgres',
-    url: 'postgres://kevent:kevent@localhost:5432/keventDB',
+    url: DATABASE_URL,
+    ssl: true,
+    extra: {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
     synchronize: true,
     logging: false,
     entities: ['src/entity/**/*.ts'],
@@ -15,14 +23,8 @@ const Connection = [
   },
   {
     type: 'postgres',
-    url: 'postgres://dzycvvqjalazzy:bc1d8ed96b2ad693e3703e4c57caed89e6012c0f1e428c24c5b182b8d3ad9578@ec2-52-73-155-171.compute-1.amazonaws.com:5432/dduser79lor18h',
-    ssl: true,
-    extra: {
-      ssl: {
-        rejectUnauthorized: false,
-      },
-    },
-    synchronize: true,
+    url: 'postgres://kevent:kevent@localhost:5432/keventDB',
+    synchronize: false,
     logging: false,
     entities: ['src/entity/**/*.ts'],
     migrations: ['src/migration/**/*.ts'],
