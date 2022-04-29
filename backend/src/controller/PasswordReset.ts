@@ -2,8 +2,6 @@ import {getRepository,In} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import {Token} from '../entity/Token';
 import {Authentication} from '../entity/Authentication';
-import * as crypto from 'crypto'
-import sendEmail from '../utils/sendEmail';
 import * as bcrypt from "bcryptjs";
 
 export class PasswordResetController {
@@ -14,6 +12,7 @@ export class PasswordResetController {
     async save(request: Request, response: Response, next: NextFunction) {
         try {    
             const user = await this.userRepository.findOne(request.params.userId);
+            console.log(user,'user');
             if (!user) throw Error("invalid link or expired");
     
             let token = await this.TokenRepository.findOne({where:{userId: user.id, token: request.params.token}});
@@ -25,17 +24,11 @@ export class PasswordResetController {
             console.log(user.password,'reset my pass');
             await this.userRepository.save(user);
             await this.TokenRepository.delete(token);
-            response.send("password reset successfully");
+            response.status(200).send({message:"password reset successfully"});
         } catch (error) {
-            response.send("An error occured");
+            response.send({message: "An error occured"});
             console.log(error);
         }
     }
-    // function hashPassword() {
-    //     this.password = bcrypt.hashSync(this.password, 8);
-    //   }
-    
-    //  function checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
-    //     return bcrypt.compareSync(unencryptedPassword, this.password);
-    //   }
+  
 }

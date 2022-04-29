@@ -10,13 +10,13 @@ export class ResetMessageController {
 
     private userRepository = getRepository(Authentication);
     private TokenRepository = getRepository(Token)
-
-    async save(request: Request, response: Response, next: NextFunction) {
+    
+    async save(request: Request, response: Response, next: NextFunction){
         try {    
             const user = await this.userRepository.findOne({where:{email: request.body.email }});
-          
-            if (!user) return response.status(400).send("user with given email doesn't exist");
-    
+            
+            if (!user) return response.status(400).send({meessage: "user with given email doesn't exist"});
+            console.log(user,'user');
             let token = await this.TokenRepository.findOne({where:{userId: user.id} });
             if (!token) {
                 token = new Token();
@@ -25,13 +25,15 @@ export class ResetMessageController {
                 token.createdAt = new Date(Date.now() + 3600);
                 await this.TokenRepository.save(token);
             }
-    
-            const link = `http://localhost:${PORT}/api/v1/password-reset/${user.id}/${token.token}`;
+            console.log(token.token,'token', user.id,'user id', user.email);
+            // const link = `http://localhost:${PORT}/api/v1/password-reset/${user.id}/${token.token}`;
+            
+            const link = `https://www.kevent-rdc.com/password-reset/${user.id}/${token.token}`;
             await sendEmail(user.email, "Password reset", link);
     
-            response.send("password reset link sent to your email account");
+            response.status(200).send({message:"password reset link sent to your email account"});
         } catch (error) {
-            response.send("An error occured");
+            response.send({error: "An error occured"});
             console.log(error);
         }
     }

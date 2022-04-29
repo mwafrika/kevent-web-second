@@ -1,13 +1,32 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate, Link } from 'react-router-dom';
+import { logout } from '../../redux/actions/user';
+import { useDispatch } from 'react-redux';
 import {
   faCircleUser,
   faUserFriends,
   faHome,
   faArrowRightFromBracket,
   faCalendarCheck,
+  faLocationDot,
+  faPaperPlane,
+  faBoxOpen,
+  faBagShopping,
+  faPowerOff,
 } from '@fortawesome/free-solid-svg-icons';
+
 const LeftSidebar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    if (localStorage.getItem('user')) {
+      localStorage.removeItem('user');
+    }
+    navigate('/');
+  };
+
   return (
     <div className=' bg-white shadow-lg col-span-1 row-span-full flex justify-between py-10 flex-col items-center'>
       <div className='flex flex-col gap-8 text-center'>
@@ -17,28 +36,49 @@ const LeftSidebar = () => {
           </span>
           <p>Mwafrika Josue</p>
         </div>
-        <span className='text-4xl text-slate-600'>
-          <FontAwesomeIcon icon={faHome} />
-        </span>
-        <span className='text-4xl text-slate-600'>
-          <FontAwesomeIcon icon={faUserFriends} />
-        </span>
-        <span className='text-4xl text-slate-600'>
-          <FontAwesomeIcon icon={faCalendarCheck} />
-        </span>
-        <span className='text-4xl text-slate-600'>
-          <FontAwesomeIcon icon={faCalendarCheck} />
-        </span>
-        <span className='text-4xl text-slate-600'>
-          <FontAwesomeIcon icon={faCalendarCheck} />
-        </span>
-        <span className='text-4xl text-slate-600'>
-          <FontAwesomeIcon icon={faUserFriends} />
-        </span>
+        <Link to='/admin/home'>
+          <span className='text-4xl text-slate-600'>
+            <FontAwesomeIcon icon={faHome} />
+          </span>
+        </Link>
+        <Link to='/admin/packages'>
+          <span className='text-4xl text-slate-600'>
+            <FontAwesomeIcon icon={faBagShopping} />
+          </span>
+        </Link>
+        <Link to='/admin/expeditions'>
+          <span className='text-4xl text-slate-600'>
+            <FontAwesomeIcon icon={faPaperPlane} />
+          </span>
+        </Link>
+
+        <Link to='/admin/book/expeditions'>
+          <span className='text-4xl text-slate-600'>
+            <FontAwesomeIcon icon={faCalendarCheck} />
+          </span>
+        </Link>
+        <Link to='/admin/book/packages'>
+          <span className='text-4xl text-slate-600'>
+            <FontAwesomeIcon icon={faBoxOpen} />
+          </span>
+        </Link>
+        <Link to='/admin/places'>
+          <span className='text-4xl text-slate-600'>
+            <FontAwesomeIcon icon={faLocationDot} />
+          </span>
+        </Link>
+        <Link to='/admin/users'>
+          <span className='text-4xl text-slate-600'>
+            <FontAwesomeIcon icon={faUserFriends} />
+          </span>
+        </Link>
       </div>
       <div className=''>
-        <span className='text-4xl text-slate-600'>
-          <FontAwesomeIcon icon={faArrowRightFromBracket} />
+        <span
+          className='text-4xl text-slate-600 cursor-pointer'
+          onClick={logout}
+        >
+          <FontAwesomeIcon icon={faPowerOff} />
         </span>
       </div>
     </div>

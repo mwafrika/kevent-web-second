@@ -16,13 +16,41 @@ export class PackageController {
 
     async save(request: Request, response: Response, next: NextFunction) {
         console.log('VERIFY UPLOADS',request.body);
-        return this.packageRepository.save(request.body);
+       
+       try {
+        const {price, description,imageUrls, itineraire, metadata,places, tags, title} = request.body;
+        if(price && description && imageUrls && itineraire && metadata && places && tags && title){
+            const newPackage = new Package();
+            newPackage.price = price;
+            newPackage.description = description;
+            newPackage.imageUrls = imageUrls;
+            newPackage.itineraire = itineraire;
+            newPackage.metadata = metadata;
+            newPackage.places = places;
+            newPackage.tags = tags;
+            newPackage.title = title;
+           
+            return await this.packageRepository.save(newPackage)
+        }
+       } catch (error) {
+       return response.status(400).send({error: "Package is not valid"})
+       }
+    
+        // return this.packageRepository.save(request.body);
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
         let userToRemove = await this.packageRepository.findOne(request.params.id);
-        if(!userToRemove) throw Error('The user you are trying to delete does not exist')
-        await this.packageRepository.remove(userToRemove);
+        if(!userToRemove) throw Error('The item you are trying to delete does not exist')
+        const result =  await this.packageRepository.createQueryBuilder().delete().from(Package).where("id = :id", {id: request.params.id}).execute();
+        if(result.affected === 1){
+        response.status(204).json({
+                status: "success",
+                message: "Expedition deleted successfully",
+         })
+        }else{
+            throw Error('Unable to delete expedition')
+    }
     }
 
     async update(request: Request, response: Response, next: NextFunction) {

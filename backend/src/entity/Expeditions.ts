@@ -6,6 +6,9 @@ export class Expeditions {
     id: number;
 
     @Column()
+    title: string;
+
+    @Column()
     description: string;
 
     @Column()
@@ -20,11 +23,19 @@ export class Expeditions {
     @Column("jsonb")
     metadata: Object;
 
+    @Column()
+    start_date: string;
+
+    @Column()
+    end_date: string;
+    
     @Column("simple-array")
     places: string[];
 
     @Column("simple-array")
     tags: string[];
+
+    
 
     @OneToMany(type => BookingExpedition, bookingExpedition => bookingExpedition.expedition,{
         cascade: true

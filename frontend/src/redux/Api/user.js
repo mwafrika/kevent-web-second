@@ -1,13 +1,17 @@
 import axios from 'axios';
-const loginUrl = 'http://localhost:5000/api/v1/signin';
-const signupUrl = 'http://localhost:5000/api/v1/signup';
-const createPackageUrl = 'http://localhost:5000/api/v1/package';
-const getAll = 'http://localhost:5000/api/v1/packages';
-const getOne = 'http://localhost:5000/api/v1/packages/';
-const updatePackageUrl = 'http://localhost:5000/api/v1/packages/';
+const baseUrl = 'https://kevent-rdc.herokuapp.com/api/v1/';
+
+const authHeader = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user && user.token) {
+    return user.token;
+  } else {
+    return {};
+  }
+};
 
 export const login = (data) => {
-  return axios.post(loginUrl, data);
+  return axios.post(`${baseUrl}signin`, data);
 };
 
 export const signup = (data) => {
@@ -26,7 +30,7 @@ export const signup = (data) => {
 
   const response = axios({
     method: 'post',
-    url: signupUrl,
+    url: `${baseUrl}signup`,
     data: bodyFormData,
     headers: { 'Content-Type': 'multipart/form-data' },
   });
@@ -34,75 +38,84 @@ export const signup = (data) => {
   return response;
 };
 
-export const createPackage = async (data) => {
-  let bodyFormData = new FormData();
-  let user;
+export const getUser = async (id) => {
+  const response = await axios({
+    method: 'get',
+    url: `${baseUrl}users/${id}`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
 
-  if (user != null) {
-    user = JSON.parse(localStorage.getItem('user'));
-    console.log(user, 'token in create package not empty');
-  }
-  bodyFormData.append('title', data.title);
-  bodyFormData.append('description', data.description);
-  bodyFormData.append('price', data.price);
-  bodyFormData.append('imageUrls', data.imageUrls);
-  bodyFormData.append('itineraire', data.itineraire);
-  bodyFormData.append('metadata', data.metadata);
-  bodyFormData.append('places', data.places);
-  bodyFormData.append('tags', data.tags);
+export const getUsers = async () => {
+  const response = await axios({
+    method: 'get',
+    url: `${baseUrl}users`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
 
+export const updateUser = async (data, id) => {
+  const response = await axios({
+    method: 'put',
+    url: `${baseUrl}users/${id}`,
+    data: data,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+
+  return response;
+};
+
+export const deleteUser = async (id) => {
+  const response = await axios({
+    method: 'delete',
+    url: `${baseUrl}users/${id}`,
+    headers: {
+      'Content-Type': 'application/json',
+      auth: authHeader(),
+    },
+  });
+  return response;
+};
+
+export const resetPassword = async (data) => {
+  console.log(data, 'data');
   const response = await axios({
     method: 'post',
-    url: createPackageUrl,
-    data: bodyFormData,
+    url: `${baseUrl}password-reset`,
+    data: { email: data },
     headers: {
-      'Content-Type': 'multipart/form-data',
-      auth: user,
+      'Content-Type': 'application/json',
     },
   });
-  console.log(user, 'my new token');
+
+  console.log(response, 'response');
+
   return response;
 };
-
-export const getPackages = () => {
-  const response = axios({
-    method: 'get',
-    url: getAll,
-  });
-  return response;
-};
-
-export const getPackage = (id) => {
-  const response = axios({
-    method: 'get',
-    url: `${getOne}${id}`,
-  });
-  return response;
-};
-
-export const updatePackage = (id, data) => {
-  let bodyFormData = new FormData();
-
-  bodyFormData.append('title', data.title);
-  bodyFormData.append('description', data.description);
-  bodyFormData.append('price', data.price);
-  bodyFormData.append('imageUrls', data.imageUrls);
-  bodyFormData.append('itineraire', data.itineraire);
-  bodyFormData.append('metadata', data.metadata);
-  bodyFormData.append('places', data.places);
-  bodyFormData.append('tags', data.tags);
-
-  const token = JSON.parse(localStorage.getItem('user').token);
-  console.log(token, 'check toke error');
-
-  const response = axios({
-    method: 'put',
-    url: `${updatePackageUrl}${id}`,
-    data: bodyFormData,
+// /api/v1/password-reset/:userId/:token
+export const resetPasswordConfirm = async (data, userId, token) => {
+  console.log(data, 'data');
+  const response = await axios({
+    method: 'post',
+    url: `${baseUrl}password-reset/${userId}/${token}`,
+    data: { password: data },
     headers: {
-      'Content-Type': 'multipart/form-data',
-      auth: token,
+      'Content-Type': 'application/json',
     },
   });
+
+  console.log(response, 'response');
+
   return response;
 };

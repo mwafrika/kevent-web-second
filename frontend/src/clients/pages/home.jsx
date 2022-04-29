@@ -57,12 +57,14 @@ export default function App() {
               Book your spot today and set sail on a <br /> local fishing
               adventure.
             </p>
-            <button
-              className='text-slate-600 bg-white font-semibold py-2 px-4 my-8
+            <Link to='/login'>
+              <button
+                className='text-slate-600 bg-white font-semibold py-2 px-8 my-8
             hover:bg-slate-700 hover:text-white rounded-2xl'
-            >
-              Book now
-            </button>
+              >
+                Book now
+              </button>
+            </Link>
           </div>
           <div className='absolute bg-gray-900 bg-opacity-30  inset-0 h-full w-full z-10'></div>
         </section>

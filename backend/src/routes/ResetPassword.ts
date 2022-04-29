@@ -1,7 +1,6 @@
 import {ResetMessageController} from "../controller/PasswordResetMessage";
 import {PasswordResetController} from "../controller/PasswordReset";
-import { param } from 'express-validator';
-import {checkJwt} from "../middleware/auth";
+
 export const ResetPassword = [
     {
         method: "post",
