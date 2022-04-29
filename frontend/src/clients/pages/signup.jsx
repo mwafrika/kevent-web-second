@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <div className='grid grid-cols-12 grid-rows-[78px_minmax(300px,632px)_78px] bg-gray-200'>
+    <div className='grid grid-cols-12 grid-rows-[10vh_minmax(300px,80vh)_10vh] bg-gray-200'>
       <div className='col-start-2 col-end-12 row-start-2 row-end-3 bg-white flex shadow-lg'>
         <div className='w-[45%]'>
           <img
