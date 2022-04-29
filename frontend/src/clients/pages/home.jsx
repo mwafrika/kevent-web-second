@@ -62,7 +62,7 @@ export default function App() {
                 className='text-slate-600 bg-white font-semibold py-2 px-8 my-8
             hover:bg-slate-700 hover:text-white rounded-2xl'
               >
-                Login
+                Book now
               </button>
             </Link>
           </div>
