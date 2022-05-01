@@ -3,6 +3,7 @@ import {
   REGISTER_FAILURE,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILURE,
   GET_USER_SUCCESS,
@@ -210,3 +211,9 @@ export const confirmpassword =
         rejectPromise(error, 'Erreur lors de la confirmation du mot de passe');
       });
   };
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT_SUCCESS,
+  });
+};

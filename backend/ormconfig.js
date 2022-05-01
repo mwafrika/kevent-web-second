@@ -2,6 +2,7 @@ var DATABASE_URL = require('./src/config').DATABASE_URL;
 console.log(DATABASE_URL, 'DATABASE_URL');
 const Connection = [
   {
+    environment: 'production',
     type: 'postgres',
     url: DATABASE_URL,
     ssl: true,
@@ -22,6 +23,7 @@ const Connection = [
     },
   },
   {
+    environment: 'development',
     type: 'postgres',
     url: 'postgres://kevent:kevent@localhost:5432/keventDB',
     synchronize: false,

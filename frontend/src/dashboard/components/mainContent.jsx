@@ -38,7 +38,12 @@ const MainContent = () => {
     dispatch(getusers());
   }, []);
 
-  // redirect to login if not logged in
+  const {
+    user: {
+      authUser: { role },
+    },
+    isLoggedIn,
+  } = useSelector((state) => state.user);
 
   return (
     <>
@@ -94,30 +99,34 @@ const MainContent = () => {
                 <p className='text-slate-500'>Booked package(s)</p>
               </div>
             </div>
-            <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
-              <span className='text-4xl text-slate-600'>
-                <FontAwesomeIcon icon={faLocationDot} />
-              </span>
+            {role === 'admin' && (
+              <>
+                <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
+                  <span className='text-4xl text-slate-600'>
+                    <FontAwesomeIcon icon={faLocationDot} />
+                  </span>
 
-              <div className='flex flex-col gap-y-2'>
-                <p className='text-3xl font-bold text-slate-600'>
-                  {places.length}
-                </p>
-                <p className='text-slate-500'>Place(s)</p>
-              </div>
-            </div>
-            <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
-              <span className='text-4xl text-slate-600'>
-                <FontAwesomeIcon icon={faUserFriends} />
-              </span>
+                  <div className='flex flex-col gap-y-2'>
+                    <p className='text-3xl font-bold text-slate-600'>
+                      {places.length}
+                    </p>
+                    <p className='text-slate-500'>Ville(s)</p>
+                  </div>
+                </div>
+                <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
+                  <span className='text-4xl text-slate-600'>
+                    <FontAwesomeIcon icon={faUserFriends} />
+                  </span>
 
-              <div className='flex flex-col gap-y-2'>
-                <p className='text-3xl font-bold text-slate-600'>
-                  {users.length}
-                </p>
-                <p className='text-slate-500'>Users</p>
-              </div>
-            </div>
+                  <div className='flex flex-col gap-y-2'>
+                    <p className='text-3xl font-bold text-slate-600'>
+                      {users.length}
+                    </p>
+                    <p className='text-slate-500'>Users</p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           <div className='w-full flex justify-between'>
             <div className='mb-4 text-slate-500'>Packet recents</div>

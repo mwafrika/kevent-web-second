@@ -55,17 +55,26 @@ import ResetMessage from '../../dashboard/components/users/reset-message';
 import ConfirmReset from '../../dashboard/components/users/resetPassword';
 import ConfirmSuccess from '../../dashboard/components/users/confirmSuccess';
 
+import RequireAuth from '../../dashboard/helpers/requireAuth';
+import Unauthorized from '../../dashboard/components/unauthorized';
+
 export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
+  const ROLES = {
+    USER: 'USER',
+    ADMIN: 'ADMIN',
+  };
   return (
     <Router>
-      <ToastContainer  />
+      <ToastContainer />
       <Routes>
         <Route index element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/about' element={<About />} />
-        <Route path='/admin/home' element={<Dashboard />} />
+
+          <Route path='/admin/home' element={<Dashboard />} />
+        
         <Route path='/admin/create/package' element={<PackageForm />} />
         <Route path='/admin/packages' element={<Packages />} />
         <Route path='/admin/expeditions' element={<AdminExpeditions />} />
@@ -122,10 +131,17 @@ export default function App() {
         <Route path='/admin/places/:key' element={<Place />} />
         <Route path='/admin/edit/places/:key' element={<EditPlace />} />
         <Route path='/admin/create/place' element={<PlaceForm />} />
+        <Route path='/unauthorized' element={<Unauthorized />} />
 
         {/* users */}
+
         <Route path='/admin/users' element={<Users />} />
-        <Route path='/admin/users/:key' element={<User />} />
+
+        <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}>
+          <Route path='/admin/users/:key' element={<User />} />
+        </Route>
+
+        {/* <Route path='/admin/users/:key' element={<User />} /> */}
         <Route path='/admin/edit/users/:key' element={<UpdateUser />} />
         <Route path='/reset-password' element={<ResetPassword />} />
         <Route path='/reset-success' element={<ResetMessage />} />
