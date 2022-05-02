@@ -20,7 +20,6 @@ const Table = () => {
     'Price',
     'Image',
     'itineraire',
-    'Metadata',
     'Places',
     'Tags',
     'Booking',
@@ -92,9 +91,6 @@ const Table = () => {
               </td>
               <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.itineraire}
-              </td>
-              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
-                {pack.metadata}
               </td>
               <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.places}

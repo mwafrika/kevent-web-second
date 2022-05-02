@@ -7,7 +7,8 @@ import { getBookings } from '../../redux/actions/bookPackage';
 import { getExpeditionBookings } from '../../redux/actions/bookExpedition';
 import { Places } from '../../redux/actions/place';
 import { getusers } from '../../redux/actions/user';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import moment from 'moment';
 
 import {
   faPaperPlane,
@@ -130,16 +131,81 @@ const MainContent = () => {
           </div>
           <div className='w-full flex justify-between'>
             <div className='mb-4 text-slate-500'>Packet recents</div>
-            <div>Plus</div>
+            <Link to='/admin/packages'>
+              <span className='text-sm text-sky-400'>Voir plus</span>
+            </Link>
           </div>
           <div className='w-full gap-y-8 gap-x-4 mb-12'>
-            <div className='w-full gap-y-8 gap-x-4 grid grid-cols-[repeat(auto-fill_,_minmax(19rem_,_1fr))] xxxs:grid-cols-[repeat(auto-fill_,_minmax(11rem_,_1fr))]'>
-              <div className='h-32 bg-white rounded-lg shadow-lg'>Card1</div>
-              <div className='h-32 bg-white rounded-lg shadow-lg'>Card1</div>
-              <div className='h-32 bg-white rounded-lg shadow-lg'>Card1</div>
-              <div className='h-32 bg-white rounded-lg shadow-lg'>Card1</div>
-              <div className='h-32 bg-white rounded-lg shadow-lg'>Card1</div>
-              <div className='h-32 bg-white rounded-lg shadow-lg'>Card1</div>
+            <div className='w-full gap-y-8 gap-x-10 grid grid-cols-[repeat(auto-fill_,_minmax(19rem_,_1fr))] xxxs:grid-cols-[repeat(auto-fill_,_minmax(11rem_,_1fr))]'>
+              {packages.slice(0, 3).map((pack) => (
+                <div className='h-full bg-white rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>
+                  <Link
+                    to={{
+                      pathname: `/expeditions/${1}`.trim(),
+                    }}
+                  >
+                    <img
+                      src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-2_qfo9sk.svg'
+                      alt=''
+                      className='object-cover rounded-t-lg w-full  h-40'
+                    />
+                    <div className='flex flex-col px-5  pb-8'>
+                      <div className='flex flex-row justify-between items-center '>
+                        <p className='text-md font-semibold text-center text-slate-700  py-4'>
+                          Bukavu
+                        </p>
+                        <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
+                          50$
+                        </p>
+                      </div>
+                      <span className='text-md text-slate-700  py-0 my-0'>
+                        {/* 2 days ago */}
+                        {moment(new Date(), 'YYYMMDD').fromNow()}
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className='w-full flex justify-between'>
+            <div className='mb-4 text-slate-500'>Expeditions recents</div>
+            <Link to='/admin/expeditions'>
+              <span className='text-sm text-sky-400'>Voir plus</span>
+            </Link>
+          </div>
+          <div className='w-full gap-y-8 gap-x-4 mb-12'>
+            <div className='w-full gap-y-8 gap-x-10 grid grid-cols-[repeat(auto-fill_,_minmax(19rem_,_1fr))] xxxs:grid-cols-[repeat(auto-fill_,_minmax(11rem_,_1fr))]'>
+              {packages.slice(0, 3).map((pack) => (
+                <div className='h-full bg-white rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>
+                  <Link
+                    to={{
+                      pathname: `/expeditions/${1}`.trim(),
+                    }}
+                  >
+                    <img
+                      src='https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-2_qfo9sk.svg'
+                      alt=''
+                      className='object-cover rounded-t-lg w-full  h-40'
+                    />
+                    <div className='flex flex-col px-5  pb-8'>
+                      <div className='flex flex-row justify-between items-center '>
+                        <p className='text-md font-semibold text-center text-slate-700  py-4'>
+                          Bukavu
+                        </p>
+                        <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
+                          50$
+                        </p>
+                      </div>
+                      <span className='text-md text-slate-700  py-0 my-0'>
+                        {/* 2 days ago */}
+                        {moment(new Date(), 'YYYYMMDD').fromNow()}
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>
