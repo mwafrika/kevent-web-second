@@ -48,7 +48,6 @@ export const packackages = () => (dispatch) => {
           type: GET_PACKAGES_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, 'Création de packet réussie');
       }
     })
     .catch((error) => {
@@ -57,7 +56,6 @@ export const packackages = () => (dispatch) => {
         type: GET_PACKAGES_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Erreur lors de la création de packet');
     });
 };
 
@@ -71,7 +69,6 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_PACKAGE_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, 'Création de packet réussie');
       }
     })
     .catch((error) => {
@@ -80,7 +77,6 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_PACKAGE_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Erreur lors de la création de packet');
     });
 };
 

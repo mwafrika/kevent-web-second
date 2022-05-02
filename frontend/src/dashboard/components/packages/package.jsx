@@ -31,6 +31,13 @@ const CreatePackage = () => {
     dispatch(deletePackage(key, navigate));
   };
 
+  const {
+    user: {
+      authUser: { role },
+    },
+    isLoggedIn,
+  } = useSelector((state) => state.user);
+
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-[95%]'>
       <Header title='Packets' />
@@ -40,19 +47,21 @@ const CreatePackage = () => {
             <h1 className='text-2xl font-bold text-gray-700'>Title</h1>
             <h1 className='text-xl font-bold text-slate-500'>{title}</h1>
           </div>
-          <div className='flex text-2xl w-16 justify-between'>
-            <Link to={`/admin/edit/packages/${key}`}>
-              <span className=' text-blue-500 cursor-pointer'>
-                <FontAwesomeIcon icon={faPenToSquare} />
+          {role === 'ADMIN' && (
+            <div className='flex text-2xl w-16 justify-between'>
+              <Link to={`/admin/edit/packages/${key}`}>
+                <span className=' text-blue-500 cursor-pointer'>
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </span>
+              </Link>
+              <span
+                className='text-red-500 cursor-pointer'
+                onClick={handleDelete}
+              >
+                <FontAwesomeIcon icon={faTrashCan} />
               </span>
-            </Link>
-            <span
-              className='text-red-500 cursor-pointer'
-              onClick={handleDelete}
-            >
-              <FontAwesomeIcon icon={faTrashCan} />
-            </span>
-          </div>
+            </div>
+          )}
         </div>
         <div className='md:mt-0 md:col-span-2 h-[60vh]  flex flex-row justify-between'>
           <div className='w-1/2 py-5 px-5 mx-auto '>

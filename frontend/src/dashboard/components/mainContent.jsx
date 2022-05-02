@@ -99,7 +99,7 @@ const MainContent = () => {
                 <p className='text-slate-500'>Booked package(s)</p>
               </div>
             </div>
-            {role === 'admin' && (
+            {role === 'ADMIN' && (
               <>
                 <div className='h-24 bg-white shadow-lg rounded-lg flex justify-start items-center px-6 gap-x-6'>
                   <span className='text-4xl text-slate-600'>

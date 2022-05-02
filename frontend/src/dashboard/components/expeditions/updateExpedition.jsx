@@ -15,7 +15,6 @@ const UpdatePackage = () => {
     price: '',
     imageUrls: '',
     itineraire: '',
-    metadata: 'my metadata',
     places: '',
     tags: '',
     start_date: '',
@@ -62,7 +61,6 @@ const UpdatePackage = () => {
     description,
     price,
     itineraire,
-    metadata,
     places,
     tags,
     start_date,
@@ -230,12 +228,7 @@ const UpdatePackage = () => {
                       ref={ref}
                     />
                   </div>
-                  <input
-                    type='hidden'
-                    id='formFile'
-                    name='metadata'
-                    value={metadata}
-                  />
+
                   <div className='col-span-6 sm:col-span-3 lg:col-span-full'>
                     <label
                       htmlFor='description'

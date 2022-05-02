@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingle } from '../../../redux/actions/bookPackage';
+import { getSingle } from '../../../redux/actions/bookExpedition';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Header from '../header';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
@@ -31,11 +31,11 @@ const CreateExpedition = () => {
     dispatch(deleteBookinExpedition(key, navigate));
   };
 
-  console.log(ticketNumber, additionnalInformation, Status, 'check values');
+  console.log(bookSingleExpedition, 'check values');
 
   return (
     <div className='mt-10 sm:mt-0 row-span-full mx-auto w-[95%]'>
-      <Header title='Package Booking Details' />
+      <Header title='Expeditions reservé' />
       <div className='mt-5 flex flex-col shadow-2xl'>
         <div className='md:mt-0 md:col-span-2 h-20 pt-8 mb-5 flex justify-between items-center px-20'>
           <div className=' flex gap-y-5 flex-col'>

@@ -28,7 +28,7 @@ const Table = () => {
   console.log(bookExpeditions, 'book packages components');
   return (
     <div className='row-span-full mx-auto'>
-      <Header title='Packets' />
+      <Header title='Expeditions reservé' />
       <table className='table table-auto shadow-lg bg-white border-collapse'>
         <thead>
           <tr>

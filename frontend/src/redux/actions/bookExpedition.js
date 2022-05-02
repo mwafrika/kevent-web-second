@@ -25,12 +25,8 @@ export const createBookExpedition =
             type: CREATE_BOOK_EXPEDITION_SUCCESS,
             payload: response.data,
           });
+          resolvePromise(response, 'Création de donnees réussie');
           clearForm();
-        } else {
-          dispatch({
-            type: CREATE_BOOK_EXPEDITION_FAILURE,
-            payload: response.data,
-          });
         }
       })
       .catch((error) => {
@@ -39,6 +35,7 @@ export const createBookExpedition =
           type: CREATE_BOOK_EXPEDITION_FAILURE,
           payload: error.response.data.message,
         });
+        rejectPromise(error, 'Erreur lors de la creation de donnees');
       });
   };
 
@@ -49,11 +46,6 @@ export const getExpeditionBookings = () => (dispatch) => {
       if (response.status === 200) {
         dispatch({
           type: GET_BOOK_EXPEDITIONS_SUCCESS,
-          payload: response.data,
-        });
-      } else {
-        dispatch({
-          type: GET_BOOK_EXPEDITIONS_FAILURE,
           payload: response.data,
         });
       }
@@ -71,15 +63,9 @@ export const getSingle = (id) => (dispatch) => {
   BookPackageAPI.getOneExpedition(id)
     .then((response) => {
       if (response.status === 200) {
-        console.log('See single package', response.data);
+        console.log('See single expedition try', response.data);
         dispatch({
           type: GET_BOOK_EXPEDITION_SUCCESS,
-          payload: response.data,
-        });
-        resolvePromise(response, 'Success');
-      } else {
-        dispatch({
-          type: GET_BOOK_EXPEDITION_FAILURE,
           payload: response.data,
         });
       }
@@ -93,7 +79,6 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_BOOK_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Erreur lors de la récupération de l\'offre');
     });
 };
 
@@ -106,12 +91,8 @@ export const updateBookExpedition = (dataBook, id, navigate) => (dispatch) => {
           type: UPDATE_BOOK_EXPEDITION_SUCCESS,
           payload: response.data,
         });
+        resolvePromise(response, 'Modification effectuee avec succes');
         navigate('/admin/book/packages');
-      } else {
-        dispatch({
-          type: UPDATE_BOOK_EXPEDITION_FAILURE,
-          payload: response.data,
-        });
       }
     })
     .catch((error) => {
@@ -120,6 +101,7 @@ export const updateBookExpedition = (dataBook, id, navigate) => (dispatch) => {
         type: UPDATE_BOOK_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la mise a jour de donnees');
     });
 };
 
@@ -132,12 +114,8 @@ export const deleteBookinExpedition = (id, navigate) => (dispatch) => {
           type: DELETE_BOOK_EXPEDITION_SUCCESS,
           payload: response.data,
         });
+        resolvePromise(response, 'Suppression effectuee avec succes');
         navigate('/admin/book/packages');
-      } else {
-        dispatch({
-          type: DELETE_BOOK_EXPEDITION_FAILURE,
-          payload: response.data,
-        });
       }
     })
     .catch((error) => {
@@ -146,5 +124,6 @@ export const deleteBookinExpedition = (id, navigate) => (dispatch) => {
         type: DELETE_BOOK_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
+      rejectPromise(error, 'Erreur lors de la suppression de donnees');
     });
 };

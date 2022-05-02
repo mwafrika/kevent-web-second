@@ -46,7 +46,7 @@ export const createPackage = async (data) => {
 export const getPackages = async () => {
   const response = await axios({
     method: 'get',
-    url: `${baseUrl}packages`,
+    url: `http://localhost:5000/api/v1/packages`,
   });
   return response;
 };
