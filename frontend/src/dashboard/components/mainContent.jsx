@@ -203,10 +203,11 @@ const MainContent = () => {
                       </div>
                       <span className='text-md text-slate-700  py-0 my-0'>
                         {/* 2 days ago */}
-                        {moment(
-                          pack.created_at.toISOString().slice(0, 10),
-                          'YYYYMMDD'
-                        ).fromNow()}
+                        {console.log(
+                          pack.created_at,
+                          'check date format valid'
+                        )}
+                        {moment(pack.created_at, 'YYYYMMDD').fromNow()}
                       </span>
                     </div>
                   </Link>
