@@ -2,14 +2,13 @@ const { flattenDiagnosticMessageText } = require('typescript');
 
 var DATABASE_URL = require('./src/config').DATABASE_URL;
 var DEV_DATABASE_URL = require('./src/config').DEV_DATABASE_URL;
-console.log(DEV_DATABASE_URL, 'DATABASE_URL');
-var url =
-  process.env.NODE_ENV === 'production' ? DATABASE_URL : DEV_DATABASE_URL;
+
+console.log(DATABASE_URL, 'DATABASE_URL');
 const Connection = [
   {
     environment: 'production',
     type: 'postgres',
-    url,
+    url: DATABASE_URL,
     ssl: true,
     extra: {
       ssl: {
@@ -30,8 +29,8 @@ const Connection = [
   {
     environment: 'development',
     type: 'postgres',
-    url,
-    synchronize: true,
+    url: DEV_DATABASE_URL,
+    synchronize: false,
     logging: false,
     entities: ['src/entity/**/*.ts'],
     migrations: ['src/migration/**/*.ts'],
