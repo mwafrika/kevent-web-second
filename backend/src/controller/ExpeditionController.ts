@@ -17,7 +17,11 @@ export class ExpeditionController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.save(request.body);
+        const {price, description,imageUrls, itineraire,places, tags, title,start_date, end_date, metadata} = request.body;
+        if(!price || !description || !imageUrls || !itineraire || !places || !tags || !title) throw Error('Tout les champs sont obligatoires')
+        const user = this.userRepository.create({price, description, itineraire,places, tags,imageUrls, title, metadata, start_date, end_date});
+        const result = await this.userRepository.save(user);
+        return result;
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
@@ -37,13 +41,13 @@ export class ExpeditionController {
 
     async update(request: Request, response: Response, next: NextFunction) {
         let userToUpdate = await this.userRepository.findOne(request.params.id);
-        const {price, description,imageUrls, itineraire, metadata,places, tags, title} = request.body;
+        const {price, description,imageUrls, itineraire,places, tags, title,start_date, end_date} = request.body;
         if(!userToUpdate) throw Error('The user you are trying to update does not exist')
        const result = await this.userRepository.createQueryBuilder().update(Expeditions).set({
-        price, description, itineraire, metadata,places, tags,imageUrls, title
-        }).where("id = :id", {id: request.params.id}).returning(["title","price", "description","imageUrls", "itineraire", "metadata","places", "tags"]).execute();
+        price, description, itineraire,places, tags,imageUrls, title,start_date, end_date
+        }).where("id = :id", {id: request.params.id}).returning(["title","price", "description","imageUrls", "itineraire","places", "tags","start_date", "end_date"]).execute();
 
-        return result.raw[0]
+       return result.raw[0]
     
     }
 

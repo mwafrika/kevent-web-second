@@ -18,25 +18,18 @@ export class PackageController {
         console.log('VERIFY UPLOADS',request.body);
        
        try {
-        const {price, description,imageUrls, itineraire, metadata,places, tags, title} = request.body;
-        if(price && description && imageUrls && itineraire && metadata && places && tags && title){
-            const newPackage = new Package();
-            newPackage.price = price;
-            newPackage.description = description;
-            newPackage.imageUrls = imageUrls;
-            newPackage.itineraire = itineraire;
-            newPackage.metadata = metadata;
-            newPackage.places = places;
-            newPackage.tags = tags;
-            newPackage.title = title;
-           
-            return await this.packageRepository.save(newPackage)
-        }
+        let {price, description,imageUrls, itineraire, metadata,places, tags, title, created_at} = request.body;
+        created_at = new Date();
+
+        if(!price || !description || !imageUrls || !itineraire || !places || !tags || !title) throw Error('Tout les champs sont obligatoires')
+        let user = this.packageRepository.create({price, description, itineraire,places, tags,imageUrls, title, metadata, created_at});
+        const result = await this.packageRepository.save(user);
+        console.log('RESULT',result);
+        return result;
+
        } catch (error) {
-       return response.status(400).send({error: "Package is not valid"})
+       return response.status(400).send({error: "Package n'est pas valide"});
        }
-    
-        // return this.packageRepository.save(request.body);
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {

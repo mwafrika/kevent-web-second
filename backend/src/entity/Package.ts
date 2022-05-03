@@ -29,6 +29,9 @@ export class Package {
     @Column("simple-array")
     tags: string[];
 
+    @Column()
+    created_at: Date;
+
     @OneToMany(type => BookingPackage, bookingPackage => bookingPackage.package,{
         cascade: true
      })

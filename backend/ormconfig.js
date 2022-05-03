@@ -1,10 +1,15 @@
+const { flattenDiagnosticMessageText } = require('typescript');
+
 var DATABASE_URL = require('./src/config').DATABASE_URL;
-console.log(DATABASE_URL, 'DATABASE_URL');
+var DEV_DATABASE_URL = require('./src/config').DEV_DATABASE_URL;
+console.log(DEV_DATABASE_URL, 'DATABASE_URL');
+var url =
+  process.env.NODE_ENV === 'production' ? DATABASE_URL : DEV_DATABASE_URL;
 const Connection = [
   {
     environment: 'production',
     type: 'postgres',
-    url: DATABASE_URL,
+    url,
     ssl: true,
     extra: {
       ssl: {
@@ -25,8 +30,8 @@ const Connection = [
   {
     environment: 'development',
     type: 'postgres',
-    url: 'postgres://kevent:kevent@localhost:5432/keventDB',
-    synchronize: false,
+    url,
+    synchronize: true,
     logging: false,
     entities: ['src/entity/**/*.ts'],
     migrations: ['src/migration/**/*.ts'],
