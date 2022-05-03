@@ -169,7 +169,9 @@ const MainContent = () => {
                       </div>
                       <span className='text-md text-slate-700  py-0 my-0'>
                         {/* 2 days ago */}
-                        {pack.createdAt.toDate().toLocaleDateString()}
+                        {pack?.created_at?.toDate()?.toLocaleDateString()}
+                        {/* use fromNow() with moment */}
+                        {moment(pack?.created_at?.toDate())?.fromNow()}
                       </span>
                     </div>
                   </Link>
