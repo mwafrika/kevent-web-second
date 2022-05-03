@@ -46,15 +46,6 @@ const MainContent = () => {
     isLoggedIn,
   } = useSelector((state) => state.user);
 
-  const handleDate = (today) => {
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = mm + '/' + dd + '/' + yyyy;
-    return today;
-  };
-
   return (
     <>
       <div className='row-span-full bg-gray-100'>
@@ -169,7 +160,7 @@ const MainContent = () => {
                       </div>
                       <span className='text-md text-slate-700  py-0 my-0'>
                         {/* 2 days ago */}
-                        {moment(pack.createdAt).format('DD MMM YYYY')}
+                        {moment(pack.created_at).format('DD MMM YYYY')}
                       </span>
                     </div>
                   </Link>
@@ -213,10 +204,7 @@ const MainContent = () => {
                           pack.created_at,
                           'check date format valid'
                         )}
-                        {moment(
-                          handleDate(pack.created_at),
-                          'YYYYMMDD'
-                        ).fromNow()}
+                        {moment(pack.created_at).format('DD MMM YYYY')}
                       </span>
                     </div>
                   </Link>
