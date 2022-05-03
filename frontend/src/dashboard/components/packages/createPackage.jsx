@@ -14,6 +14,7 @@ const CreatePackage = () => {
     metadata: 'my metadata',
     places: '',
     tags: '',
+    created_at: new Date(),
   });
 
   const ref = useRef();
@@ -182,6 +183,12 @@ const CreatePackage = () => {
                       ref={ref}
                     />
                   </div>
+                  <input
+                    value={state.created_at}
+                    type='hidden'
+                    name='created_at'
+                    onChange={(e) => handleChange(e)}
+                  />
                   <input type='hidden' id='formFile' name='metadata' />
                   <div className='col-span-6 sm:col-span-3 lg:col-span-full'>
                     <label

@@ -1,8 +1,5 @@
 import axios from 'axios';
-const baseUrl =
-  process.env.NODE_ENV === 'production'
-    ? 'https://kevent-rdc.herokuapp.com/api/v1/'
-    : 'http://localhost:5000/api/v1/';
+const baseUrl = 'https://kevent-rdc.herokuapp.com/api/v1/';
 
 const authHeader = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -29,6 +26,7 @@ export const createPackage = async (data) => {
   bodyFormData.append('metadata', data.metadata);
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
+  bodyFormData.append('created_at', data.created_at);
 
   const response = await axios({
     method: 'post',
@@ -46,7 +44,7 @@ export const createPackage = async (data) => {
 export const getPackages = async () => {
   const response = await axios({
     method: 'get',
-    url: `http://localhost:5000/api/v1/packages`,
+    url: `${baseUrl}packages`,
   });
   return response;
 };
