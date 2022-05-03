@@ -113,7 +113,8 @@ export class BookingPackageController {
 
     async update(request: Request, response: Response, next: NextFunction) {
         let userToUpdate = await this.BookPackageRepo.findOne(request.params.id);
-        const userId = await this.BookPackageRepo.findOne(request.params.id);
+        const auth = response.locals.jwtPayload.userId;
+        const user = await getRepository(Authentication).findOne({ where: {id: auth}});
         const { 
             Visitor_details,
             bookedStartDate,
@@ -121,26 +122,48 @@ export class BookingPackageController {
             ticketNumber,
             additionnalInformation,
             Status} = request.body;
-        if(!userToUpdate) throw Error('The user you are trying to update does not exist')
-        if(bookedStartDate > bookedEndDate){
-           response.status(400).send({message:'Start date cannot be greater than end date'})
-        }
-       const result = await this.BookPackageRepo.createQueryBuilder().update(BookingPackage).set({
-         Visitor_details,
-         bookedStartDate,
-        bookedEndDate,
-         ticketNumber,
-         additionnalInformation,
-         Status
-        }).where("id = :id", {id: request.params.id}).returning(["Visitor_details","bookedStartDate","bookedEndDate","ticketNumber","additionnalInformation","Status"]).execute();
 
+            if(user.role === 'ADMIN'){
+                if(!userToUpdate) throw Error('The user you are trying to update does not exist')
+                if(bookedStartDate > bookedEndDate){
+                   response.status(400).send({message:'Start date cannot be greater than end date'})
+                }
+               const result = await this.BookPackageRepo.createQueryBuilder().update(BookingPackage).set({
+                 Visitor_details,
+                 bookedStartDate,
+                bookedEndDate,
+                 ticketNumber,
+                 additionnalInformation,
+                 Status
+                }).where("id = :id", {id: request.params.id}).returning(["Visitor_details","bookedStartDate","bookedEndDate","ticketNumber","additionnalInformation","Status"]).execute();
+        
+        
+                response.status(200).json({
+                    status: "success",
+                    message: "Expedition updated successfully",
+                    data: result.raw[0]
+                })
+                return response
+            }else{
+                if(!userToUpdate) throw Error('The user you are trying to update does not exist') 
+                if(bookedStartDate > bookedEndDate){
+                    response.status(400).send({message:'Start date cannot be greater than end date'})
+                 }
+                 const result = await this.BookPackageRepo.update(userToUpdate.id, {
+                    Visitor_details,
+                    bookedStartDate,
+                    bookedEndDate,
+                    ticketNumber,
+                    additionnalInformation,
+                    Status
+                 })
 
-        response.status(200).json({
-            status: "success",
-            message: "Expedition updated successfully",
-            data: result.raw[0]
-        })
-        return response
+                    response.status(200).json({
+                        status: "success",
+                        message: "Expedition updated successfully",
+                        data: result.raw[0]
+                    })
+                    return response
+            }
     }
-
 }
