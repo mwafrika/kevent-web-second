@@ -94,8 +94,11 @@ export class BookingPackageController {
             const userId = user.id;
             const userPackages = await this.BookPackageRepo.findOne({ where: {userId: userId}})
             if(!userPackages) throw Error('The item you are trying to delete does not exist')
-            const result =  await this.BookPackageRepo.createQueryBuilder().delete().from(BookingPackage).where("userId = :userId", {userId: userPackages.id }).execute();
-            if(result.affected === 1){
+            // delete the bookPackage that belongs to the user using remove()
+
+            const result =  await this.BookPackageRepo.remove(userPackages);
+            console.log(result,"result")
+            if(result){
                 // throw Error('The item you are trying to delete does not exist')
             response.status(204).json({
                     status: "success",
