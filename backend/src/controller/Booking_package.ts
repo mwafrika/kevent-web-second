@@ -6,16 +6,32 @@ import {Package} from "../entity/Package";
 import { Authentication } from '../entity/Authentication';
 export class BookingPackageController {
 
-    private userRepository = getRepository(BookingPackage);
+    private BookPackageRepo = getRepository(BookingPackage);
     private packageRepository = getRepository(Package);
     async all(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.find();
+        const auth = response.locals.jwtPayload.userId;
+        const user = await getRepository(Authentication).findOne({ where: {id: auth}});
+        if(!user) throw Error('The user you are trying to get does not exist');
+        if(user.role === 'ADMIN'){
+            return await this.BookPackageRepo.find();
+        }else{
+            const userId = user.id;
+            const userPackages = await this.BookPackageRepo.find({ where: {userId: userId}})
+            return userPackages;
+        }
     }
 
     async one(request: Request, response: Response, next: NextFunction) {
-        let item = await this.userRepository.findOne(request.params.id);
-        if(!item) throw Error('The item you are trying to get does not exist')
-        return this.userRepository.findOne(request.params.id);
+        const auth = response.locals.jwtPayload.userId;
+        const user = await getRepository(Authentication).findOne({ where: {id: auth}});
+        if(!user) throw Error('The user you are trying to get does not exist');
+        if(user.role === 'ADMIN'){
+            return await this.BookPackageRepo.findOne(request.params.id);
+        }else{
+            const userId = user.id;
+            const userPackages = await this.BookPackageRepo.findOne({ where: {userId: userId}})
+            return userPackages;
+        }
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
@@ -45,7 +61,7 @@ export class BookingPackageController {
     if(bookedStartDate > bookedEndDate){
         response.status(400).send({message:'Start date cannot be greater than end date'})
     }
-   return await this.userRepository.save({
+   return await this.BookPackageRepo.save({
         Visitor_details,
         bookedStartDate,
         bookedEndDate,
@@ -59,24 +75,42 @@ export class BookingPackageController {
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
-        let userToRemove = await this.userRepository.findOne(request.params.id);
-        if(!userToRemove) throw Error('The item you are trying to delete does not exist')
-        const result =  await this.userRepository.createQueryBuilder().delete().from(BookingPackage).where("id = :id", {id: request.params.id}).execute();
-        if(result.affected === 1){
-            // throw Error('The item you are trying to delete does not exist')
-        response.status(204).json({
-                status: "success",
-                message: "Expedition deleted successfully",
-         })
+        const auth = response.locals.jwtPayload.userId;
+        const user = await getRepository(Authentication).findOne({ where: {id: auth}});
+        if(user.role === 'ADMIN'){
+            let userToRemove = await this.BookPackageRepo.findOne(request.params.id);
+            if(!userToRemove) throw Error('The item you are trying to delete does not exist')
+            const result =  await this.BookPackageRepo.createQueryBuilder().delete().from(BookingPackage).where("id = :id", {id: request.params.id}).execute();
+            if(result.affected === 1){
+                // throw Error('The item you are trying to delete does not exist')
+            response.status(204).json({
+                    status: "success",
+                    message: "Expedition deleted successfully",
+             })
+            }else{
+                throw Error('Unable to delete expedition')
+        }
         }else{
-            throw Error('Unable to delete expedition')
-    }
+            const userId = user.id;
+            const userPackages = await this.BookPackageRepo.findOne({ where: {userId: userId}})
+            if(!userPackages) throw Error('The item you are trying to delete does not exist')
+            const result =  await this.BookPackageRepo.createQueryBuilder().delete().from(BookingPackage).where("id = :id", {userId: userPackages.id }).execute();
+            if(result.affected === 1){
+                // throw Error('The item you are trying to delete does not exist')
+            response.status(204).json({
+                    status: "success",
+                    message: "Expedition deleted successfully",
+             })
+            }else{
+                throw Error('Unable to delete expedition')
+        }
+        }
 } 
     
 
     async update(request: Request, response: Response, next: NextFunction) {
-        let userToUpdate = await this.userRepository.findOne(request.params.id);
-        const userId = await this.userRepository.findOne(request.params.id);
+        let userToUpdate = await this.BookPackageRepo.findOne(request.params.id);
+        const userId = await this.BookPackageRepo.findOne(request.params.id);
         const { 
             Visitor_details,
             bookedStartDate,
@@ -88,7 +122,7 @@ export class BookingPackageController {
         if(bookedStartDate > bookedEndDate){
            response.status(400).send({message:'Start date cannot be greater than end date'})
         }
-       const result = await this.userRepository.createQueryBuilder().update(BookingPackage).set({
+       const result = await this.BookPackageRepo.createQueryBuilder().update(BookingPackage).set({
          Visitor_details,
          bookedStartDate,
         bookedEndDate,
