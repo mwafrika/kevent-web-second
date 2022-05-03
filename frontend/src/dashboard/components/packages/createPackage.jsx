@@ -14,7 +14,7 @@ const CreatePackage = () => {
     metadata: 'my metadata',
     places: '',
     tags: '',
-    created_at: new Date().toISOString().slice(0, 10),
+    created_at: new Date().toISOString(),
   });
 
   const ref = useRef();
