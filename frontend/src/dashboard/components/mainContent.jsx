@@ -141,7 +141,7 @@ const MainContent = () => {
                 <div className='h-full bg-white rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>
                   <Link
                     to={{
-                      pathname: `/expeditions/${1}`.trim(),
+                      pathname: `/admin/packages/${pack.id}`.trim(),
                     }}
                   >
                     <img
@@ -181,7 +181,7 @@ const MainContent = () => {
                 <div className='h-full bg-white rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>
                   <Link
                     to={{
-                      pathname: `/expeditions/${1}`.trim(),
+                      pathname: `/admin/expeditions/${pack.id}`.trim(),
                     }}
                   >
                     <img
@@ -200,7 +200,7 @@ const MainContent = () => {
                       </div>
                       <span className='text-md text-slate-700  py-0 my-0'>
                         {/* 2 days ago */}
-                        {moment(new Date(), 'YYYYMMDD').fromNow()}
+                        {moment(pack.created_at, 'YYYYMMDD').fromNow()}
                       </span>
                     </div>
                   </Link>
