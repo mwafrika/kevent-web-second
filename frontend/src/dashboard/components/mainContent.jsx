@@ -46,6 +46,10 @@ const MainContent = () => {
     isLoggedIn,
   } = useSelector((state) => state.user);
 
+  const handleDate = (date) => {
+    return moment(date).format('YYYY-MM-DD');
+  };
+
   return (
     <>
       <div className='row-span-full bg-gray-100'>
@@ -161,7 +165,7 @@ const MainContent = () => {
                       <span className='text-md text-slate-700  py-0 my-0'>
                         {/* 2 days ago */}
                         {moment(
-                          pack.created_at.toISOString().slice(0, 10),
+                          handleDate(pack.created_at),
                           'YYYMMDD'
                         ).fromNow()}
                       </span>
@@ -207,7 +211,10 @@ const MainContent = () => {
                           pack.created_at,
                           'check date format valid'
                         )}
-                        {moment(pack.created_at, 'YYYYMMDD').fromNow()}
+                        {moment(
+                          handleDate(pack.created_at),
+                          'YYYYMMDD'
+                        ).fromNow()}
                       </span>
                     </div>
                   </Link>
