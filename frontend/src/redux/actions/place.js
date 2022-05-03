@@ -47,7 +47,6 @@ export const Places = () => (dispatch) => {
           type: GET_PLACES_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, 'Liste des places');
       }
     })
     .catch((error) => {
@@ -56,7 +55,6 @@ export const Places = () => (dispatch) => {
         type: GET_PLACES_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Erreur lors de la recuperation des places');
     });
 };
 
@@ -70,7 +68,6 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_PLACE_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, 'Place recuperer avec succes');
       }
     })
     .catch((error) => {
@@ -79,7 +76,6 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_PLACE_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Erreur lors de la recuperation du place');
     });
 };
 

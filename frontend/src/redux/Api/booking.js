@@ -1,6 +1,7 @@
 // booking APIs
 import axios from 'axios';
-const baseUrl = 'https://kevent-rdc.herokuapp.com/api/v1/';
+const baseUrl ='https://kevent-rdc.herokuapp.com/api/v1/'
+
 
 const authHeader = () => {
   const user = JSON.parse(localStorage.getItem('user'));

@@ -45,7 +45,6 @@ export const Expeditions = () => (dispatch) => {
           type: GET_EXPEDITIONS_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, 'Expeditions recuperer avec succes');
       }
     })
     .catch((error) => {
@@ -54,7 +53,6 @@ export const Expeditions = () => (dispatch) => {
         type: GET_EXPEDITIONS_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Impossible de recuperer les expeditions');
     });
 };
 
@@ -67,7 +65,6 @@ export const getSingle = (id) => (dispatch) => {
           type: GET_EXPEDITION_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, 'Expedition recuperer avec succes');
       }
     })
     .catch((error) => {
@@ -76,7 +73,6 @@ export const getSingle = (id) => (dispatch) => {
         type: GET_EXPEDITION_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, "Impossible de recuperer l'expedition");
     });
 };
 

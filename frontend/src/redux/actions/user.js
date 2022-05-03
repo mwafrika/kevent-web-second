@@ -3,6 +3,7 @@ import {
   REGISTER_FAILURE,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_SUCCESS,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAILURE,
   GET_USER_SUCCESS,
@@ -42,6 +43,13 @@ export const signup = (userData, navigate) => (dispatch) => {
     });
 };
 
+const runLogoutTimer = (dispatch, timer, navigate) => {
+  setInterval(() => {
+    dispatch(logout());
+    navigate('/login');
+  }, timer);
+};
+
 export const login = (userData, navigate) => (dispatch) => {
   userApi
     .login(userData)
@@ -52,6 +60,7 @@ export const login = (userData, navigate) => (dispatch) => {
           payload: response.data,
         });
         localStorage.setItem('user', JSON.stringify(response.data));
+        runLogoutTimer(dispatch, 3600000, navigate);
         navigate('/admin/home');
         resolvePromise(response, 'Connection en cours...');
       }
@@ -98,7 +107,6 @@ export const getuser = (id) => (dispatch) => {
           type: GET_USER_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, "Récupération des données de l'utilisateur");
       }
     })
     .catch((error) => {
@@ -107,7 +115,6 @@ export const getuser = (id) => (dispatch) => {
         type: GET_USER_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Erreur lors de la récupération des données');
     });
 };
 
@@ -121,7 +128,6 @@ export const getusers = () => (dispatch) => {
           type: GET_USERS_SUCCESS,
           payload: response.data,
         });
-        resolvePromise(response, 'Récupération des données des utilisateurs');
       }
     })
     .catch((error) => {
@@ -130,7 +136,6 @@ export const getusers = () => (dispatch) => {
         type: GET_USERS_FAILURE,
         payload: error.response.data.message,
       });
-      rejectPromise(error, 'Erreur lors de la récupération des données');
     });
 };
 
@@ -210,3 +215,9 @@ export const confirmpassword =
         rejectPromise(error, 'Erreur lors de la confirmation du mot de passe');
       });
   };
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT_SUCCESS,
+  });
+};

@@ -17,7 +17,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
-        isAuthenticated: true,
+        isLoggedIn: true,
         hasError: false,
         message: '',
       };
@@ -27,7 +27,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         hasError: true,
         user: {},
-        isAuthenticated: false,
+        isLoggedIn: false,
         message: action.payload,
       };
 
@@ -36,7 +36,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         hasError: false,
         user: {},
-        isAuthenticated: false,
+        isLoggedIn: false,
         message: '',
       };
     case REGISTER_SUCCESS:
@@ -44,7 +44,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
         hasError: false,
-        isAuthenticated: false,
+        isLoggedIn: false,
         message: '',
       };
     case REGISTER_FAILURE:
@@ -52,7 +52,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
         hasError: true,
-        isAuthenticated: false,
+        isLoggedIn: false,
         message: action.payload,
       };
 

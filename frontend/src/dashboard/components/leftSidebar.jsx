@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate, Link } from 'react-router-dom';
 import { logout } from '../../redux/actions/user';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   faCircleUser,
   faUserFriends,
@@ -20,12 +20,20 @@ const LeftSidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const logout = () => {
+  const Logout = () => {
     if (localStorage.getItem('user')) {
       localStorage.removeItem('user');
     }
+    dispatch(logout());
     navigate('/');
   };
+
+  const {
+    user: {
+      authUser: { role },
+    },
+    isLoggedIn,
+  } = useSelector((state) => state.user);
 
   return (
     <div className=' bg-white shadow-lg col-span-1 row-span-full flex justify-between py-10 flex-col items-center'>
@@ -62,21 +70,25 @@ const LeftSidebar = () => {
             <FontAwesomeIcon icon={faBoxOpen} />
           </span>
         </Link>
-        <Link to='/admin/places'>
-          <span className='text-4xl text-slate-600'>
-            <FontAwesomeIcon icon={faLocationDot} />
-          </span>
-        </Link>
-        <Link to='/admin/users'>
-          <span className='text-4xl text-slate-600'>
-            <FontAwesomeIcon icon={faUserFriends} />
-          </span>
-        </Link>
+        {role === 'ADMIN' && (
+          <>
+            <Link to='/admin/places'>
+              <span className='text-4xl text-slate-600'>
+                <FontAwesomeIcon icon={faLocationDot} />
+              </span>
+            </Link>
+            <Link to='/admin/users'>
+              <span className='text-4xl text-slate-600'>
+                <FontAwesomeIcon icon={faUserFriends} />
+              </span>
+            </Link>
+          </>
+        )}
       </div>
       <div className=''>
         <span
           className='text-4xl text-slate-600 cursor-pointer'
-          onClick={logout}
+          onClick={Logout}
         >
           <FontAwesomeIcon icon={faPowerOff} />
         </span>

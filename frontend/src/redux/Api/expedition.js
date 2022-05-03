@@ -27,7 +27,7 @@ export const createExpedition = async (data) => {
 
   const response = await axios({
     method: 'post',
-    url: `${baseUrl}expedition`,
+    url: `http://localhost:5000/api/v1/expedition`,
     data: bodyFormData,
     headers: {
       'Content-Type': 'multipart/form-data',

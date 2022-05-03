@@ -221,7 +221,12 @@ const CreatePackage = () => {
                       ref={ref}
                     />
                   </div>
-                  <input type='hidden' id='formFile' name='metadata' />
+                  <input
+                    type='hidden'
+                    id='formFile'
+                    name='metadata'
+                    value={state.metadata}
+                  />
                   <div className='col-span-6 sm:col-span-3 lg:col-span-full'>
                     <label
                       htmlFor='description'

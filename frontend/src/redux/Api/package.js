@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const baseUrl = 'https://kevent-rdc.herokuapp.com/api/v1/';
 
 const authHeader = () => {
@@ -27,6 +26,7 @@ export const createPackage = async (data) => {
   bodyFormData.append('metadata', data.metadata);
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
+  bodyFormData.append('created_at', data.created_at);
 
   const response = await axios({
     method: 'post',

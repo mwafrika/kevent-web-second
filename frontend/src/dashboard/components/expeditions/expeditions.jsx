@@ -20,7 +20,6 @@ const Table = () => {
     'Price',
     'Image',
     'itineraire',
-    'Metadata',
     'Places',
     'Tags',
     'Start Date',
@@ -29,29 +28,37 @@ const Table = () => {
   ];
 
   console.log(expeditions, 'expedition components');
+  const {
+    user: {
+      authUser: { role },
+    },
+    isLoggedIn,
+  } = useSelector((state) => state.user);
+
   return (
     <div className='row-span-full mx-auto'>
       <Header title='Expeditions' />
+      {role === 'ADMIN' && (
+        <div className='relative w-[_12rem]'>
+          <Link to='/admin/create/expedition'>
+            <button
+              className=' bg-slate-100 text-slate-600 shadow-xl pl-4 py-2 my-4 rounded-lg w-full h-full'
+              type='button'
+            >
+              new expedition
+              <FontAwesomeIcon
+                icon={faPencil}
+                className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
+              />
+            </button>
+          </Link>
 
-      <div className='relative w-[_12rem]'>
-        <Link to='/admin/create/expedition'>
-          <button
-            className=' bg-slate-100 text-slate-600 shadow-xl pl-4 py-2 my-4 rounded-lg w-full h-full'
-            type='button'
-          >
-            new expedition
-            <FontAwesomeIcon
-              icon={faPencil}
-              className='absolute top-6 mr-4 text-xl left-3 text-slate-600'
-            />
-          </button>
-        </Link>
-
-        <span className='flex h-3 w-3 absolute top-3 right-0'>
-          <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75'></span>
-          <span className='relative inline-flex rounded-full h-3 w-3 bg-slate-500'></span>
-        </span>
-      </div>
+          <span className='flex h-3 w-3 absolute top-3 right-0'>
+            <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75'></span>
+            <span className='relative inline-flex rounded-full h-3 w-3 bg-slate-500'></span>
+          </span>
+        </div>
+      )}
 
       <table className='table table-auto shadow-lg bg-white border-collapse'>
         <thead>
@@ -86,9 +93,6 @@ const Table = () => {
               </td>
               <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.itineraire}
-              </td>
-              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
-                {pack.metadata}
               </td>
               <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.places}
