@@ -54,38 +54,40 @@ const caroussel2 = ({ packages }) => {
       )}
       className='md:mt-10  md:gap-x-4'
     >
-      {packages.map(
-        (
-          { imageUrls, date, prix, lieu, key, places, available, description },
-          index
-        ) => (
-          <div
-            className='2xl:w-11/12  lg:w-11/12 h-96 relative md:w-full md:h-96 lg:h-96 xl:h-96 rounded-2xl sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6'
-            key={key}
-          >
-            <Link to={`/packages/${key}`}>
-              <img
-                src={imageUrls}
-                alt='plantes'
-                className='absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-2xl'
-              />
-              <div className='absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-2xl'>
-                <h2 className=' mt-5 ml-5 text-white text-lg font-semibold'>
-                  {places}
-                </h2>
-                <h3 className='mt-5 ml-5 text-white text-sm font-semibold'>
-                  {description}
-                </h3>
-              </div>
-              <div className='absolute right-0 bottom-0 rounded-2xl'>
-                <p className=' text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-2xl'>
-                  Available
-                </p>
-              </div>
-            </Link>
-          </div>
-        )
-      )}
+      {packages
+        .slice(0, 4)
+        .map(
+          (
+            { imageUrls, date, prix, lieu, id, places, available, description },
+            index
+          ) => (
+            <div
+              className='2xl:w-11/12  lg:w-11/12 h-96 relative md:w-full md:h-96 lg:h-96 xl:h-96 rounded-2xl sm:w-64 xxs:mb-6 xs:mb-6 xxxs:mb-6'
+              key={id}
+            >
+              <Link to={`/packages/${id}`}>
+                <img
+                  src={imageUrls}
+                  alt='plantes'
+                  className='absolute w-full h-full object-cover hover:opacity-75 transition-all duration-700 ease-in-out rounded-2xl'
+                />
+                <div className='absolute inset-0 bg-gray-900 bg-opacity-50 top-48 rounded-2xl'>
+                  <h2 className=' mt-5 ml-5 text-white text-lg font-semibold'>
+                    {places}
+                  </h2>
+                  <h3 className='mt-5 mx-5  text-white text-sm font-semibold'>
+                    {description}
+                  </h3>
+                </div>
+                <div className='absolute right-0 bottom-0 rounded-2xl'>
+                  <p className=' text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-2xl'>
+                    Available
+                  </p>
+                </div>
+              </Link>
+            </div>
+          )
+        )}
     </Carousel>
   );
 };

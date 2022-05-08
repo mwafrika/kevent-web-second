@@ -19,6 +19,7 @@ const UpdatePackage = () => {
     tags: '',
     start_date: '',
     end_date: '',
+    available: '',
   });
 
   const handleOnChangeImage = (event) => {
@@ -65,6 +66,7 @@ const UpdatePackage = () => {
     tags,
     start_date,
     end_date,
+    available,
   } = expeditions;
 
   return (
@@ -134,7 +136,25 @@ const UpdatePackage = () => {
                       <option>Mexico</option>
                     </select>
                   </div>
-
+                  <div className='col-span-6 sm:col-span-3'>
+                    <label
+                      htmlFor='available'
+                      className='block text-sm font-medium text-gray-700'
+                    >
+                      Disponibilité
+                    </label>
+                    <select
+                      id='available'
+                      name='available'
+                      value={available || ''}
+                      onChange={(e) => handleChange(e)}
+                      autoComplete='available'
+                      className='bg-gray-50 border mt-1 border-gray-300 text-gray-900 focus:outline-none  focus:ring-1 focus:ring-sky-500 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-sm sm:text-sm'
+                    >
+                      <option>Disponible</option>
+                      <option>Pas disponible</option>
+                    </select>
+                  </div>
                   <div className='col-span-6 sm:col-span-3'>
                     <label
                       htmlFor='tags'

@@ -25,6 +25,7 @@ const CreatePackage = () => {
     metadata,
     places,
     tags,
+    available,
   } = singlePackage;
 
   const handleDelete = () => {
@@ -99,6 +100,14 @@ const CreatePackage = () => {
               <li className='w-[50%] flex-col flex gap-2'>
                 <p className='text-xl font-bold text-slate-700'>Tags</p>
                 <p className='text-xl  font-medium text-slate-500'>{tags}</p>
+              </li>
+              <li className='w-[50%] flex-col flex gap-2'>
+                <p className='text-xl font-bold text-slate-700'>
+                  Disponibilité
+                </p>
+                <p className='text-xl  font-medium text-slate-500'>
+                  {available}
+                </p>
               </li>
             </ul>
           </div>

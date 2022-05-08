@@ -52,60 +52,61 @@ const DemoCarousel = ({ expeditions }) => {
       transitionDuration={500}
       transitionMode='fade'
     >
-      {expeditions.map(
-        (
-          {
-            imageUrls,
-            id,
-            date,
-            prix,
-            lieu,
-            key,
-            places,
-            available,
-            description,
-            created_at
-          },
-          index
-        ) => (
-          <div
-            className='h-full md:gap-x-4 md:w-full 2xl:w-full lg:w-72 
+      {expeditions
+        .slice(0, 5)
+        .map(
+          (
+            {
+              imageUrls,
+              id,
+              date,
+              prix,
+              lieu,
+              places,
+              available,
+              description,
+              created_at,
+            },
+            index
+          ) => (
+            <div
+              className='h-full md:gap-x-4 md:w-full 2xl:w-full lg:w-72 
                       xxxs:w-full w-full transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
                     cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-2xl'
-            key={id}
-          >
-            <Link
-              to={{
-                pathname: `/expeditions/${key}`.trim(),
-                state: {
-                  ...imageUrls,
-                },
-              }}
+              key={id}
             >
-              <>
-                <img
-                  src={imageUrls}
-                  alt=''
-                  className='object-cover float-left h-72 w-full rounded-t-2xl'
-                />
-                <div className='flex flex-col px-5 pb-10'>
-                  <div className='flex flex-row justify-between items-center '>
-                    <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                      {places}
-                    </p>
-                    <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                      Available
-                    </p>
+              <Link
+                to={{
+                  pathname: `/expeditions/${id}`.trim(),
+                  state: {
+                    ...imageUrls,
+                  },
+                }}
+              >
+                <>
+                  <img
+                    src={imageUrls}
+                    alt=''
+                    className='object-cover float-left h-72 w-full rounded-t-2xl'
+                  />
+                  <div className='flex flex-col px-5 pb-10'>
+                    <div className='flex flex-row justify-between items-center '>
+                      <p className='text-md font-semibold text-center text-slate-700  py-4'>
+                        {places}
+                      </p>
+                      <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
+                        Available
+                      </p>
+                    </div>
+                    <span className='text-md text-slate-700  py-0 my-0'>
+                      {created_at}
+                    </span>
                   </div>
-                  <span className='text-md text-slate-700  py-0 my-0'>
-                    {created_at}
-                  </span>
-                </div>
-              </>
-            </Link>
-          </div>
-        )
-      )}
+                </>
+              </Link>
+            </div>
+          )
+        )}
     </Carousel>
   );
 };

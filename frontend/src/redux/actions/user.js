@@ -217,6 +217,9 @@ export const confirmpassword =
   };
 
 export const logout = () => (dispatch) => {
+  if (localStorage.getItem('user')) {
+    localStorage.removeItem('user');
+  }
   dispatch({
     type: LOGOUT_SUCCESS,
   });

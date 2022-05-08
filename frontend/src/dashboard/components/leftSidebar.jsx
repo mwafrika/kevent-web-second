@@ -21,11 +21,8 @@ const LeftSidebar = () => {
   const dispatch = useDispatch();
 
   const Logout = () => {
-    if (localStorage.getItem('user')) {
-      localStorage.removeItem('user');
-    }
     dispatch(logout());
-    navigate('/');
+    navigate('/login');
   };
 
   const {
