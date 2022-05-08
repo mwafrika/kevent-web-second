@@ -24,7 +24,7 @@ export const createExpedition = async (data) => {
   bodyFormData.append('tags', data.tags);
   bodyFormData.append('start_date', data.start_date);
   bodyFormData.append('end_date', data.end_date);
-
+  bodyFormData.append('available', data.available);
   const response = await axios({
     method: 'post',
     url: `${baseUrl}expedition`,
@@ -66,7 +66,8 @@ export const updateExpedition = async (id, data) => {
   bodyFormData.append('tags', data.tags);
   bodyFormData.append('start_date', data.start_date);
   bodyFormData.append('end_date', data.end_date);
-
+  bodyFormData.append('available', data.available);
+  
   const response = await axios({
     method: 'put',
     url: `${baseUrl}expeditions/${id}`,

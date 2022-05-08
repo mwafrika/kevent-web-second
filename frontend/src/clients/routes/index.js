@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   BrowserRouter as Router,
   Navigate,
   Routes,
   Link,
   Route,
+  useNavigate,
 } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Home from '../pages/home';
@@ -15,7 +17,7 @@ import DetailExpedition from '../pages/detailExpedition';
 import DetailPackage from '../pages/detailPackage';
 import NoPage from '../pages/noPage';
 // Testing Admin homepage
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Signup from '../pages/signup';
 import Login from '../pages/login';
 import PackageForm from '../../dashboard/pages/packages/createPackage';
@@ -58,14 +60,39 @@ import ConfirmSuccess from '../../dashboard/components/users/confirmSuccess';
 import RequireAuth from '../../dashboard/helpers/requireAuth';
 import Unauthorized from '../../dashboard/components/unauthorized';
 
+import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
+import { logout } from '../../redux/actions/user';
+
 export default function App() {
   const { isLoggedIn } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const ROLES = {
     USER: 'USER',
     ADMIN: 'ADMIN',
   };
+  // axios.interceptors.request.use((response) => {
+  //   return response;
+  // });
+
+  // axios.interceptors.response.use(
+  //   (response) => {
+  //     return response;
+  //   },
+  //   (error) => {
+  //     if (error.response.status === 401) {
+  //       dispatch(logout());
+  //       navigate('/login', {
+  //         replace: true,
+  //       });
+  //     }
+  //     return Promise.reject(error, 'unauthorized');
+  //   }
+  // );
+
   return (
-    <Router>
+    <>
       <ToastContainer />
       <Routes>
         <Route index element={<Home />} />
@@ -73,8 +100,8 @@ export default function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/about' element={<About />} />
 
-          <Route path='/admin/home' element={<Dashboard />} />
-        
+        <Route path='/admin/home' element={<Dashboard />} />
+
         <Route path='/admin/create/package' element={<PackageForm />} />
         <Route path='/admin/packages' element={<Packages />} />
         <Route path='/admin/expeditions' element={<AdminExpeditions />} />
@@ -109,10 +136,13 @@ export default function App() {
         />
 
         {/*  book expeditions */}
+        {/* <Route element={<RequireAuth allowedRoles={[ROLES.USER]} />}> */}
         <Route
           path='/admin/expeditions/:key/book'
           element={<BookExpedition />}
         />
+        {/* </Route> */}
+
         <Route
           path='/admin/expeditions/book/:key'
           element={<BookExpeditionSingle />}
@@ -152,6 +182,6 @@ export default function App() {
         <Route path='/password-reset/success' element={<ConfirmSuccess />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
-    </Router>
+    </>
   );
 }

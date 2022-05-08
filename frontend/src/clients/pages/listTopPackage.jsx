@@ -7,12 +7,20 @@ import Footer from '../component/footer';
 import data from '../api/data';
 import Banner from '../component/bannerPack';
 import { Link } from 'react-router-dom';
-const packages = data.packages;
+import { packackages } from '../../redux/actions/package';
+import { useDispatch, useSelector } from 'react-redux';
+
+// const packages = data.packages;
 
 const List = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(packackages());
   }, []);
+
+  const { packages } = useSelector((state) => state.packages);
+
   return (
     <>
       <section className='flex min-h-screen flex-col'>
@@ -92,41 +100,53 @@ const List = () => {
             </div>
           </div>
 
-          {packages.map(({ key, image, date, prix, lieu, description }) => (
-            <div
-              className='h-full md:w-15 px-p-5 md:p-0 py-p-10 w-4/5 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-1/3.3 lg:w-15 mx-auto 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
+          {packages.map(
+            ({
+              imageUrls,
+              date,
+              prix,
+              lieu,
+              id,
+              places,
+              available,
+              description,
+              created_at,
+            }) => (
+              <div
+                className='h-full md:w-15 px-p-5 md:p-0 py-p-10 w-4/5 xxxs:w-4/5 xxxs:h-full xxxs:mx-auto xxs:w-4/5 xxs:h-full xxs:mx-auto xs:mx-auto xl:w-1/3.3 lg:w-15 mx-auto 2xl:w-98 mt-10 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110
 cursor-pointer md:mt-0 md:h-full lg:mt-0 lg:h-full shadow-lg rounded-lg
 '
-            >
-              <Link
-                to={{
-                  pathname: `/packages/${key}`.trim(),
-                  state: {
-                    ...image,
-                  },
-                }}
               >
-                <img
-                  src={image}
-                  alt=''
-                  className='object-cover rounded-t-lg w-full h-80'
-                />
-                <div className='flex flex-col px-5  pb-10'>
-                  <div className='flex flex-row justify-between items-center '>
-                    <p className='text-md font-semibold text-center text-slate-700  py-4'>
-                      {lieu}
-                    </p>
-                    <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                      {prix}
-                    </p>
+                <Link
+                  to={{
+                    pathname: `/packages/${id}`.trim(),
+                    state: {
+                      ...imageUrls,
+                    },
+                  }}
+                >
+                  <img
+                    src={imageUrls}
+                    alt=''
+                    className='object-cover rounded-t-lg w-full h-80'
+                  />
+                  <div className='flex flex-col px-5  pb-10'>
+                    <div className='flex flex-row justify-between items-center '>
+                      <p className='text-md font-semibold text-center text-slate-700  py-4'>
+                        {places}
+                      </p>
+                      <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
+                        Available
+                      </p>
+                    </div>
+                    <span className='text-md text-slate-700  py-0 my-0'>
+                      {moment(created_at).format('DD MMM YYYY')}
+                    </span>
                   </div>
-                  <span className='text-md text-slate-700  py-0 my-0'>
-                    {date}
-                  </span>
-                </div>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              </div>
+            )
+          )}
         </div>
         <Pagination />
         <Footer />

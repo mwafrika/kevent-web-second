@@ -27,6 +27,9 @@ export class Package {
     places: string[];
 
     @Column("simple-array")
+    available: string;
+
+    @Column("simple-array")
     tags: string[];
 
     @Column()

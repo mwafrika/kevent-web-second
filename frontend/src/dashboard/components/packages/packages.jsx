@@ -22,6 +22,7 @@ const Table = () => {
     'itineraire',
     'Places',
     'Tags',
+    'Diponibilité',
     'Booking',
   ];
 
@@ -97,6 +98,9 @@ const Table = () => {
               </td>
               <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 {pack.tags}
+              </td>
+              <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
+                {pack.available}
               </td>
               <td className='border px-2 py-1 text-slate-600 hover:text-slate-500'>
                 <Link to={`/admin/packages/${pack.id}/book`}>

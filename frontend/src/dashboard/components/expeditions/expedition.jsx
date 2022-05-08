@@ -26,6 +26,7 @@ const SingleExpedition = () => {
     tags,
     start_date,
     end_date,
+    available,
   } = singleExpedition;
 
   const handleDelete = () => {
@@ -69,7 +70,7 @@ const SingleExpedition = () => {
             <h1 className='mb-8 text-xl font-bold text-slate-700 gap-y-8'>
               EXPEDITION DETAILS
             </h1>
-            <ul className='flex flex-wrap flex-row gap-y-4'>
+            <ul className='flex flex-wrap flex-row'>
               <li className='w-[50%]'>
                 <p className='text-xl font-bold text-slate-700'>Description</p>
                 <p className='text-lg  font-medium text-slate-500'>
@@ -104,6 +105,14 @@ const SingleExpedition = () => {
                 <p className='text-xl font-bold text-slate-700'>End Date</p>
                 <p className='text-xl  font-medium text-slate-500'>
                   {end_date}
+                </p>
+              </li>
+              <li className='w-[50%] flex-col flex gap-2'>
+                <p className='text-xl font-bold text-slate-700'>
+                  Disponibilité
+                </p>
+                <p className='text-xl  font-medium text-slate-500'>
+                  {available}
                 </p>
               </li>
             </ul>

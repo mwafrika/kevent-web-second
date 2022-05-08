@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../assets/images/logo.svg';
 import '../assets/App.css';
-import Expeditions from './caroussel-expedition';
+import Expedition from './caroussel-expedition';
 import Packages from './caroussel-package';
 import data from '../api/data';
 import Footer from '../component/footer';
 import Header from '../component/header';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { packackages } from '../../redux/actions/package';
+import { Expeditions } from '../../redux/actions/expedition';
+import { useDispatch, useSelector } from 'react-redux';
 
-const { expeditions, packages } = data;
+// const { expeditions, packages } = data; // dummy data
 
 export default function App() {
   const [menu, setMenu] = useState(false);
@@ -22,6 +25,15 @@ export default function App() {
     message: '',
     telephone: '',
   });
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(packackages());
+    dispatch(Expeditions());
+  }, []);
+
+  const { packages } = useSelector((state) => state.packages);
+  const { expeditions } = useSelector((state) => state.expeditions);
 
   useEffect(() => {}, [contact]);
 
@@ -57,7 +69,7 @@ export default function App() {
               Book your spot today and set sail on a <br /> local fishing
               adventure.
             </p>
-            <Link to='/login'>
+            <Link to='#'>
               <button
                 className='text-slate-600 bg-white font-semibold py-2 px-8 my-8
             hover:bg-slate-700 hover:text-white rounded-2xl'
@@ -190,12 +202,15 @@ export default function App() {
             </Link>
           </div>
         </section>
-        <Expeditions expeditions={expeditions} />
+        <Expedition expeditions={expeditions} />
         <section className='flex items-center justify-center'>
           <div className='w-2/3 h-px bg-slate-300'></div>
         </section>
 
-        <section className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center filter justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'>
+        <section
+          id='contact'
+          className='flex flex-col sm:flex-col lg:flex lg:flex-row md:flex md:flex-row md:justify-center filter justify-center w-full lg:h-full lg:w-full md:h-full px-5 py-5 md:py-8'
+        >
           <div className='flex bg-white p-10 w-full md:w-2/5 md:h-full md:px-4 md:justify-center rounded-2xl'>
             <form
               onSubmit={handleSubmit}

@@ -30,6 +30,9 @@ export class Expeditions {
     end_date: string;
     
     @Column("simple-array")
+    available: string;
+
+    @Column("simple-array")
     places: string[];
 
     @Column("simple-array")

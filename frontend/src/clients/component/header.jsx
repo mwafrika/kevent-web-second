@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  NavLink,
+} from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import '../assets/App.css';
 
@@ -9,6 +14,12 @@ const Header = () => {
   const [checkPath, setCheckPaph] = useState(false);
   const onClickMenu = () => {
     setMenu(!menu);
+  };
+
+  const handleScrollToSection = (e) => {
+    const section = e.target.getAttribute('data-section');
+    const element = document.getElementById(section);
+    element.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleChangeBackgroundOnScroll = () => {
@@ -48,40 +59,67 @@ const Header = () => {
       >
         <ul className='flex justify-between gap-2'>
           <li className='mt-3 md:mt-0'>
-            <Link
+            <NavLink
               to='/'
-              className='block md:inline-block mt-4 md:mt-0 md:mr-6 
-                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
+              style={({ isActive }) => ({ color: isActive ? '#fff' : '#fff' })}
+              className={({ isActive }) => `nav_link${
+                isActive ? ' active underline underline-offset-8' : ''
+              } block md:inline-block mt-4 md:mt-0 md:mr-6 
+                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600`}
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className='mt-3 md:mt-0'>
-            <Link
+            <NavLink
               to='/about'
-              className='block md:inline-block mt-4 md:mt-0 md:mr-6 
-                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
+              style={({ isActive }) => ({ color: isActive ? '#fff' : '#fff' })}
+              className={({ isActive }) => `nav_link${
+                isActive ? ' active underline underline-offset-8' : ''
+              } block md:inline-block mt-4 md:mt-0 md:mr-6 
+                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600`}
             >
               About
-            </Link>
+            </NavLink>
           </li>
           <li className='mt-3 md:mt-0'>
-            <a
-              href='#'
-              className='block md:inline-block mt-4 md:mt-0 md:mr-6 
-                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
+            <NavLink
+              to='/services'
+              style={({ isActive }) => ({ color: isActive ? '#fff' : '#fff' })}
+              className={({ isActive }) => `nav_link${
+                isActive ? ' active underline underline-offset-8' : ''
+              } block md:inline-block mt-4 md:mt-0 md:mr-6 
+                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600`}
             >
               Services
-            </a>
+            </NavLink>
           </li>
           <li className='mt-3 md:mt-0'>
-            <Link
+            <NavLink
               to='/#contact'
-              className='block md:inline-block mt-4 md:mt-0 md:mr-6 
-                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600'
+              style={({ isActive }) => ({ color: isActive ? '#fff' : '#fff' })}
+              className={({ isActive }) => `nav_link${
+                isActive ? 'active ' : ''
+              } block md:inline-block mt-4 md:mt-0 md:mr-6 
+                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600`}
+              // hide underline on home page when scroll to contact section
+
+              onClick={handleScrollToSection}
             >
               Contact
-            </Link>
+            </NavLink>
+          </li>
+          <li className='mt-3 md:mt-0'>
+            <NavLink
+              to='/login'
+              style={({ isActive }) => ({ color: isActive ? '#fff' : '#fff' })}
+              className={({ isActive }) => `nav_link${
+                isActive ? ' active underline underline-offset-8' : ''
+              } block md:inline-block mt-4 md:mt-0 md:mr-6 
+                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600`}
+            >
+              Login
+            </NavLink>
           </li>
         </ul>
       </nav>

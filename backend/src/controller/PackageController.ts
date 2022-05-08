@@ -13,9 +13,9 @@ export class PackageController {
     }
 
     async one(request: Request, response: Response, next: NextFunction) {
-        const user = this.packageRepository.findOne(request.params.id);
-        if(!user) throw Error('User not found')
-        return user;
+        const packages = this.packageRepository.findOne(request.params.id);
+        if(!packages) throw Error('packages not found')
+        return packages;
         
     }
 
@@ -23,12 +23,12 @@ export class PackageController {
         console.log('VERIFY UPLOADS',request.body);
        
        try {
-        let {price, description,imageUrls, itineraire, metadata,places, tags, title, created_at} = request.body;
+        let {price, description,imageUrls,available, itineraire, metadata,places, tags, title, created_at} = request.body;
         created_at = new Date();
 
-        if(!price || !description || !imageUrls || !itineraire || !places || !tags || !title) throw Error('Tout les champs sont obligatoires')
-        let user = this.packageRepository.create({price, description, itineraire,places, tags,imageUrls, title, metadata, created_at});
-        const result = await this.packageRepository.save(user);
+        if(!price || !description || !imageUrls || !itineraire || !places || !tags || !title || !available) throw Error('Tout les champs sont obligatoires')
+        let packages = this.packageRepository.create({price, description,available, itineraire,places, tags,imageUrls, title, metadata, created_at});
+        const result = await this.packageRepository.save(packages);
         console.log('RESULT',result);
         return result;
 
@@ -40,8 +40,8 @@ export class PackageController {
     async remove(request: Request, response: Response, next: NextFunction) {
       
         
-            let userToRemove = await this.packageRepository.findOne(request.params.id);
-            if(!userToRemove) throw Error('The item you are trying to delete does not exist')
+            let packagesToRemove = await this.packageRepository.findOne(request.params.id);
+            if(!packagesToRemove) throw Error('The item you are trying to delete does not exist')
             const result =  await this.packageRepository.createQueryBuilder().delete().from(Package).where("id = :id", {id: request.params.id}).execute();
             if(result.affected === 1){
             response.status(204).json({
@@ -57,11 +57,11 @@ export class PackageController {
 
     async update(request: Request, response: Response, next: NextFunction) {
         let packageToUpdate = await this.packageRepository.findOne(request.params.id);
-        const {price, description,imageUrls, itineraire, metadata,places, tags, title} = request.body;
-        if(!packageToUpdate) throw Error('The user you are trying to update does not exist')
+        const {price, description,imageUrls, itineraire, metadata,places, tags,available, title} = request.body;
+        if(!packageToUpdate) throw Error('The packages you are trying to update does not exist')
        const result = await this.packageRepository.createQueryBuilder().update(Package).set({
-       title, price, description, itineraire, metadata,places, tags, imageUrls
-        }).where("id = :id", {id: request.params.id}).returning(["id","title","description","price","imageUrls","itineraire","metadata","places","tags"]).execute();
+       title, price, description, itineraire, metadata,places, tags, imageUrls,available
+        }).where("id = :id", {id: request.params.id}).returning(["id","title","description","price","imageUrls","itineraire","metadata","available","places","tags"]).execute();
         
         return result.raw[0]
     

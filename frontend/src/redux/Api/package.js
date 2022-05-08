@@ -27,6 +27,7 @@ export const createPackage = async (data) => {
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
   bodyFormData.append('created_at', data.created_at);
+  bodyFormData.append('available', data.available);
 
   const response = await axios({
     method: 'post',
@@ -68,6 +69,7 @@ export const updatePackage = async (id, data) => {
   bodyFormData.append('metadata', data.metadata);
   bodyFormData.append('places', data.places);
   bodyFormData.append('tags', data.tags);
+  bodyFormData.append('available', data.available);
 
   const response = await axios({
     method: 'put',

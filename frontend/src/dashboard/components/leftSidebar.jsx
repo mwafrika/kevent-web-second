@@ -21,11 +21,8 @@ const LeftSidebar = () => {
   const dispatch = useDispatch();
 
   const Logout = () => {
-    if (localStorage.getItem('user')) {
-      localStorage.removeItem('user');
-    }
     dispatch(logout());
-    navigate('/');
+    navigate('/login');
   };
 
   const {
@@ -34,6 +31,7 @@ const LeftSidebar = () => {
     },
     isLoggedIn,
   } = useSelector((state) => state.user);
+  // const { role } = useSelector((state) => state?.user?.user?.authUser);
 
   return (
     <div className=' bg-white shadow-lg col-span-1 row-span-full flex justify-between py-10 flex-col items-center'>

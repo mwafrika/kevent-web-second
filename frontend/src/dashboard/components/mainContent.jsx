@@ -45,7 +45,7 @@ const MainContent = () => {
     },
     isLoggedIn,
   } = useSelector((state) => state.user);
-
+  // const { role } = useSelector((state) => state?.user?.authUser);
   return (
     <>
       <div className='row-span-full bg-gray-100'>
@@ -178,7 +178,10 @@ const MainContent = () => {
           <div className='w-full gap-y-8 gap-x-4 mb-12'>
             <div className='w-full gap-y-8 gap-x-10 grid grid-cols-[repeat(auto-fill_,_minmax(19rem_,_1fr))] xxxs:grid-cols-[repeat(auto-fill_,_minmax(11rem_,_1fr))]'>
               {packages.slice(0, 3).map((pack) => (
-                <div className='h-full bg-white rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>
+                <div
+                  className='h-full bg-white rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'
+                  key={pack.id}
+                >
                   <Link
                     to={{
                       pathname: `/admin/expeditions/${pack.id}`.trim(),
