@@ -9,7 +9,7 @@ const RequireAuth = ({ allowedRoles }) => {
       authUser: { role },
     },
     isLoggedIn,
-  } = useSelector((state) => state.user);
+  } = useSelector((state) => state?.user);
 
   const location = useLocation();
 
