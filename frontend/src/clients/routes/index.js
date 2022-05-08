@@ -72,24 +72,24 @@ export default function App() {
     USER: 'USER',
     ADMIN: 'ADMIN',
   };
-  axios.interceptors.request.use((response) => {
-    return response;
-  });
+  // axios.interceptors.request.use((response) => {
+  //   return response;
+  // });
 
-  axios.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      if (error.response.status === 401) {
-        dispatch(logout());
-        navigate('/login', {
-          replace: true,
-        });
-      }
-      return Promise.reject(error, 'unauthorized');
-    }
-  );
+  // axios.interceptors.response.use(
+  //   (response) => {
+  //     return response;
+  //   },
+  //   (error) => {
+  //     if (error.response.status === 401) {
+  //       dispatch(logout());
+  //       navigate('/login', {
+  //         replace: true,
+  //       });
+  //     }
+  //     return Promise.reject(error, 'unauthorized');
+  //   }
+  // );
 
   return (
     <>

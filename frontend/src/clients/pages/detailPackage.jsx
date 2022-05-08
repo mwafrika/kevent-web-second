@@ -1,24 +1,50 @@
 import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-
 import Header from '../component/header';
 import Footer from '../component/footer';
 import data from '../api/data';
 import '../assets/customize.css';
-const { expeditions, packages } = data;
+import { useDispatch, useSelector } from 'react-redux';
+import { packackages, getSingle } from '../../redux/actions/package';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+// const { expeditions, packages } = data;
 
 const DetailPackage = (props) => {
   const { key } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(packackages());
   }, []);
 
-  const items = packages.find((expedition) => expedition.key === parseInt(key));
+  const dispatch = useDispatch();
+  const { singlePackage, packages } = useSelector((state) => state.packages);
+
+  const navigate = useNavigate();
+
+  // const items = expeditions.find(
+  //   (expedition) => expedition.key === parseInt(key)
+  // );
   const related = packages.filter(
     (expedition) => expedition.key !== parseInt(key)
   );
-  const { date, description, image, lieu, prix } = items;
+  // const { date, description, image, lieu, prix } = items;
+
+  useEffect(() => {
+    dispatch(getSingle(key));
+  }, [dispatch, key]);
+
+  const {
+    title,
+    description,
+    price,
+    imageUrls,
+    itineraire,
+    places,
+    tags,
+    start_date,
+    end_date,
+    available,
+  } = singlePackage;
 
   return (
     <>
@@ -28,7 +54,7 @@ const DetailPackage = (props) => {
           <div className='h-1/2 flex flex-col gap-y-6 md:pt-0 w-full xxxs:mt-16 xxs:mt-16 xs:mt-16'>
             <div className='w-full mx-auto h-96'>
               <img
-                src={image}
+                src={imageUrls}
                 alt=''
                 className='object-cover w-full h-full rounded-2xl'
               />
@@ -36,13 +62,11 @@ const DetailPackage = (props) => {
             <div className='overflow-auto whitespace-nowrap no-scrollbar'>
               <div className='flex flex-row  h-24  w-full gap-4 md:gap-3 lg:gap-x-5 xl:gap-x-6'>
                 {related.map((item) => (
-                  // <Link to={`/packages/${item.key}`}>
                   <img
-                    src={item.image}
+                    src={item.imageUrls}
                     alt=''
                     className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
                   />
-                  // </Link>
                 ))}
               </div>
             </div>
