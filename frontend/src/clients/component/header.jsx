@@ -121,18 +121,6 @@ const Header = () => {
               Login
             </NavLink>
           </li>
-          <li className='mt-3 md:mt-0'>
-            <NavLink
-              to='/signup'
-              style={({ isActive }) => ({ color: isActive ? '#fff' : '#fff' })}
-              className={({ isActive }) => `nav_link${
-                isActive ? ' active underline underline-offset-8' : ''
-              } block md:inline-block mt-4 md:mt-0 md:mr-6 
-                text-sm md:text-base px-4 py-2 leading rounded text-white-slate-600`}
-            >
-              Signup
-            </NavLink>
-          </li>
         </ul>
       </nav>
 

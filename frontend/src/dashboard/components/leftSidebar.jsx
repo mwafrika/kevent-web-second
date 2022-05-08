@@ -31,6 +31,7 @@ const LeftSidebar = () => {
     },
     isLoggedIn,
   } = useSelector((state) => state.user);
+  // const { role } = useSelector((state) => state?.user?.user?.authUser);
 
   return (
     <div className=' bg-white shadow-lg col-span-1 row-span-full flex justify-between py-10 flex-col items-center'>

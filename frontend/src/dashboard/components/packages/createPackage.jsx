@@ -47,6 +47,7 @@ const CreatePackage = () => {
       metadata: '',
       places: '',
       tags: '',
+      available: 'disponible',
     });
     resetFile();
   };

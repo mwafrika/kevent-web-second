@@ -81,7 +81,7 @@ const caroussel2 = ({ packages }) => {
                 </div>
                 <div className='absolute right-0 bottom-0 rounded-2xl'>
                   <p className=' text-lg font-semibold  text-white bg-gray-900 bg-opacity-75 py-1 px-4 rounded-2xl'>
-                    Available
+                    {available}
                   </p>
                 </div>
               </Link>

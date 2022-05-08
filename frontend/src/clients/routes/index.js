@@ -136,10 +136,13 @@ export default function App() {
         />
 
         {/*  book expeditions */}
+        {/* <Route element={<RequireAuth allowedRoles={[ROLES.USER]} />}> */}
         <Route
           path='/admin/expeditions/:key/book'
           element={<BookExpedition />}
         />
+        {/* </Route> */}
+
         <Route
           path='/admin/expeditions/book/:key'
           element={<BookExpeditionSingle />}

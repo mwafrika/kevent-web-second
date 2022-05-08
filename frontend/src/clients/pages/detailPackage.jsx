@@ -6,6 +6,8 @@ import '../assets/customize.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { packackages, getSingle } from '../../redux/actions/package';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 // const { expeditions, packages } = data;
 
 const DetailPackage = (props) => {
@@ -41,8 +43,7 @@ const DetailPackage = (props) => {
     itineraire,
     places,
     tags,
-    start_date,
-    end_date,
+    id,
     available,
   } = singlePackage;
 
@@ -73,16 +74,42 @@ const DetailPackage = (props) => {
           </div>
           <section className='h-auto w-full pt-8 md:pt-8 bg-slate-200 rounded-2xl'>
             <div className='px-8 w-full title-description'>
-              <h1 className='text-2xl font-bold pb-4'>Details Packages</h1>
+              <h1 className='text-2xl font-bold pb-4'>{title}</h1>
               <p>{description}</p>
+              <div className='flex flex-col gap-y-2 pt-8'>
+                <p>
+                  <span className='font-bold'>Prix:</span> {price}
+                </p>
+                <p>
+                  <span className='font-bold'>Disponibilite:</span> {available}
+                </p>
+                <p>
+                  {' '}
+                  <span className='font-bold'>Ville:</span> {places}
+                </p>
+                <p>
+                  <span className='font-bold'>Itineraire: </span>
+                  {itineraire}
+                </p>
+                <p>
+                  <span className='font-bold'>Tags: </span>
+                  {tags}
+                </p>
+              </div>
             </div>
             <div className='w-full flex justify-center md:justify-start md:pl-9 gap-4'>
-              <p className='btn-filter px-3 py-1 my-8 rounded-lg font-bold'>
-                PH : 12 - 15
-              </p>
-              <p className='btn-filter px-3 py-1 my-8 rounded-lg font-bold'>
-                Temp : 12 - 15
-              </p>
+              <Link to={`/login`}>
+                <button
+                  className='w-40 flex justify-center md:justify-start md:pl-9 gap-4 bg-slate-500 text-white font-bold py-2 rounded-lg mt-8'
+                  type='button'
+                >
+                  <p className=''> Book Now</p>
+                  <FontAwesomeIcon
+                    icon={faBagShopping}
+                    className='text-slate-300'
+                  />
+                </button>
+              </Link>
             </div>
           </section>
         </section>

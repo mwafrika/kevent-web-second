@@ -95,7 +95,7 @@ const DemoCarousel = ({ expeditions }) => {
                         {places}
                       </p>
                       <p className='text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl'>
-                        Available
+                        {available}
                       </p>
                     </div>
                     <span className='text-md text-slate-700  py-0 my-0'>
