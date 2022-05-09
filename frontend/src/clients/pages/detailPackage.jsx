@@ -67,6 +67,7 @@ const DetailPackage = (props) => {
                     src={item.imageUrls}
                     alt=''
                     className='object-cover w-1/3 xl:w-1/6 xxs:w-1/3.9 xs:w-1/3.9 lg:w-1/4 2xl:w-32 rounded-lg'
+                    key={item.id}
                   />
                 ))}
               </div>
