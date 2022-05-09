@@ -15,8 +15,8 @@ const sendEmail = async (email, subject, text) => {
         });
 
         await transporter.sendMail({
-            from: USER,
-            to: email,
+            from: email,
+            to: 'josuemwafrika2019@gmail.com',
             subject:subject,
             html: text,
         });
