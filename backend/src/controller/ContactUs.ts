@@ -12,7 +12,7 @@ export class ContactUsController {
        // send email to admin
 
        const output = `
-                        <p>You have a new contact request</p>
+                        <p style="color:'red'">You have a new contact request</p>
                             <h3>Contact Details</h3>
                             <ul>  
                             <li>Name: ${name}</li>

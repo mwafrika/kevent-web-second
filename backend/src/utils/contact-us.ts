@@ -15,10 +15,10 @@ const sendEmail = async (email, subject, text) => {
         });
 
         await transporter.sendMail({
-            from: email,
-            to: USER,
+            from: USER,
+            to: email,
             subject:subject,
-            text: text,
+            html: text,
         });
 
         console.log("email sent sucessfully");
