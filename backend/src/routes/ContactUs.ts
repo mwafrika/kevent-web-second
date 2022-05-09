@@ -1,9 +1,9 @@
 import {ContactUsController} from "../controller/ContactUs";
 
-export const Places = [
+export const ContactUs = [
     {
         method: "post",
-        route: "/api/v1/contact-us",
+        route: "/api/v1/expeditions/:id",
         controller: ContactUsController,
         action: "save",
         validation:[],   

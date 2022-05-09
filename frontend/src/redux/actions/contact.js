@@ -2,9 +2,9 @@ import { CONTACT_SUCCESS, CONTACT_FAILURE } from '../actionTypes/contact';
 import * as contactApi from '../Api/contact';
 import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
 
-export const Contacts = (contactData, clearForm) => (dispatch) => {
+export const Contacts = (contactData,id, clearForm) => (dispatch) => {
   contactApi
-    .CreateMessage(contactData)
+    .CreateMessage(contactData, id)
     .then((response) => {
       if (response.status === 200) {
         console.log('contact us', response);

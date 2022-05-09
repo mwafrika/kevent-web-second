@@ -52,7 +52,7 @@ const DetailPackage = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(Contacts(contact, clearForm));
+    dispatch(Contacts(contact, key, clearForm));
   };
 
   const {
