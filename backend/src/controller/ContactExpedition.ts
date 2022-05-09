@@ -21,6 +21,7 @@ export class ContactUsController {
                             </ul>
                             <h3>Message</h3>
                         <p>${message}</p>
+                        <a href="https://www.kevent-rdc.com/expeditions/${request.params.id}">Cliquer pour voir la demande</a>
                         `;
          await sendEmail(email, "Nouveau message du client", output);
 

@@ -1,8 +1,11 @@
-import { CONTACT_SUCCESS, CONTACT_FAILURE } from '../actionTypes/contact';
+import {
+  CONTACT_EXPEDITION_SUCCESS,
+  CONTACT_EXPEDITION_FAILURE,
+} from '../actionTypes/contact';
 
 const initialState = {
-  contacts: [],
-  singleContact: {},
+  ContactExpeditions: [],
+  ContactExpedition: {},
   loading: false,
   error: null,
 };
@@ -10,14 +13,14 @@ const initialState = {
 const contactReducer = (state = initialState, action) => {
   console.log(action, 'action');
   switch (action.type) {
-    case CONTACT_SUCCESS:
+    case CONTACT_EXPEDITION_SUCCESS:
       return {
         ...state,
-        contacts: [...state.contacts, action.payload],
+        ContactExpeditions: [...state.ContactExpeditions, action.payload],
         loading: false,
         error: null,
       };
-    case CONTACT_FAILURE:
+    case CONTACT_EXPEDITION_FAILURE:
       return {
         ...state,
         loading: false,

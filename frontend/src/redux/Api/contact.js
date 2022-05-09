@@ -14,3 +14,15 @@ export const CreateMessage = async (data, id) => {
   });
   return response;
 };
+
+export const CreateMessagePackage = async (data, id) => {
+    const response = await axios({
+      method: 'post',
+      url: `${baseUrl}packages/${id}`,
+      data: data,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response;
+  };
