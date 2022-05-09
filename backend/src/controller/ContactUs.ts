@@ -1,7 +1,7 @@
 import { getRepository,In} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import {ContactUs} from "../entity/ContactUs";
-import sendEmail from '../utils/sendEmail';
+import sendEmail from '../utils/contact-us';
 export class ContactUsController {
 
     private ContactUsRepository = getRepository(ContactUs);
