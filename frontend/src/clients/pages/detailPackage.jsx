@@ -76,37 +76,43 @@ const DetailPackage = (props) => {
                 alt=''
                 className='object-cover w-full h-[30rem] rounded-2xl'
               />
-              <div className='px-8 w-full title-description'>
-                <h1 className='text-2xl font-bold pb-4'>{title}</h1>
-                <p className='w-3/4'>{description}</p>
-                <div className='flex gap-y-2 pt-8 w-3/4 flex-wrap'>
-                  <div className='flex flex-row gap-x-2 w-1/2'>
-                    <span className='font-bold text-xl'>Prix :</span>
-                    <span className='text-xl'>{`${price}$`}</span>
+              <div className='px-4 md:px-8 w-full title-description'>
+                <h1 className='text-lg md:text-2xl font-bold pb-4'>{title}</h1>
+                <p className='w-full md:w-3/4'>{description}</p>
+                <div className='flex gap-y-2 pt-8 w-full md:w-3/4 flex-wrap'>
+                  <div className='flex flex-row gap-x-2 w-full md:1/2'>
+                    <span className='font-bold  md:text-lg text-xl'>Prix </span>
+                    <span className=' md:text-lg text-xl'>{`${price}$`}</span>
                   </div>
 
-                  <div className='flex flex-row gap-x-2 w-1/2'>
-                    <span className='font-bold text-xl'>Statut :</span>
-                    <span className='text-xl'>{available}</span>
+                  <div className='flex flex-row gap-x-2 md:w-1/2 w-full'>
+                    <span className='font-bold  md:text-lg text-xl'>
+                      Statut{' '}
+                    </span>
+                    <span className=' md:text-lg text-xl'>{available}</span>
                   </div>
 
-                  <div className='flex flex-row gap-x-2 w-1/2'>
-                    <span className='font-bold text-xl'>Ville :</span>
-                    <span className='text-xl'>{places}</span>
+                  <div className='flex flex-row gap-x-2 md:w-1/2 w-full'>
+                    <span className='font-bold  md:text-lg text-xl'>
+                      Ville{' '}
+                    </span>
+                    <span className=' md:text-lg text-xl'>{places}</span>
                   </div>
-                  <div className='flex flex-row gap-x-2 w-1/2'>
-                    <span className='font-bold text-xl'>Itineraire :</span>
-                    <span className='text-xl'>{itineraire}</span>
+                  <div className='flex flex-row gap-x-2 md:w-1/2 w-full'>
+                    <span className='font-bold  md:text-lg text-xl'>
+                      Itineraire{' '}
+                    </span>
+                    <span className=' md:text-lg text-xl'>{itineraire}</span>
                   </div>
-                  <div className='flex flex-row gap-x-2 w-1/2'>
-                    <span className='font-bold text-xl'>Tags :</span>
-                    <span className='text-xl'>{tags}</span>
+                  <div className='flex flex-row gap-x-2 md:w-1/2 w-full'>
+                    <span className='font-bold  md:text-lg text-xl'>Tags </span>
+                    <span className=' md:text-lg text-xl'>{tags}</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <section className='h-auto w-1/3 pt-8 md:pt-8 rounded-2xl flex flex-col gap-y-4'>
+          <section className='h-auto w-full md:w-1/3 pt-8 md:pt-8 rounded-2xl flex flex-col gap-y-4'>
             <div className='bg-slate-200 py-4'>
               <div className='px-8 w-full title-description'>
                 <h1 className='text-2xl font-bold pb-4'>Reservez</h1>
