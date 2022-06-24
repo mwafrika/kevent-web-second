@@ -16,6 +16,7 @@
 
 ## API Documentation
 [API Dcumentation with postman](https://documenter.getpostman.com/view/6127109/UzBqq5mr). This project's APIs are all hosted on [Heroku](https://kevent-rdc.herokuapp.com), and the documentation is created using Postman.
+### [Live Demo](https://www.kevent-rdc.com/)
 
 ## Getting Started
 
