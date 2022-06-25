@@ -15,7 +15,7 @@ const ResetPassword = () => {
     dispatch(confirmpassword(password, userId, token, navigate));
   };
   return (
-    <div className='flex w-full h-screen bg-slate-400 items-center'>
+    <div className='flex w-full h-screen bg-slate-200 items-center'>
       <div className='w-[30rem] h-[30rem] bg-white rounded-lg mx-auto justify-around  flex flex-col'>
         <form onSubmit={handleSubmit}>
           <div className='w-[25rem] flex justify-center flex-col mx-auto text-center gap-y-10 text-slate-600 font-bold'>
