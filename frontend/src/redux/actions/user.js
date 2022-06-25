@@ -43,13 +43,6 @@ export const signup = (userData, navigate) => (dispatch) => {
     });
 };
 
-const runLogoutTimer = (dispatch, timer, navigate) => {
-  setInterval(() => {
-    dispatch(logout());
-    navigate('/login');
-  }, timer);
-};
-
 export const login = (userData, navigate) => (dispatch) => {
   userApi
     .login(userData)
@@ -60,7 +53,6 @@ export const login = (userData, navigate) => (dispatch) => {
           payload: response.data,
         });
         localStorage.setItem('user', JSON.stringify(response.data));
-        runLogoutTimer(dispatch, 3600000, navigate);
         navigate('/admin/home');
         resolvePromise(response, 'Connection en cours...');
       }
