@@ -24,7 +24,7 @@ To test the Kevent application you need the following information:
 
 ### 1. Login as administrator:
    
-   - email: admin@admin.com
+   - email: admin@gmail.com
    - password: admin
   
  ### 2. Login as a user:
