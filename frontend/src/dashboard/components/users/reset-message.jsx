@@ -11,7 +11,7 @@ const ResetPassword = () => {
   const error = useSelector((state) => state.user);
 
   return (
-    <div className='flex w-full h-screen bg-slate-400 items-center'>
+    <div className='flex w-full h-screen bg-slate-200 items-center'>
       <div className='w-[30rem] h-[30rem] bg-white rounded-lg mx-auto justify-around  flex flex-col'>
         <div className='w-[25rem] flex justify-center flex-col mx-auto text-center gap-y-10 text-slate-600 font-bold'>
           <h1 className='text-xl'>Check your email</h1>
