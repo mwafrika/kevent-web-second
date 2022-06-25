@@ -168,9 +168,9 @@ export default function App() {
 
         <Route path='/admin/users' element={<Users />} />
 
-        <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}>
+        {/* <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}> */}
           <Route path='/admin/users/:key' element={<User />} />
-        </Route>
+        {/* </Route> */}
 
         {/* <Route path='/admin/users/:key' element={<User />} /> */}
         <Route path='/admin/edit/users/:key' element={<UpdateUser />} />
