@@ -47,7 +47,7 @@ const Login = () => {
               >
                 <div className='flex flex-col my-2 w-full'>
                   <input
-                    className='w-full border border-gray-400 p-2 outline-none focus:border-blue-500 rounded-lg bg-white invalid:border-red-500'
+                    className='w-full border border-gray-400 p-2 outline-none focus:border-blue-500 rounded-lg bg-white'
                     type='email'
                     placeholder='Email'
                     name='email'
@@ -58,7 +58,7 @@ const Login = () => {
                 </div>
                 <div className='flex flex-col my-2 w-full'>
                   <input
-                    className='w-full border border-gray-400 p-2 outline-none focus:border-blue-500 rounded-lg bg-white invalid:border-red-500'
+                    className='w-full border border-gray-400 p-2 outline-none focus:border-blue-500 rounded-lg bg-white'
                     type='password'
                     placeholder='password'
                     name='password'
