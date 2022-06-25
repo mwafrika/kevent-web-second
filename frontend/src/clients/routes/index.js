@@ -17,7 +17,6 @@ import DetailExpedition from '../pages/detailExpedition';
 import DetailPackage from '../pages/detailPackage';
 import NoPage from '../pages/noPage';
 // Testing Admin homepage
-import { useSelector, useDispatch } from 'react-redux';
 import Signup from '../pages/signup';
 import Login from '../pages/login';
 import PackageForm from '../../dashboard/pages/packages/createPackage';
@@ -56,43 +55,9 @@ import ResetPassword from '../../dashboard/components/users/requestReset';
 import ResetMessage from '../../dashboard/components/users/reset-message';
 import ConfirmReset from '../../dashboard/components/users/resetPassword';
 import ConfirmSuccess from '../../dashboard/components/users/confirmSuccess';
-
-import RequireAuth from '../../dashboard/helpers/requireAuth';
 import Unauthorized from '../../dashboard/components/unauthorized';
 
-import { resolvePromise, rejectPromise } from '../../dashboard/helpers/promise';
-import { logout } from '../../redux/actions/user';
-
 export default function App() {
-  const { isLoggedIn } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const ROLES = {
-    USER: 'USER',
-    ADMIN: 'ADMIN',
-  };
-
-  // interceptors
-  axios.interceptors.request.use((response) => {
-    return response;
-  });
-
-  axios.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      if (error.response.status === 401) {
-        dispatch(logout());
-        navigate('/login', {
-          replace: true,
-        });
-      }
-      return Promise.reject(error, 'unauthorized');
-    }
-  );
-  // interceptors
   return (
     <>
       <ToastContainer />
@@ -169,7 +134,7 @@ export default function App() {
         <Route path='/admin/users' element={<Users />} />
 
         {/* <Route element={<RequireAuth allowedRoles={[ROLES.ADMIN]} />}> */}
-          <Route path='/admin/users/:key' element={<User />} />
+        <Route path='/admin/users/:key' element={<User />} />
         {/* </Route> */}
 
         {/* <Route path='/admin/users/:key' element={<User />} /> */}
