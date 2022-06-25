@@ -72,25 +72,27 @@ export default function App() {
     USER: 'USER',
     ADMIN: 'ADMIN',
   };
-  // axios.interceptors.request.use((response) => {
-  //   return response;
-  // });
 
-  // axios.interceptors.response.use(
-  //   (response) => {
-  //     return response;
-  //   },
-  //   (error) => {
-  //     if (error.response.status === 401) {
-  //       dispatch(logout());
-  //       navigate('/login', {
-  //         replace: true,
-  //       });
-  //     }
-  //     return Promise.reject(error, 'unauthorized');
-  //   }
-  // );
+  // interceptors
+  axios.interceptors.request.use((response) => {
+    return response;
+  });
 
+  axios.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error.response.status === 401) {
+        dispatch(logout());
+        navigate('/login', {
+          replace: true,
+        });
+      }
+      return Promise.reject(error, 'unauthorized');
+    }
+  );
+  // interceptors
   return (
     <>
       <ToastContainer />
@@ -136,7 +138,6 @@ export default function App() {
         />
 
         {/*  book expeditions */}
-        {/* <Route element={<RequireAuth allowedRoles={[ROLES.USER]} />}> */}
         <Route
           path='/admin/expeditions/:key/book'
           element={<BookExpedition />}
