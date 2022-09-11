@@ -1,4 +1,4 @@
-# kevent-web
+# kevent website
 
 ## Description
 
