@@ -6,7 +6,7 @@ const description = () => {
       <div className='container mx-auto flex justify-center items-center h-full flex-col'>
         <h1 className='text-3xl text-white font-bold pb-6'>Packects</h1>
         <h2 className=' text-lg text-white font-semibold'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque,
+          Lorem ipsum dolor sit amet consectetur  Enim eaque,
         </h2>
         <h2 className=' text-lg text-white font-semibold'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque,
