@@ -131,7 +131,7 @@ const MainContent = () => {
           </div>
           <div className="w-full flex justify-between">
             <div className="mb-4 text-slate-500">
-              Packet recent{packages.length > 1 && "s"}({packages.length})
+              Packet recent{packages.length > 1 && "s"}({ packages.length })
             </div>
             <Link to="/admin/packages">
               <span className="text-sm text-sky-400">
@@ -176,7 +176,7 @@ const MainContent = () => {
 
           <div className="w-full flex justify-between">
             <div className="mb-4 text-slate-500">
-              Expeditions recent{expeditions.length > 1 && "s"}(
+              Expeditions recent{expeditions.length > 1 && "s"} (
               {expeditions.length})
             </div>
             <Link to="/admin/expeditions">
@@ -198,17 +198,17 @@ const MainContent = () => {
                     }}
                   >
                     <img
-                      src="https://res.cloudinary.com/ujuzi/image/upload/v1643570908/Kevent/Rectangle_5-2_qfo9sk.svg"
-                      alt=""
+                      src={pack.imageUrls}
+                      alt="expedition"
                       className="object-cover rounded-t-lg w-full  h-40"
                     />
                     <div className="flex flex-col px-5  pb-8">
                       <div className="flex flex-row justify-between items-center ">
                         <p className="text-md font-semibold text-center text-slate-700  py-4">
-                          Bukavu
+                          {pack.title}
                         </p>
                         <p className="text-md font-semibold text-center text-white bg-slate-700 px-4 rounded-l-2xl rounded-r-2xl">
-                          50$
+                          {pack.price}$
                         </p>
                       </div>
                       <span className="text-md text-slate-700  py-0 my-0">
