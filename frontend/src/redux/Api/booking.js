@@ -1,9 +1,9 @@
 // booking APIs
-import axios from 'axios';
-const baseUrl = 'https://kevent-rdc.herokuapp.com/api/v1/';
+import axios from "axios";
+const baseUrl = "https://kevent.onrender.com/api/v1/";
 
 const authHeader = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem("user"));
   if (user && user.token) {
     return user.token;
   } else {
@@ -13,11 +13,11 @@ const authHeader = () => {
 
 export const bookPackages = async (data, packageId) => {
   const response = await axios({
-    method: 'post',
+    method: "post",
     url: `${baseUrl}${packageId}/bookPackage`,
     data: data,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -26,10 +26,10 @@ export const bookPackages = async (data, packageId) => {
 
 export const getAllBooking = async () => {
   const response = await axios({
-    method: 'get',
+    method: "get",
     url: `${baseUrl}bookPackages`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -38,10 +38,10 @@ export const getAllBooking = async () => {
 
 export const getOneBooking = async (id) => {
   const response = await axios({
-    method: 'get',
+    method: "get",
     url: `${baseUrl}bookPackages/${id}`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -50,11 +50,11 @@ export const getOneBooking = async (id) => {
 
 export const updateBooking = async (data, id) => {
   const response = await axios({
-    method: 'put',
+    method: "put",
     url: `${baseUrl}bookPackages/${id}`,
     data: data,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -63,10 +63,10 @@ export const updateBooking = async (data, id) => {
 
 export const deleteBooking = async (id) => {
   const response = await axios({
-    method: 'delete',
+    method: "delete",
     url: `${baseUrl}bookPackages/${id}`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -76,11 +76,11 @@ export const deleteBooking = async (id) => {
 // bookExpeditions
 export const bookExpeditions = async (data, expeditionId) => {
   const response = await axios({
-    method: 'post',
+    method: "post",
     url: `${baseUrl}${expeditionId}/bookExpedition`,
     data: data,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -89,10 +89,10 @@ export const bookExpeditions = async (data, expeditionId) => {
 
 export const getAllExpeditions = async () => {
   const response = await axios({
-    method: 'get',
+    method: "get",
     url: `${baseUrl}bookExpeditions`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -101,10 +101,10 @@ export const getAllExpeditions = async () => {
 
 export const getOneExpedition = async (id) => {
   const response = await axios({
-    method: 'get',
+    method: "get",
     url: `${baseUrl}bookExpeditions/${id}`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -113,11 +113,11 @@ export const getOneExpedition = async (id) => {
 
 export const updateExpedition = async (data, id) => {
   const response = await axios({
-    method: 'put',
+    method: "put",
     url: `${baseUrl}bookExpeditions/${id}`,
     data: data,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -126,10 +126,10 @@ export const updateExpedition = async (data, id) => {
 
 export const deleteExpedition = async (id) => {
   const response = await axios({
-    method: 'delete',
+    method: "delete",
     url: `${baseUrl}bookExpeditions/${id}`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });

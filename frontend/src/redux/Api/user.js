@@ -1,8 +1,8 @@
-import axios from 'axios';
-const baseUrl = 'https://kevent-rdc.herokuapp.com/api/v1/';
+import axios from "axios";
+const baseUrl = "https://kevent.onrender.com/api/v1/";
 
 const authHeader = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem("user"));
   if (user && user.token) {
     return user.token;
   } else {
@@ -10,31 +10,29 @@ const authHeader = () => {
   }
 };
 
-
-
 export const login = (data) => {
   return axios.post(`${baseUrl}signin`, data);
 };
 
 export const signup = (data) => {
   let bodyFormData = new FormData();
-  bodyFormData.append('email', data.email);
-  bodyFormData.append('password', data.password);
-  bodyFormData.append('firstName', data.firstName);
-  bodyFormData.append('lastName', data.lastName);
-  bodyFormData.append('surname', data.surname);
-  bodyFormData.append('phone', data.phone);
-  bodyFormData.append('address', data.address);
-  bodyFormData.append('sexe', data.sexe);
-  bodyFormData.append('profession', data.profession);
-  bodyFormData.append('imageUrls', data.imageUrls);
-  bodyFormData.append('role', data.role);
+  bodyFormData.append("email", data.email);
+  bodyFormData.append("password", data.password);
+  bodyFormData.append("firstName", data.firstName);
+  bodyFormData.append("lastName", data.lastName);
+  bodyFormData.append("surname", data.surname);
+  bodyFormData.append("phone", data.phone);
+  bodyFormData.append("address", data.address);
+  bodyFormData.append("sexe", data.sexe);
+  bodyFormData.append("profession", data.profession);
+  bodyFormData.append("imageUrls", data.imageUrls);
+  bodyFormData.append("role", data.role);
 
   const response = axios({
-    method: 'post',
+    method: "post",
     url: `${baseUrl}signup`,
     data: bodyFormData,
-    headers: { 'Content-Type': 'multipart/form-data' },
+    headers: { "Content-Type": "multipart/form-data" },
   });
 
   return response;
@@ -42,10 +40,10 @@ export const signup = (data) => {
 
 export const getUser = async (id) => {
   const response = await axios({
-    method: 'get',
+    method: "get",
     url: `${baseUrl}users/${id}`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -54,10 +52,10 @@ export const getUser = async (id) => {
 
 export const getUsers = async () => {
   const response = await axios({
-    method: 'get',
+    method: "get",
     url: `${baseUrl}users`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -66,11 +64,11 @@ export const getUsers = async () => {
 
 export const updateUser = async (data, id) => {
   const response = await axios({
-    method: 'put',
+    method: "put",
     url: `${baseUrl}users/${id}`,
     data: data,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -80,10 +78,10 @@ export const updateUser = async (data, id) => {
 
 export const deleteUser = async (id) => {
   const response = await axios({
-    method: 'delete',
+    method: "delete",
     url: `${baseUrl}users/${id}`,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       auth: authHeader(),
     },
   });
@@ -91,33 +89,33 @@ export const deleteUser = async (id) => {
 };
 
 export const resetPassword = async (data) => {
-  console.log(data, 'data');
+  console.log(data, "data");
   const response = await axios({
-    method: 'post',
+    method: "post",
     url: `${baseUrl}password-reset`,
     data: { email: data },
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 
-  console.log(response, 'response');
+  console.log(response, "response");
 
   return response;
 };
 // /api/v1/password-reset/:userId/:token
 export const resetPasswordConfirm = async (data, userId, token) => {
-  console.log(data, 'data');
+  console.log(data, "data");
   const response = await axios({
-    method: 'post',
+    method: "post",
     url: `${baseUrl}password-reset/${userId}/${token}`,
     data: { password: data },
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 
-  console.log(response, 'response');
+  console.log(response, "response");
 
   return response;
 };
