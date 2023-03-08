@@ -49,7 +49,9 @@ try {
 async all(request: Request, response: Response, next: NextFunction) {
   try {
       console.log('VERIFY UPLOADS',request.body);
-      return this.userRepository.find();
+      return this.userRepository.find({
+        where: { role: In(["USER"]) }
+      });
   } catch (error) {
       console.log(error.message);
   }
