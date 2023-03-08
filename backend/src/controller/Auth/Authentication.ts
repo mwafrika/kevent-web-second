@@ -36,7 +36,7 @@ try {
     user.hashPassword();
   
     await this.userRepository.save(user);
-    const token = jwt.sign({ userId: user.id, email: user.email, role: user.role },jwtSecret,{ expiresIn: "1h" })
+    const token = jwt.sign({ userId: user.id, email: user.email, role: user.role },jwtSecret,{ expiresIn: "6h" })
     const authUser = jwt.decode(token);
     response.status(201).send({message:"Utilisateur creé avec succes",token, authUser});
 
