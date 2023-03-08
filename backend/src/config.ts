@@ -9,7 +9,7 @@ export const HOST = process.env.HOST || 'smtp.gmail.com';
 export const SERVICE = process.env.SERVICE || 'gmail';
 export const USER = process.env.USER || 'josuemwafrika2020@gmail.com';
 export const PASS = process.env.PASS || 'tcxsgnwfhjummgpm';
-export const DATABASE_URL = process.env.DATABASE_URL || 'postgres://kevent_user:18LU0zDAXFwSRwlKYfsVsLCBVJqh5EfD@dpg-ce6iq0arrk071o5t3h00-a.oregon-postgres.render.com/kevent';
+export const DATABASE_URL = process.env.DATABASE_URL || 'postgres://kevent_user:TFfDTY0Y8nxmQR8cCfwDZ9B095ORVeja@dpg-cg28ri7dvk4rono47sag-a.oregon-postgres.render.com/kevent_lwzt';
 export const DEV_DATABASE_URL = 'postgres://kevent:kevent@localhost:5432/keventDB'
 
 
