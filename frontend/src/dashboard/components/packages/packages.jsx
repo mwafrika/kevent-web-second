@@ -67,7 +67,7 @@ const Table = () => {
                 key={title}
                 className="bg-slate-600 text-white border text-left px-8 py-4"
               >
-                {title}
+                {title && title}
               </th>
             ))}
           </tr>
