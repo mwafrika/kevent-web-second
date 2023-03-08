@@ -30,7 +30,7 @@ const Table = () => {
     "Places",
     "Tags",
     "Diponibilité",
-    role === "USER" && "Book Now",
+    role === "USER" ? "Book Now" : null,
   ];
 
   console.log(packages, "packages components");

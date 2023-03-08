@@ -32,7 +32,7 @@ const Table = () => {
     "Diponibilité",
     "Start Date",
     "End Date",
-    role === "USER" && "Book Now",
+    role === "USER" ? "Book Now" : null,
   ];
 
   console.log(expeditions, "expedition components");
