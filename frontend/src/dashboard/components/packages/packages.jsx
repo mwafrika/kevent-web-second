@@ -62,14 +62,17 @@ const Table = () => {
       <table className="table table-auto shadow-lg bg-white border-collapse">
         <thead>
           <tr>
-            {headerTitle.map((title) => (
-              <th
-                key={title}
-                className="bg-slate-600 text-white border text-left px-8 py-4"
-              >
-                {title && title}
-              </th>
-            ))}
+            {headerTitle.map(
+              (title) =>
+                ({ title } && (
+                  <th
+                    key={title}
+                    className="bg-slate-600 text-white border text-left px-4 py-4"
+                  >
+                    {title}
+                  </th>
+                ))
+            )}
           </tr>
         </thead>
         <tbody>
