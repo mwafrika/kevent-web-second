@@ -6,9 +6,11 @@ import {Request, Response} from "express";
 import routes from "./routes";
 import * as fileUpload from 'express-fileupload';
 import * as cors from "cors";
-import {PORT} from './config'
+// import {PORT} from './config'
 import * as morgan from 'morgan';
 import { validationResult } from 'express-validator';
+import * as dotenv from "dotenv";
+dotenv.config();
 
 createConnection()
 .then(async connection => {
@@ -55,8 +57,8 @@ createConnection()
     app.use(handleError)
     app.use('/', homePage);
     app.use('/uploads',express.static('uploads'));
-    app.listen(PORT)
+    app.listen(process.env.PORT)
 
-    console.log(`Express server has started on port ${PORT}`);
+    console.log(`Express server has started on port ${process.env.PORT}`);
 
 }).catch(error => console.log(error))

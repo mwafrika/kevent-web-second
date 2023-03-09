@@ -3,7 +3,10 @@ import {NextFunction, Request, Response} from "express";
 import {Authentication} from "../../entity/Authentication";
 import { validate } from "class-validator";
 import * as jwt from "jsonwebtoken";
-import {jwtSecret} from "../../config";
+// import {jwtSecret} from "../../config";
+import * as dotenv from "dotenv"
+
+dotenv.config();
 export class Login {
 async save(request: Request, response: Response, next: NextFunction) {
 
@@ -32,7 +35,7 @@ async save(request: Request, response: Response, next: NextFunction) {
     }
 
     //Sing JWT, valid for 1 hour
-    const token = jwt.sign({ userId: user.id, email: user.email, role: user.role, imageUrls: user.imageUrls  },jwtSecret,{ expiresIn: "6h" });
+    const token = jwt.sign({ userId: user.id, email: user.email, role: user.role, imageUrls: user.imageUrls  },process.env.jwtSecret,{ expiresIn: "6h" });
    const authUser = jwt.decode(token);
     //Send the jwt in the response
     response.send({token, authUser, message: "Connecté avec succès"});

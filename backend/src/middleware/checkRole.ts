@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { getRepository } from "typeorm";
-import {jwtSecret} from "../config";
+// import {jwtSecret} from "../config";
 import { Authentication } from "../entity/Authentication";
 
 export const checkRole = (roles: Array<string>) => {
