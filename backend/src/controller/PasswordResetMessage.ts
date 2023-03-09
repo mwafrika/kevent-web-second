@@ -4,7 +4,6 @@ import {Token} from '../entity/Token';
 import {Authentication} from '../entity/Authentication';
 import * as crypto from 'crypto'
 import sendEmail from '../utils/sendEmail';
-import {PORT} from '../config';
 
 export class ResetMessageController {
 
